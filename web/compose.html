@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Write a Fugue</title>
+<meta name="description" content="Describe a fugue in plain words and hear it composed in your browser, on a plan taken from Bach's Well-Tempered Clavier.">
+<style>
+:root {
+  --bg: #f7f5f0; --panel: #ffffff; --ink: #1d1b18; --muted: #6b665e; --rule: #e2ddd3; --lane: #efebe3;
+  --accent: #2f5d8a; --accent2: #b5562e; --free: #b9b2a5; --chip: #eef2f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15161a; --panel: #1d1f24; --ink: #ecebe7; --muted: #9a978f; --rule: #2e3037; --lane: #24262c;
+    --accent: #7fb0e0; --accent2: #f0905f; --free: #4c4f57; --chip: #243040;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #15161a; --panel: #1d1f24; --ink: #ecebe7; --muted: #9a978f; --rule: #2e3037; --lane: #24262c;
+  --accent: #7fb0e0; --accent2: #f0905f; --free: #4c4f57; --chip: #243040;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 Georgia, "Iowan Old Style", "Palatino Linotype", serif; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+header { padding: 36px 0 10px; }
+h1 { margin: 0; font-size: 34px; font-weight: normal; letter-spacing: .01em; }
+.sub { color: var(--muted); margin: 6px 0 0; max-width: 46em; }
+form { margin: 22px 0 10px; display: flex; gap: 10px; flex-wrap: wrap; }
+#q { flex: 1 1 420px; min-width: 0; font: inherit; font-size: 18px; padding: 12px 14px; border: 1px solid var(--rule);
+     border-radius: 8px; background: var(--panel); color: var(--ink); }
+#q:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+button, .btn { font: inherit; font-size: 15px; cursor: pointer; border-radius: 8px; padding: 10px 16px; border: 1px solid var(--rule);
+  background: var(--panel); color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+button:hover, .btn:hover { border-color: var(--accent); }
+button:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.primary { background: var(--accent); color: var(--panel); border-color: var(--accent); }
+button:disabled { opacity: .5; cursor: default; }
+.examples { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 26px; font-size: 14px; color: var(--muted); align-items: center; }
+.examples button { font-size: 14px; padding: 5px 11px; border-radius: 999px; background: transparent; color: var(--ink); }
+.progress { height: 3px; background: var(--lane); border-radius: 2px; overflow: hidden; margin: 0 0 18px; visibility: hidden; }
+.progress i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .15s; }
+.card { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 20px; margin-bottom: 26px; }
+.card[hidden] { display: none; }
+h2 { margin: 0; font-size: 24px; font-weight: normal; }
+.meta { color: var(--muted); font-size: 14px; margin: 4px 0 12px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
+.chips span { background: var(--chip); border-radius: 999px; padding: 3px 10px; font-size: 13px; }
+.subject { font: 13px/1.5 ui-monospace, Menlo, Consolas, monospace; color: var(--muted); margin: 0 0 14px; overflow-wrap: anywhere; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+.legend { display: flex; gap: 16px; font-size: 13px; color: var(--muted); margin: 0 0 6px; flex-wrap: wrap; }
+.legend span::before { content: ""; display: inline-block; width: 12px; height: 8px; border-radius: 2px; margin-right: 6px; background: var(--c); }
+svg#roll { width: 100%; height: auto; display: block; background: var(--lane); border-radius: 6px; }
+.err { color: var(--accent2); }
+.how { color: var(--muted); font-size: 14.5px; max-width: 46em; margin: 0 0 40px; }
+.how a, .meta a { color: var(--accent); }
+.toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--ink); color: var(--bg);
+  padding: 8px 14px; border-radius: 6px; font-size: 14px; opacity: 0; transition: opacity .2s; pointer-events: none; }
+@media (max-width: 560px) { h1 { font-size: 28px; } #q { font-size: 16px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Write a Fugue</h1>
+  <p class="sub">Describe the fugue you would like: a key, a mood, how many voices, how fast. It is composed here in your browser, on an entry plan taken from one of Bach's fugues in the <i>Well-Tempered Clavier</i>.</p>
+</header>
+
+<form id="f" autocomplete="off">
+  <label for="q" class="visually-hidden" style="position:absolute;left:-9999px">Describe your fugue</label>
+  <input id="q" name="q" placeholder="A sombre fugue in D minor for three voices" maxlength="300">
+  <button class="primary" id="go" type="submit">Compose</button>
+</form>
+<div class="examples">Try:
+  <button type="button">A sombre fugue in D minor for three voices</button>
+  <button type="button">Bright and lively, four voices, in G major</button>
+  <button type="button">Slow, chromatic and anguished, five voices, on the organ</button>
+  <button type="button">A short dance-like duet in E minor</button>
+  <button type="button">Stately fugue in C with lots of stretto</button>
+  <button type="button">An inverted mirror fugue in A minor for strings</button>
+</div>
+<div class="progress" id="prog"><i></i></div>
+
+<section class="card" id="card" hidden aria-live="polite">
+  <h2 id="title"></h2>
+  <div class="meta" id="meta"></div>
+  <div class="chips" id="heard"></div>
+  <div class="subject" id="subject"></div>
+  <div class="controls">
+    <button id="play" type="button">▶ Play</button>
+    <button id="again" type="button">↻ Another version</button>
+    <button id="midi" type="button">Download MIDI</button>
+    <button id="wav" type="button">Download WAV</button>
+    <button id="share" type="button">Copy link</button>
+  </div>
+  <div class="legend"><span style="--c:var(--accent)">Subject</span><span style="--c:var(--accent2)">Subject inverted</span><span style="--c:var(--free)">Free counterpoint</span></div>
+  <svg id="roll" role="img" aria-label="Piano roll of the fugue"></svg>
+</section>
+
+<p class="how">How it works: your words set the key, mode, number of voices, speed and the character of the subject. A short theme (the subject) is composed to match. The plan of one of Bach's fugues decides when each voice states it, at which pitch and whether upside down; the program then writes the free counterpoint around those entries, quaver by quaver, under rules of harmony and voice-leading. The architecture is Bach's and the music in between is the machine's, which is where the difference lies. More in <a href="https://paulharrald.substack.com/">the article</a>, on the <a href="index.html">Fugue Map</a>, and in the <a href="https://github.com/sepiks-ai/fugue-structure">code</a>.</p>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="engine.js"></script>
+<script>
+const $ = (id) => document.getElementById(id);
+let plans = null, piece = null, seed = 0, worker = null, jobId = 0;
+
+async function loadPlans() {
+  for (const b of ["results/", "../results/"]) {
+    try { const r = await fetch(b + "plans.json"); if (r.ok) return r.json(); } catch (e) {}
+  }
+  throw new Error("Could not load the Bach plans.");
+}
+function toast(msg) { const t = $("toast"); t.textContent = msg; t.style.opacity = 1; setTimeout(() => (t.style.opacity = 0), 1800); }
+function setProgress(f) { $("prog").style.visibility = f === null ? "hidden" : "visible"; $("prog").firstElementChild.style.width = (100 * (f || 0)) + "%"; }
+function noteName(m) { return ["C", "C♯", "D", "E♭", "E", "F", "F♯", "G", "A♭", "A", "B♭", "B"][((m % 12) + 12) % 12] + (Math.floor(m / 12) - 1); }
+
+function compose(text, s) {
+  stop();
+  seed = s;
+  $("go").disabled = true; $("again").disabled = true;
+  setProgress(0.02);
+  const id = ++jobId;
+  try { history.replaceState(null, "", "#q=" + encodeURIComponent(text) + "&s=" + s); } catch (e) {}
+  const done = (p) => { if (id !== jobId) return; piece = p; render(); $("go").disabled = false; $("again").disabled = false; setProgress(null); };
+  const fail = (msg) => { $("go").disabled = false; $("again").disabled = false; setProgress(null); $("card").hidden = false; $("title").innerHTML = `<span class="err">${msg}</span>`; };
+  try {
+    worker = worker || new Worker("worker.js");
+    worker.onmessage = (ev) => {
+      const d = ev.data;
+      if (d.id !== jobId) return;
+      if (d.progress !== undefined) setProgress(Math.max(0.02, d.progress));
+      else if (d.error) fail("Something went wrong: " + d.error);
+      else done(d.piece);
+    };
+    worker.onerror = () => { worker = null; setTimeout(() => done(FugueEngine.generate(text, plans, s)), 10); };
+    worker.postMessage({ text, plans, seed: s, id });
+  } catch (e) {                              // no workers (e.g. opened as a file): compose on the page
+    setTimeout(() => { try { done(FugueEngine.generate(text, plans, s)); } catch (err) { fail(String(err)); } }, 20);
+  }
+}
+
+function render() {
+  const p = piece;
+  $("card").hidden = false;
+  $("title").textContent = `Fugue in ${p.key}, ${p.voices} voices`;
+  $("meta").innerHTML = `Plan from Bach's No. ${p.plan.number} (${p.plan.key.replace("b ", "♭ ").replace("# ", "♯ ")}) · ${p.entries.length} entries, ${p.entries.filter((e) => e.inv).length} inverted · ${Math.round(p.length * 60 / p.tempo)} seconds · version ${seed + 1}`;
+  $("heard").innerHTML = p.params.heard.map((h) => `<span>${h.replace(/[<>&]/g, "")}</span>`).join("");
+  $("subject").textContent = "Subject: " + p.subject.map((x) => noteName(x.m)).join(" ");
+  drawRoll();
+}
+
+let xOf = null;
+function drawRoll() {
+  const p = piece, W = 1000, H = 300, L = 8, R = 8, T = 10, B = 10;
+  const ms = p.notes.map((n) => n.m), lo = Math.min(...ms) - 1, hi = Math.max(...ms) + 1;
+  const x = (t) => L + (t / p.length) * (W - L - R), y = (m) => T + (hi - m) / (hi - lo) * (H - T - B);
+  const rowH = Math.max(2, (H - T - B) / (hi - lo) - 0.6);
+  const inv = new Set(p.entries.map((e, i) => (e.inv ? i : -1)));
+  let out = "";
+  for (let b = 0; b <= p.length; b += 4) out += `<line x1="${x(b)}" x2="${x(b)}" y1="0" y2="${H}" stroke="var(--rule)" stroke-width="${b % 16 === 0 ? 1 : 0.4}"/>`;
+  for (const pass of [0, 1]) for (const n of p.notes) {
+    const isEntry = n.entry >= 0;
+    if ((pass === 0) === isEntry) continue;
+    const c = !isEntry ? "var(--free)" : inv.has(n.entry) ? "var(--accent2)" : "var(--accent)";
+    out += `<rect x="${x(n.on).toFixed(1)}" y="${(y(n.m) - rowH / 2).toFixed(1)}" width="${Math.max(1.5, x(n.on + n.d) - x(n.on) - 0.8).toFixed(1)}" height="${rowH.toFixed(1)}" rx="1" fill="${c}"/>`;
+  }
+  out += `<line id="head" x1="0" x2="0" y1="0" y2="${H}" stroke="var(--ink)" stroke-width="1.5" opacity="0"/>`;
+  const svg = $("roll");
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  svg.setAttribute("aria-label", `Piano roll of the fugue in ${p.key}: subject entries highlighted`);
+  svg.innerHTML = out;
+  xOf = x;
+}
+
+// ---------------------------------------------------------------- sound
+function schedule(ctx, dest, p, t0) {
+  const spq = 60 / p.tempo, nodes = [];
+  const master = ctx.createGain();
+  master.gain.value = { harpsichord: 0.16, organ: 0.07, piano: 0.2, strings: 0.07 }[p.timbre] * (4 / Math.max(3, p.voices));
+  master.connect(dest);
+  for (const n of p.notes) {
+    const t = t0 + n.on * spq, d = Math.max(0.1, n.d * spq), f = 440 * Math.pow(2, (n.m - 69) / 12);
+    const g = ctx.createGain(), lp = ctx.createBiquadFilter(); lp.type = "lowpass";
+    const o = ctx.createOscillator(), organ = p.timbre === "organ";
+    const o2 = organ ? ctx.createOscillator() : null, g2 = organ ? ctx.createGain() : null;
+    let end;
+    if (p.timbre === "organ") {
+      o.type = "sine"; o2.type = "triangle"; o.frequency.value = f; o2.frequency.value = f * 2; g2.gain.value = 0.5;
+      lp.frequency.value = 3000;
+      g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.8, t + 0.03);
+      g.gain.setValueAtTime(0.8, t + d - 0.02); g.gain.linearRampToValueAtTime(0.0001, t + d + 0.06); end = t + d + 0.08;
+    } else if (p.timbre === "strings") {
+      o.type = "sawtooth"; o.frequency.value = f;
+      lp.frequency.value = Math.min(5000, f * 5);
+      g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.7, t + 0.06);
+      g.gain.setValueAtTime(0.7, t + d - 0.03); g.gain.linearRampToValueAtTime(0.0001, t + d + 0.12); end = t + d + 0.14;
+    } else if (p.timbre === "piano") {
+      o.type = "triangle"; o.frequency.value = f;
+      lp.frequency.value = Math.min(6000, f * 6);
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.9, t + 0.005);
+      g.gain.exponentialRampToValueAtTime(0.25, t + 0.6); g.gain.exponentialRampToValueAtTime(0.0001, t + d + 0.25); end = t + d + 0.3;
+    } else {
+      o.type = "sawtooth"; o.frequency.value = f;
+      lp.frequency.setValueAtTime(Math.min(6000, f * 8), t); lp.frequency.exponentialRampToValueAtTime(Math.max(300, f * 1.5), t + d);
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.5, t + 0.005);
+      g.gain.exponentialRampToValueAtTime(0.12, t + 0.25); g.gain.exponentialRampToValueAtTime(0.0001, t + d + 0.08); end = t + d + 0.1;
+    }
+    o.connect(lp); lp.connect(g).connect(master);
+    o.start(t); o.stop(end); nodes.push(o);
+    if (o2) { o2.connect(g2).connect(lp); o2.start(t); o2.stop(end); nodes.push(o2); }
+  }
+  return nodes;
+}
+
+let ctx = null, playing = [], raf = 0, startAt = 0;
+function stop() {
+  playing.forEach((o) => { try { o.stop(); } catch (e) {} });
+  playing = []; cancelAnimationFrame(raf);
+  const h = document.getElementById("head"); if (h) h.setAttribute("opacity", 0);
+  $("play").textContent = "▶ Play";
+}
+function play() {
+  ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+  if (ctx.state === "suspended") ctx.resume();
+  startAt = ctx.currentTime + 0.15;
+  playing = schedule(ctx, ctx.destination, piece, startAt);
+  $("play").textContent = "■ Stop";
+  const head = document.getElementById("head"), spq = 60 / piece.tempo;
+  const tick = () => {
+    const q = (ctx.currentTime - startAt) / spq;
+    if (q > piece.length + 1) { stop(); return; }
+    if (q >= 0) { const px = xOf(q); head.setAttribute("x1", px); head.setAttribute("x2", px); head.setAttribute("opacity", 0.8); }
+    raf = requestAnimationFrame(tick);
+  };
+  raf = requestAnimationFrame(tick);
+}
+
+function fileBase() { return `fugue-${piece.key.replace(/[♯]/g, "-sharp").replace(/[♭]/g, "-flat").replace(/\s+/g, "-").toLowerCase()}-v${seed + 1}`; }
+function save(blob, name) {
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name;
+  document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+}
+async function renderWav() {
+  const sr = 44100, secs = piece.length * 60 / piece.tempo + 1.5;
+  const off = new OfflineAudioContext(2, Math.ceil(sr * secs), sr);
+  schedule(off, off.destination, piece, 0.05);
+  const buf = await off.startRendering();
+  const n = buf.length, ch = [buf.getChannelData(0), buf.getChannelData(1)];
+  let peak = 1e-9; for (const c of ch) for (let i = 0; i < n; i++) peak = Math.max(peak, Math.abs(c[i]));
+  const g = 0.9 / peak, view = new DataView(new ArrayBuffer(44 + n * 4));
+  const w = (o, s) => [...s].forEach((c, i) => view.setUint8(o + i, c.charCodeAt(0)));
+  w(0, "RIFF"); view.setUint32(4, 36 + n * 4, true); w(8, "WAVE"); w(12, "fmt "); view.setUint32(16, 16, true);
+  view.setUint16(20, 1, true); view.setUint16(22, 2, true); view.setUint32(24, sr, true); view.setUint32(28, sr * 4, true);
+  view.setUint16(32, 4, true); view.setUint16(34, 16, true); w(36, "data"); view.setUint32(40, n * 4, true);
+  for (let i = 0, o = 44; i < n; i++) for (const c of ch) { view.setInt16(o, Math.max(-1, Math.min(1, c[i] * g)) * 32767, true); o += 2; }
+  return new Blob([view], { type: "audio/wav" });
+}
+
+// ---------------------------------------------------------------- wiring
+$("f").addEventListener("submit", (ev) => { ev.preventDefault(); const t = $("q").value.trim() || $("q").placeholder; $("q").value = t; compose(t, 0); });
+document.querySelectorAll(".examples button").forEach((b) => b.addEventListener("click", () => { $("q").value = b.textContent; compose(b.textContent, 0); }));
+$("again").addEventListener("click", () => compose(piece.request, seed + 1));
+$("play").addEventListener("click", () => (playing.length ? stop() : play()));
+$("midi").addEventListener("click", () => save(new Blob([FugueEngine.toMidi(piece)], { type: "audio/midi" }), fileBase() + ".mid"));
+$("wav").addEventListener("click", async () => {
+  const b = $("wav"); b.disabled = true; b.textContent = "Rendering, about half a minute…";
+  try { save(await renderWav(), fileBase() + ".wav"); } catch (e) { toast("Could not render audio here."); }
+  b.disabled = false; b.textContent = "Download WAV";
+});
+$("share").addEventListener("click", async () => {
+  try { await navigator.clipboard.writeText(location.href); toast("Link copied"); }
+  catch (e) { prompt("Copy this link:", location.href); }
+});
+
+(async () => {
+  try { plans = await loadPlans(); }
+  catch (e) { $("card").hidden = false; $("title").innerHTML = `<span class="err">${e.message}</span>`; return; }
+  const h = new URLSearchParams(location.hash.slice(1));
+  if (h.get("q")) { $("q").value = h.get("q"); compose(h.get("q"), parseInt(h.get("s") || "0", 10) || 0); }
+})();
+</script>
+</body>
+</html>
