@@ -204,7 +204,10 @@ function stop() {
 }
 function play(f) {
   ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
-  const master = ctx.createGain(); master.gain.value = 0.18; master.connect(ctx.destination);
+  try { if (navigator.audioSession) navigator.audioSession.type = "playback"; } catch (e) {}
+  const master = ctx.createGain(), comp = ctx.createDynamicsCompressor();
+  master.gain.value = 0.55; comp.threshold.value = -12; comp.ratio.value = 12;
+  master.connect(comp).connect(ctx.destination);
   startAt = ctx.currentTime + 0.15;
   for (const [v, on, dur, midi] of f.notes) {
     const t = startAt + on * SPQ, d = Math.max(0.12, dur * SPQ);

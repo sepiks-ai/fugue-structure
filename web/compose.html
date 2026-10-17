@@ -177,9 +177,12 @@ function drawRoll() {
 // ---------------------------------------------------------------- sound
 function schedule(ctx, dest, p, t0) {
   const spq = 60 / p.tempo, nodes = [];
-  const master = ctx.createGain();
-  master.gain.value = { harpsichord: 0.16, organ: 0.07, piano: 0.2, strings: 0.07 }[p.timbre] * (4 / Math.max(3, p.voices));
-  master.connect(dest);
+  // level: loud enough for laptop and phone speakers, with a limiter so chords do not distort
+  const master = ctx.createGain(), comp = ctx.createDynamicsCompressor(), makeup = ctx.createGain();
+  master.gain.value = { harpsichord: 0.55, organ: 0.17, piano: 0.4, strings: 0.22 }[p.timbre] * (4 / Math.max(3, p.voices));
+  comp.threshold.value = -12; comp.knee.value = 6; comp.ratio.value = 12; comp.attack.value = 0.003; comp.release.value = 0.2;
+  makeup.gain.value = 1.1;
+  master.connect(comp).connect(makeup).connect(dest);
   for (const n of p.notes) {
     const t = t0 + n.on * spq, d = Math.max(0.1, n.d * spq), f = 440 * Math.pow(2, (n.m - 69) / 12);
     const g = ctx.createGain(), lp = ctx.createBiquadFilter(); lp.type = "lowpass";
@@ -221,7 +224,19 @@ function stop() {
   const h = document.getElementById("head"); if (h) h.setAttribute("opacity", 0);
   $("play").textContent = "▶ Play";
 }
+// iPhone/iPad: without this, web audio is silenced by the ring/silent switch
+let unlocked = false;
+function unlockAudio() {
+  if (unlocked) return;
+  unlocked = true;
+  try { if (navigator.audioSession) navigator.audioSession.type = "playback"; } catch (e) {}
+  try {
+    const a = new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=");
+    a.setAttribute("playsinline", ""); a.volume = 0.01; a.play().catch(() => {});
+  } catch (e) {}
+}
 function play() {
+  unlockAudio();
   ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
   if (ctx.state === "suspended") ctx.resume();
   startAt = ctx.currentTime + 0.15;
