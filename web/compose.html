@@ -51,6 +51,7 @@ h2 { margin: 0; font-size: 24px; font-weight: normal; }
 .perf { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: 0 0 16px; font-size: 14px; color: var(--muted); }
 .perf input[type=range] { flex: 1 1 200px; accent-color: var(--accent); }
 .perf output { color: var(--ink); font-variant-numeric: tabular-nums; display: inline-block; min-width: 4.2em; }
+#inst { font: inherit; font-size: 14px; padding: 6px 8px; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); color: var(--ink); }
 .touch { display: inline-flex; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
 .touch button { border: 0; border-radius: 0; padding: 6px 12px; font-size: 14px; }
 .touch button + button { border-left: 1px solid var(--rule); }
@@ -103,6 +104,7 @@ svg#roll { width: 100%; height: auto; display: block; background: var(--lane); b
   <div class="perf">
     <label for="tempo">Tempo <output id="tempoOut">♩ = 72</output></label>
     <input id="tempo" type="range" min="30" max="160" step="1" value="72">
+    <select id="inst" aria-label="Instrument"></select>
     <span class="touch" role="group" aria-label="Touch">
       <button type="button" data-a="legato">Legato</button><button type="button" data-a="articulated">Articulated</button><button type="button" data-a="detached">Detached</button>
     </span>
@@ -140,6 +142,7 @@ function compose(text, s) {
   const done = (p) => {
     if (id !== jobId) return; piece = p;
     perf.tempo = pendingPerf.t || p.tempo; perf.artic = pendingPerf.a || p.params.articulation || "articulated";
+    if (pendingPerf.i) p.timbre = pendingPerf.i;
     pendingPerf = {}; render(); setPerfUI(); updateHash(); loadInstrument(p.timbre); $("go").disabled = false; $("again").disabled = false; setProgress(null); };
   const fail = (msg) => { $("go").disabled = false; $("again").disabled = false; setProgress(null); $("card").hidden = false; $("title").innerHTML = `<span class="err">${msg}</span>`; };
   try {
@@ -200,7 +203,9 @@ const ARTIC = {                       // fraction of the written length actually
 };
 
 // ---- recorded instruments (VCSL, CC0): loaded on first use, shared by live playback and WAV export
-const SAMPLED = { harpsichord: 3.2, organ: 6.5, piano: 1.0 };      // level trim per instrument
+const SAMPLED = { harpsichord: 1, harpsichord_lute: 1, organ: 1, organ_soft: 1, piano: 1 };  // level set on load
+const INSTRUMENTS = [["harpsichord", "Harpsichord"], ["harpsichord_lute", "Harpsichord, lute stop"], ["organ", "Organ"],
+  ["organ_soft", "Organ, soft flute"], ["piano", "Piano"], ["strings", "Strings (synthesised)"]];
 const SAMPLE_OFFSET = 0.024;                                       // MP3 encoder delay, measured
 const lib = {};                                                    // inst -> {list, buffers} | "failed"
 let manifest = null;
@@ -215,31 +220,48 @@ async function loadInstrument(inst) {
       const ab = await (await fetch(`samples/${inst}/${m}.mp3`)).arrayBuffer();
       buffers.set(m, await new Promise((ok, no) => dec.decodeAudioData(ab, ok, no)));
     }));
+    // match levels across instruments: scale so the note nearest middle C peaks at a common value
+    let ref = list[0]; for (const m of list) if (Math.abs(m - 60) < Math.abs(ref - 60)) ref = m;
+    const d = buffers.get(ref).getChannelData(0); let pk = 1e-6; for (let i = 0; i < d.length; i++) pk = Math.max(pk, Math.abs(d[i]));
+    SAMPLED[inst] = 0.32 / pk;
     lib[inst] = { list, buffers };
     return lib[inst];
   } catch (e) { lib[inst] = "failed"; return null; }
 }
 
-function impulse(ctx, secs, seed) {                                // a simple room: decaying stereo noise
-  const r = FugueEngine.mulberry(seed), n = Math.floor(ctx.sampleRate * secs), buf = ctx.createBuffer(2, n, ctx.sampleRate);
+function impulse(ctx, secs, seed) {
+  // a room: decaying noise that loses its treble as it decays (as real rooms do), so the tail is warm, not hissy
+  const r = FugueEngine.mulberry(seed), sr = ctx.sampleRate, n = Math.floor(sr * secs), buf = ctx.createBuffer(2, n, sr);
   for (let c = 0; c < 2; c++) {
     const d = buf.getChannelData(c);
-    for (let i = 0; i < n; i++) { const t = i / ctx.sampleRate; d[i] = (r() * 2 - 1) * Math.pow(1 - i / n, 2.2) * Math.exp(-3 * t / secs) * (t < 0.012 ? t / 0.012 : 1); }
+    let lp = 0;
+    for (let i = 0; i < n; i++) {
+      const t = i / sr, cutoff = 5000 * Math.exp(-2.2 * t / secs) + 400;      // Hz, falling over the tail
+      const a = Math.exp(-2 * Math.PI * cutoff / sr);
+      lp = a * lp + (1 - a) * (r() * 2 - 1);
+      d[i] = lp * Math.exp(-6.9 * t / secs) * (t < 0.015 ? t / 0.015 : 1);       // -60 dB at secs
+    }
   }
   return buf;
 }
 
 function makeChain(ctx, dest, p) {
   // dry + room -> compressor/limiter -> out. Level suits laptop and phone speakers without distorting chords.
-  const room = { harpsichord: [1.6, 0.22], organ: [3.4, 0.38], piano: [2.0, 0.2], strings: [2.4, 0.28] }[p.timbre];
+  const room = { harpsichord: [1.8, 0.5], harpsichord_lute: [1.8, 0.5], organ: [3.2, 0.75], organ_soft: [2.6, 0.6],
+    piano: [2.0, 0.42], strings: [2.4, 0.55] }[p.timbre] || [2, 0.5];
   const bus = ctx.createGain(), comp = ctx.createDynamicsCompressor(), makeup = ctx.createGain();
   const conv = ctx.createConvolver(), wet = ctx.createGain();
-  conv.buffer = impulse(ctx, room[0], 7); wet.gain.value = room[1];
-  bus.gain.value = (SAMPLED[p.timbre] && lib[p.timbre] && lib[p.timbre] !== "failed" ? 0.55 :
-    { harpsichord: 0.55, organ: 0.17, piano: 0.4, strings: 0.22 }[p.timbre]) * (4 / Math.max(3, p.voices));
-  comp.threshold.value = -12; comp.knee.value = 6; comp.ratio.value = 12; comp.attack.value = 0.003; comp.release.value = 0.2;
-  makeup.gain.value = 1.1;
-  bus.connect(comp); bus.connect(conv); conv.connect(wet).connect(comp);
+  conv.buffer = impulse(ctx, room[0], 7); wet.gain.value = room[1] * 0.35;
+  bus.gain.value = (SAMPLED[p.timbre] && lib[p.timbre] && lib[p.timbre] !== "failed" ? 0.5 :
+    { harpsichord: 0.55, organ: 0.17, piano: 0.4, strings: 0.22 }[p.timbre] || 0.4) * (4 / Math.max(3, p.voices));
+  // a gentle limiter that only catches peaks; it no longer lifts quiet tails and noise
+  comp.threshold.value = -4; comp.knee.value = 4; comp.ratio.value = 4; comp.attack.value = 0.004; comp.release.value = 0.15;
+  makeup.gain.value = 1.0;
+  // tone: soften the pluck's upper partials a little, as distance in a hall would
+  const tone = ctx.createBiquadFilter(); tone.type = "highshelf";
+  const sh = { harpsichord: [3200, -7], harpsichord_lute: [3200, -4], piano: [5000, -2] }[p.timbre] || [6000, 0];
+  tone.frequency.value = sh[0]; tone.gain.value = sh[1];
+  bus.connect(tone); tone.connect(comp); tone.connect(conv); conv.connect(wet).connect(comp);
   comp.connect(makeup).connect(dest);
   // voices spread across the stereo field, low to high
   const mean = [...Array(p.voices).keys()].map((v) => { const ms = p.notes.filter((n) => n.v === v).map((n) => n.m); return ms.reduce((a, b) => a + b, 0) / Math.max(1, ms.length); });
@@ -261,7 +283,7 @@ function sampledNote(ctx, chain, p, n, t, d, vel) {
   src.buffer = L.buffers.get(s);
   src.playbackRate.value = Math.pow(2, (n.m - s) / 12);
   const lvl = SAMPLED[p.timbre] * vel;
-  const rel = { harpsichord: 0.035, organ: 0.05, piano: 0.12 }[p.timbre];
+  const rel = { harpsichord: 0.035, harpsichord_lute: 0.03, organ: 0.05, organ_soft: 0.05, piano: 0.12 }[p.timbre];
   g.gain.setValueAtTime(lvl, t);
   g.gain.setTargetAtTime(0.0001, t + d, rel);                     // damper / key release
   src.connect(g).connect(chain.pans[n.v] || chain.bus);
@@ -302,7 +324,9 @@ function synthNote(ctx, chain, p, n, t, d, vel) {
 }
 
 function voiceNote(ctx, chain, p, n, t, d, vel) {
-  return (lib[p.timbre] && lib[p.timbre] !== "failed" ? sampledNote : synthNote)(ctx, chain, p, n, t, d, vel);
+  if (lib[p.timbre] && lib[p.timbre] !== "failed") return sampledNote(ctx, chain, p, n, t, d, vel);
+  const base = Object.assign({}, p, { timbre: p.timbre.split("_")[0] });
+  return synthNote(ctx, chain, base, n, t, d, vel);
 }
 
 // ---- performance: a slowing into the last cadence, small human variations, the subject brought out
@@ -418,13 +442,21 @@ $("f").addEventListener("submit", (ev) => { ev.preventDefault(); const t = $("q"
 document.querySelectorAll(".examples button").forEach((b) => b.addEventListener("click", () => { $("q").value = b.textContent; compose(b.textContent, 0); }));
 $("again").addEventListener("click", () => compose(piece.request, seed + 1));
 $("play").addEventListener("click", () => (live ? stop() : play()));
+$("inst").innerHTML = INSTRUMENTS.map(([v, l]) => `<option value="${v}">${l}</option>`).join("");
+$("inst").addEventListener("change", async () => {
+  piece.timbre = $("inst").value; updateHash();
+  const q = live ? position() : null;
+  if (SAMPLED[piece.timbre]) await loadInstrument(piece.timbre);
+  if (q !== null) playFrom(q);
+});
 function setPerfUI() {
+  $("inst").value = piece ? piece.timbre : "harpsichord";
   $("tempo").value = perf.tempo; $("tempoOut").textContent = "♩ = " + perf.tempo;
   document.querySelectorAll(".touch button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.a === perf.artic)));
 }
 function updateHash() {
   if (!piece) return;
-  try { history.replaceState(null, "", "#q=" + encodeURIComponent(piece.request) + "&s=" + seed + "&t=" + perf.tempo + "&a=" + perf.artic); } catch (e) {}
+  try { history.replaceState(null, "", "#q=" + encodeURIComponent(piece.request) + "&s=" + seed + "&t=" + perf.tempo + "&a=" + perf.artic + "&i=" + piece.timbre); } catch (e) {}
   const secs = Math.round(piece.length * 60 / perf.tempo);
   $("meta").innerHTML = $("meta").innerHTML.replace(/\d+ seconds/, secs + " seconds");
 }
@@ -455,7 +487,9 @@ $("share").addEventListener("click", async () => {
   const h = new URLSearchParams(location.hash.slice(1));
   if (h.get("q")) {
     const t = parseInt(h.get("t") || "", 10), a = h.get("a");
-    pendingPerf = { t: t >= 30 && t <= 160 ? t : null, a: ["legato", "articulated", "detached"].includes(a) ? a : null };
+    const i = h.get("i");
+    pendingPerf = { t: t >= 30 && t <= 160 ? t : null, a: ["legato", "articulated", "detached"].includes(a) ? a : null,
+      i: INSTRUMENTS.some(([v]) => v === i) ? i : null };
     $("q").value = h.get("q"); compose(h.get("q"), parseInt(h.get("s") || "0", 10) || 0);
   }
 })();

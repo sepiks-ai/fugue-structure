@@ -116,9 +116,12 @@ PYTHONPATH=src pytest -q tests     # matcher tests; no score data needed
 
 ## Sound
 
-Harpsichord, organ and piano are recordings from the Versilian Community Sample
-Library (CC0 1.0, https://versilian-studios.com/vcsl/), converted by
-`scripts/build_samples.py` into `web/samples/` (4.8 MB). Strings remain synthesised.
-Playback adds a generated room reverb, spreads the voices across the stereo field,
-brings out the voice carrying the subject, varies timing and weight slightly, and
-slows into the final cadence.
+Recordings from the Versilian Community Sample Library (CC0 1.0,
+https://versilian-studios.com/vcsl/), chosen by measured signal-to-noise: an English
+harpsichord (105 dB) with its lute stop, an open-diapason organ stop (60 dB) and a soft
+Renaissance flute stop, and a Steinway B. `scripts/build_samples.py` converts them
+(high-pass at 35 Hz, each note ends where it nears its own noise floor, quiet samples
+lifted by at most 6 dB). Strings remain synthesised. Playback adds a room whose tail
+darkens as it decays, softens the harpsichord's treble a little, spreads the voices
+across the stereo field, brings out the subject, varies timing slightly and slows
+into the final cadence. Readers can switch instrument, tempo and touch while it plays.
