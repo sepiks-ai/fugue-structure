@@ -45,10 +45,17 @@ MIDI and WAV downloads and a shareable link that reproduces the piece. Live at
 https://sepiks-ai.github.io/fugue-structure/compose.html once Pages is enabled.
 
 - `web/engine.js`: request interpreter, subject composer, plan realisation with
-  local-key transposition (major and minor), harmony, beam-search counterpoint, MIDI writer
+  local-key transposition (major and minor), countersubject, episodes, harmony,
+  beam-search counterpoint, MIDI writer
+  - the countersubject is composed once against the subject by dynamic programming:
+    thirds, sixths and octaves on the beat (so it inverts at the octave), rhythm that
+    moves where the subject holds, dissonance only as passing notes or prepared
+    suspensions; it returns against later entries in a free voice
+  - episodes fill the gaps between groups of entries with a head or tail fragment of the
+    subject or countersubject in a diatonic sequence, imitated by a second voice
 - `web/worker.js`: runs the engine off the main thread
 - `results/plans.json`: compact Bach entry plans (`scripts/build_plans.py`)
-- `tests/test_engine.js`: interpretation, determinism and dissonance checks
+- `tests/test_engine.js`: interpretation, determinism, dissonance treatment, countersubject and parallels
 
 ## Skeleton fugue generator
 
