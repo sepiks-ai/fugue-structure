@@ -37,6 +37,19 @@ Known biases: second/third subjects not modelled (No. 4 is a triple fugue);
 inferred subject ends overshoot in some fugues (Nos. 7, 21); episodic
 sequences not yet encoded; matching is diatonic, accidentals unchecked.
 
+## Write a Fugue (in the browser)
+
+`web/compose.html`: a reader describes a fugue in plain words ("a sombre fugue
+in D minor for three voices") and it is composed and played in the browser, with
+MIDI and WAV downloads and a shareable link that reproduces the piece. Live at
+https://sepiks-ai.github.io/fugue-structure/compose.html once Pages is enabled.
+
+- `web/engine.js`: request interpreter, subject composer, plan realisation with
+  local-key transposition (major and minor), harmony, beam-search counterpoint, MIDI writer
+- `web/worker.js`: runs the engine off the main thread
+- `results/plans.json`: compact Bach entry plans (`scripts/build_plans.py`)
+- `tests/test_engine.js`: interpretation, determinism and dissonance checks
+
 ## Skeleton fugue generator
 
 `src/fugue/skeleton.py` writes a fugue on a new subject in four steps:
