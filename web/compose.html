@@ -51,6 +51,7 @@ h2 { margin: 0; font-size: 24px; font-weight: normal; }
 .perf { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: 0 0 16px; font-size: 14px; color: var(--muted); }
 .perf input[type=range] { flex: 1 1 200px; accent-color: var(--accent); }
 .perf output { color: var(--ink); font-variant-numeric: tabular-nums; display: inline-block; min-width: 4.2em; }
+#inst { font: inherit; font-size: 14px; padding: 6px 8px; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); color: var(--ink); }
 .touch { display: inline-flex; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
 .touch button { border: 0; border-radius: 0; padding: 6px 12px; font-size: 14px; }
 .touch button + button { border-left: 1px solid var(--rule); }
@@ -103,6 +104,7 @@ svg#roll { width: 100%; height: auto; display: block; background: var(--lane); b
   <div class="perf">
     <label for="tempo">Tempo <output id="tempoOut">♩ = 72</output></label>
     <input id="tempo" type="range" min="30" max="160" step="1" value="72">
+    <select id="inst" aria-label="Instrument"></select>
     <span class="touch" role="group" aria-label="Touch">
       <button type="button" data-a="legato">Legato</button><button type="button" data-a="articulated">Articulated</button><button type="button" data-a="detached">Detached</button>
     </span>
@@ -111,7 +113,7 @@ svg#roll { width: 100%; height: auto; display: block; background: var(--lane); b
   <svg id="roll" role="img" aria-label="Piano roll of the fugue"></svg>
 </section>
 
-<p class="how">How it works: your words set the key, mode, number of voices, speed and the character of the subject. A short theme (the subject) is composed to match. The plan of one of Bach's fugues decides when each voice states it, at which pitch and whether upside down; the program then writes the free counterpoint around those entries, quaver by quaver, under rules of harmony and voice-leading. The architecture is Bach's and the music in between is the machine's, which is where the difference lies. More in <a href="https://paulharrald.substack.com/">the article</a>, on the <a href="index.html">Fugue Map</a>, and in the <a href="https://github.com/sepiks-ai/fugue-structure">code</a>.</p>
+<p class="how">How it works: your words set the key, mode, number of voices, speed and the character of the subject. A short theme (the subject) is composed to match. The plan of one of Bach's fugues decides when each voice states it, at which pitch and whether upside down; the program then writes the free counterpoint around those entries, quaver by quaver, under rules of harmony and voice-leading. The architecture is Bach's and the music in between is the machine's, which is where the difference lies. Harpsichord, organ and piano recordings from the Versilian Community Sample Library (CC0). More in <a href="https://paulharrald.substack.com/">the article</a>, on the <a href="index.html">Fugue Map</a>, and in the <a href="https://github.com/sepiks-ai/fugue-structure">code</a>.</p>
 </div>
 <div class="toast" id="toast"></div>
 
@@ -140,7 +142,8 @@ function compose(text, s) {
   const done = (p) => {
     if (id !== jobId) return; piece = p;
     perf.tempo = pendingPerf.t || p.tempo; perf.artic = pendingPerf.a || p.params.articulation || "articulated";
-    pendingPerf = {}; render(); setPerfUI(); updateHash(); $("go").disabled = false; $("again").disabled = false; setProgress(null); };
+    if (pendingPerf.i) p.timbre = pendingPerf.i;
+    pendingPerf = {}; render(); setPerfUI(); updateHash(); loadInstrument(p.timbre); $("go").disabled = false; $("again").disabled = false; setProgress(null); };
   const fail = (msg) => { $("go").disabled = false; $("again").disabled = false; setProgress(null); $("card").hidden = false; $("title").innerHTML = `<span class="err">${msg}</span>`; };
   try {
     worker = worker || new Worker("worker.js");
@@ -199,56 +202,158 @@ const ARTIC = {                       // fraction of the written length actually
   detached: (q) => (q <= 0.25 ? 0.5 : q <= 0.5 ? 0.45 : q <= 1 ? 0.55 : 0.8),
 };
 
-function makeChain(ctx, dest, p) {
-  // level: loud enough for laptop and phone speakers, with a limiter so chords do not distort
-  const master = ctx.createGain(), comp = ctx.createDynamicsCompressor(), makeup = ctx.createGain();
-  master.gain.value = { harpsichord: 0.55, organ: 0.17, piano: 0.4, strings: 0.22 }[p.timbre] * (4 / Math.max(3, p.voices));
-  comp.threshold.value = -12; comp.knee.value = 6; comp.ratio.value = 12; comp.attack.value = 0.003; comp.release.value = 0.2;
-  makeup.gain.value = 1.1;
-  master.connect(comp).connect(makeup).connect(dest);
-  return master;
+// ---- recorded instruments (VCSL, CC0): loaded on first use, shared by live playback and WAV export
+const SAMPLED = { harpsichord: 1, harpsichord_lute: 1, organ: 1, organ_soft: 1, piano: 1 };  // level set on load
+const INSTRUMENTS = [["harpsichord", "Harpsichord"], ["harpsichord_lute", "Harpsichord, lute stop"], ["organ", "Organ"],
+  ["organ_soft", "Organ, soft flute"], ["piano", "Piano"], ["strings", "Strings (synthesised)"]];
+const SAMPLE_OFFSET = 0.024;                                       // MP3 encoder delay, measured
+const lib = {};                                                    // inst -> {list, buffers} | "failed"
+let manifest = null;
+async function loadInstrument(inst) {
+  if (!SAMPLED[inst]) return null;
+  if (lib[inst]) return lib[inst] === "failed" ? null : lib[inst];
+  try {
+    manifest = manifest || await (await fetch("samples/manifest.json")).json();
+    const dec = new (window.OfflineAudioContext || window.webkitOfflineAudioContext)(1, 1, 44100);
+    const list = manifest[inst], buffers = new Map();
+    await Promise.all(list.map(async (m) => {
+      const ab = await (await fetch(`samples/${inst}/${m}.mp3`)).arrayBuffer();
+      buffers.set(m, await new Promise((ok, no) => dec.decodeAudioData(ab, ok, no)));
+    }));
+    // match levels across instruments: scale so the note nearest middle C peaks at a common value
+    let ref = list[0]; for (const m of list) if (Math.abs(m - 60) < Math.abs(ref - 60)) ref = m;
+    const d = buffers.get(ref).getChannelData(0); let pk = 1e-6; for (let i = 0; i < d.length; i++) pk = Math.max(pk, Math.abs(d[i]));
+    SAMPLED[inst] = 0.32 / pk;
+    lib[inst] = { list, buffers };
+    return lib[inst];
+  } catch (e) { lib[inst] = "failed"; return null; }
 }
 
-function voiceNote(ctx, master, p, n, t, d) {
+function impulse(ctx, secs, seed) {
+  // a room: decaying noise that loses its treble as it decays (as real rooms do), so the tail is warm, not hissy
+  const r = FugueEngine.mulberry(seed), sr = ctx.sampleRate, n = Math.floor(sr * secs), buf = ctx.createBuffer(2, n, sr);
+  for (let c = 0; c < 2; c++) {
+    const d = buf.getChannelData(c);
+    let lp = 0;
+    for (let i = 0; i < n; i++) {
+      const t = i / sr, cutoff = 5000 * Math.exp(-2.2 * t / secs) + 400;      // Hz, falling over the tail
+      const a = Math.exp(-2 * Math.PI * cutoff / sr);
+      lp = a * lp + (1 - a) * (r() * 2 - 1);
+      d[i] = lp * Math.exp(-6.9 * t / secs) * (t < 0.015 ? t / 0.015 : 1);       // -60 dB at secs
+    }
+  }
+  return buf;
+}
+
+function makeChain(ctx, dest, p) {
+  // dry + room -> compressor/limiter -> out. Level suits laptop and phone speakers without distorting chords.
+  const room = { harpsichord: [1.8, 0.5], harpsichord_lute: [1.8, 0.5], organ: [3.2, 0.75], organ_soft: [2.6, 0.6],
+    piano: [2.0, 0.42], strings: [2.4, 0.55] }[p.timbre] || [2, 0.5];
+  const bus = ctx.createGain(), comp = ctx.createDynamicsCompressor(), makeup = ctx.createGain();
+  const conv = ctx.createConvolver(), wet = ctx.createGain();
+  conv.buffer = impulse(ctx, room[0], 7); wet.gain.value = room[1] * 0.35;
+  bus.gain.value = (SAMPLED[p.timbre] && lib[p.timbre] && lib[p.timbre] !== "failed" ? 0.5 :
+    { harpsichord: 0.55, organ: 0.17, piano: 0.4, strings: 0.22 }[p.timbre] || 0.4) * (4 / Math.max(3, p.voices));
+  // a gentle limiter that only catches peaks; it no longer lifts quiet tails and noise
+  comp.threshold.value = -4; comp.knee.value = 4; comp.ratio.value = 4; comp.attack.value = 0.004; comp.release.value = 0.15;
+  makeup.gain.value = 1.0;
+  // tone: soften the pluck's upper partials a little, as distance in a hall would
+  const tone = ctx.createBiquadFilter(); tone.type = "highshelf";
+  const sh = { harpsichord: [3200, -7], harpsichord_lute: [3200, -4], piano: [5000, -2] }[p.timbre] || [6000, 0];
+  tone.frequency.value = sh[0]; tone.gain.value = sh[1];
+  bus.connect(tone); tone.connect(comp); tone.connect(conv); conv.connect(wet).connect(comp);
+  comp.connect(makeup).connect(dest);
+  // voices spread across the stereo field, low to high
+  const mean = [...Array(p.voices).keys()].map((v) => { const ms = p.notes.filter((n) => n.v === v).map((n) => n.m); return ms.reduce((a, b) => a + b, 0) / Math.max(1, ms.length); });
+  const rank = [...mean.keys()].sort((a, b) => mean[a] - mean[b]);
+  const pans = [];
+  rank.forEach((v, i) => {
+    const pn = ctx.createStereoPanner ? ctx.createStereoPanner() : ctx.createGain();
+    if (pn.pan) pn.pan.value = p.voices > 1 ? (i / (p.voices - 1) - 0.5) * 0.7 : 0;
+    pn.connect(bus); pans[v] = pn;
+  });
+  return { bus, pans };
+}
+
+function sampledNote(ctx, chain, p, n, t, d, vel) {
+  const L = lib[p.timbre];
+  let s = L.list[0];
+  for (const m of L.list) if (Math.abs(m - n.m) < Math.abs(s - n.m)) s = m;
+  const src = ctx.createBufferSource(), g = ctx.createGain();
+  src.buffer = L.buffers.get(s);
+  src.playbackRate.value = Math.pow(2, (n.m - s) / 12);
+  const lvl = SAMPLED[p.timbre] * vel;
+  const rel = { harpsichord: 0.035, harpsichord_lute: 0.03, organ: 0.05, organ_soft: 0.05, piano: 0.12 }[p.timbre];
+  g.gain.setValueAtTime(lvl, t);
+  g.gain.setTargetAtTime(0.0001, t + d, rel);                     // damper / key release
+  src.connect(g).connect(chain.pans[n.v] || chain.bus);
+  src.start(t, SAMPLE_OFFSET);
+  src.stop(t + d + rel * 8);
+  return [src];
+}
+
+function synthNote(ctx, chain, p, n, t, d, vel) {
   const f = 440 * Math.pow(2, (n.m - 69) / 12), nodes = [];
   const g = ctx.createGain(), lp = ctx.createBiquadFilter(); lp.type = "lowpass";
   const o = ctx.createOscillator(), organ = p.timbre === "organ";
   const o2 = organ ? ctx.createOscillator() : null, g2 = organ ? ctx.createGain() : null;
-  let end;
+  let end; const A = vel;
   if (organ) {
     o.type = "sine"; o2.type = "triangle"; o.frequency.value = f; o2.frequency.value = f * 2; g2.gain.value = 0.5;
     lp.frequency.value = 3000;
-    g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.8, t + 0.02);
-    g.gain.setValueAtTime(0.8, t + Math.max(0.03, d - 0.02)); g.gain.linearRampToValueAtTime(0.0001, t + d + 0.05); end = t + d + 0.07;
+    g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.8 * A, t + 0.02);
+    g.gain.setValueAtTime(0.8 * A, t + Math.max(0.03, d - 0.02)); g.gain.linearRampToValueAtTime(0.0001, t + d + 0.05); end = t + d + 0.07;
   } else if (p.timbre === "strings") {
     o.type = "sawtooth"; o.frequency.value = f; lp.frequency.value = Math.min(5000, f * 5);
-    g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.7, t + Math.min(0.06, d / 2));
-    g.gain.setValueAtTime(0.7, t + Math.max(0.07, d - 0.03)); g.gain.linearRampToValueAtTime(0.0001, t + d + 0.1); end = t + d + 0.12;
+    g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.7 * A, t + Math.min(0.06, d / 2));
+    g.gain.setValueAtTime(0.7 * A, t + Math.max(0.07, d - 0.03)); g.gain.linearRampToValueAtTime(0.0001, t + d + 0.1); end = t + d + 0.12;
   } else if (p.timbre === "piano") {
     o.type = "triangle"; o.frequency.value = f; lp.frequency.value = Math.min(6000, f * 6);
-    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.9, t + 0.005);
-    g.gain.exponentialRampToValueAtTime(0.25, t + 0.6); g.gain.setTargetAtTime(0.0001, t + d, 0.06); end = t + d + 0.35;
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.9 * A, t + 0.005);
+    g.gain.exponentialRampToValueAtTime(0.25 * A, t + 0.6); g.gain.setTargetAtTime(0.0001, t + d, 0.06); end = t + d + 0.35;
   } else {
     o.type = "sawtooth"; o.frequency.value = f;
     lp.frequency.setValueAtTime(Math.min(6000, f * 8), t); lp.frequency.exponentialRampToValueAtTime(Math.max(300, f * 1.5), t + d + 0.05);
-    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.5, t + 0.005);
-    g.gain.setTargetAtTime(0.12, t + 0.005, 0.08); g.gain.setTargetAtTime(0.0001, t + d, 0.025); end = t + d + 0.15;
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.5 * A, t + 0.005);
+    g.gain.setTargetAtTime(0.12 * A, t + 0.005, 0.08); g.gain.setTargetAtTime(0.0001, t + d, 0.025); end = t + d + 0.15;
   }
-  o.connect(lp); lp.connect(g).connect(master);
+  o.connect(lp); lp.connect(g).connect(chain.pans[n.v] || chain.bus);
   o.start(t); o.stop(end); nodes.push(o);
   if (o2) { o2.connect(g2).connect(lp); o2.start(t); o2.stop(end); nodes.push(o2); }
   return nodes;
 }
 
+function voiceNote(ctx, chain, p, n, t, d, vel) {
+  if (lib[p.timbre] && lib[p.timbre] !== "failed") return sampledNote(ctx, chain, p, n, t, d, vel);
+  const base = Object.assign({}, p, { timbre: p.timbre.split("_")[0] });
+  return synthNote(ctx, chain, base, n, t, d, vel);
+}
+
+// ---- performance: a slowing into the last cadence, small human variations, the subject brought out
+const RIT_SPAN = 6, RIT_AMOUNT = 0.35;                             // last 6 crotchets, ending 35% slower
+function clock(q, spq) {                                           // seconds from the start to crotchet q
+  const qs = piece.length - RIT_SPAN, extra = q > qs ? RIT_AMOUNT * (q - qs) * (q - qs) / (2 * RIT_SPAN) : 0;
+  return spq * (q + extra);
+}
+function crotchetAt(secs, spq) {                                   // inverse of clock, by bisection
+  let lo = 0, hi = piece.length + 4;
+  for (let i = 0; i < 40; i++) { const mid = (lo + hi) / 2; if (clock(mid, spq) < secs) lo = mid; else hi = mid; }
+  return lo;
+}
+function jitter(n, k) { return FugueEngine.mulberry(Math.round(n.on * 960) * 31 + n.v * 7919 + n.m * 13 + k)() * 2 - 1; }
 function noteTimes(n, fromQ, t0, spq) {
   const len = n.d * ARTIC[perf.artic](n.d) + (perf.artic === "legato" ? 0.02 / spq : 0);
-  return [t0 + (n.on - fromQ) * spq, Math.max(0.06, len * spq)];
+  const start = t0 + clock(n.on, spq) - clock(fromQ, spq) + 0.006 * jitter(n, 1);
+  const dur = Math.max(0.06, clock(n.on + len, spq) - clock(n.on, spq));
+  const beat = n.on % 4 === 0 ? 1.08 : n.on % 1 === 0 ? 1.0 : 0.92;
+  const vel = beat * (n.entry >= 0 ? 1.1 : 0.88) * (1 + 0.06 * jitter(n, 2));
+  return [Math.max(t0, start), dur, vel];
 }
 
 // offline (for WAV): schedule everything
 function scheduleAll(ctx, dest, p, t0) {
-  const spq = 60 / perf.tempo, master = makeChain(ctx, dest, p);
-  for (const n of p.notes) { const [t, d] = noteTimes(n, 0, t0, spq); voiceNote(ctx, master, p, n, t, d); }
+  const spq = 60 / perf.tempo, chain = makeChain(ctx, dest, p);
+  for (const n of p.notes) { const [t, d, v] = noteTimes(n, 0, t0, spq); voiceNote(ctx, chain, p, n, t, d, v); }
 }
 
 // live: a look-ahead scheduler (schedules ~1.5 s ahead), so long pieces never flood the browser
@@ -270,20 +375,25 @@ function unlockAudio() {
     a.setAttribute("playsinline", ""); a.volume = 0.01; a.play().catch(() => {});
   } catch (e) {}
 }
-function playFrom(fromQ) {
+async function playFrom(fromQ) {
   unlockAudio();
   ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
   if (ctx.state === "suspended") ctx.resume();
   stop();
+  if (SAMPLED[piece.timbre] && !lib[piece.timbre]) {
+    $("play").textContent = "Loading instrument…"; $("play").disabled = true;
+    await loadInstrument(piece.timbre);
+    $("play").disabled = false;
+  }
   const spq = 60 / perf.tempo, t0 = ctx.currentTime + 0.12;
   const notes = piece.notes.filter((n) => n.on >= fromQ - 1e-9);
-  const L = { t0, spq, fromQ, i: 0, nodes: [], master: makeChain(ctx, ctx.destination, piece) };
+  const L = { t0, spq, fromQ, i: 0, nodes: [], chain: makeChain(ctx, ctx.destination, piece) };
   const pump = () => {
     const horizon = ctx.currentTime + 1.5;
     while (L.i < notes.length) {
-      const [t, d] = noteTimes(notes[L.i], fromQ, t0, spq);
+      const [t, d, v] = noteTimes(notes[L.i], fromQ, t0, spq);
       if (t > horizon) break;
-      if (t >= ctx.currentTime - 0.05) L.nodes.push(...voiceNote(ctx, L.master, piece, notes[L.i], t, d));
+      if (t >= ctx.currentTime - 0.05) L.nodes.push(...voiceNote(ctx, L.chain, piece, notes[L.i], t, d, v));
       L.i++;
     }
     if (L.nodes.length > 400) L.nodes = L.nodes.slice(-200);
@@ -295,14 +405,14 @@ function playFrom(fromQ) {
   const head = document.getElementById("head");
   const tick = () => {
     if (!live) return;
-    const q = fromQ + (ctx.currentTime - t0) / spq;
-    if (q > piece.length + 1) { stop(); return; }
-    if (q >= 0) { const px = xOf(q); head.setAttribute("x1", px); head.setAttribute("x2", px); head.setAttribute("opacity", 0.8); }
+    const q = crotchetAt(clock(fromQ, spq) + ctx.currentTime - t0, spq);
+    if (q > piece.length + 0.5) { stop(); return; }
+    if (ctx.currentTime >= t0) { const px = xOf(q); head.setAttribute("x1", px); head.setAttribute("x2", px); head.setAttribute("opacity", 0.8); }
     raf = requestAnimationFrame(tick);
   };
   raf = requestAnimationFrame(tick);
 }
-function position() { return live ? Math.max(0, live.fromQ + (ctx.currentTime - live.t0) / live.spq) : 0; }
+function position() { return live ? crotchetAt(clock(live.fromQ, live.spq) + Math.max(0, ctx.currentTime - live.t0), live.spq) : 0; }
 function play() { playFrom(0); }
 
 function fileBase() { return `fugue-${piece.key.replace(/[♯]/g, "-sharp").replace(/[♭]/g, "-flat").replace(/\s+/g, "-").toLowerCase()}-v${seed + 1}`; }
@@ -311,7 +421,8 @@ function save(blob, name) {
   document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
 }
 async function renderWav() {
-  const sr = 44100, secs = piece.length * 60 / perf.tempo + 1.5;
+  await loadInstrument(piece.timbre);
+  const sr = 44100, secs = clock(piece.length, 60 / perf.tempo) + 3.5;
   const off = new OfflineAudioContext(2, Math.ceil(sr * secs), sr);
   scheduleAll(off, off.destination, piece, 0.05);
   const buf = await off.startRendering();
@@ -331,13 +442,21 @@ $("f").addEventListener("submit", (ev) => { ev.preventDefault(); const t = $("q"
 document.querySelectorAll(".examples button").forEach((b) => b.addEventListener("click", () => { $("q").value = b.textContent; compose(b.textContent, 0); }));
 $("again").addEventListener("click", () => compose(piece.request, seed + 1));
 $("play").addEventListener("click", () => (live ? stop() : play()));
+$("inst").innerHTML = INSTRUMENTS.map(([v, l]) => `<option value="${v}">${l}</option>`).join("");
+$("inst").addEventListener("change", async () => {
+  piece.timbre = $("inst").value; updateHash();
+  const q = live ? position() : null;
+  if (SAMPLED[piece.timbre]) await loadInstrument(piece.timbre);
+  if (q !== null) playFrom(q);
+});
 function setPerfUI() {
+  $("inst").value = piece ? piece.timbre : "harpsichord";
   $("tempo").value = perf.tempo; $("tempoOut").textContent = "♩ = " + perf.tempo;
   document.querySelectorAll(".touch button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.a === perf.artic)));
 }
 function updateHash() {
   if (!piece) return;
-  try { history.replaceState(null, "", "#q=" + encodeURIComponent(piece.request) + "&s=" + seed + "&t=" + perf.tempo + "&a=" + perf.artic); } catch (e) {}
+  try { history.replaceState(null, "", "#q=" + encodeURIComponent(piece.request) + "&s=" + seed + "&t=" + perf.tempo + "&a=" + perf.artic + "&i=" + piece.timbre); } catch (e) {}
   const secs = Math.round(piece.length * 60 / perf.tempo);
   $("meta").innerHTML = $("meta").innerHTML.replace(/\d+ seconds/, secs + " seconds");
 }
@@ -353,7 +472,7 @@ $("tempo").addEventListener("input", () => {
 document.querySelectorAll(".touch button").forEach((b) => b.addEventListener("click", () => { perf.artic = b.dataset.a; perfChanged(); }));
 $("midi").addEventListener("click", () => save(new Blob([FugueEngine.toMidi(piece)], { type: "audio/midi" }), fileBase() + ".mid"));
 $("wav").addEventListener("click", async () => {
-  const b = $("wav"); b.disabled = true; b.textContent = "Rendering, about half a minute…";
+  const b = $("wav"); b.disabled = true; b.textContent = "Rendering…";
   try { save(await renderWav(), fileBase() + ".wav"); } catch (e) { toast("Could not render audio here."); }
   b.disabled = false; b.textContent = "Download WAV";
 });
@@ -368,7 +487,9 @@ $("share").addEventListener("click", async () => {
   const h = new URLSearchParams(location.hash.slice(1));
   if (h.get("q")) {
     const t = parseInt(h.get("t") || "", 10), a = h.get("a");
-    pendingPerf = { t: t >= 30 && t <= 160 ? t : null, a: ["legato", "articulated", "detached"].includes(a) ? a : null };
+    const i = h.get("i");
+    pendingPerf = { t: t >= 30 && t <= 160 ? t : null, a: ["legato", "articulated", "detached"].includes(a) ? a : null,
+      i: INSTRUMENTS.some(([v]) => v === i) ? i : null };
     $("q").value = h.get("q"); compose(h.get("q"), parseInt(h.get("s") || "0", 10) || 0);
   }
 })();

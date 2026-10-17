@@ -66,7 +66,9 @@
     [["presto", "very fast", "racing", "furious", "frantic", "breakneck", "virtuosic", "wild"], 118],
   ];
   const TIMBRES = { organ: "organ", piano: "piano", harpsichord: "harpsichord", strings: "strings",
-    "string quartet": "strings", violin: "strings", violins: "strings", clavichord: "harpsichord" };
+    "string quartet": "strings", violin: "strings", violins: "strings", clavichord: "harpsichord_lute",
+    "lute stop": "harpsichord_lute", "buff stop": "harpsichord_lute", "lute": "harpsichord_lute",
+    "soft organ": "organ_soft", "flute stop": "organ_soft", "chamber organ": "organ_soft", "positive organ": "organ_soft" };
   const ACC = { "#": 1, "♯": 1, sharp: 1, "-sharp": 1, b: -1, "♭": -1, flat: -1, "-flat": -1 };
 
   function interpret(text, rawSeed) {
@@ -151,7 +153,7 @@
     if (p.stretto) heard.push("stretto");
     if (p.inversion) heard.push("inversion");
     if (p.length !== "medium") heard.push(p.length);
-    if (p.timbre !== "harpsichord") heard.push(p.timbre);
+    if (p.timbre !== "harpsichord") heard.push(p.timbre.replace("_lute", ", lute stop").replace("organ_soft", "soft organ"));
     if (p.articulation) heard.push(p.articulation + " touch");
     const moods = new Set();
     for (const list of [WORDS.minor, WORDS.major, WORDS.leapUp, WORDS.leapDown, WORDS.moveUp, WORDS.moveDown, WORDS.chromatic])
