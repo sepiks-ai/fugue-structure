@@ -127,6 +127,8 @@
     const tm = low.match(/(?:no\.?|number|fugue|like)\s*#?\s*(\d{1,2})[\s]/);
     if (tm && +tm[1] >= 1 && +tm[1] <= 24) p.template = +tm[1];
     for (const [w, v] of Object.entries(TIMBRES)) if (low.includes(" " + w)) p.timbre = v;
+    if (["gould", "detached", "staccato", "crisp", "non-legato", "nonlegato", "pointed", "dry"].some(has)) p.articulation = "detached";
+    else if (["legato", "romantic", "smooth", "sustained", "singing", "flowing"].some(has)) p.articulation = "legato";
 
     // fill the gaps from the seed, so an empty request still gives variety
     const r = mulberry(hash(t.toLowerCase()) ^ (rawSeed || 0));
@@ -150,6 +152,7 @@
     if (p.inversion) heard.push("inversion");
     if (p.length !== "medium") heard.push(p.length);
     if (p.timbre !== "harpsichord") heard.push(p.timbre);
+    if (p.articulation) heard.push(p.articulation + " touch");
     const moods = new Set();
     for (const list of [WORDS.minor, WORDS.major, WORDS.leapUp, WORDS.leapDown, WORDS.moveUp, WORDS.moveDown, WORDS.chromatic])
       for (const w of list) if (has(w)) moods.add(w);
