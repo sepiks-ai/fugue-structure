@@ -710,7 +710,8 @@
   }
 
   // ------------------------------------------------------------------ the whole pipeline
-  function generate(text, plans, seed, onProgress) {
+  function generate(text, plans, seed, onProgress, opts) {
+    const beam = (opts && opts.beam) || 30;
     const p = interpret(text, seed);
     const key = homeKey(p);
     const r = mulberry(hash(text.toLowerCase()) ^ Math.imul(seed + 1, 2654435761));
@@ -718,7 +719,7 @@
     const plan = choosePlan(plans, p, r);
     const rangeOffset = sub.notes[0].m - plan.subject_first_midi;
     const placed = realise(sub, plan, key, p, rangeOffset);
-    const res = fill(placed, plan, key, { seed: seed + 7, rangeOffset, onProgress });
+    const res = fill(placed, plan, key, { seed: seed + 7, rangeOffset, onProgress, beam });
     return {
       request: text, seed, params: p, key: p.keyName, tempo: p.tempo, timbre: p.timbre, voices: plan.voices,
       plan: { number: plan.number, key: plan.key + " " + plan.mode, entries: plan.entries.length },

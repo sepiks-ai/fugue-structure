@@ -36,6 +36,8 @@ button:hover, .btn:hover { border-color: var(--accent); }
 button:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 button.primary { background: var(--accent); color: var(--panel); border-color: var(--accent); }
 button:disabled { opacity: .5; cursor: default; }
+.care { flex-basis: 100%; font-size: 14px; color: var(--muted); display: flex; gap: 8px; align-items: center; }
+.care span { font-size: 13px; }
 .examples { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 26px; font-size: 14px; color: var(--muted); align-items: center; }
 .examples button { font-size: 14px; padding: 5px 11px; border-radius: 999px; background: transparent; color: var(--ink); }
 .progress { height: 3px; background: var(--lane); border-radius: 2px; overflow: hidden; margin: 0 0 18px; visibility: hidden; }
@@ -78,6 +80,7 @@ svg#roll { width: 100%; height: auto; display: block; background: var(--lane); b
   <label for="q" class="visually-hidden" style="position:absolute;left:-9999px">Describe your fugue</label>
   <input id="q" name="q" placeholder="A sombre fugue in D minor for three voices" maxlength="300">
   <button class="primary" id="go" type="submit">Compose</button>
+  <label class="care"><input type="checkbox" id="care"> Take more care <span>(slower: searches about three times as many possibilities)</span></label>
 </form>
 <div class="examples">Try:
   <button type="button">A sombre fugue in D minor for three voices</button>
@@ -154,10 +157,10 @@ function compose(text, s) {
       else if (d.error) fail("Something went wrong: " + d.error);
       else done(d.piece);
     };
-    worker.onerror = () => { worker = null; setTimeout(() => done(FugueEngine.generate(text, plans, s)), 10); };
-    worker.postMessage({ text, plans, seed: s, id });
+    worker.onerror = () => { worker = null; setTimeout(() => done(FugueEngine.generate(text, plans, s, null, { beam: $("care").checked ? 100 : 30 })), 10); };
+    worker.postMessage({ text, plans, seed: s, id, beam: $("care").checked ? 100 : 30 });
   } catch (e) {                              // no workers (e.g. opened as a file): compose on the page
-    setTimeout(() => { try { done(FugueEngine.generate(text, plans, s)); } catch (err) { fail(String(err)); } }, 20);
+    setTimeout(() => { try { done(FugueEngine.generate(text, plans, s, null, { beam: $("care").checked ? 100 : 30 })); } catch (err) { fail(String(err)); } }, 20);
   }
 }
 
