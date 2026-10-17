@@ -37,6 +37,17 @@ Known biases: second/third subjects not modelled (No. 4 is a triple fugue);
 inferred subject ends overshoot in some fugues (Nos. 7, 21); episodic
 sequences not yet encoded; matching is diatonic, accidentals unchecked.
 
+## Fugue Map
+
+`web/index.html` is an interactive map of every entry, voice by voice, for
+each WTC I fugue. It is deployed to GitHub Pages on every push to `main`.
+To view it locally:
+
+```bash
+python -m http.server 8000      # from the repo root
+# open http://localhost:8000/web/
+```
+
 ## Reproduce
 
 ```bash
@@ -44,6 +55,7 @@ pip install -r requirements.txt
 scripts/fetch_data.sh
 PYTHONPATH=src python -m fugue.coverage data/bach-wtc/kern 'wtc1f*.krn' results/wtc1_events.json
 PYTHONPATH=src python -m fugue.null_baseline data/bach-wtc/kern 'wtc1f*.krn' results/wtc1_null.json
+PYTHONPATH=src pytest -q tests     # matcher tests; no score data needed
 ```
 
 ## Next

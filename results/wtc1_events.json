@@ -2,6 +2,13 @@
  {
   "piece": "wtc1f01",
   "voices": 4,
+  "length": 108.0,
+  "voice_entries": [
+   0.5,
+   6.5,
+   12.5,
+   18.5
+  ],
   "notes": 739,
   "chords_in_voices": 1,
   "subject_notes": 15,
@@ -25,6 +32,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 0.5,
+    "end": 6.5,
     "n": 15,
     "transform": "x1"
    },
@@ -32,6 +40,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 94.5,
+    "end": 100.5,
     "n": 15,
     "transform": "x1"
    },
@@ -39,6 +48,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 79.5,
+    "end": 85.5,
     "n": 15,
     "transform": "x1"
    },
@@ -46,6 +56,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 18.5,
+    "end": 24.5,
     "n": 15,
     "transform": "x1"
    },
@@ -53,6 +64,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 32.5,
+    "end": 38.5,
     "n": 14,
     "transform": "x1"
    },
@@ -60,6 +72,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 39.5,
+    "end": 45.5,
     "n": 14,
     "transform": "x1"
    },
@@ -67,6 +80,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 52.5,
+    "end": 58.5,
     "n": 14,
     "transform": "x1"
    },
@@ -74,6 +88,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 62.5,
+    "end": 68.5,
     "n": 14,
     "transform": "x1"
    },
@@ -81,6 +96,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 73.5,
+    "end": 79.25,
     "n": 14,
     "transform": "x1"
    },
@@ -88,6 +104,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 6.5,
+    "end": 12.25,
     "n": 14,
     "transform": "x1"
    },
@@ -95,6 +112,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 24.5,
+    "end": 30.5,
     "n": 14,
     "transform": "x1"
    },
@@ -102,6 +120,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 61.5,
+    "end": 67.5,
     "n": 14,
     "transform": "x1"
    },
@@ -109,6 +128,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 12.5,
+    "end": 18.5,
     "n": 14,
     "transform": "x1"
    },
@@ -116,6 +136,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 25.5,
+    "end": 31.5,
     "n": 14,
     "transform": "x1"
    },
@@ -123,6 +144,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 44.5,
+    "end": 50.5,
     "n": 14,
     "transform": "x1"
    },
@@ -130,6 +152,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 64.5,
+    "end": 70.5,
     "n": 14,
     "transform": "x1"
    },
@@ -137,6 +160,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 72.5,
+    "end": 80.25,
     "n": 14,
     "transform": "x1"
    },
@@ -144,6 +168,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 82.5,
+    "end": 89.0,
     "n": 14,
     "transform": "x1"
    },
@@ -151,6 +176,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 92.5,
+    "end": 98.25,
     "n": 14,
     "transform": "x1"
    },
@@ -158,6 +184,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 38.5,
+    "end": 44.5,
     "n": 14,
     "transform": "x1"
    },
@@ -165,6 +192,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 56.5,
+    "end": 62.5,
     "n": 14,
     "transform": "x1"
    },
@@ -172,6 +200,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 66.0,
+    "end": 72.25,
     "n": 14,
     "transform": "x1"
    },
@@ -179,6 +208,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 6.5,
+    "end": 12.5,
     "n": 14,
     "transform": "x1"
    },
@@ -186,6 +216,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 53.5,
+    "end": 58.5,
     "n": 10,
     "transform": "x1"
    },
@@ -193,6 +224,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 13.5,
+    "end": 16.0,
     "n": 8,
     "transform": "INV+x1"
    },
@@ -200,6 +232,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 58.5,
+    "end": 61.5,
     "n": 7,
     "transform": "x1"
    },
@@ -207,6 +240,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 48.5,
+    "end": 50.5,
     "n": 7,
     "transform": "INV+x1~"
    },
@@ -214,6 +248,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 100.5,
+    "end": 103.75,
     "n": 7,
     "transform": "x1"
    },
@@ -221,6 +256,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 19.5,
+    "end": 23.0,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -228,6 +264,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 38.5,
+    "end": 40.25,
     "n": 7,
     "transform": "x1"
    },
@@ -235,6 +272,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 98.5,
+    "end": 102.0,
     "n": 7,
     "transform": "x1"
    },
@@ -242,6 +280,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 24.5,
+    "end": 26.5,
     "n": 7,
     "transform": "x1"
    },
@@ -249,6 +288,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 20.5,
+    "end": 22.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -256,6 +296,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 69.0,
+    "end": 70.5,
     "n": 5,
     "transform": "x1"
    }
@@ -264,6 +305,12 @@
  {
   "piece": "wtc1f02",
   "voices": 3,
+  "length": 124.0,
+  "voice_entries": [
+   0.5,
+   8.5,
+   24.5
+  ],
   "notes": 747,
   "chords_in_voices": 7,
   "subject_notes": 21,
@@ -287,6 +334,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 0.5,
+    "end": 8.5,
     "n": 21,
     "transform": "x1"
    },
@@ -294,6 +342,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 24.5,
+    "end": 32.5,
     "n": 21,
     "transform": "x1"
    },
@@ -301,6 +350,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 40.5,
+    "end": 48.25,
     "n": 20,
     "transform": "x1"
    },
@@ -308,6 +358,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 76.5,
+    "end": 84.5,
     "n": 20,
     "transform": "x1"
    },
@@ -315,6 +366,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 114.5,
+    "end": 124.0,
     "n": 20,
     "transform": "x1"
    },
@@ -322,6 +374,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 102.5,
+    "end": 111.0,
     "n": 20,
     "transform": "x1"
    },
@@ -329,6 +382,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 8.5,
+    "end": 17.0,
     "n": 19,
     "transform": "x1"
    },
@@ -336,6 +390,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 76.5,
+    "end": 85.0,
     "n": 19,
     "transform": "x1"
    },
@@ -343,6 +398,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 24.5,
+    "end": 32.5,
     "n": 19,
     "transform": "x1"
    },
@@ -350,6 +406,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 40.5,
+    "end": 48.5,
     "n": 19,
     "transform": "x1"
    },
@@ -357,6 +414,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 18.5,
+    "end": 21.25,
     "n": 7,
     "transform": "INV+x1~"
    },
@@ -364,6 +422,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 64.0,
+    "end": 67.25,
     "n": 7,
     "transform": "INV+x1~"
    },
@@ -371,6 +430,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 103.5,
+    "end": 107.0,
     "n": 7,
     "transform": "AUG~"
    },
@@ -378,6 +438,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 48.25,
+    "end": 50.0,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -385,6 +446,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 50.25,
+    "end": 52.0,
     "n": 7,
     "transform": "INV+x1~"
    },
@@ -392,6 +454,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 52.0,
+    "end": 53.75,
     "n": 7,
     "transform": "INV+x1~"
    },
@@ -399,6 +462,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 54.25,
+    "end": 56.0,
     "n": 7,
     "transform": "INV+x1~"
    },
@@ -406,6 +470,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 56.0,
+    "end": 58.0,
     "n": 7,
     "transform": "x1"
    },
@@ -413,6 +478,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 101.5,
+    "end": 103.5,
     "n": 7,
     "transform": "x1~"
    },
@@ -420,6 +486,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 32.5,
+    "end": 34.25,
     "n": 7,
     "transform": "x1"
    },
@@ -427,6 +494,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 34.25,
+    "end": 36.0,
     "n": 7,
     "transform": "x1~"
    },
@@ -434,6 +502,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 36.0,
+    "end": 37.75,
     "n": 7,
     "transform": "x1~"
    },
@@ -441,6 +510,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 38.25,
+    "end": 40.0,
     "n": 7,
     "transform": "x1~"
    },
@@ -448,6 +518,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 70.0,
+    "end": 73.25,
     "n": 7,
     "transform": "INV+x1~"
    },
@@ -455,6 +526,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 84.25,
+    "end": 86.0,
     "n": 7,
     "transform": "x1~"
    },
@@ -462,6 +534,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 86.0,
+    "end": 87.75,
     "n": 7,
     "transform": "x1~"
    },
@@ -469,6 +542,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 88.25,
+    "end": 90.0,
     "n": 7,
     "transform": "x1~"
    },
@@ -476,6 +550,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 90.0,
+    "end": 91.75,
     "n": 7,
     "transform": "x1~"
    },
@@ -483,6 +558,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 92.25,
+    "end": 94.0,
     "n": 7,
     "transform": "x1~"
    },
@@ -490,6 +566,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 94.0,
+    "end": 95.75,
     "n": 7,
     "transform": "x1~"
    },
@@ -497,6 +574,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 96.0,
+    "end": 99.75,
     "n": 7,
     "transform": "INV+x1~"
    },
@@ -504,6 +582,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 100.0,
+    "end": 101.75,
     "n": 7,
     "transform": "x1~"
    },
@@ -511,6 +590,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 21.75,
+    "end": 23.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -518,6 +598,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 67.25,
+    "end": 69.25,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -525,6 +606,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 58.0,
+    "end": 61.0,
     "n": 6,
     "transform": "AUG~"
    },
@@ -532,6 +614,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 73.25,
+    "end": 75.25,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -539,6 +622,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 34.5,
+    "end": 37.0,
     "n": 5,
     "transform": "x1"
    },
@@ -546,6 +630,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 38.5,
+    "end": 41.0,
     "n": 5,
     "transform": "x1"
    },
@@ -553,6 +638,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 86.5,
+    "end": 89.0,
     "n": 5,
     "transform": "x1"
    },
@@ -560,6 +646,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 90.5,
+    "end": 94.5,
     "n": 5,
     "transform": "x1"
    },
@@ -567,6 +654,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 32.5,
+    "end": 35.0,
     "n": 5,
     "transform": "x1"
    },
@@ -574,6 +662,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 36.5,
+    "end": 39.0,
     "n": 5,
     "transform": "x1"
    },
@@ -581,6 +670,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 84.5,
+    "end": 87.0,
     "n": 5,
     "transform": "x1"
    },
@@ -588,6 +678,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 88.5,
+    "end": 91.0,
     "n": 5,
     "transform": "x1"
    },
@@ -595,6 +686,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 27.0,
+    "end": 30.0,
     "n": 5,
     "transform": "AUG~"
    },
@@ -602,6 +694,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 107.0,
+    "end": 109.5,
     "n": 5,
     "transform": "INV+AUG~"
    },
@@ -609,6 +702,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 61.0,
+    "end": 63.5,
     "n": 5,
     "transform": "INV+AUG~"
    },
@@ -616,6 +710,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 105.0,
+    "end": 108.0,
     "n": 5,
     "transform": "AUG~"
    },
@@ -623,6 +718,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 110.0,
+    "end": 113.0,
     "n": 5,
     "transform": "INV+AUG~"
    },
@@ -630,6 +726,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 59.0,
+    "end": 62.0,
     "n": 5,
     "transform": "AUG~"
    },
@@ -637,6 +734,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 79.0,
+    "end": 82.0,
     "n": 5,
     "transform": "AUG~"
    }
@@ -645,6 +743,12 @@
  {
   "piece": "wtc1f03",
   "voices": 3,
+  "length": 220.0,
+  "voice_entries": [
+   1.5,
+   9.5,
+   17.5
+  ],
   "notes": 1414,
   "chords_in_voices": 4,
   "subject_notes": 21,
@@ -668,6 +772,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 9.5,
+    "end": 19.0,
     "n": 25,
     "transform": "x1"
    },
@@ -675,6 +780,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 173.5,
+    "end": 183.0,
     "n": 25,
     "transform": "x1"
    },
@@ -682,6 +788,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 53.5,
+    "end": 60.25,
     "n": 23,
     "transform": "x1"
    },
@@ -689,6 +796,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 1.5,
+    "end": 9.5,
     "n": 21,
     "transform": "x1"
    },
@@ -696,6 +804,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 165.5,
+    "end": 173.5,
     "n": 21,
     "transform": "x1"
    },
@@ -703,6 +812,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 9.5,
+    "end": 17.5,
     "n": 21,
     "transform": "x1~"
    },
@@ -710,6 +820,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 173.75,
+    "end": 181.5,
     "n": 21,
     "transform": "x1"
    },
@@ -717,6 +828,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 17.5,
+    "end": 25.5,
     "n": 21,
     "transform": "x1"
    },
@@ -724,6 +836,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 53.5,
+    "end": 61.5,
     "n": 21,
     "transform": "x1~"
    },
@@ -731,6 +844,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 95.5,
+    "end": 101.5,
     "n": 20,
     "transform": "x1"
    },
@@ -738,6 +852,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 37.75,
+    "end": 44.25,
     "n": 17,
     "transform": "x1~"
    },
@@ -745,6 +860,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 95.75,
+    "end": 102.25,
     "n": 17,
     "transform": "x1"
    },
@@ -752,6 +868,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 203.75,
+    "end": 210.25,
     "n": 17,
     "transform": "x1~"
    },
@@ -759,6 +876,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 73.5,
+    "end": 81.5,
     "n": 17,
     "transform": "x1"
    },
@@ -766,6 +884,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 181.5,
+    "end": 188.25,
     "n": 17,
     "transform": "x1"
    },
@@ -773,6 +892,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 103.5,
+    "end": 110.0,
     "n": 16,
     "transform": "x1"
    },
@@ -780,6 +900,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 139.75,
+    "end": 143.25,
     "n": 11,
     "transform": "x1"
    },
@@ -787,6 +908,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 143.75,
+    "end": 147.25,
     "n": 11,
     "transform": "x1"
    },
@@ -794,6 +916,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 155.75,
+    "end": 159.25,
     "n": 11,
     "transform": "x1"
    },
@@ -801,6 +924,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 159.75,
+    "end": 163.25,
     "n": 11,
     "transform": "x1"
    },
@@ -808,6 +932,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 104.0,
+    "end": 105.75,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -815,6 +940,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 211.5,
+    "end": 213.25,
     "n": 7,
     "transform": "x1"
    },
@@ -822,6 +948,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 18.0,
+    "end": 19.75,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -829,6 +956,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 37.5,
+    "end": 39.75,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -836,6 +964,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 182.0,
+    "end": 183.75,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -843,6 +972,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 203.5,
+    "end": 205.75,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -850,6 +980,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 74.0,
+    "end": 75.75,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -857,6 +988,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 135.75,
+    "end": 137.5,
     "n": 6,
     "transform": "x1"
    },
@@ -864,6 +996,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 151.75,
+    "end": 153.5,
     "n": 6,
     "transform": "x1"
    },
@@ -871,6 +1004,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 159.5,
+    "end": 161.0,
     "n": 6,
     "transform": "x1"
    },
@@ -878,6 +1012,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 166.75,
+    "end": 169.25,
     "n": 6,
     "transform": "x1~"
    },
@@ -885,6 +1020,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 49.0,
+    "end": 50.25,
     "n": 5,
     "transform": "x1~"
    },
@@ -892,6 +1028,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 52.0,
+    "end": 53.25,
     "n": 5,
     "transform": "x1~"
    },
@@ -899,6 +1036,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 87.5,
+    "end": 89.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -906,6 +1044,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 91.5,
+    "end": 93.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -913,6 +1052,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 147.75,
+    "end": 149.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -920,6 +1060,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 155.25,
+    "end": 156.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -927,6 +1068,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 22.5,
+    "end": 23.75,
     "n": 5,
     "transform": "x1~"
    },
@@ -934,6 +1076,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 42.5,
+    "end": 43.75,
     "n": 5,
     "transform": "x1~"
    },
@@ -941,6 +1084,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 186.5,
+    "end": 187.75,
     "n": 5,
     "transform": "x1~"
    },
@@ -948,6 +1092,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 210.25,
+    "end": 211.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -955,6 +1100,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 78.5,
+    "end": 79.75,
     "n": 5,
     "transform": "x1~"
    },
@@ -962,6 +1108,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 110.0,
+    "end": 111.25,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -969,6 +1116,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 115.0,
+    "end": 116.25,
     "n": 5,
     "transform": "x1~"
    },
@@ -976,6 +1124,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 117.25,
+    "end": 118.5,
     "n": 5,
     "transform": "x1~"
    },
@@ -983,6 +1132,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 163.75,
+    "end": 165.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -990,6 +1140,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 170.5,
+    "end": 171.75,
     "n": 5,
     "transform": "x1~"
    },
@@ -997,6 +1148,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 44.25,
+    "end": 45.5,
     "n": 5,
     "transform": "x1"
    },
@@ -1004,6 +1156,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 118.0,
+    "end": 119.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -1011,6 +1164,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 213.5,
+    "end": 214.75,
     "n": 5,
     "transform": "x1~"
    },
@@ -1018,6 +1172,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 82.5,
+    "end": 84.75,
     "n": 5,
     "transform": "AUG~"
    },
@@ -1025,6 +1180,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 211.5,
+    "end": 212.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -1032,6 +1188,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 28.0,
+    "end": 29.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -1039,6 +1196,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 32.0,
+    "end": 33.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -1046,6 +1204,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 64.0,
+    "end": 65.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -1053,6 +1212,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 68.0,
+    "end": 69.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -1060,6 +1220,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 190.25,
+    "end": 191.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -1067,6 +1228,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 194.0,
+    "end": 195.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -1074,6 +1236,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 198.0,
+    "end": 199.5,
     "n": 5,
     "transform": "INV+x1~"
    }
@@ -1082,6 +1245,14 @@
  {
   "piece": "wtc1f04",
   "voices": 5,
+  "length": 460.0,
+  "voice_entries": [
+   0.0,
+   12.0,
+   26.0,
+   46.0,
+   54.0
+  ],
   "notes": 1326,
   "chords_in_voices": 0,
   "subject_notes": 4,
@@ -1105,6 +1276,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 12.0,
+    "end": 25.0,
     "n": 11,
     "transform": "x1"
    },
@@ -1112,6 +1284,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 0.0,
+    "end": 12.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1119,6 +1292,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 35.0,
+    "end": 42.0,
     "n": 4,
     "transform": "INV+x1~"
    },
@@ -1126,6 +1300,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 59.0,
+    "end": 65.0,
     "n": 4,
     "transform": "INV+x1~"
    },
@@ -1133,6 +1308,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 114.0,
+    "end": 124.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1140,6 +1316,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 134.0,
+    "end": 142.0,
     "n": 4,
     "transform": "x1~"
    },
@@ -1147,6 +1324,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 386.0,
+    "end": 396.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1154,6 +1332,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 12.0,
+    "end": 24.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1161,6 +1340,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 40.0,
+    "end": 47.0,
     "n": 4,
     "transform": "DIM~"
    },
@@ -1168,6 +1348,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 74.0,
+    "end": 84.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1175,6 +1356,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 87.0,
+    "end": 96.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1182,6 +1364,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 138.0,
+    "end": 148.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1189,6 +1372,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 202.0,
+    "end": 212.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1196,6 +1380,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 248.0,
+    "end": 256.0,
     "n": 4,
     "transform": "INV+x1~"
    },
@@ -1203,6 +1388,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 320.0,
+    "end": 332.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1210,6 +1396,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 26.0,
+    "end": 36.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1217,6 +1404,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 55.0,
+    "end": 62.0,
     "n": 4,
     "transform": "INV+x1~"
    },
@@ -1224,6 +1412,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 98.0,
+    "end": 108.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1231,6 +1420,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 126.0,
+    "end": 136.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1238,6 +1428,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 150.0,
+    "end": 161.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1245,6 +1436,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 257.5,
+    "end": 264.0,
     "n": 4,
     "transform": "INV+x1~"
    },
@@ -1252,6 +1444,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 340.0,
+    "end": 350.5,
     "n": 4,
     "transform": "INV+x1~"
    },
@@ -1259,6 +1452,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 46.0,
+    "end": 54.0,
     "n": 4,
     "transform": "x1~"
    },
@@ -1266,6 +1460,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 82.0,
+    "end": 91.0,
     "n": 4,
     "transform": "INV+x1~"
    },
@@ -1273,6 +1468,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 135.0,
+    "end": 178.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1280,6 +1476,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 203.5,
+    "end": 218.0,
     "n": 4,
     "transform": "x1~"
    },
@@ -1287,6 +1484,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 286.0,
+    "end": 296.0,
     "n": 4,
     "transform": "x1~"
    },
@@ -1294,6 +1492,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 374.0,
+    "end": 382.0,
     "n": 4,
     "transform": "x1~"
    },
@@ -1301,6 +1500,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 397.5,
+    "end": 406.0,
     "n": 4,
     "transform": "INV+x1~"
    },
@@ -1308,6 +1508,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 446.0,
+    "end": 460.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1315,6 +1516,7 @@
     "material": "SUBJECT",
     "voice": 4,
     "onset": 54.0,
+    "end": 64.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1322,6 +1524,7 @@
     "material": "SUBJECT",
     "voice": 4,
     "onset": 72.0,
+    "end": 82.0,
     "n": 4,
     "transform": "INV+x1~"
    },
@@ -1329,6 +1532,7 @@
     "material": "SUBJECT",
     "voice": 4,
     "onset": 112.0,
+    "end": 118.0,
     "n": 4,
     "transform": "INV+DIM~"
    },
@@ -1336,6 +1540,7 @@
     "material": "SUBJECT",
     "voice": 4,
     "onset": 134.0,
+    "end": 139.0,
     "n": 4,
     "transform": "INV+DIM~"
    },
@@ -1343,6 +1548,7 @@
     "material": "SUBJECT",
     "voice": 4,
     "onset": 172.0,
+    "end": 181.5,
     "n": 4,
     "transform": "x1~"
    },
@@ -1350,6 +1556,7 @@
     "material": "SUBJECT",
     "voice": 4,
     "onset": 191.5,
+    "end": 201.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1357,6 +1564,7 @@
     "material": "SUBJECT",
     "voice": 4,
     "onset": 214.0,
+    "end": 224.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1364,6 +1572,7 @@
     "material": "SUBJECT",
     "voice": 4,
     "onset": 232.0,
+    "end": 245.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1371,6 +1580,7 @@
     "material": "SUBJECT",
     "voice": 4,
     "onset": 260.0,
+    "end": 270.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1378,6 +1588,7 @@
     "material": "SUBJECT",
     "voice": 4,
     "onset": 279.5,
+    "end": 286.0,
     "n": 4,
     "transform": "x1~"
    },
@@ -1385,6 +1596,7 @@
     "material": "SUBJECT",
     "voice": 4,
     "onset": 300.0,
+    "end": 314.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1392,6 +1604,7 @@
     "material": "SUBJECT",
     "voice": 4,
     "onset": 352.0,
+    "end": 365.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1399,6 +1612,7 @@
     "material": "SUBJECT",
     "voice": 4,
     "onset": 372.0,
+    "end": 382.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1406,6 +1620,7 @@
     "material": "SUBJECT",
     "voice": 4,
     "onset": 382.0,
+    "end": 389.0,
     "n": 4,
     "transform": "x1"
    },
@@ -1413,6 +1628,7 @@
     "material": "SUBJECT",
     "voice": 4,
     "onset": 402.0,
+    "end": 414.0,
     "n": 4,
     "transform": "x1~"
    },
@@ -1420,6 +1636,7 @@
     "material": "SUBJECT",
     "voice": 4,
     "onset": 416.0,
+    "end": 428.0,
     "n": 4,
     "transform": "INV+x1~"
    }
@@ -1428,6 +1645,13 @@
  {
   "piece": "wtc1f05",
   "voices": 4,
+  "length": 108.0,
+  "voice_entries": [
+   1.0,
+   5.0,
+   13.0,
+   17.0
+  ],
   "notes": 779,
   "chords_in_voices": 1,
   "subject_notes": 14,
@@ -1451,6 +1675,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 1.0,
+    "end": 5.0,
     "n": 14,
     "transform": "x1"
    },
@@ -1458,6 +1683,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 13.0,
+    "end": 17.0,
     "n": 14,
     "transform": "x1"
    },
@@ -1465,6 +1691,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 41.0,
+    "end": 45.0,
     "n": 14,
     "transform": "x1"
    },
@@ -1472,6 +1699,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 25.0,
+    "end": 28.625,
     "n": 13,
     "transform": "x1"
    },
@@ -1479,6 +1707,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 57.0,
+    "end": 60.75,
     "n": 13,
     "transform": "x1"
    },
@@ -1486,6 +1715,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 5.0,
+    "end": 9.0,
     "n": 13,
     "transform": "x1"
    },
@@ -1493,6 +1723,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 53.0,
+    "end": 57.0,
     "n": 13,
     "transform": "x1"
    },
@@ -1500,6 +1731,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 45.0,
+    "end": 48.75,
     "n": 13,
     "transform": "x1"
    },
@@ -1507,6 +1739,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 17.0,
+    "end": 20.625,
     "n": 13,
     "transform": "x1"
    },
@@ -1514,6 +1747,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 29.0,
+    "end": 33.0,
     "n": 13,
     "transform": "x1"
    },
@@ -1521,6 +1755,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 49.0,
+    "end": 52.625,
     "n": 13,
     "transform": "x1"
    },
@@ -1528,6 +1763,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 5.0,
+    "end": 9.0,
     "n": 8,
     "transform": "x1"
    },
@@ -1535,6 +1771,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 76.0,
+    "end": 78.0,
     "n": 10,
     "transform": "x1"
    },
@@ -1542,6 +1779,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 32.0,
+    "end": 33.5,
     "n": 9,
     "transform": "x1"
    },
@@ -1549,6 +1787,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 36.0,
+    "end": 37.5,
     "n": 9,
     "transform": "x1"
    },
@@ -1556,6 +1795,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 40.0,
+    "end": 41.75,
     "n": 9,
     "transform": "x1"
    },
@@ -1563,6 +1803,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 77.0,
+    "end": 80.0,
     "n": 9,
     "transform": "x1"
    },
@@ -1570,6 +1811,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 68.0,
+    "end": 69.5,
     "n": 9,
     "transform": "x1"
    },
@@ -1577,6 +1819,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 72.0,
+    "end": 73.5,
     "n": 9,
     "transform": "x1"
    },
@@ -1584,6 +1827,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 48.0,
+    "end": 49.0,
     "n": 8,
     "transform": "x1"
    },
@@ -1591,6 +1835,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 78.0,
+    "end": 79.0,
     "n": 8,
     "transform": "x1"
    },
@@ -1598,6 +1843,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 80.0,
+    "end": 81.0,
     "n": 8,
     "transform": "x1"
    },
@@ -1605,6 +1851,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 90.0,
+    "end": 91.0,
     "n": 8,
     "transform": "x1"
    },
@@ -1612,6 +1859,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 92.0,
+    "end": 93.0,
     "n": 8,
     "transform": "x1"
    },
@@ -1619,6 +1867,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 93.0,
+    "end": 94.0,
     "n": 8,
     "transform": "x1"
    },
@@ -1626,6 +1875,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 94.0,
+    "end": 95.0,
     "n": 8,
     "transform": "x1"
    },
@@ -1633,6 +1883,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 95.0,
+    "end": 96.0,
     "n": 8,
     "transform": "x1"
    },
@@ -1640,6 +1891,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 21.0,
+    "end": 22.0,
     "n": 8,
     "transform": "x1"
    },
@@ -1647,6 +1899,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 23.0,
+    "end": 24.0,
     "n": 8,
     "transform": "x1"
    },
@@ -1654,6 +1907,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 79.0,
+    "end": 80.0,
     "n": 8,
     "transform": "x1"
    },
@@ -1661,6 +1915,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 64.0,
+    "end": 65.0,
     "n": 8,
     "transform": "x1"
    },
@@ -1668,6 +1923,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 89.0,
+    "end": 90.0,
     "n": 8,
     "transform": "x1"
    },
@@ -1675,6 +1931,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 91.0,
+    "end": 92.0,
     "n": 8,
     "transform": "x1"
    },
@@ -1682,6 +1939,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 93.0,
+    "end": 94.0,
     "n": 8,
     "transform": "x1"
    },
@@ -1689,6 +1947,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 94.0,
+    "end": 95.0,
     "n": 8,
     "transform": "x1"
    },
@@ -1696,6 +1955,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 95.0,
+    "end": 96.0,
     "n": 8,
     "transform": "x1"
    },
@@ -1703,6 +1963,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 85.625,
+    "end": 86.5,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -1710,6 +1971,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 84.0,
+    "end": 85.625,
     "n": 6,
     "transform": "x1~"
    },
@@ -1717,6 +1979,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 24.0,
+    "end": 25.75,
     "n": 5,
     "transform": "INV+x1~"
    }
@@ -1725,6 +1988,12 @@
  {
   "piece": "wtc1f06",
   "voices": 3,
+  "length": 132.5,
+  "voice_entries": [
+   0.5,
+   6.5,
+   15.5
+  ],
   "notes": 706,
   "chords_in_voices": 12,
   "subject_notes": 12,
@@ -1748,6 +2017,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 7.25,
+    "end": 14.0,
     "n": 21,
     "transform": "x1"
    },
@@ -1755,6 +2025,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 0.5,
+    "end": 7.25,
     "n": 12,
     "transform": "x1"
    },
@@ -1762,6 +2033,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 36.5,
+    "end": 42.5,
     "n": 12,
     "transform": "x1"
    },
@@ -1769,6 +2041,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 6.5,
+    "end": 13.25,
     "n": 12,
     "transform": "x1"
    },
@@ -1776,6 +2049,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 51.5,
+    "end": 57.5,
     "n": 12,
     "transform": "x1"
    },
@@ -1783,6 +2057,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 81.5,
+    "end": 88.0,
     "n": 12,
     "transform": "x1"
    },
@@ -1790,6 +2065,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 117.5,
+    "end": 123.5,
     "n": 12,
     "transform": "x1"
    },
@@ -1797,6 +2073,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 15.5,
+    "end": 22.25,
     "n": 12,
     "transform": "x1"
    },
@@ -1804,6 +2081,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 48.5,
+    "end": 54.5,
     "n": 12,
     "transform": "x1"
    },
@@ -1811,6 +2089,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 114.5,
+    "end": 120.5,
     "n": 12,
     "transform": "x1"
    },
@@ -1818,6 +2097,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 63.5,
+    "end": 69.25,
     "n": 11,
     "transform": "INV+x1"
    },
@@ -1825,6 +2105,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 78.5,
+    "end": 84.5,
     "n": 11,
     "transform": "INV+x1"
    },
@@ -1832,6 +2113,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 60.5,
+    "end": 66.0,
     "n": 11,
     "transform": "x1"
    },
@@ -1839,6 +2121,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 66.5,
+    "end": 72.0,
     "n": 11,
     "transform": "INV+x1"
    },
@@ -1846,6 +2129,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 99.5,
+    "end": 103.5,
     "n": 10,
     "transform": "x1"
    },
@@ -1853,6 +2137,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 39.5,
+    "end": 43.0,
     "n": 9,
     "transform": "INV+x1"
    },
@@ -1860,6 +2145,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 84.5,
+    "end": 88.0,
     "n": 9,
     "transform": "INV+x1"
    },
@@ -1867,6 +2153,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 16.25,
+    "end": 19.0,
     "n": 8,
     "transform": "x1"
    },
@@ -1874,6 +2161,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 43.25,
+    "end": 45.25,
     "n": 8,
     "transform": "x1"
    },
@@ -1881,6 +2169,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 61.25,
+    "end": 63.5,
     "n": 8,
     "transform": "x1"
    },
@@ -1888,6 +2177,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 100.25,
+    "end": 102.5,
     "n": 8,
     "transform": "x1"
    },
@@ -1895,6 +2185,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 106.25,
+    "end": 108.25,
     "n": 8,
     "transform": "x1"
    },
@@ -1902,6 +2193,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 109.25,
+    "end": 111.25,
     "n": 8,
     "transform": "x1"
    },
@@ -1909,6 +2201,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 37.25,
+    "end": 39.5,
     "n": 8,
     "transform": "x1"
    },
@@ -1916,6 +2209,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 46.25,
+    "end": 48.0,
     "n": 7,
     "transform": "x1"
    },
@@ -1923,6 +2217,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 112.25,
+    "end": 114.0,
     "n": 7,
     "transform": "x1"
    },
@@ -1930,6 +2225,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 13.25,
+    "end": 15.0,
     "n": 7,
     "transform": "x1"
    },
@@ -1937,6 +2233,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 22.25,
+    "end": 24.0,
     "n": 7,
     "transform": "x1"
    },
@@ -1944,6 +2241,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 79.25,
+    "end": 81.0,
     "n": 7,
     "transform": "x1"
    },
@@ -1951,6 +2249,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 102.5,
+    "end": 105.25,
     "n": 6,
     "transform": "x1"
    },
@@ -1958,6 +2257,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 126.0,
+    "end": 132.0,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -1965,6 +2265,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 72.5,
+    "end": 76.0,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -1972,6 +2273,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 96.5,
+    "end": 99.5,
     "n": 6,
     "transform": "x1"
    },
@@ -1979,6 +2281,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 102.5,
+    "end": 105.5,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -1986,6 +2289,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 105.5,
+    "end": 108.5,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -1993,6 +2297,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 108.5,
+    "end": 111.5,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -2000,6 +2305,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 111.5,
+    "end": 114.5,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -2007,6 +2313,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 126.0,
+    "end": 131.5,
     "n": 6,
     "transform": "x1"
    },
@@ -2014,6 +2321,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 75.5,
+    "end": 79.25,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -2021,6 +2329,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 90.25,
+    "end": 91.75,
     "n": 6,
     "transform": "x1~"
    },
@@ -2028,6 +2337,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 93.25,
+    "end": 94.75,
     "n": 6,
     "transform": "x1~"
    },
@@ -2035,6 +2345,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 27.25,
+    "end": 28.75,
     "n": 6,
     "transform": "x1~"
    },
@@ -2042,6 +2353,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 30.25,
+    "end": 31.75,
     "n": 6,
     "transform": "x1~"
    },
@@ -2049,6 +2361,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 21.5,
+    "end": 24.0,
     "n": 5,
     "transform": "x1"
    },
@@ -2056,6 +2369,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 33.5,
+    "end": 36.0,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -2063,6 +2377,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 39.5,
+    "end": 42.0,
     "n": 5,
     "transform": "x1"
    },
@@ -2070,6 +2385,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 42.0,
+    "end": 45.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -2077,6 +2393,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 45.0,
+    "end": 48.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -2084,6 +2401,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 105.5,
+    "end": 108.0,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -2091,6 +2409,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 108.5,
+    "end": 111.0,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -2098,6 +2417,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 111.5,
+    "end": 114.0,
     "n": 5,
     "transform": "INV+x1"
    }
@@ -2106,6 +2426,12 @@
  {
   "piece": "wtc1f07",
   "voices": 3,
+  "length": 148.0,
+  "voice_entries": [
+   0.0,
+   8.0,
+   20.0
+  ],
   "notes": 900,
   "chords_in_voices": 0,
   "subject_notes": 23,
@@ -2129,6 +2455,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 0.0,
+    "end": 8.0,
     "n": 23,
     "transform": "x1"
    },
@@ -2136,6 +2463,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 20.0,
+    "end": 28.0,
     "n": 23,
     "transform": "x1"
    },
@@ -2143,6 +2471,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 8.0,
+    "end": 16.5,
     "n": 20,
     "transform": "x1"
    },
@@ -2150,6 +2479,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 66.0,
+    "end": 72.25,
     "n": 17,
     "transform": "x1~"
    },
@@ -2157,6 +2487,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 100.0,
+    "end": 106.25,
     "n": 17,
     "transform": "x1~"
    },
@@ -2164,6 +2495,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 40.0,
+    "end": 46.5,
     "n": 17,
     "transform": "x1~"
    },
@@ -2171,6 +2503,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 111.0,
+    "end": 118.5,
     "n": 16,
     "transform": "x1~"
    },
@@ -2178,6 +2511,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 78.0,
+    "end": 84.25,
     "n": 16,
     "transform": "x1"
    },
@@ -2185,6 +2519,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 39.5,
+    "end": 43.0,
     "n": 10,
     "transform": "x1~"
    },
@@ -2192,6 +2527,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 84.0,
+    "end": 87.0,
     "n": 10,
     "transform": "x1~"
    },
@@ -2199,6 +2535,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 88.0,
+    "end": 91.0,
     "n": 10,
     "transform": "x1~"
    },
@@ -2206,6 +2543,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 8.0,
+    "end": 11.0,
     "n": 10,
     "transform": "x1~"
    },
@@ -2213,6 +2551,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 66.0,
+    "end": 69.0,
     "n": 10,
     "transform": "x1~"
    },
@@ -2220,6 +2559,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 131.5,
+    "end": 135.0,
     "n": 10,
     "transform": "x1~"
    },
@@ -2227,6 +2567,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 99.5,
+    "end": 103.0,
     "n": 10,
     "transform": "x1~"
    },
@@ -2234,6 +2575,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 88.0,
+    "end": 89.25,
     "n": 5,
     "transform": "x1~"
    },
@@ -2241,6 +2583,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 81.0,
+    "end": 82.5,
     "n": 5,
     "transform": "INV+DIM~"
    },
@@ -2248,6 +2591,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 129.75,
+    "end": 131.0,
     "n": 5,
     "transform": "DIM~"
    },
@@ -2255,6 +2599,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 20.0,
+    "end": 22.25,
     "n": 5,
     "transform": "x1~"
    },
@@ -2262,6 +2607,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 80.0,
+    "end": 82.25,
     "n": 5,
     "transform": "INV+DIM~"
    },
@@ -2269,6 +2615,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 86.25,
+    "end": 87.5,
     "n": 5,
     "transform": "DIM~"
    },
@@ -2276,6 +2623,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 90.25,
+    "end": 91.5,
     "n": 5,
     "transform": "DIM~"
    },
@@ -2283,6 +2631,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 112.0,
+    "end": 114.25,
     "n": 5,
     "transform": "x1~"
    },
@@ -2290,6 +2639,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 55.5,
+    "end": 58.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -2297,6 +2647,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 92.0,
+    "end": 94.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -2304,6 +2655,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 96.0,
+    "end": 98.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -2311,6 +2663,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 106.0,
+    "end": 108.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -2318,6 +2671,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 110.0,
+    "end": 115.25,
     "n": 5,
     "transform": "INV+x1~"
    }
@@ -2326,6 +2680,12 @@
  {
   "piece": "wtc1f08",
   "voices": 3,
+  "length": 348.0,
+  "voice_entries": [
+   0.0,
+   10.0,
+   28.0
+  ],
   "notes": 1385,
   "chords_in_voices": 0,
   "subject_notes": 12,
@@ -2349,6 +2709,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 10.0,
+    "end": 20.0,
     "n": 14,
     "transform": "x1"
    },
@@ -2356,6 +2717,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 0.0,
+    "end": 10.0,
     "n": 12,
     "transform": "x1"
    },
@@ -2363,6 +2725,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 106.0,
+    "end": 116.0,
     "n": 12,
     "transform": "x1~"
    },
@@ -2370,6 +2733,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 186.0,
+    "end": 196.0,
     "n": 12,
     "transform": "INV+x1"
    },
@@ -2377,6 +2741,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 242.5,
+    "end": 251.5,
     "n": 12,
     "transform": "x1~"
    },
@@ -2384,6 +2749,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 266.0,
+    "end": 286.0,
     "n": 12,
     "transform": "AUG~"
    },
@@ -2391,6 +2757,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 318.5,
+    "end": 328.0,
     "n": 12,
     "transform": "x1~"
    },
@@ -2398,6 +2765,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 92.0,
+    "end": 103.0,
     "n": 12,
     "transform": "x1~"
    },
@@ -2405,6 +2773,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 103.0,
+    "end": 113.5,
     "n": 12,
     "transform": "x1~"
    },
@@ -2412,6 +2781,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 226.5,
+    "end": 236.0,
     "n": 12,
     "transform": "x1~"
    },
@@ -2419,6 +2789,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 254.0,
+    "end": 264.0,
     "n": 12,
     "transform": "INV+x1~"
    },
@@ -2426,6 +2797,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 274.5,
+    "end": 284.0,
     "n": 12,
     "transform": "x1~"
    },
@@ -2433,6 +2805,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 306.0,
+    "end": 326.0,
     "n": 12,
     "transform": "AUG~"
    },
@@ -2440,6 +2813,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 28.0,
+    "end": 38.0,
     "n": 12,
     "transform": "x1"
    },
@@ -2447,6 +2821,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 244.0,
+    "end": 264.0,
     "n": 12,
     "transform": "AUG~"
    },
@@ -2454,6 +2829,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 264.0,
+    "end": 274.0,
     "n": 12,
     "transform": "x1~"
    },
@@ -2461,6 +2837,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 74.0,
+    "end": 82.5,
     "n": 10,
     "transform": "x1"
    },
@@ -2468,6 +2845,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 76.0,
+    "end": 84.5,
     "n": 10,
     "transform": "x1"
    },
@@ -2475,6 +2853,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 140.0,
+    "end": 147.0,
     "n": 9,
     "transform": "INV+x1~"
    },
@@ -2482,6 +2861,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 205.0,
+    "end": 211.5,
     "n": 9,
     "transform": "x1~"
    },
@@ -2489,6 +2869,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 116.0,
+    "end": 123.0,
     "n": 9,
     "transform": "INV+x1~"
    },
@@ -2496,6 +2877,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 176.0,
+    "end": 183.0,
     "n": 9,
     "transform": "INV+x1"
    },
@@ -2503,6 +2885,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 206.0,
+    "end": 212.5,
     "n": 9,
     "transform": "x1~"
    },
@@ -2510,6 +2893,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 174.0,
+    "end": 181.0,
     "n": 9,
     "transform": "INV+x1"
    },
@@ -2517,6 +2901,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 204.0,
+    "end": 210.5,
     "n": 9,
     "transform": "x1~"
    },
@@ -2524,6 +2909,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 304.5,
+    "end": 310.5,
     "n": 9,
     "transform": "x1~"
    },
@@ -2531,6 +2917,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 213.0,
+    "end": 219.0,
     "n": 8,
     "transform": "INV+x1"
    },
@@ -2538,6 +2925,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 214.0,
+    "end": 220.0,
     "n": 8,
     "transform": "INV+x1"
    },
@@ -2545,6 +2933,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 212.0,
+    "end": 217.5,
     "n": 8,
     "transform": "INV+x1"
    },
@@ -2552,6 +2941,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 24.0,
+    "end": 29.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -2559,6 +2949,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 94.0,
+    "end": 98.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -2566,6 +2957,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 34.0,
+    "end": 38.0,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -2573,6 +2965,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 85.5,
+    "end": 90.0,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -2580,6 +2973,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 169.0,
+    "end": 172.5,
     "n": 5,
     "transform": "x1~"
    },
@@ -2587,6 +2981,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 233.5,
+    "end": 237.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -2594,6 +2989,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 163.0,
+    "end": 166.5,
     "n": 5,
     "transform": "x1~"
    },
@@ -2601,6 +2997,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 293.0,
+    "end": 297.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -2608,6 +3005,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 80.25,
+    "end": 84.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -2615,6 +3013,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 181.0,
+    "end": 186.0,
     "n": 5,
     "transform": "x1"
    }
@@ -2623,6 +3022,12 @@
  {
   "piece": "wtc1f09",
   "voices": 3,
+  "length": 116.0,
+  "voice_entries": [
+   1.5,
+   5.5,
+   11.5
+  ],
   "notes": 733,
   "chords_in_voices": 0,
   "subject_notes": 11,
@@ -2646,6 +3051,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 5.5,
+    "end": 9.5,
     "n": 16,
     "transform": "x1"
    },
@@ -2653,6 +3059,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 85.5,
+    "end": 89.5,
     "n": 16,
     "transform": "x1"
    },
@@ -2660,6 +3067,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 89.5,
+    "end": 93.5,
     "n": 16,
     "transform": "x1"
    },
@@ -2667,6 +3075,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 27.5,
+    "end": 31.5,
     "n": 16,
     "transform": "x1"
    },
@@ -2674,6 +3083,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 49.5,
+    "end": 53.5,
     "n": 16,
     "transform": "x1"
    },
@@ -2681,6 +3091,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 53.5,
+    "end": 57.5,
     "n": 16,
     "transform": "x1"
    },
@@ -2688,6 +3099,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 15.5,
+    "end": 19.5,
     "n": 16,
     "transform": "x1"
    },
@@ -2695,6 +3107,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 11.5,
+    "end": 17.0,
     "n": 15,
     "transform": "x1~"
    },
@@ -2702,6 +3115,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 31.5,
+    "end": 35.0,
     "n": 14,
     "transform": "x1"
    },
@@ -2709,6 +3123,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 69.5,
+    "end": 73.0,
     "n": 14,
     "transform": "x1"
    },
@@ -2716,6 +3131,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 93.5,
+    "end": 97.0,
     "n": 14,
     "transform": "x1"
    },
@@ -2723,6 +3139,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 101.5,
+    "end": 105.0,
     "n": 14,
     "transform": "x1~"
    },
@@ -2730,6 +3147,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 1.5,
+    "end": 5.5,
     "n": 11,
     "transform": "x1"
    },
@@ -2737,6 +3155,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 27.5,
+    "end": 31.5,
     "n": 11,
     "transform": "x1"
    },
@@ -2744,6 +3163,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 61.5,
+    "end": 65.5,
     "n": 11,
     "transform": "x1"
    },
@@ -2751,6 +3171,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 81.5,
+    "end": 85.5,
     "n": 11,
     "transform": "x1"
    },
@@ -2758,6 +3179,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 5.5,
+    "end": 9.5,
     "n": 11,
     "transform": "x1"
    },
@@ -2765,6 +3187,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 23.5,
+    "end": 27.5,
     "n": 11,
     "transform": "x1"
    },
@@ -2772,6 +3195,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 77.75,
+    "end": 81.5,
     "n": 11,
     "transform": "x1~"
    },
@@ -2779,6 +3203,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 97.5,
+    "end": 101.5,
     "n": 11,
     "transform": "x1"
    },
@@ -2786,6 +3211,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 11.5,
+    "end": 15.5,
     "n": 11,
     "transform": "x1"
    },
@@ -2793,6 +3219,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 35.5,
+    "end": 39.5,
     "n": 11,
     "transform": "x1"
    },
@@ -2800,6 +3227,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 73.5,
+    "end": 77.5,
     "n": 11,
     "transform": "x1"
    },
@@ -2807,6 +3235,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 65.5,
+    "end": 68.25,
     "n": 11,
     "transform": "x1"
    },
@@ -2814,6 +3243,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 97.5,
+    "end": 100.5,
     "n": 11,
     "transform": "x1~"
    },
@@ -2821,6 +3251,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 41.5,
+    "end": 44.25,
     "n": 11,
     "transform": "x1"
    },
@@ -2828,6 +3259,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 45.5,
+    "end": 48.5,
     "n": 11,
     "transform": "x1"
    },
@@ -2835,6 +3267,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 77.5,
+    "end": 80.5,
     "n": 11,
     "transform": "x1"
    },
@@ -2842,6 +3275,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 108.5,
+    "end": 111.5,
     "n": 6,
     "transform": "x1"
    },
@@ -2849,6 +3283,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 37.5,
+    "end": 39.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -2856,6 +3291,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 57.5,
+    "end": 59.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -2863,6 +3299,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 83.5,
+    "end": 85.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -2870,6 +3307,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 19.5,
+    "end": 21.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -2877,6 +3315,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 21.5,
+    "end": 23.0,
     "n": 6,
     "transform": "x1~"
    }
@@ -2885,6 +3324,11 @@
  {
   "piece": "wtc1f10",
   "voices": 2,
+  "length": 123.5,
+  "voice_entries": [
+   0.0,
+   6.0
+  ],
   "notes": 810,
   "chords_in_voices": 0,
   "subject_notes": 24,
@@ -2908,6 +3352,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 0.0,
+    "end": 6.0,
     "n": 24,
     "transform": "x1"
    },
@@ -2915,6 +3360,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 30.0,
+    "end": 36.0,
     "n": 24,
     "transform": "x1"
    },
@@ -2922,6 +3368,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 63.0,
+    "end": 69.0,
     "n": 24,
     "transform": "x1"
    },
@@ -2929,6 +3376,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 93.0,
+    "end": 99.0,
     "n": 24,
     "transform": "x1"
    },
@@ -2936,6 +3384,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 6.0,
+    "end": 12.0,
     "n": 24,
     "transform": "x1"
    },
@@ -2943,6 +3392,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 36.0,
+    "end": 42.0,
     "n": 24,
     "transform": "x1"
    },
@@ -2950,6 +3400,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 57.0,
+    "end": 63.0,
     "n": 24,
     "transform": "x1"
    },
@@ -2957,6 +3408,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 87.0,
+    "end": 93.0,
     "n": 24,
     "transform": "x1"
    },
@@ -2964,6 +3416,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 6.0,
+    "end": 12.0,
     "n": 17,
     "transform": "x1"
    },
@@ -2971,6 +3424,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 36.0,
+    "end": 42.0,
     "n": 17,
     "transform": "x1"
    },
@@ -2978,6 +3432,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 69.0,
+    "end": 75.0,
     "n": 17,
     "transform": "x1~"
    },
@@ -2985,6 +3440,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 75.0,
+    "end": 81.0,
     "n": 17,
     "transform": "x1~"
    },
@@ -2992,6 +3448,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 12.0,
+    "end": 18.0,
     "n": 17,
     "transform": "x1~"
    },
@@ -2999,6 +3456,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 18.0,
+    "end": 24.0,
     "n": 17,
     "transform": "x1~"
    },
@@ -3006,6 +3464,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 63.0,
+    "end": 69.0,
     "n": 17,
     "transform": "x1"
    },
@@ -3013,6 +3472,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 87.0,
+    "end": 92.25,
     "n": 14,
     "transform": "x1"
    },
@@ -3020,6 +3480,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 30.0,
+    "end": 35.25,
     "n": 14,
     "transform": "x1"
    },
@@ -3027,6 +3488,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 93.0,
+    "end": 98.25,
     "n": 14,
     "transform": "x1"
    },
@@ -3034,6 +3496,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 114.0,
+    "end": 117.25,
     "n": 13,
     "transform": "x1"
    },
@@ -3041,6 +3504,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 98.25,
+    "end": 99.5,
     "n": 5,
     "transform": "x1~"
    }
@@ -3049,6 +3513,12 @@
  {
   "piece": "wtc1f11",
   "voices": 3,
+  "length": 108.0,
+  "voice_entries": [
+   0.0,
+   6.0,
+   13.5
+  ],
   "notes": 670,
   "chords_in_voices": 0,
   "subject_notes": 18,
@@ -3072,6 +3542,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 0.0,
+    "end": 6.0,
     "n": 18,
     "transform": "x1"
    },
@@ -3079,6 +3550,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 31.5,
+    "end": 37.5,
     "n": 18,
     "transform": "x1~"
    },
@@ -3086,6 +3558,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 6.0,
+    "end": 12.0,
     "n": 18,
     "transform": "x1~"
    },
@@ -3093,6 +3566,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 25.5,
+    "end": 31.5,
     "n": 18,
     "transform": "x1"
    },
@@ -3100,6 +3574,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 13.5,
+    "end": 19.5,
     "n": 18,
     "transform": "x1"
    },
@@ -3107,6 +3582,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 6.0,
+    "end": 12.0,
     "n": 17,
     "transform": "x1"
    },
@@ -3114,6 +3590,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 31.5,
+    "end": 36.75,
     "n": 16,
     "transform": "x1"
    },
@@ -3121,6 +3598,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 19.5,
+    "end": 25.0,
     "n": 16,
     "transform": "x1"
    },
@@ -3128,6 +3606,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 40.5,
+    "end": 47.5,
     "n": 15,
     "transform": "x1"
    },
@@ -3135,6 +3614,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 57.0,
+    "end": 63.0,
     "n": 15,
     "transform": "x1"
    },
@@ -3142,6 +3622,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 54.0,
+    "end": 59.25,
     "n": 15,
     "transform": "x1"
    },
@@ -3149,6 +3630,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 37.5,
+    "end": 42.75,
     "n": 15,
     "transform": "x1"
    },
@@ -3156,6 +3638,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 60.0,
+    "end": 65.75,
     "n": 15,
     "transform": "x1"
    },
@@ -3163,6 +3646,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 72.0,
+    "end": 75.75,
     "n": 10,
     "transform": "x1"
    },
@@ -3170,6 +3654,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 75.25,
+    "end": 78.75,
     "n": 10,
     "transform": "x1"
    },
@@ -3177,6 +3662,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 69.0,
+    "end": 72.75,
     "n": 10,
     "transform": "x1"
    },
@@ -3184,6 +3670,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 52.25,
+    "end": 54.5,
     "n": 9,
     "transform": "INV+x1~"
    },
@@ -3191,6 +3678,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 48.5,
+    "end": 51.75,
     "n": 6,
     "transform": "x1~"
    },
@@ -3198,6 +3686,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 69.5,
+    "end": 71.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -3205,6 +3694,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 25.75,
+    "end": 27.0,
     "n": 5,
     "transform": "DIM~"
    },
@@ -3212,6 +3702,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 65.75,
+    "end": 67.0,
     "n": 5,
     "transform": "INV+DIM~"
    },
@@ -3219,6 +3710,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 76.0,
+    "end": 77.25,
     "n": 5,
     "transform": "DIM~"
    },
@@ -3226,6 +3718,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 81.25,
+    "end": 83.25,
     "n": 5,
     "transform": "x1~"
    },
@@ -3233,6 +3726,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 83.5,
+    "end": 86.0,
     "n": 5,
     "transform": "DIM~"
    },
@@ -3240,6 +3734,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 86.5,
+    "end": 89.0,
     "n": 5,
     "transform": "DIM~"
    },
@@ -3247,6 +3742,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 94.0,
+    "end": 97.0,
     "n": 5,
     "transform": "DIM~"
    },
@@ -3254,6 +3750,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 98.5,
+    "end": 100.0,
     "n": 5,
     "transform": "DIM~"
    },
@@ -3261,6 +3758,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 12.25,
+    "end": 14.25,
     "n": 5,
     "transform": "x1"
    },
@@ -3268,6 +3766,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 63.25,
+    "end": 66.75,
     "n": 5,
     "transform": "x1~"
    },
@@ -3275,6 +3774,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 79.0,
+    "end": 80.25,
     "n": 5,
     "transform": "DIM~"
    },
@@ -3282,6 +3782,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 85.0,
+    "end": 87.75,
     "n": 5,
     "transform": "DIM~"
    },
@@ -3289,6 +3790,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 95.5,
+    "end": 96.75,
     "n": 5,
     "transform": "DIM~"
    },
@@ -3296,6 +3798,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 97.0,
+    "end": 98.5,
     "n": 5,
     "transform": "DIM~"
    },
@@ -3303,6 +3806,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 98.75,
+    "end": 100.0,
     "n": 5,
     "transform": "INV+DIM~"
    },
@@ -3310,6 +3814,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 100.0,
+    "end": 101.25,
     "n": 5,
     "transform": "DIM~"
    },
@@ -3317,6 +3822,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 73.0,
+    "end": 74.5,
     "n": 5,
     "transform": "DIM~"
    },
@@ -3324,6 +3830,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 91.25,
+    "end": 92.5,
     "n": 5,
     "transform": "DIM~"
    },
@@ -3331,6 +3838,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 12.5,
+    "end": 13.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -3338,6 +3846,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 54.75,
+    "end": 56.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -3345,6 +3854,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 14.25,
+    "end": 15.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -3352,6 +3862,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 39.25,
+    "end": 40.5,
     "n": 5,
     "transform": "x1~"
    },
@@ -3359,6 +3870,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 60.5,
+    "end": 63.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -3366,6 +3878,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 67.0,
+    "end": 68.75,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -3373,6 +3886,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 71.0,
+    "end": 72.25,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -3380,6 +3894,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 72.5,
+    "end": 75.25,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -3387,6 +3902,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 51.0,
+    "end": 60.0,
     "n": 5,
     "transform": "AUG~"
    },
@@ -3394,6 +3910,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 75.5,
+    "end": 82.0,
     "n": 5,
     "transform": "AUG~"
    }
@@ -3402,6 +3919,13 @@
  {
   "piece": "wtc1f12",
   "voices": 4,
+  "length": 232.0,
+  "voice_entries": [
+   1.0,
+   13.0,
+   25.0,
+   49.0
+  ],
   "notes": 1319,
   "chords_in_voices": 0,
   "subject_notes": 13,
@@ -3425,6 +3949,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 13.0,
+    "end": 25.0,
     "n": 25,
     "transform": "x1"
    },
@@ -3432,6 +3957,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 25.0,
+    "end": 36.5,
     "n": 24,
     "transform": "x1~"
    },
@@ -3439,6 +3965,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 49.0,
+    "end": 61.0,
     "n": 24,
     "transform": "x1~"
    },
@@ -3446,6 +3973,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 1.0,
+    "end": 13.0,
     "n": 13,
     "transform": "x1"
    },
@@ -3453,6 +3981,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 13.0,
+    "end": 25.0,
     "n": 13,
     "transform": "x1~"
    },
@@ -3460,6 +3989,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 73.0,
+    "end": 85.0,
     "n": 11,
     "transform": "x1"
    },
@@ -3467,6 +3997,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 159.0,
+    "end": 171.0,
     "n": 11,
     "transform": "x1"
    },
@@ -3474,6 +4005,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 133.0,
+    "end": 145.0,
     "n": 11,
     "transform": "x1"
    },
@@ -3481,6 +4013,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 25.0,
+    "end": 37.0,
     "n": 11,
     "transform": "x1"
    },
@@ -3488,6 +4021,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 107.0,
+    "end": 118.5,
     "n": 11,
     "transform": "x1"
    },
@@ -3495,6 +4029,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 209.0,
+    "end": 221.25,
     "n": 11,
     "transform": "x1"
    },
@@ -3502,6 +4037,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 49.0,
+    "end": 60.5,
     "n": 10,
     "transform": "x1"
    },
@@ -3509,6 +4045,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 185.0,
+    "end": 196.5,
     "n": 10,
     "transform": "x1"
    }
@@ -3517,6 +4054,12 @@
  {
   "piece": "wtc1f13",
   "voices": 3,
+  "length": 140.0,
+  "voice_entries": [
+   0.5,
+   8.5,
+   16.5
+  ],
   "notes": 858,
   "chords_in_voices": 0,
   "subject_notes": 16,
@@ -3540,6 +4083,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 8.5,
+    "end": 18.5,
     "n": 25,
     "transform": "x1"
    },
@@ -3547,6 +4091,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 16.5,
+    "end": 25.0,
     "n": 25,
     "transform": "x1~"
    },
@@ -3554,6 +4099,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 42.5,
+    "end": 47.75,
     "n": 19,
     "transform": "x1~"
    },
@@ -3561,6 +4107,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 0.5,
+    "end": 8.5,
     "n": 16,
     "transform": "x1"
    },
@@ -3568,6 +4115,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 122.5,
+    "end": 130.25,
     "n": 16,
     "transform": "x1"
    },
@@ -3575,6 +4123,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 8.5,
+    "end": 16.5,
     "n": 16,
     "transform": "x1~"
    },
@@ -3582,6 +4131,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 56.5,
+    "end": 64.25,
     "n": 16,
     "transform": "x1"
    },
@@ -3589,6 +4139,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 108.5,
+    "end": 116.5,
     "n": 16,
     "transform": "x1"
    },
@@ -3596,6 +4147,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 16.5,
+    "end": 24.0,
     "n": 15,
     "transform": "x1"
    },
@@ -3603,6 +4155,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 76.5,
+    "end": 84.0,
     "n": 15,
     "transform": "x1"
    },
@@ -3610,6 +4163,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 76.5,
+    "end": 79.0,
     "n": 9,
     "transform": "x1~"
    },
@@ -3617,6 +4171,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 59.5,
+    "end": 61.75,
     "n": 9,
     "transform": "x1~"
    },
@@ -3624,6 +4179,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 125.5,
+    "end": 127.75,
     "n": 9,
     "transform": "x1~"
    },
@@ -3631,6 +4187,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 42.5,
+    "end": 46.0,
     "n": 7,
     "transform": "x1"
    },
@@ -3638,6 +4195,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 106.5,
+    "end": 108.5,
     "n": 7,
     "transform": "x1~"
    },
@@ -3645,6 +4203,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 53.5,
+    "end": 54.75,
     "n": 5,
     "transform": "DIM~"
    },
@@ -3652,6 +4211,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 119.5,
+    "end": 120.75,
     "n": 5,
     "transform": "DIM~"
    },
@@ -3659,6 +4219,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 118.5,
+    "end": 121.0,
     "n": 5,
     "transform": "AUG~"
    },
@@ -3666,6 +4227,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 52.5,
+    "end": 55.0,
     "n": 5,
     "transform": "AUG~"
    },
@@ -3673,6 +4235,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 38.5,
+    "end": 39.75,
     "n": 5,
     "transform": "x1~"
    },
@@ -3680,6 +4243,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 49.5,
+    "end": 50.75,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -3687,6 +4251,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 55.75,
+    "end": 57.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -3694,6 +4259,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 121.75,
+    "end": 123.0,
     "n": 5,
     "transform": "INV+x1~"
    }
@@ -3702,6 +4268,13 @@
  {
   "piece": "wtc1f14",
   "voices": 4,
+  "length": 240.0,
+  "voice_entries": [
+   1.0,
+   19.0,
+   43.0,
+   85.0
+  ],
   "notes": 811,
   "chords_in_voices": 0,
   "subject_notes": 18,
@@ -3725,6 +4298,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 21.5,
+    "end": 39.0,
     "n": 23,
     "transform": "x1"
    },
@@ -3732,6 +4306,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 147.5,
+    "end": 165.0,
     "n": 23,
     "transform": "x1"
    },
@@ -3739,6 +4314,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 87.5,
+    "end": 105.0,
     "n": 23,
     "transform": "x1"
    },
@@ -3746,6 +4322,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 45.5,
+    "end": 63.0,
     "n": 20,
     "transform": "x1"
    },
@@ -3753,6 +4330,7 @@
     "material": "CS1",
     "voice": 3,
     "onset": 171.75,
+    "end": 186.5,
     "n": 20,
     "transform": "x1~"
    },
@@ -3760,6 +4338,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 1.0,
+    "end": 21.0,
     "n": 18,
     "transform": "x1"
    },
@@ -3767,6 +4346,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 169.0,
+    "end": 187.0,
     "n": 18,
     "transform": "x1"
    },
@@ -3774,6 +4354,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 19.0,
+    "end": 36.5,
     "n": 18,
     "transform": "x1"
    },
@@ -3781,6 +4362,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 118.0,
+    "end": 137.0,
     "n": 18,
     "transform": "INV+x1"
    },
@@ -3788,6 +4370,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 43.0,
+    "end": 61.5,
     "n": 18,
     "transform": "x1"
    },
@@ -3795,6 +4378,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 187.0,
+    "end": 207.5,
     "n": 18,
     "transform": "INV+x1"
    },
@@ -3802,6 +4386,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 85.0,
+    "end": 102.5,
     "n": 18,
     "transform": "x1"
    },
@@ -3809,6 +4394,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 217.0,
+    "end": 240.0,
     "n": 18,
     "transform": "x1"
    },
@@ -3816,6 +4402,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 219.5,
+    "end": 229.0,
     "n": 14,
     "transform": "x1~"
    },
@@ -3823,6 +4410,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 219.5,
+    "end": 226.0,
     "n": 12,
     "transform": "x1~"
    },
@@ -3830,6 +4418,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 84.5,
+    "end": 88.0,
     "n": 7,
     "transform": "x1~"
    },
@@ -3837,6 +4426,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 204.5,
+    "end": 210.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -3844,6 +4434,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 210.5,
+    "end": 217.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -3851,6 +4442,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 231.5,
+    "end": 240.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -3858,6 +4450,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 42.5,
+    "end": 45.5,
     "n": 6,
     "transform": "x1"
    },
@@ -3865,6 +4458,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 111.5,
+    "end": 114.5,
     "n": 6,
     "transform": "x1"
    },
@@ -3872,6 +4466,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 114.5,
+    "end": 118.0,
     "n": 6,
     "transform": "x1"
    },
@@ -3879,6 +4474,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 204.5,
+    "end": 210.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -3886,6 +4482,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 210.5,
+    "end": 217.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -3893,6 +4490,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 84.5,
+    "end": 87.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -3900,6 +4498,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 108.5,
+    "end": 111.5,
     "n": 6,
     "transform": "x1"
    },
@@ -3907,6 +4506,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 111.5,
+    "end": 115.0,
     "n": 6,
     "transform": "x1"
    },
@@ -3914,6 +4514,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 123.5,
+    "end": 126.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -3921,6 +4522,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 126.5,
+    "end": 129.5,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -3928,6 +4530,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 129.5,
+    "end": 132.5,
     "n": 6,
     "transform": "x1"
    },
@@ -3935,6 +4538,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 135.5,
+    "end": 138.5,
     "n": 6,
     "transform": "x1"
    },
@@ -3942,6 +4546,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 141.5,
+    "end": 145.0,
     "n": 6,
     "transform": "x1"
    },
@@ -3949,6 +4554,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 207.5,
+    "end": 213.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -3956,6 +4562,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 213.5,
+    "end": 219.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -3963,6 +4570,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 108.5,
+    "end": 112.0,
     "n": 6,
     "transform": "x1"
    },
@@ -3970,6 +4578,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 168.5,
+    "end": 171.5,
     "n": 6,
     "transform": "x1"
    },
@@ -3977,6 +4586,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 186.5,
+    "end": 189.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -3984,6 +4594,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 189.5,
+    "end": 193.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -3991,6 +4602,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 201.5,
+    "end": 207.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -3998,6 +4610,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 207.5,
+    "end": 213.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -4005,6 +4618,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 213.5,
+    "end": 216.5,
     "n": 6,
     "transform": "x1~"
    }
@@ -4013,6 +4627,12 @@
  {
   "piece": "wtc1f15",
   "voices": 3,
+  "length": 258.0,
+  "voice_entries": [
+   0.0,
+   12.0,
+   30.0
+  ],
   "notes": 1698,
   "chords_in_voices": 0,
   "subject_notes": 30,
@@ -4036,6 +4656,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 12.0,
+    "end": 24.25,
     "n": 35,
     "transform": "x1"
    },
@@ -4043,6 +4664,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 0.0,
+    "end": 12.0,
     "n": 30,
     "transform": "x1"
    },
@@ -4050,6 +4672,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 111.0,
+    "end": 123.0,
     "n": 30,
     "transform": "x1"
    },
@@ -4057,6 +4680,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 12.0,
+    "end": 24.0,
     "n": 30,
     "transform": "x1"
    },
@@ -4064,6 +4688,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 30.0,
+    "end": 42.0,
     "n": 30,
     "transform": "x1"
    },
@@ -4071,6 +4696,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 69.0,
+    "end": 78.25,
     "n": 30,
     "transform": "INV+x1"
    },
@@ -4078,6 +4704,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 205.5,
+    "end": 216.0,
     "n": 25,
     "transform": "INV+x1"
    },
@@ -4085,6 +4712,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 69.0,
+    "end": 78.5,
     "n": 21,
     "transform": "INV+x1"
    },
@@ -4092,6 +4720,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 57.0,
+    "end": 66.5,
     "n": 21,
     "transform": "INV+x1"
    },
@@ -4099,6 +4728,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 126.0,
+    "end": 135.25,
     "n": 21,
     "transform": "INV+x1"
    },
@@ -4106,6 +4736,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 81.0,
+    "end": 90.25,
     "n": 21,
     "transform": "INV+x1"
    },
@@ -4113,6 +4744,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 150.25,
+    "end": 154.5,
     "n": 13,
     "transform": "x1"
    },
@@ -4120,6 +4752,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 234.0,
+    "end": 238.5,
     "n": 13,
     "transform": "x1"
    },
@@ -4127,6 +4760,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 178.5,
+    "end": 183.0,
     "n": 13,
     "transform": "x1"
    },
@@ -4134,6 +4768,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 228.0,
+    "end": 232.5,
     "n": 13,
     "transform": "INV+x1"
    },
@@ -4141,6 +4776,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 234.0,
+    "end": 239.0,
     "n": 13,
     "transform": "x1~"
    },
@@ -4148,6 +4784,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 153.0,
+    "end": 157.5,
     "n": 13,
     "transform": "x1"
    },
@@ -4155,6 +4792,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 181.5,
+    "end": 185.0,
     "n": 11,
     "transform": "x1"
    },
@@ -4162,6 +4800,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 231.25,
+    "end": 234.5,
     "n": 11,
     "transform": "INV+x1"
    },
@@ -4169,6 +4808,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 124.5,
+    "end": 128.5,
     "n": 8,
     "transform": "INV+x1"
    },
@@ -4176,6 +4816,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 57.0,
+    "end": 60.25,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -4183,6 +4824,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 101.25,
+    "end": 102.75,
     "n": 6,
     "transform": "x1~"
    },
@@ -4190,6 +4832,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 158.25,
+    "end": 159.75,
     "n": 6,
     "transform": "x1~"
    },
@@ -4197,6 +4840,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 162.75,
+    "end": 163.75,
     "n": 6,
     "transform": "DIM~"
    },
@@ -4204,6 +4848,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 164.25,
+    "end": 171.25,
     "n": 6,
     "transform": "DIM~"
    },
@@ -4211,6 +4856,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 224.25,
+    "end": 225.75,
     "n": 6,
     "transform": "x1~"
    },
@@ -4218,6 +4864,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 78.25,
+    "end": 79.75,
     "n": 6,
     "transform": "x1~"
    },
@@ -4225,6 +4872,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 136.0,
+    "end": 137.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -4232,6 +4880,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 172.0,
+    "end": 173.5,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -4239,6 +4888,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 200.5,
+    "end": 202.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -4246,6 +4896,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 44.25,
+    "end": 45.75,
     "n": 6,
     "transform": "x1~"
    },
@@ -4253,6 +4904,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 66.25,
+    "end": 67.75,
     "n": 6,
     "transform": "x1~"
    },
@@ -4260,6 +4912,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 104.25,
+    "end": 105.75,
     "n": 6,
     "transform": "x1~"
    },
@@ -4267,6 +4920,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 107.25,
+    "end": 108.75,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -4274,6 +4928,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 162.75,
+    "end": 163.75,
     "n": 6,
     "transform": "DIM~"
    },
@@ -4281,6 +4936,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 164.25,
+    "end": 165.5,
     "n": 6,
     "transform": "DIM~"
    },
@@ -4288,6 +4944,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 175.0,
+    "end": 176.5,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -4295,6 +4952,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 218.25,
+    "end": 219.75,
     "n": 6,
     "transform": "x1~"
    },
@@ -4302,6 +4960,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 235.5,
+    "end": 237.25,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -4309,6 +4968,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 85.0,
+    "end": 86.5,
     "n": 6,
     "transform": "INV+DIM~"
    },
@@ -4316,6 +4976,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 86.5,
+    "end": 88.0,
     "n": 6,
     "transform": "INV+DIM~"
    },
@@ -4323,6 +4984,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 88.0,
+    "end": 89.5,
     "n": 6,
     "transform": "INV+DIM~"
    },
@@ -4330,6 +4992,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 130.0,
+    "end": 131.5,
     "n": 6,
     "transform": "INV+DIM~"
    },
@@ -4337,6 +5000,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 131.5,
+    "end": 133.0,
     "n": 6,
     "transform": "INV+DIM~"
    },
@@ -4344,6 +5008,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 133.0,
+    "end": 134.5,
     "n": 6,
     "transform": "INV+DIM~"
    },
@@ -4351,6 +5016,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 35.5,
+    "end": 37.0,
     "n": 6,
     "transform": "DIM~"
    },
@@ -4358,6 +5024,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 37.0,
+    "end": 38.5,
     "n": 6,
     "transform": "DIM~"
    },
@@ -4365,6 +5032,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 118.0,
+    "end": 119.5,
     "n": 6,
     "transform": "DIM~"
    },
@@ -4372,6 +5040,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 209.5,
+    "end": 211.0,
     "n": 6,
     "transform": "INV+DIM~"
    },
@@ -4379,6 +5048,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 211.0,
+    "end": 212.5,
     "n": 6,
     "transform": "INV+DIM~"
    },
@@ -4386,6 +5056,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 212.5,
+    "end": 214.0,
     "n": 6,
     "transform": "INV+DIM~"
    },
@@ -4393,6 +5064,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 61.0,
+    "end": 62.5,
     "n": 6,
     "transform": "INV+DIM~"
    },
@@ -4400,6 +5072,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 62.5,
+    "end": 64.0,
     "n": 6,
     "transform": "INV+DIM~"
    },
@@ -4407,6 +5080,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 64.0,
+    "end": 65.5,
     "n": 6,
     "transform": "INV+DIM~"
    },
@@ -4414,6 +5088,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 176.5,
+    "end": 177.75,
     "n": 5,
     "transform": "x1~"
    },
@@ -4421,6 +5096,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 214.75,
+    "end": 216.0,
     "n": 5,
     "transform": "x1"
    },
@@ -4428,6 +5104,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 68.0,
+    "end": 69.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -4435,6 +5112,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 245.25,
+    "end": 246.375,
     "n": 5,
     "transform": "INV+DIM~"
    }
@@ -4443,6 +5121,13 @@
  {
   "piece": "wtc1f16",
   "voices": 4,
+  "length": 136.0,
+  "voice_entries": [
+   0.5,
+   6.5,
+   16.5,
+   22.5
+  ],
   "notes": 754,
   "chords_in_voices": 0,
   "subject_notes": 11,
@@ -4466,6 +5151,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 0.5,
+    "end": 7.0,
     "n": 11,
     "transform": "x1"
    },
@@ -4473,6 +5159,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 44.5,
+    "end": 50.25,
     "n": 11,
     "transform": "x1"
    },
@@ -4480,6 +5167,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 122.5,
+    "end": 129.5,
     "n": 11,
     "transform": "x1"
    },
@@ -4487,6 +5175,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 6.5,
+    "end": 12.5,
     "n": 11,
     "transform": "x1~"
    },
@@ -4494,6 +5183,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 56.5,
+    "end": 62.5,
     "n": 11,
     "transform": "x1"
    },
@@ -4501,6 +5191,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 82.5,
+    "end": 88.25,
     "n": 11,
     "transform": "x1"
    },
@@ -4508,6 +5199,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 16.5,
+    "end": 23.0,
     "n": 11,
     "transform": "x1"
    },
@@ -4515,6 +5207,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 50.5,
+    "end": 57.0,
     "n": 11,
     "transform": "x1~"
    },
@@ -4522,6 +5215,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 64.5,
+    "end": 70.5,
     "n": 11,
     "transform": "x1"
    },
@@ -4529,6 +5223,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 76.5,
+    "end": 82.5,
     "n": 11,
     "transform": "x1"
    },
@@ -4536,6 +5231,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 22.5,
+    "end": 28.5,
     "n": 11,
     "transform": "x1~"
    },
@@ -4543,6 +5239,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 110.5,
+    "end": 118.5,
     "n": 11,
     "transform": "x1"
    },
@@ -4550,6 +5247,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 128.5,
+    "end": 136.0,
     "n": 11,
     "transform": "x1"
    },
@@ -4557,6 +5255,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 7.0,
+    "end": 13.5,
     "n": 11,
     "transform": "x1"
    },
@@ -4564,6 +5263,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 78.0,
+    "end": 83.0,
     "n": 11,
     "transform": "x1"
    },
@@ -4571,6 +5271,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 18.0,
+    "end": 23.0,
     "n": 11,
     "transform": "x1~"
    },
@@ -4578,6 +5279,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 66.0,
+    "end": 70.5,
     "n": 11,
     "transform": "x1"
    },
@@ -4585,6 +5287,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 23.0,
+    "end": 32.0,
     "n": 11,
     "transform": "x1"
    },
@@ -4592,6 +5295,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 57.0,
+    "end": 64.5,
     "n": 11,
     "transform": "x1"
    },
@@ -4599,6 +5303,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 84.25,
+    "end": 89.25,
     "n": 11,
     "transform": "x1~"
    },
@@ -4606,6 +5311,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 124.0,
+    "end": 128.5,
     "n": 11,
     "transform": "x1~"
    },
@@ -4613,6 +5319,7 @@
     "material": "CS1",
     "voice": 3,
     "onset": 44.0,
+    "end": 52.5,
     "n": 11,
     "transform": "x1~"
    },
@@ -4620,6 +5327,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 108.5,
+    "end": 114.0,
     "n": 10,
     "transform": "x1"
    },
@@ -4627,6 +5335,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 108.0,
+    "end": 112.5,
     "n": 7,
     "transform": "x1~"
    },
@@ -4634,6 +5343,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 89.0,
+    "end": 92.25,
     "n": 7,
     "transform": "x1~"
    },
@@ -4641,6 +5351,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 124.0,
+    "end": 126.5,
     "n": 7,
     "transform": "x1~"
    },
@@ -4648,6 +5359,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 116.0,
+    "end": 120.5,
     "n": 7,
     "transform": "x1~"
    },
@@ -4655,6 +5367,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 50.25,
+    "end": 52.0,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -4662,6 +5375,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 56.5,
+    "end": 59.0,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -4669,6 +5383,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 69.0,
+    "end": 72.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -4676,6 +5391,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 72.0,
+    "end": 76.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -4683,6 +5399,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 76.0,
+    "end": 78.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -4690,6 +5407,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 91.0,
+    "end": 94.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -4697,6 +5415,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 114.0,
+    "end": 118.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -4704,6 +5423,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 14.0,
+    "end": 16.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -4711,6 +5431,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 35.0,
+    "end": 38.0,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -4718,6 +5439,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 74.0,
+    "end": 76.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -4725,6 +5447,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 114.0,
+    "end": 120.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -4732,6 +5455,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 32.0,
+    "end": 34.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -4739,6 +5463,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 34.0,
+    "end": 36.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -4746,6 +5471,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 74.0,
+    "end": 76.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -4753,6 +5479,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 94.0,
+    "end": 96.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -4760,6 +5487,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 96.0,
+    "end": 98.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -4767,6 +5495,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 98.0,
+    "end": 100.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -4774,6 +5503,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 100.0,
+    "end": 102.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -4781,6 +5511,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 102.0,
+    "end": 104.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -4788,6 +5519,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 104.0,
+    "end": 106.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -4795,6 +5527,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 122.0,
+    "end": 124.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -4802,6 +5535,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 30.0,
+    "end": 32.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -4809,6 +5543,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 36.25,
+    "end": 38.0,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -4816,6 +5551,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 85.0,
+    "end": 86.75,
     "n": 5,
     "transform": "INV+x1~"
    }
@@ -4824,6 +5560,13 @@
  {
   "piece": "wtc1f17",
   "voices": 4,
+  "length": 140.0,
+  "voice_entries": [
+   1.0,
+   5.0,
+   17.0,
+   21.0
+  ],
   "notes": 891,
   "chords_in_voices": 0,
   "subject_notes": 7,
@@ -4847,6 +5590,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 5.25,
+    "end": 11.0,
     "n": 16,
     "transform": "x1"
    },
@@ -4854,6 +5598,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 13.25,
+    "end": 18.25,
     "n": 16,
     "transform": "x1~"
    },
@@ -4861,6 +5606,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 1.0,
+    "end": 5.25,
     "n": 7,
     "transform": "x1"
    },
@@ -4868,6 +5614,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 37.0,
+    "end": 41.0,
     "n": 7,
     "transform": "x1"
    },
@@ -4875,6 +5622,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 65.0,
+    "end": 69.0,
     "n": 7,
     "transform": "x1"
    },
@@ -4882,6 +5630,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 109.0,
+    "end": 112.25,
     "n": 7,
     "transform": "x1~"
    },
@@ -4889,6 +5638,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 105.0,
+    "end": 109.0,
     "n": 7,
     "transform": "x1"
    },
@@ -4896,6 +5646,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 17.0,
+    "end": 23.0,
     "n": 7,
     "transform": "x1"
    },
@@ -4903,6 +5654,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 117.0,
+    "end": 121.0,
     "n": 7,
     "transform": "x1~"
    },
@@ -4910,6 +5662,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 131.0,
+    "end": 134.5,
     "n": 7,
     "transform": "x1"
    },
@@ -4917,6 +5670,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 49.0,
+    "end": 52.5,
     "n": 7,
     "transform": "x1"
    },
@@ -4924,6 +5678,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 69.0,
+    "end": 73.0,
     "n": 7,
     "transform": "x1~"
    },
@@ -4931,6 +5686,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 113.0,
+    "end": 117.0,
     "n": 7,
     "transform": "x1~"
    },
@@ -4938,6 +5694,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 90.25,
+    "end": 92.0,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -4945,6 +5702,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 94.25,
+    "end": 96.0,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -4952,6 +5710,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 96.25,
+    "end": 98.0,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -4959,6 +5718,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 98.25,
+    "end": 100.0,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -4966,6 +5726,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 100.25,
+    "end": 102.0,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -4973,6 +5734,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 19.25,
+    "end": 21.0,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -4980,6 +5742,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 30.25,
+    "end": 32.0,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -4987,6 +5750,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 34.25,
+    "end": 36.0,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -4994,6 +5758,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 68.25,
+    "end": 70.0,
     "n": 7,
     "transform": "INV+x1~"
    },
@@ -5001,6 +5766,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 133.75,
+    "end": 135.5,
     "n": 7,
     "transform": "INV+x1~"
    },
@@ -5008,6 +5774,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 47.25,
+    "end": 49.0,
     "n": 7,
     "transform": "INV+x1~"
    },
@@ -5015,6 +5782,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 62.75,
+    "end": 64.5,
     "n": 7,
     "transform": "INV+x1~"
    },
@@ -5022,6 +5790,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 64.75,
+    "end": 66.5,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -5029,6 +5798,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 26.25,
+    "end": 28.0,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -5036,6 +5806,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 58.25,
+    "end": 60.0,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -5043,6 +5814,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 86.25,
+    "end": 88.0,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -5050,6 +5822,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 15.25,
+    "end": 16.75,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5057,6 +5830,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 16.75,
+    "end": 19.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -5064,6 +5838,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 49.5,
+    "end": 51.5,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5071,6 +5846,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 51.75,
+    "end": 53.5,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5078,6 +5854,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 79.0,
+    "end": 81.25,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5085,6 +5862,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 82.0,
+    "end": 83.5,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5092,6 +5870,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 83.75,
+    "end": 85.25,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5099,6 +5878,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 92.0,
+    "end": 93.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -5106,6 +5886,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 102.0,
+    "end": 103.5,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -5113,6 +5894,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 103.75,
+    "end": 105.5,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -5120,6 +5902,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 112.25,
+    "end": 113.75,
     "n": 6,
     "transform": "x1~"
    },
@@ -5127,6 +5910,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 114.5,
+    "end": 116.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5134,6 +5918,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 23.75,
+    "end": 26.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -5141,6 +5926,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 53.5,
+    "end": 55.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5148,6 +5934,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 55.25,
+    "end": 56.75,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5155,6 +5942,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 116.0,
+    "end": 118.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -5162,6 +5950,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 118.5,
+    "end": 120.0,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -5169,6 +5958,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 120.25,
+    "end": 121.75,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5176,6 +5966,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 122.25,
+    "end": 123.75,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5183,6 +5974,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 124.75,
+    "end": 126.25,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5190,6 +5982,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 126.5,
+    "end": 128.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -5197,6 +5990,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 130.0,
+    "end": 132.5,
     "n": 6,
     "transform": "x1"
    },
@@ -5204,6 +5998,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 41.5,
+    "end": 43.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5211,6 +6006,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 43.25,
+    "end": 44.75,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5218,6 +6014,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 45.25,
+    "end": 46.75,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5225,6 +6022,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 60.0,
+    "end": 62.5,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5232,6 +6030,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 66.5,
+    "end": 68.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5239,6 +6038,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 36.0,
+    "end": 37.75,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5246,6 +6046,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 73.5,
+    "end": 75.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5253,6 +6054,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 75.25,
+    "end": 76.75,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5260,6 +6062,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 77.25,
+    "end": 78.75,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5267,6 +6070,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 136.25,
+    "end": 137.75,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -5274,6 +6078,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 21.0,
+    "end": 23.25,
     "n": 5,
     "transform": "x1~"
    },
@@ -5281,6 +6086,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 40.0,
+    "end": 41.5,
     "n": 5,
     "transform": "x1"
    },
@@ -5288,6 +6094,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 48.0,
+    "end": 51.0,
     "n": 5,
     "transform": "AUG~"
    },
@@ -5295,6 +6102,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 60.0,
+    "end": 62.5,
     "n": 5,
     "transform": "x1~"
    },
@@ -5302,6 +6110,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 109.0,
+    "end": 112.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -5309,6 +6118,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 128.0,
+    "end": 129.5,
     "n": 5,
     "transform": "x1~"
    },
@@ -5316,6 +6126,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 26.0,
+    "end": 30.5,
     "n": 5,
     "transform": "x1~"
    },
@@ -5323,6 +6134,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 36.0,
+    "end": 40.25,
     "n": 5,
     "transform": "x1~"
    },
@@ -5330,6 +6142,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 52.0,
+    "end": 55.0,
     "n": 5,
     "transform": "x1"
    },
@@ -5337,6 +6150,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 104.0,
+    "end": 107.25,
     "n": 5,
     "transform": "x1~"
    },
@@ -5344,6 +6158,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 30.0,
+    "end": 35.0,
     "n": 5,
     "transform": "x1"
    },
@@ -5351,6 +6166,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 103.0,
+    "end": 106.25,
     "n": 5,
     "transform": "x1"
    }
@@ -5359,6 +6175,13 @@
  {
   "piece": "wtc1f18",
   "voices": 4,
+  "length": 164.0,
+  "voice_entries": [
+   1.0,
+   9.0,
+   17.0,
+   25.0
+  ],
   "notes": 805,
   "chords_in_voices": 0,
   "subject_notes": 16,
@@ -5382,6 +6205,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 1.0,
+    "end": 9.0,
     "n": 16,
     "transform": "x1"
    },
@@ -5389,6 +6213,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 65.0,
+    "end": 73.0,
     "n": 16,
     "transform": "x1"
    },
@@ -5396,6 +6221,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 17.0,
+    "end": 25.0,
     "n": 16,
     "transform": "x1"
    },
@@ -5403,6 +6229,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 57.0,
+    "end": 65.0,
     "n": 16,
     "transform": "x1"
    },
@@ -5410,6 +6237,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 41.0,
+    "end": 49.0,
     "n": 15,
     "transform": "x1~"
    },
@@ -5417,6 +6245,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 9.0,
+    "end": 17.0,
     "n": 15,
     "transform": "x1~"
    },
@@ -5424,6 +6253,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 73.0,
+    "end": 80.5,
     "n": 15,
     "transform": "x1~"
    },
@@ -5431,6 +6261,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 93.0,
+    "end": 100.5,
     "n": 15,
     "transform": "x1"
    },
@@ -5438,6 +6269,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 145.5,
+    "end": 152.5,
     "n": 15,
     "transform": "x1"
    },
@@ -5445,6 +6277,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 25.0,
+    "end": 33.0,
     "n": 15,
     "transform": "x1~"
    },
@@ -5452,6 +6285,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 101.0,
+    "end": 108.5,
     "n": 15,
     "transform": "x1~"
    },
@@ -5459,6 +6293,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 9.0,
+    "end": 17.0,
     "n": 15,
     "transform": "x1"
    },
@@ -5466,6 +6301,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 58.0,
+    "end": 68.0,
     "n": 15,
     "transform": "x1~"
    },
@@ -5473,6 +6309,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 126.0,
+    "end": 132.75,
     "n": 15,
     "transform": "x1~"
    },
@@ -5480,6 +6317,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 41.0,
+    "end": 48.75,
     "n": 15,
     "transform": "x1"
    },
@@ -5487,6 +6325,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 73.0,
+    "end": 81.0,
     "n": 14,
     "transform": "x1"
    },
@@ -5494,6 +6333,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 17.0,
+    "end": 25.0,
     "n": 14,
     "transform": "x1"
    },
@@ -5501,6 +6341,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 25.0,
+    "end": 32.5,
     "n": 14,
     "transform": "x1"
    },
@@ -5508,6 +6349,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 51.0,
+    "end": 54.5,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -5515,6 +6357,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 115.5,
+    "end": 118.5,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -5522,6 +6365,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 119.0,
+    "end": 122.5,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -5529,6 +6373,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 146.5,
+    "end": 149.5,
     "n": 7,
     "transform": "x1"
    },
@@ -5536,6 +6381,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 93.5,
+    "end": 95.5,
     "n": 5,
     "transform": "x1"
    },
@@ -5543,6 +6389,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 125.0,
+    "end": 127.5,
     "n": 5,
     "transform": "x1"
    },
@@ -5550,6 +6397,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 40.5,
+    "end": 42.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -5557,6 +6405,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 144.75,
+    "end": 146.5,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -5564,6 +6413,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 141.0,
+    "end": 145.5,
     "n": 5,
     "transform": "AUG~"
    },
@@ -5571,6 +6421,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 54.0,
+    "end": 57.75,
     "n": 5,
     "transform": "x1"
    },
@@ -5578,6 +6429,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 122.0,
+    "end": 125.75,
     "n": 5,
     "transform": "x1"
    }
@@ -5586,6 +6438,12 @@
  {
   "piece": "wtc1f19",
   "voices": 3,
+  "length": 241.5,
+  "voice_entries": [
+   0.0,
+   4.5,
+   13.5
+  ],
   "notes": 1182,
   "chords_in_voices": 0,
   "subject_notes": 6,
@@ -5609,6 +6467,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 4.5,
+    "end": 9.0,
     "n": 8,
     "transform": "x1"
    },
@@ -5616,6 +6475,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 40.5,
+    "end": 45.0,
     "n": 8,
     "transform": "x1"
    },
@@ -5623,6 +6483,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 189.0,
+    "end": 193.5,
     "n": 8,
     "transform": "x1"
    },
@@ -5630,6 +6491,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 18.0,
+    "end": 22.5,
     "n": 8,
     "transform": "x1"
    },
@@ -5637,6 +6499,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 103.5,
+    "end": 108.0,
     "n": 8,
     "transform": "x1"
    },
@@ -5644,6 +6507,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 9.0,
+    "end": 13.0,
     "n": 7,
     "transform": "x1"
    },
@@ -5651,6 +6515,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 139.5,
+    "end": 143.5,
     "n": 7,
     "transform": "x1"
    },
@@ -5658,6 +6523,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 27.0,
+    "end": 31.0,
     "n": 7,
     "transform": "x1"
    },
@@ -5665,6 +6531,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 0.0,
+    "end": 4.5,
     "n": 6,
     "transform": "x1"
    },
@@ -5672,6 +6539,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 36.0,
+    "end": 40.5,
     "n": 6,
     "transform": "x1"
    },
@@ -5679,6 +6547,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 88.5,
+    "end": 93.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -5686,6 +6555,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 111.5,
+    "end": 114.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -5693,6 +6563,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 158.0,
+    "end": 162.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -5700,6 +6571,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 187.0,
+    "end": 190.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -5707,6 +6579,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 90.0,
+    "end": 94.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -5714,6 +6587,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 110.5,
+    "end": 113.5,
     "n": 6,
     "transform": "x1"
    },
@@ -5721,6 +6595,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 117.0,
+    "end": 121.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -5728,6 +6603,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 136.0,
+    "end": 139.5,
     "n": 6,
     "transform": "x1"
    },
@@ -5735,6 +6611,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 163.5,
+    "end": 168.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -5742,6 +6619,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 184.5,
+    "end": 189.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -5749,6 +6627,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 13.5,
+    "end": 18.0,
     "n": 6,
     "transform": "x1"
    },
@@ -5756,6 +6635,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 39.0,
+    "end": 42.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -5763,6 +6643,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 54.0,
+    "end": 58.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -5770,6 +6651,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 70.0,
+    "end": 73.0,
     "n": 6,
     "transform": "x1"
    },
@@ -5777,6 +6659,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 99.0,
+    "end": 103.5,
     "n": 6,
     "transform": "x1"
    },
@@ -5784,6 +6667,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 109.5,
+    "end": 114.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -5791,6 +6675,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 144.0,
+    "end": 148.5,
     "n": 6,
     "transform": "x1"
    },
@@ -5798,6 +6683,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 148.5,
+    "end": 151.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -5805,6 +6691,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 173.5,
+    "end": 176.5,
     "n": 6,
     "transform": "x1"
    },
@@ -5812,6 +6699,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 176.5,
+    "end": 179.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -5819,6 +6707,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 186.0,
+    "end": 189.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -5826,6 +6715,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 196.0,
+    "end": 199.0,
     "n": 6,
     "transform": "x1"
    },
@@ -5833,6 +6723,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 121.5,
+    "end": 125.0,
     "n": 6,
     "transform": "x1"
    },
@@ -5840,6 +6731,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 58.5,
+    "end": 62.0,
     "n": 6,
     "transform": "x1"
    },
@@ -5847,6 +6739,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 135.0,
+    "end": 139.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -5854,6 +6747,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 152.5,
+    "end": 153.75,
     "n": 5,
     "transform": "DIM~"
    },
@@ -5861,6 +6755,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 195.5,
+    "end": 199.5,
     "n": 5,
     "transform": "x1"
    },
@@ -5868,6 +6763,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 16.5,
+    "end": 19.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -5875,6 +6771,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 31.5,
+    "end": 35.5,
     "n": 5,
     "transform": "x1~"
    },
@@ -5882,6 +6779,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 4.5,
+    "end": 8.5,
     "n": 5,
     "transform": "x1"
    },
@@ -5889,6 +6787,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 113.5,
+    "end": 116.0,
     "n": 5,
     "transform": "x1"
    },
@@ -5896,6 +6795,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 22.5,
+    "end": 26.5,
     "n": 5,
     "transform": "x1"
    },
@@ -5903,6 +6803,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 63.0,
+    "end": 65.5,
     "n": 5,
     "transform": "x1~"
    }
@@ -5911,6 +6812,13 @@
  {
   "piece": "wtc1f20",
   "voices": 4,
+  "length": 348.0,
+  "voice_entries": [
+   0.5,
+   12.5,
+   28.5,
+   40.5
+  ],
   "notes": 2402,
   "chords_in_voices": 15,
   "subject_notes": 31,
@@ -5934,6 +6842,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 0.5,
+    "end": 13.0,
     "n": 31,
     "transform": "x1"
    },
@@ -5941,6 +6850,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 122.5,
+    "end": 135.5,
     "n": 31,
     "transform": "x1"
    },
@@ -5948,6 +6858,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 144.5,
+    "end": 157.25,
     "n": 31,
     "transform": "x1"
    },
@@ -5955,6 +6866,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 190.5,
+    "end": 202.25,
     "n": 31,
     "transform": "INV+x1"
    },
@@ -5962,6 +6874,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 12.5,
+    "end": 24.5,
     "n": 31,
     "transform": "x1"
    },
@@ -5969,6 +6882,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 106.5,
+    "end": 118.5,
     "n": 31,
     "transform": "x1"
    },
@@ -5976,6 +6890,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 168.5,
+    "end": 180.25,
     "n": 31,
     "transform": "x1"
    },
@@ -5983,6 +6898,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 210.5,
+    "end": 222.25,
     "n": 31,
     "transform": "INV+x1"
    },
@@ -5990,6 +6906,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 28.5,
+    "end": 40.5,
     "n": 31,
     "transform": "x1"
    },
@@ -5997,6 +6914,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 124.5,
+    "end": 136.5,
     "n": 31,
     "transform": "x1"
    },
@@ -6004,6 +6922,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 170.5,
+    "end": 182.5,
     "n": 31,
     "transform": "x1"
    },
@@ -6011,6 +6930,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 208.5,
+    "end": 221.0,
     "n": 31,
     "transform": "INV+x1"
    },
@@ -6018,6 +6938,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 254.5,
+    "end": 266.5,
     "n": 31,
     "transform": "x1"
    },
@@ -6025,6 +6946,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 40.5,
+    "end": 53.0,
     "n": 31,
     "transform": "x1"
    },
@@ -6032,6 +6954,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 108.5,
+    "end": 122.5,
     "n": 31,
     "transform": "x1"
    },
@@ -6039,6 +6962,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 142.5,
+    "end": 155.5,
     "n": 31,
     "transform": "x1"
    },
@@ -6046,6 +6970,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 192.5,
+    "end": 204.25,
     "n": 31,
     "transform": "INV+x1"
    },
@@ -6053,6 +6978,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 256.5,
+    "end": 269.0,
     "n": 31,
     "transform": "x1"
    },
@@ -6060,6 +6986,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 92.5,
+    "end": 103.25,
     "n": 29,
     "transform": "INV+x1"
    },
@@ -6067,6 +6994,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 268.5,
+    "end": 280.0,
     "n": 29,
     "transform": "INV+x1"
    },
@@ -6074,6 +7002,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 54.5,
+    "end": 65.25,
     "n": 29,
     "transform": "INV+x1"
    },
@@ -6081,6 +7010,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 80.5,
+    "end": 91.25,
     "n": 29,
     "transform": "INV+x1"
    },
@@ -6088,6 +7018,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 68.5,
+    "end": 79.25,
     "n": 29,
     "transform": "INV+x1"
    },
@@ -6095,6 +7026,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 290.5,
+    "end": 301.0,
     "n": 27,
     "transform": "INV+x1"
    },
@@ -6102,6 +7034,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 226.5,
+    "end": 237.0,
     "n": 27,
     "transform": "INV+x1"
    },
@@ -6109,6 +7042,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 288.5,
+    "end": 299.5,
     "n": 27,
     "transform": "INV+x1"
    },
@@ -6116,6 +7050,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 13.0,
+    "end": 25.0,
     "n": 27,
     "transform": "x1"
    },
@@ -6123,6 +7058,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 266.5,
+    "end": 275.25,
     "n": 23,
     "transform": "INV+x1"
    },
@@ -6130,6 +7066,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 304.5,
+    "end": 312.0,
     "n": 18,
     "transform": "x1"
    },
@@ -6137,6 +7074,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 300.5,
+    "end": 307.0,
     "n": 17,
     "transform": "INV+x1"
    },
@@ -6144,6 +7082,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 228.5,
+    "end": 234.5,
     "n": 16,
     "transform": "INV+x1"
    },
@@ -6151,6 +7090,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 244.5,
+    "end": 250.0,
     "n": 15,
     "transform": "INV+x1"
    },
@@ -6158,6 +7098,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 330.5,
+    "end": 336.0,
     "n": 15,
     "transform": "INV+x1"
    },
@@ -6165,6 +7106,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 306.5,
+    "end": 311.25,
     "n": 14,
     "transform": "x1"
    },
@@ -6172,6 +7114,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 41.0,
+    "end": 45.5,
     "n": 11,
     "transform": "x1"
    },
@@ -6179,6 +7122,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 66.5,
+    "end": 71.0,
     "n": 10,
     "transform": "INV+x1"
    },
@@ -6186,6 +7130,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 332.5,
+    "end": 336.5,
     "n": 10,
     "transform": "INV+x1"
    },
@@ -6193,6 +7138,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 246.5,
+    "end": 251.0,
     "n": 10,
     "transform": "INV+x1"
    },
@@ -6200,6 +7146,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 126.5,
+    "end": 130.0,
     "n": 9,
     "transform": "x1"
    },
@@ -6207,6 +7154,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 29.0,
+    "end": 32.5,
     "n": 7,
     "transform": "x1"
    },
@@ -6214,6 +7162,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 41.0,
+    "end": 45.0,
     "n": 7,
     "transform": "x1"
    },
@@ -6221,6 +7170,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 109.0,
+    "end": 112.5,
     "n": 7,
     "transform": "x1"
    },
@@ -6228,6 +7178,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 227.0,
+    "end": 231.0,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -6235,6 +7186,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 209.0,
+    "end": 213.5,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -6242,6 +7194,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 227.0,
+    "end": 231.0,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -6249,6 +7202,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 188.5,
+    "end": 191.0,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -6256,6 +7210,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 318.5,
+    "end": 320.75,
     "n": 6,
     "transform": "x1"
    },
@@ -6263,6 +7218,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 140.5,
+    "end": 145.0,
     "n": 6,
     "transform": "x1"
    },
@@ -6270,6 +7226,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 32.5,
+    "end": 35.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -6277,6 +7234,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 82.5,
+    "end": 84.5,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6284,6 +7242,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 185.5,
+    "end": 187.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -6291,6 +7250,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 205.75,
+    "end": 206.75,
     "n": 5,
     "transform": "INV+DIM~"
    },
@@ -6298,6 +7258,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 237.5,
+    "end": 239.25,
     "n": 5,
     "transform": "x1~"
    },
@@ -6305,6 +7266,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 239.5,
+    "end": 241.25,
     "n": 5,
     "transform": "x1~"
    },
@@ -6312,6 +7274,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 241.5,
+    "end": 244.5,
     "n": 5,
     "transform": "x1~"
    },
@@ -6319,6 +7282,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 336.5,
+    "end": 339.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -6326,6 +7290,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 70.5,
+    "end": 72.25,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6333,6 +7298,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 138.5,
+    "end": 142.5,
     "n": 5,
     "transform": "x1"
    },
@@ -6340,6 +7306,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 142.5,
+    "end": 144.5,
     "n": 5,
     "transform": "x1"
    },
@@ -6347,6 +7314,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 192.5,
+    "end": 194.25,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6354,6 +7322,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 194.5,
+    "end": 197.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -6361,6 +7330,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 275.5,
+    "end": 277.5,
     "n": 5,
     "transform": "x1~"
    },
@@ -6368,6 +7338,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 334.5,
+    "end": 336.5,
     "n": 5,
     "transform": "x1"
    },
@@ -6375,6 +7346,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 344.5,
+    "end": 348.0,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6382,6 +7354,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 42.5,
+    "end": 45.0,
     "n": 5,
     "transform": "x1"
    },
@@ -6389,6 +7362,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 51.5,
+    "end": 54.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -6396,6 +7370,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 98.5,
+    "end": 100.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -6403,6 +7378,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 115.5,
+    "end": 118.5,
     "n": 5,
     "transform": "x1~"
    },
@@ -6410,6 +7386,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 136.5,
+    "end": 140.5,
     "n": 5,
     "transform": "x1"
    },
@@ -6417,6 +7394,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 94.5,
+    "end": 97.5,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6424,6 +7402,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 98.5,
+    "end": 100.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -6431,6 +7410,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 122.5,
+    "end": 124.5,
     "n": 5,
     "transform": "x1"
    },
@@ -6438,6 +7418,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 181.5,
+    "end": 183.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -6445,6 +7426,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 224.5,
+    "end": 226.5,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6452,6 +7434,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 270.5,
+    "end": 272.5,
     "n": 5,
     "transform": "INV+x1~"
    }
@@ -6460,6 +7443,12 @@
  {
   "piece": "wtc1f21",
   "voices": 3,
+  "length": 144.0,
+  "voice_entries": [
+   0.5,
+   12.5,
+   24.5
+  ],
   "notes": 952,
   "chords_in_voices": 0,
   "subject_notes": 38,
@@ -6483,6 +7472,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 0.5,
+    "end": 12.75,
     "n": 38,
     "transform": "x1"
    },
@@ -6490,6 +7480,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 108.5,
+    "end": 120.75,
     "n": 38,
     "transform": "x1"
    },
@@ -6497,6 +7488,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 63.5,
+    "end": 75.25,
     "n": 38,
     "transform": "x1"
    },
@@ -6504,6 +7496,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 24.5,
+    "end": 36.5,
     "n": 38,
     "transform": "x1"
    },
@@ -6511,6 +7504,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 12.75,
+    "end": 25.0,
     "n": 27,
     "transform": "x1"
    },
@@ -6518,6 +7512,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 120.75,
+    "end": 132.5,
     "n": 27,
     "transform": "x1"
    },
@@ -6525,6 +7520,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 36.75,
+    "end": 48.0,
     "n": 26,
     "transform": "x1"
    },
@@ -6532,6 +7528,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 47.75,
+    "end": 49.25,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -6539,6 +7536,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 54.5,
+    "end": 56.0,
     "n": 6,
     "transform": "x1"
    },
@@ -6546,6 +7544,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 57.5,
+    "end": 59.0,
     "n": 6,
     "transform": "x1"
    },
@@ -6553,6 +7552,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 60.5,
+    "end": 62.0,
     "n": 6,
     "transform": "x1"
    },
@@ -6560,6 +7560,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 63.75,
+    "end": 65.5,
     "n": 6,
     "transform": "x1"
    },
@@ -6567,6 +7568,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 95.5,
+    "end": 97.25,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -6574,6 +7576,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 99.5,
+    "end": 101.0,
     "n": 6,
     "transform": "x1"
    },
@@ -6581,6 +7584,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 47.75,
+    "end": 49.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -6588,6 +7592,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 75.25,
+    "end": 76.75,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -6595,6 +7600,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 107.5,
+    "end": 109.25,
     "n": 6,
     "transform": "x1~"
    },
@@ -6602,6 +7608,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 87.5,
+    "end": 89.0,
     "n": 6,
     "transform": "x1"
    },
@@ -6609,6 +7616,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 90.5,
+    "end": 92.0,
     "n": 6,
     "transform": "x1"
    },
@@ -6616,6 +7624,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 93.5,
+    "end": 95.0,
     "n": 6,
     "transform": "x1"
    },
@@ -6623,6 +7632,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 31.5,
+    "end": 32.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6630,6 +7640,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 34.5,
+    "end": 35.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6637,6 +7648,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 43.5,
+    "end": 44.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6644,6 +7656,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 46.5,
+    "end": 47.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6651,6 +7664,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 49.5,
+    "end": 50.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6658,6 +7672,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 52.5,
+    "end": 53.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6665,6 +7680,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 72.0,
+    "end": 73.5,
     "n": 5,
     "transform": "x1"
    },
@@ -6672,6 +7688,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 82.5,
+    "end": 83.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6679,6 +7696,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 85.5,
+    "end": 86.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6686,6 +7704,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 97.5,
+    "end": 98.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6693,6 +7712,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 133.5,
+    "end": 134.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6700,6 +7720,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 136.5,
+    "end": 137.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6707,6 +7728,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 19.5,
+    "end": 20.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6714,6 +7736,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 22.5,
+    "end": 23.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6721,6 +7744,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 25.0,
+    "end": 26.5,
     "n": 5,
     "transform": "x1"
    },
@@ -6728,6 +7752,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 33.0,
+    "end": 34.5,
     "n": 5,
     "transform": "x1"
    },
@@ -6735,6 +7760,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 43.5,
+    "end": 44.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6742,6 +7768,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 46.5,
+    "end": 47.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6749,6 +7776,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 51.0,
+    "end": 52.5,
     "n": 5,
     "transform": "x1"
    },
@@ -6756,6 +7784,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 84.0,
+    "end": 85.5,
     "n": 5,
     "transform": "x1"
    },
@@ -6763,6 +7792,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 117.0,
+    "end": 118.5,
     "n": 5,
     "transform": "x1"
    },
@@ -6770,6 +7800,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 127.5,
+    "end": 128.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6777,6 +7808,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 130.5,
+    "end": 131.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6784,6 +7816,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 133.5,
+    "end": 134.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6791,6 +7824,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 136.5,
+    "end": 137.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6798,6 +7832,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 49.5,
+    "end": 50.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6805,6 +7840,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 52.5,
+    "end": 53.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6812,6 +7848,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 70.5,
+    "end": 71.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6819,6 +7856,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 73.5,
+    "end": 74.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6826,6 +7864,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 82.5,
+    "end": 83.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6833,6 +7872,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 85.5,
+    "end": 86.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6840,6 +7880,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 115.5,
+    "end": 116.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6847,6 +7888,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 118.5,
+    "end": 119.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6854,6 +7896,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 127.5,
+    "end": 128.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6861,6 +7904,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 130.5,
+    "end": 131.75,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -6868,6 +7912,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 135.0,
+    "end": 136.5,
     "n": 5,
     "transform": "x1"
    },
@@ -6875,6 +7920,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 138.0,
+    "end": 139.5,
     "n": 5,
     "transform": "x1"
    }
@@ -6883,6 +7929,14 @@
  {
   "piece": "wtc1f22",
   "voices": 5,
+  "length": 300.0,
+  "voice_entries": [
+   0.0,
+   8.0,
+   36.0,
+   44.0,
+   56.0
+  ],
   "notes": 745,
   "chords_in_voices": 0,
   "subject_notes": 5,
@@ -6906,6 +7960,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 8.0,
+    "end": 17.0,
     "n": 8,
     "transform": "x1"
    },
@@ -6913,6 +7968,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 104.0,
+    "end": 113.0,
     "n": 8,
     "transform": "x1"
    },
@@ -6920,6 +7976,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 271.0,
+    "end": 277.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -6927,6 +7984,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 13.0,
+    "end": 19.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -6934,6 +7992,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 93.0,
+    "end": 99.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -6941,6 +8000,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 221.0,
+    "end": 227.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -6948,6 +8008,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 277.0,
+    "end": 284.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -6955,6 +8016,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 42.0,
+    "end": 47.5,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -6962,6 +8024,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 50.0,
+    "end": 57.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -6969,6 +8032,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 221.0,
+    "end": 227.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -6976,6 +8040,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 275.0,
+    "end": 280.5,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -6983,6 +8048,7 @@
     "material": "CS1",
     "voice": 3,
     "onset": 72.0,
+    "end": 78.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -6990,6 +8056,7 @@
     "material": "CS1",
     "voice": 3,
     "onset": 132.0,
+    "end": 138.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -6997,6 +8064,7 @@
     "material": "CS1",
     "voice": 3,
     "onset": 213.0,
+    "end": 219.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -7004,6 +8072,7 @@
     "material": "CS1",
     "voice": 4,
     "onset": 65.0,
+    "end": 71.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -7011,6 +8080,7 @@
     "material": "CS1",
     "voice": 4,
     "onset": 132.0,
+    "end": 138.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -7018,6 +8088,7 @@
     "material": "CS1",
     "voice": 4,
     "onset": 184.5,
+    "end": 187.5,
     "n": 6,
     "transform": "INV+DIM~"
    },
@@ -7025,6 +8096,7 @@
     "material": "CS1",
     "voice": 4,
     "onset": 267.0,
+    "end": 273.0,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -7032,6 +8104,7 @@
     "material": "CS1",
     "voice": 4,
     "onset": 279.0,
+    "end": 285.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -7039,6 +8112,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 0.0,
+    "end": 8.0,
     "n": 5,
     "transform": "x1"
    },
@@ -7046,6 +8120,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 96.0,
+    "end": 104.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -7053,6 +8128,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 196.0,
+    "end": 204.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -7060,6 +8136,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 198.0,
+    "end": 206.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -7067,6 +8144,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 268.0,
+    "end": 276.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -7074,6 +8152,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 112.0,
+    "end": 120.0,
     "n": 5,
     "transform": "x1"
    },
@@ -7081,6 +8160,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 272.0,
+    "end": 280.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -7088,6 +8168,7 @@
     "material": "SUBJECT",
     "voice": 4,
     "onset": 56.0,
+    "end": 64.0,
     "n": 5,
     "transform": "x1"
    },
@@ -7095,6 +8176,7 @@
     "material": "SUBJECT",
     "voice": 4,
     "onset": 124.0,
+    "end": 132.0,
     "n": 5,
     "transform": "x1"
    },
@@ -7102,6 +8184,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 45.5,
+    "end": 50.0,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -7109,6 +8192,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 277.0,
+    "end": 282.0,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -7116,6 +8200,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 106.0,
+    "end": 114.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7123,6 +8208,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 146.0,
+    "end": 153.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7130,6 +8216,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 186.0,
+    "end": 192.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7137,6 +8224,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 227.0,
+    "end": 232.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7144,6 +8232,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 232.0,
+    "end": 238.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7151,6 +8240,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 244.0,
+    "end": 250.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7158,6 +8248,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 292.0,
+    "end": 300.0,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -7165,6 +8256,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 78.0,
+    "end": 88.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7172,6 +8264,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 92.0,
+    "end": 100.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -7179,6 +8272,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 183.0,
+    "end": 188.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7186,6 +8280,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 190.0,
+    "end": 197.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7193,6 +8288,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 202.0,
+    "end": 208.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7200,6 +8296,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 227.0,
+    "end": 232.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7207,6 +8304,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 232.0,
+    "end": 238.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7214,6 +8312,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 251.0,
+    "end": 256.0,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -7221,6 +8320,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 258.0,
+    "end": 265.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7228,6 +8328,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 281.0,
+    "end": 288.0,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -7235,6 +8336,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 46.0,
+    "end": 53.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7242,6 +8344,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 56.0,
+    "end": 61.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -7249,6 +8352,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 82.0,
+    "end": 87.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -7256,6 +8360,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 120.0,
+    "end": 125.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -7263,6 +8368,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 125.0,
+    "end": 130.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -7270,6 +8376,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 142.0,
+    "end": 149.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7277,6 +8384,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 152.0,
+    "end": 157.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7284,6 +8392,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 222.0,
+    "end": 230.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7291,6 +8400,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 244.0,
+    "end": 254.0,
     "n": 5,
     "transform": "x1"
    },
@@ -7298,6 +8408,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 260.0,
+    "end": 266.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7305,6 +8416,7 @@
     "material": "FRAG(CS1)",
     "voice": 4,
     "onset": 71.0,
+    "end": 76.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -7312,6 +8424,7 @@
     "material": "FRAG(CS1)",
     "voice": 4,
     "onset": 150.0,
+    "end": 158.0,
     "n": 5,
     "transform": "x1"
    },
@@ -7319,6 +8432,7 @@
     "material": "FRAG(CS1)",
     "voice": 4,
     "onset": 158.0,
+    "end": 164.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7326,6 +8440,7 @@
     "material": "FRAG(CS1)",
     "voice": 4,
     "onset": 190.0,
+    "end": 197.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7333,6 +8448,7 @@
     "material": "FRAG(CS1)",
     "voice": 4,
     "onset": 220.0,
+    "end": 230.0,
     "n": 5,
     "transform": "INV+x1~"
    }
@@ -7341,6 +8457,13 @@
  {
   "piece": "wtc1f23",
   "voices": 4,
+  "length": 136.0,
+  "voice_entries": [
+   0.5,
+   8.5,
+   16.5,
+   24.5
+  ],
   "notes": 827,
   "chords_in_voices": 0,
   "subject_notes": 14,
@@ -7364,6 +8487,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 9.5,
+    "end": 17.5,
     "n": 21,
     "transform": "x1"
    },
@@ -7371,6 +8495,7 @@
     "material": "CS1",
     "voice": 1,
     "onset": 121.5,
+    "end": 128.5,
     "n": 17,
     "transform": "x1"
    },
@@ -7378,6 +8503,7 @@
     "material": "CS1",
     "voice": 2,
     "onset": 25.5,
+    "end": 32.0,
     "n": 17,
     "transform": "x1"
    },
@@ -7385,6 +8511,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 0.5,
+    "end": 9.5,
     "n": 14,
     "transform": "x1"
    },
@@ -7392,6 +8519,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 42.5,
+    "end": 50.5,
     "n": 14,
     "transform": "x1"
    },
@@ -7399,6 +8527,7 @@
     "material": "SUBJECT",
     "voice": 3,
     "onset": 82.5,
+    "end": 90.5,
     "n": 14,
     "transform": "x1"
    },
@@ -7406,6 +8535,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 92.5,
+    "end": 99.25,
     "n": 13,
     "transform": "x1"
    },
@@ -7413,6 +8543,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 60.5,
+    "end": 67.25,
     "n": 13,
     "transform": "x1"
    },
@@ -7420,6 +8551,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 76.5,
+    "end": 85.0,
     "n": 13,
     "transform": "INV+x1~"
    },
@@ -7427,6 +8559,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 112.5,
+    "end": 120.5,
     "n": 13,
     "transform": "x1"
    },
@@ -7434,6 +8567,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 16.5,
+    "end": 24.5,
     "n": 13,
     "transform": "x1"
    },
@@ -7441,6 +8575,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 68.5,
+    "end": 76.0,
     "n": 13,
     "transform": "INV+x1"
    },
@@ -7448,6 +8583,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 17.5,
+    "end": 20.0,
     "n": 8,
     "transform": "x1"
    },
@@ -7455,6 +8591,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 52.5,
+    "end": 55.0,
     "n": 7,
     "transform": "x1~"
    },
@@ -7462,6 +8599,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 56.5,
+    "end": 58.25,
     "n": 7,
     "transform": "x1~"
    },
@@ -7469,6 +8607,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 58.5,
+    "end": 60.5,
     "n": 7,
     "transform": "x1~"
    },
@@ -7476,6 +8615,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 68.5,
+    "end": 70.5,
     "n": 7,
     "transform": "INV+x1~"
    },
@@ -7483,6 +8623,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 72.0,
+    "end": 75.75,
     "n": 7,
     "transform": "x1~"
    },
@@ -7490,6 +8631,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 75.75,
+    "end": 77.5,
     "n": 7,
     "transform": "INV+x1~"
    },
@@ -7497,6 +8639,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 110.0,
+    "end": 111.75,
     "n": 7,
     "transform": "x1~"
    },
@@ -7504,6 +8647,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 112.0,
+    "end": 115.75,
     "n": 7,
     "transform": "x1~"
    },
@@ -7511,6 +8655,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 115.75,
+    "end": 117.5,
     "n": 7,
     "transform": "INV+x1~"
    },
@@ -7518,6 +8663,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 130.5,
+    "end": 136.0,
     "n": 7,
     "transform": "x1~"
    },
@@ -7525,6 +8671,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 54.5,
+    "end": 57.0,
     "n": 7,
     "transform": "x1~"
    },
@@ -7532,6 +8679,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 36.5,
+    "end": 39.0,
     "n": 7,
     "transform": "x1~"
    },
@@ -7539,6 +8687,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 42.0,
+    "end": 43.75,
     "n": 7,
     "transform": "x1~"
    },
@@ -7546,6 +8695,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 83.0,
+    "end": 85.25,
     "n": 7,
     "transform": "INV+x1~"
    },
@@ -7553,6 +8703,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 91.5,
+    "end": 93.75,
     "n": 7,
     "transform": "x1~"
    },
@@ -7560,6 +8711,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 104.5,
+    "end": 107.0,
     "n": 7,
     "transform": "x1~"
    },
@@ -7567,6 +8719,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 34.5,
+    "end": 36.5,
     "n": 7,
     "transform": "x1~"
    },
@@ -7574,6 +8727,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 38.5,
+    "end": 40.25,
     "n": 7,
     "transform": "x1~"
    },
@@ -7581,6 +8735,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 40.5,
+    "end": 42.5,
     "n": 7,
     "transform": "x1~"
    },
@@ -7588,6 +8743,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 60.5,
+    "end": 62.5,
     "n": 7,
     "transform": "x1~"
    },
@@ -7595,6 +8751,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 90.5,
+    "end": 93.0,
     "n": 7,
     "transform": "x1~"
    },
@@ -7602,6 +8759,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 94.0,
+    "end": 95.75,
     "n": 7,
     "transform": "x1~"
    },
@@ -7609,6 +8767,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 95.75,
+    "end": 97.5,
     "n": 7,
     "transform": "x1"
    },
@@ -7616,6 +8775,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 102.5,
+    "end": 104.5,
     "n": 7,
     "transform": "x1~"
    },
@@ -7623,6 +8783,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 106.5,
+    "end": 108.25,
     "n": 7,
     "transform": "x1~"
    },
@@ -7630,6 +8791,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 108.5,
+    "end": 110.5,
     "n": 7,
     "transform": "x1~"
    },
@@ -7637,6 +8799,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 111.5,
+    "end": 113.5,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -7644,6 +8807,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 122.0,
+    "end": 126.75,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -7651,6 +8815,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 127.75,
+    "end": 129.5,
     "n": 7,
     "transform": "x1~"
    },
@@ -7658,6 +8823,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 64.0,
+    "end": 66.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -7665,6 +8831,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 77.75,
+    "end": 79.25,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -7672,6 +8839,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 80.75,
+    "end": 84.5,
     "n": 6,
     "transform": "x1~"
    },
@@ -7679,6 +8847,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 20.0,
+    "end": 22.5,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -7686,6 +8855,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 26.5,
+    "end": 28.0,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -7693,6 +8863,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 39.5,
+    "end": 42.5,
     "n": 6,
     "transform": "INV+AUG~"
    },
@@ -7700,6 +8871,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 46.0,
+    "end": 48.5,
     "n": 6,
     "transform": "INV+x1"
    },
@@ -7707,6 +8879,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 57.5,
+    "end": 60.5,
     "n": 6,
     "transform": "INV+AUG~"
    },
@@ -7714,6 +8887,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 72.75,
+    "end": 75.0,
     "n": 6,
     "transform": "x1~"
    },
@@ -7721,6 +8895,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 57.5,
+    "end": 62.0,
     "n": 6,
     "transform": "INV+AUG~"
    },
@@ -7728,6 +8903,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 62.0,
+    "end": 66.25,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -7735,6 +8911,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 87.75,
+    "end": 90.5,
     "n": 6,
     "transform": "INV+x1~"
    },
@@ -7742,6 +8919,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 107.5,
+    "end": 112.5,
     "n": 6,
     "transform": "INV+AUG~"
    },
@@ -7749,6 +8927,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 117.0,
+    "end": 118.75,
     "n": 6,
     "transform": "x1~"
    },
@@ -7756,6 +8935,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 8.5,
+    "end": 11.5,
     "n": 5,
     "transform": "x1~"
    },
@@ -7763,6 +8943,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 120.5,
+    "end": 123.5,
     "n": 5,
     "transform": "x1~"
    },
@@ -7770,6 +8951,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 24.5,
+    "end": 27.5,
     "n": 5,
     "transform": "x1~"
    },
@@ -7777,6 +8959,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 100.0,
+    "end": 103.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -7784,6 +8967,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 23.0,
+    "end": 25.5,
     "n": 5,
     "transform": "x1~"
    },
@@ -7791,6 +8975,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 30.5,
+    "end": 33.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -7798,6 +8983,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 85.5,
+    "end": 87.5,
     "n": 5,
     "transform": "x1~"
    },
@@ -7805,6 +8991,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 88.0,
+    "end": 91.5,
     "n": 5,
     "transform": "INV+x1"
    },
@@ -7812,6 +8999,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 50.0,
+    "end": 53.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -7819,6 +9007,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 77.5,
+    "end": 79.25,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -7826,6 +9015,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 97.0,
+    "end": 100.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -7833,6 +9023,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 130.5,
+    "end": 136.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -7840,6 +9031,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 54.0,
+    "end": 57.0,
     "n": 5,
     "transform": "INV+AUG~"
    },
@@ -7847,6 +9039,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 119.0,
+    "end": 121.0,
     "n": 5,
     "transform": "x1~"
    }
@@ -7855,6 +9048,13 @@
  {
   "piece": "wtc1f24",
   "voices": 4,
+  "length": 304.0,
+  "voice_entries": [
+   0.5,
+   12.5,
+   32.5,
+   48.5
+  ],
   "notes": 1809,
   "chords_in_voices": 0,
   "subject_notes": 21,
@@ -7878,6 +9078,7 @@
     "material": "CS1",
     "voice": 0,
     "onset": 12.75,
+    "end": 26.5,
     "n": 24,
     "transform": "x1"
    },
@@ -7885,6 +9086,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 0.5,
+    "end": 12.75,
     "n": 21,
     "transform": "x1"
    },
@@ -7892,6 +9094,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 116.5,
+    "end": 130.0,
     "n": 21,
     "transform": "x1"
    },
@@ -7899,6 +9102,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 32.5,
+    "end": 44.25,
     "n": 21,
     "transform": "x1"
    },
@@ -7906,6 +9110,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 148.5,
+    "end": 160.25,
     "n": 21,
     "transform": "x1~"
    },
@@ -7913,6 +9118,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 226.5,
+    "end": 238.5,
     "n": 21,
     "transform": "x1"
    },
@@ -7920,6 +9126,7 @@
     "material": "SUBJECT",
     "voice": 0,
     "onset": 80.5,
+    "end": 92.0,
     "n": 20,
     "transform": "x1"
    },
@@ -7927,6 +9134,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 172.5,
+    "end": 184.5,
     "n": 20,
     "transform": "x1"
    },
@@ -7934,6 +9142,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 210.5,
+    "end": 222.25,
     "n": 20,
     "transform": "x1"
    },
@@ -7941,6 +9150,7 @@
     "material": "SUBJECT",
     "voice": 1,
     "onset": 238.5,
+    "end": 250.25,
     "n": 20,
     "transform": "x1"
    },
@@ -7948,6 +9158,7 @@
     "material": "SUBJECT",
     "voice": 2,
     "onset": 276.5,
+    "end": 288.0,
     "n": 20,
     "transform": "x1"
    },
@@ -7955,6 +9166,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 32.75,
+    "end": 35.5,
     "n": 10,
     "transform": "INV+x1"
    },
@@ -7962,6 +9174,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 132.5,
+    "end": 137.0,
     "n": 9,
     "transform": "x1"
    },
@@ -7969,6 +9182,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 164.5,
+    "end": 169.0,
     "n": 9,
     "transform": "x1"
    },
@@ -7976,6 +9190,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 272.5,
+    "end": 277.0,
     "n": 9,
     "transform": "x1"
    },
@@ -7983,6 +9198,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 168.5,
+    "end": 173.0,
     "n": 9,
     "transform": "x1"
    },
@@ -7990,6 +9206,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 136.5,
+    "end": 141.0,
     "n": 9,
     "transform": "x1"
    },
@@ -7997,6 +9214,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 160.5,
+    "end": 165.0,
     "n": 9,
     "transform": "x1"
    },
@@ -8004,6 +9222,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 210.75,
+    "end": 213.0,
     "n": 9,
     "transform": "x1"
    },
@@ -8011,6 +9230,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 48.75,
+    "end": 51.0,
     "n": 9,
     "transform": "INV+x1"
    },
@@ -8018,6 +9238,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 132.75,
+    "end": 135.0,
     "n": 9,
     "transform": "x1~"
    },
@@ -8025,6 +9246,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 136.75,
+    "end": 139.0,
     "n": 9,
     "transform": "x1~"
    },
@@ -8032,6 +9254,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 160.75,
+    "end": 163.0,
     "n": 9,
     "transform": "x1~"
    },
@@ -8039,6 +9262,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 164.75,
+    "end": 167.0,
     "n": 9,
     "transform": "x1~"
    },
@@ -8046,6 +9270,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 148.75,
+    "end": 151.0,
     "n": 9,
     "transform": "x1"
    },
@@ -8053,6 +9278,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 168.75,
+    "end": 171.0,
     "n": 9,
     "transform": "x1~"
    },
@@ -8060,6 +9286,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 272.75,
+    "end": 275.0,
     "n": 9,
     "transform": "x1"
    },
@@ -8067,6 +9294,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 0,
     "onset": 292.5,
+    "end": 296.0,
     "n": 7,
     "transform": "x1"
    },
@@ -8074,6 +9302,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 173.25,
+    "end": 175.0,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -8081,6 +9310,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 277.25,
+    "end": 279.0,
     "n": 7,
     "transform": "INV+x1"
    },
@@ -8088,6 +9318,7 @@
     "material": "FRAG(CS1)",
     "voice": 0,
     "onset": 227.75,
+    "end": 229.25,
     "n": 6,
     "transform": "x1~"
    },
@@ -8095,6 +9326,7 @@
     "material": "FRAG(CS1)",
     "voice": 3,
     "onset": 116.75,
+    "end": 118.5,
     "n": 6,
     "transform": "x1"
    },
@@ -8102,6 +9334,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 258.0,
+    "end": 260.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -8109,6 +9342,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 262.0,
+    "end": 264.25,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -8116,6 +9350,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 1,
     "onset": 267.0,
+    "end": 269.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -8123,6 +9358,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 65.0,
+    "end": 67.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -8130,6 +9366,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 69.0,
+    "end": 71.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -8137,6 +9374,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 73.0,
+    "end": 75.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -8144,6 +9382,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 77.0,
+    "end": 79.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -8151,6 +9390,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 101.0,
+    "end": 103.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -8158,6 +9398,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 105.0,
+    "end": 107.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -8165,6 +9406,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 110.0,
+    "end": 112.5,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -8172,6 +9414,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 2,
     "onset": 114.0,
+    "end": 117.0,
     "n": 5,
     "transform": "INV+x1~"
    },
@@ -8179,6 +9422,7 @@
     "material": "FRAG(SUBJECT)",
     "voice": 3,
     "onset": 48.5,
+    "end": 51.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -8186,6 +9430,7 @@
     "material": "FRAG(CS1)",
     "voice": 1,
     "onset": 269.5,
+    "end": 272.0,
     "n": 5,
     "transform": "AUG~"
    },
@@ -8193,6 +9438,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 82.75,
+    "end": 84.0,
     "n": 5,
     "transform": "x1~"
    },
@@ -8200,6 +9446,7 @@
     "material": "FRAG(CS1)",
     "voice": 2,
     "onset": 107.5,
+    "end": 110.0,
     "n": 5,
     "transform": "AUG~"
    }

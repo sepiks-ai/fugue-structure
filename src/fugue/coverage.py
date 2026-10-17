@@ -121,8 +121,9 @@ def analyse(path):
             continue
         for x in idx:
             covered[x] = name
+        last = vs[vi][i + k - 1]
         events.append({"material": name, "voice": vi, "onset": vs[vi][i].on,
-                       "n": k, "transform": tr})
+                       "end": last.on + last.dur, "n": k, "transform": tr})
     tot_n = sum(len(v) for v in vs)
     tot_d = sum(n.dur for v in vs for n in v)
 
@@ -132,7 +133,9 @@ def analyse(path):
         return n / tot_n, d / tot_d
 
     return {
-        "piece": Path(path).stem, "voices": len(vs), "notes": tot_n, "chords_in_voices": chords,
+        "piece": Path(path).stem, "voices": len(vs),
+        "length": max(v[-1].on + v[-1].dur for v in vs),
+        "voice_entries": [v[0].on for v in vs], "notes": tot_n, "chords_in_voices": chords,
         "subject_notes": len(lex["SUBJECT"]), "cs_notes": len(lex.get("CS1", [])),
         "full_entries": sum(e["material"] == "SUBJECT" for e in events),
         "cs_entries": sum(e["material"] == "CS1" for e in events),
