@@ -106,6 +106,11 @@ def analyse(path):
     vs, chords = voices(path)
     if len(vs) < 2:
         return None
+    return analyse_voices(vs, Path(path).stem, chords)
+
+
+def analyse_voices(vs, piece, chords=0):
+    vs = sorted(vs, key=lambda v: v[0].on)
     lex = lexicon(vs)
     covered = {}                   # (voice, idx) -> label
     events = []
@@ -121,9 +126,11 @@ def analyse(path):
             continue
         for x in idx:
             covered[x] = name
-        last = vs[vi][i + k - 1]
-        events.append({"material": name, "voice": vi, "onset": vs[vi][i].on,
-                       "end": last.on + last.dur, "n": k, "transform": tr})
+        last, first = vs[vi][i + k - 1], vs[vi][i]
+        ref = lex[name.replace("FRAG(", "").rstrip(")")][0]
+        events.append({"material": name, "voice": vi, "onset": first.on,
+                       "end": last.on + last.dur, "n": k, "transform": tr,
+                       "dia_shift": first.dia - ref.dia, "midi_shift": first.midi - ref.midi})
     tot_n = sum(len(v) for v in vs)
     tot_d = sum(n.dur for v in vs for n in v)
 
@@ -133,9 +140,11 @@ def analyse(path):
         return n / tot_n, d / tot_d
 
     return {
-        "piece": Path(path).stem, "voices": len(vs),
+        "piece": piece, "voices": len(vs),
         "length": max(v[-1].on + v[-1].dur for v in vs),
-        "voice_entries": [v[0].on for v in vs], "notes": tot_n, "chords_in_voices": chords,
+        "voice_entries": [v[0].on for v in vs],
+        "voice_ranges": [[min(n.midi for n in v), max(n.midi for n in v)] for v in vs],
+        "subject": [[n.on - lex["SUBJECT"][0].on, n.dur, n.dia, n.midi] for n in lex["SUBJECT"]], "notes": tot_n, "chords_in_voices": chords,
         "subject_notes": len(lex["SUBJECT"]), "cs_notes": len(lex.get("CS1", [])),
         "full_entries": sum(e["material"] == "SUBJECT" for e in events),
         "cs_entries": sum(e["material"] == "CS1" for e in events),

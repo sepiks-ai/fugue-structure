@@ -70,6 +70,16 @@ svg text { fill: var(--muted); font: 11px ui-monospace, Menlo, Consolas, monospa
        opacity: 0; transition: opacity .1s; z-index: 5; }
 footer { max-width: 1100px; margin: 0 auto; padding: 0 16px 30px; color: var(--muted); font-size: 13px; }
 .err { color: var(--cs); }
+.grp { font: 11px ui-monospace, Menlo, Consolas, monospace; text-transform: uppercase; letter-spacing: .08em;
+       color: var(--muted); padding: 8px 8px 4px; }
+@media (max-width: 760px) { .grp { display: none; } }
+.controls { display: flex; align-items: center; gap: 14px; margin: -4px 0 14px; }
+.controls[hidden] { display: none; }
+#play { all: unset; cursor: pointer; padding: 6px 14px; border-radius: 5px; background: var(--accent);
+        color: var(--panel); font: 14px/1.3 Georgia, serif; }
+#play:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.controls a { color: var(--accent); font-size: 14px; }
+.controls .note { color: var(--muted); font-size: 13px; }
 </style>
 </head>
 <body>
@@ -82,6 +92,11 @@ footer { max-width: 1100px; margin: 0 auto; padding: 0 16px 30px; color: var(--m
   <section class="panel">
     <h2 id="title">Loading…</h2>
     <div class="stats" id="stats"></div>
+    <div class="controls" id="controls" hidden>
+      <button id="play" type="button">▶ Play</button>
+      <a id="midi" download>Download MIDI</a>
+      <span class="note" id="gnote"></span>
+    </div>
     <div class="legend">
       <span style="--c:var(--subj)">Subject</span>
       <span style="--c:var(--cs)">Countersubject</span>
@@ -95,7 +110,8 @@ footer { max-width: 1100px; margin: 0 auto; padding: 0 16px 30px; color: var(--m
 <footer>
   Silver labels: subject and countersubject are inferred, not hand-annotated. The bar beside each fugue
   shows the share of notes explained by its own material; the tick marks the chance level (other fugues' material).
-  Time axis in crotchets.
+  Time axis in crotchets. Generated fugues use a Bach entry plan with an original subject; the map shows what the
+  same analyser finds in them.
 </footer>
 <div class="tip" id="tip"></div>
 <script>
@@ -105,14 +121,15 @@ const TR = { x1: "", AUG: "augmented", DIM: "diminished" };
 const $ = id => document.getElementById(id);
 const pct = x => (100 * x).toFixed(1) + "%";
 
+let BASE = "results/";
 async function load(name) {
-  for (const p of ["results/" + name, "../results/" + name]) {
-    try { const r = await fetch(p); if (r.ok) return r.json(); } catch (e) {}
+  for (const b of ["results/", "../results/"]) {
+    try { const r = await fetch(b + name); if (r.ok) { BASE = b; return r.json(); } } catch (e) {}
   }
   throw new Error("Could not load " + name);
 }
 
-function label(p) { return "No. " + parseInt(p.slice(-2), 10); }
+function label(p) { return p.startsWith("gen") ? "Gen " + p.slice(3) : "No. " + parseInt(p.slice(-2), 10); }
 
 function describe(tr) {
   const inv = tr.startsWith("INV+"), tonal = tr.endsWith("~");
@@ -121,13 +138,22 @@ function describe(tr) {
 }
 
 function draw(f, nullRow) {
-  $("title").textContent = "Fugue " + label(f.piece) + " · " + f.voices + " voices";
+  stop();
+  $("title").textContent = f.generated
+    ? "Generated fugue " + f.piece.slice(3) + " · " + f.voices + " voices"
+    : "Fugue " + label(f.piece) + " · " + f.voices + " voices";
   const s = [
     ["Subject entries", f.full_entries],
     ["Notes from complete statements", pct(f.cov_subj_cs[0])],
     ["Notes incl. fragments", pct(f.cov_all[0])],
-    ["Chance level", nullRow ? pct(nullRow[2]) : "–"],
+    f.generated ? ["Plan from", label(f.template)] : ["Chance level", nullRow ? pct(nullRow[2]) : "–"],
   ];
+  $("controls").hidden = !f.generated;
+  if (f.generated) {
+    $("midi").href = BASE + f.piece + ".mid";
+    $("gnote").textContent = "Subject: " + f.subject_text.split(" ").map(t => t.split("/")[0]).join(" ");
+    current = f;
+  }
   $("stats").innerHTML = s.map(([k, v]) => `<div class="stat"><div class="v">${v}</div><div class="k">${k}</div></div>`).join("");
 
   const css = getComputedStyle(document.documentElement);
@@ -160,8 +186,56 @@ function draw(f, nullRow) {
     out += `<g data-i="${info}"><rect x="${x(e.onset)}" y="${yy}" width="${w}" height="${h}" rx="2" fill="${c}"/>` +
       (inv ? `<rect x="${x(e.onset)}" y="${yy}" width="${w}" height="${h}" rx="2" fill="url(#hatch)"/>` : "") + `</g>`;
   });
+  out += `<line id="head" x1="${left}" x2="${left}" y1="0" y2="${H - 22}" stroke="var(--ink)" stroke-width="1.5" opacity="0"/>`;
   svg.innerHTML = out;
+  xOf = x;
 }
+
+// ---- playback: a plucked, harpsichord-like tone per note, scheduled with WebAudio
+let ctx = null, voicesOut = [], current = null, xOf = null, raf = 0, startAt = 0;
+const SPQ = 60 / 72;                         // seconds per crotchet
+function stop() {
+  voicesOut.forEach(o => { try { o.stop(); } catch (e) {} });
+  voicesOut = []; cancelAnimationFrame(raf);
+  const h = document.getElementById("head"); if (h) h.setAttribute("opacity", 0);
+  $("play").textContent = "▶ Play";
+}
+function play(f) {
+  ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+  const master = ctx.createGain(); master.gain.value = 0.18; master.connect(ctx.destination);
+  startAt = ctx.currentTime + 0.15;
+  for (const [v, on, dur, midi] of f.notes) {
+    const t = startAt + on * SPQ, d = Math.max(0.12, dur * SPQ);
+    const freq = 440 * Math.pow(2, (midi - 69) / 12);
+    const o = ctx.createOscillator(), o2 = ctx.createOscillator(), g = ctx.createGain(), lp = ctx.createBiquadFilter();
+    o.type = "sawtooth"; o2.type = "square"; o.frequency.value = freq; o2.frequency.value = freq * 2;
+    lp.type = "lowpass"; lp.frequency.setValueAtTime(Math.min(6000, freq * 8), t);
+    lp.frequency.exponentialRampToValueAtTime(Math.max(300, freq * 1.5), t + d);
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.5, t + 0.005);
+    g.gain.exponentialRampToValueAtTime(0.12, t + 0.25); g.gain.exponentialRampToValueAtTime(0.0001, t + d + 0.08);
+    const g2 = ctx.createGain(); g2.gain.value = 0.25;
+    o.connect(lp); o2.connect(g2).connect(lp); lp.connect(g).connect(master);
+    o.start(t); o2.start(t); o.stop(t + d + 0.1); o2.stop(t + d + 0.1);
+    voicesOut.push(o, o2);
+  }
+  $("play").textContent = "■ Stop";
+  const head = document.getElementById("head"), box = document.querySelector(".scroll");
+  const tick = () => {
+    const q = (ctx.currentTime - startAt) / SPQ;
+    if (q > f.length) { stop(); return; }
+    if (q >= 0) {
+      const px = xOf(q);
+      head.setAttribute("x1", px); head.setAttribute("x2", px); head.setAttribute("opacity", 0.8);
+      if (px > box.scrollLeft + box.clientWidth * 0.8 || px < box.scrollLeft) box.scrollLeft = px - box.clientWidth * 0.2;
+    }
+    raf = requestAnimationFrame(tick);
+  };
+  raf = requestAnimationFrame(tick);
+}
+document.addEventListener("click", ev => {
+  if (ev.target.id !== "play" || !current) return;
+  if (voicesOut.length) stop(); else play(current);
+});
 
 const tip = $("tip");
 $("map").addEventListener("mousemove", ev => {
@@ -177,20 +251,25 @@ $("map").addEventListener("mouseleave", () => tip.style.opacity = 0);
 
 (async () => {
   try {
-    const [fugues, nul] = await Promise.all([load("wtc1_events.json"), load("wtc1_null.json")]);
+    const [fugues, nul, gens] = await Promise.all([load("wtc1_events.json"), load("wtc1_null.json"),
+      load("generated.json").catch(() => [])]);
     const nullBy = Object.fromEntries(nul.map(r => [r[0], r]));
     const nav = $("list");
     let cur = null;
-    fugues.forEach((f, i) => {
+    const all = [...gens, ...fugues];
+    all.forEach((f, i) => {
+      if (i === 0 && gens.length) nav.insertAdjacentHTML("beforeend", `<div class="grp">Generated</div>`);
+      if (i === gens.length) nav.insertAdjacentHTML("beforeend", `<div class="grp">Bach · WTC I</div>`);
       const r = nullBy[f.piece], b = document.createElement("button");
       b.innerHTML = `<span>${label(f.piece)}</span><span class="bar"><i style="width:${100 * f.cov_all[0]}%"></i>` +
         (r ? `<b style="left:${100 * r[2]}%"></b>` : "") + `</span><span class="num">${Math.round(100 * f.cov_all[0])}%</span>`;
       b.onclick = () => { if (cur) cur.removeAttribute("aria-current"); b.setAttribute("aria-current", "true"); cur = b;
-        draw(f, r); try { history.replaceState(null, "", "#" + (i + 1)); } catch (e) {} };
+        draw(f, r); try { history.replaceState(null, "", "#" + f.piece); } catch (e) {} };
+      b.dataset.piece = f.piece;
       nav.appendChild(b);
     });
-    const start = Math.min(fugues.length, Math.max(1, parseInt(location.hash.slice(1), 10) || 1));
-    nav.children[start - 1].click();
+    const want = location.hash.slice(1);
+    (nav.querySelector(`button[data-piece="${want}"]`) || nav.querySelector("button")).click();
     matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => cur && cur.click());
   } catch (e) {
     $("title").innerHTML = `<span class="err">${e.message}</span>`;

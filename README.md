@@ -37,11 +37,39 @@ Known biases: second/third subjects not modelled (No. 4 is a triple fugue);
 inferred subject ends overshoot in some fugues (Nos. 7, 21); episodic
 sequences not yet encoded; matching is diatonic, accidentals unchecked.
 
+## Skeleton fugue generator
+
+`src/fugue/skeleton.py` writes a fugue on a new subject in four steps:
+
+1. **Plan**: take the subject-entry grid of a WTC fugue (voice, onset, pitch level, transform).
+2. **Realise**: place transformed copies of the new subject on that grid, time-scaled
+   to its length; entries that clash in stretto are nudged or dropped.
+3. **Harmony**: one chord per half-bar, chosen by Viterbi to fit the fixed entries.
+4. **Fill**: beam search over quavers for the free voices (chord tones on beats,
+   passing notes between, no parallel fifths or octaves, cadence at the end).
+
+```bash
+PYTHONPATH=src python -m fugue.skeleton --name gen01 \
+  --subject "C4/1 G4/1 A4/.5 G4/.5 F4/.5 E4/.5 D4/.25 E4/.25 F4/.5 E4/.5 D4/.5 C4/.5 B3/.5 C4/1"
+```
+
+Writes `results/gen01.mid` and adds the piece to `results/generated.json`, which
+the Fugue Map lists under *Generated* with a Play button. Notes are written as
+`name+octave/length in crotchets`. Options: `--key G`, `--template wtc1f05`, `--seed 3`.
+
+Current limits: major keys only; entries off the tonic, fourth or fifth are
+transposed diatonically in the home key; no countersubject; episodes are free
+counterpoint with no motivic material; rhythm of free voices is mostly quavers.
+
 ## Fugue Map
 
 `web/index.html` is an interactive map of every entry, voice by voice, for
-each WTC I fugue. It is deployed to GitHub Pages on every push to `main`.
-To view it locally:
+each WTC I fugue and each generated fugue. It is deployed to GitHub Pages on
+every push to `main`.
+
+To view it locally on Windows, double-click **`run.bat`**. It starts a local
+server and opens http://localhost:8000/web/. Close the window to stop it.
+Elsewhere:
 
 ```bash
 python -m http.server 8000      # from the repo root
