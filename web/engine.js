@@ -415,17 +415,27 @@
     return n;
   }
 
+  function fourths(a, b) {
+    const at = (ns, t) => { for (const x of ns) if (x.on <= t && t < x.on + x.d) return x.m; return null; };
+    let n = 0;
+    for (const x of a) if (Math.abs(x.on - Math.round(x.on)) < 1e-9) { const y = at(b, x.on); if (y !== null && Math.abs(x.m - y) % 12 === 5) n++; }
+    return n;
+  }
+
   function parallels(a, b) {               // parallel fifths/octaves between two placed note lists
     const at = (ns, t) => { for (const x of ns) if (x.on <= t && t < x.on + x.d) return x.m; return null; };
     const lo = Math.max(a[0].on, b[0].on), hi = Math.min(a[a.length - 1].on + a[a.length - 1].d, b[b.length - 1].on + b[b.length - 1].d);
-    let n = 0, pa = null, pb = null;
-    for (let t = lo; t < hi; t += 0.25) {
-      const x = at(a, t), y = at(b, t);
-      if (x !== null && y !== null && pa !== null && pb !== null && x !== pa && (x - pa) * (y - pb) > 0) {
-        const i0 = Math.abs(pa - pb) % 12, i1 = Math.abs(x - y) % 12;
-        if (i0 === i1 && (i1 === 0 || i1 === 7)) n++;
+    let n = 0;
+    for (const g of [0.25, 0.5]) {         // the quaver grid too: octaves with a semiquaver between are still heard
+      let pa = null, pb = null;
+      for (let t = Math.ceil(lo / g - 1e-9) * g; t < hi; t += g) {
+        const x = at(a, t), y = at(b, t);
+        if (x !== null && y !== null && pa !== null && pb !== null && x !== pa && (x - pa) * (y - pb) > 0) {
+          const i0 = Math.abs(pa - pb) % 12, i1 = Math.abs(x - y) % 12;
+          if (i0 === i1 && (i1 === 0 || i1 === 7)) n++;
+        }
+        pa = x; pb = y;
       }
-      pa = x; pb = y;
     }
     return n;
   }
@@ -489,10 +499,311 @@
         if (!best || s < best.s) best = { s, clash, on, notes, end };
       }
       if (!best || (best.clash > 4 && !first)) continue;
-      placed.push({ voice: e.voice, onset: best.on, end: best.end, notes: best.notes, transform: e.transform,
-        inv: pe.inv, localKey: pe.localKey, clash: best.clash });
+      placed.push({ kind: "subject", voice: e.voice, onset: best.on, end: best.end, notes: best.notes, transform: e.transform,
+        inv: pe.inv, sc: pe.sc, localKey: pe.localKey, clash: best.clash, midi_shift: e.midi_shift, dia_shift: e.dia_shift, expo: first });
     }
     return placed;
+  }
+
+  // ------------------------------------------------------------------ 3b. countersubject
+  // Written once against the subject, then brought back against later entries, like the
+  // subject itself. It is kept to thirds, sixths and octaves on the beat so that it works
+  // above or below the subject (invertible counterpoint at the octave); its rhythm moves
+  // where the subject holds and holds where the subject runs; dissonances are passing notes,
+  // neighbours or prepared suspensions that resolve down by step.
+  function csRhythm(sub, p, r) {
+    const span = sub.span, out = [];
+    for (let b = 0; b < span - 1e-9; b += 1) {
+      const len = Math.min(1, span - b);
+      const c = sub.notes.filter((x) => x.t >= b - 1e-9 && x.t < b + 1 - 1e-9).length;
+      let cell;
+      if (len < 1) cell = [len];
+      else if (c >= 3) cell = weighted(r, [[[1], 3], [[0.5, 0.5], 1]]);
+      else if (c === 2) cell = weighted(r, [[[0.5, 0.5], 2], [[1], 1.5], [[0.25, 0.25, 0.5], 1]]);
+      else cell = weighted(r, [[[0.25, 0.25, 0.25, 0.25], p.motion < 0 ? 0.5 : 2], [[0.5, 0.25, 0.25], 2], [[0.5, 0.5], 2], [[0.25, 0.25, 0.5], 1]]);
+      out.push(...cell);
+    }
+    let t = 0;
+    const notes = out.map((d) => { const x = { t, d }; t += d; return x; });
+    if (r() < 0.5 && notes[0].d >= 0.5) { notes[0].t = 0.5; notes[0].d -= 0.5; if (notes[0].d <= 0) notes.shift(); }
+    return notes;
+  }
+
+  function csPitches(sub, rh, key, r) {
+    const sc = key.scale, minor = key.mode === "minor";
+    const sd = sub.notes.map((x) => x.deg), sm = sub.notes.map((x) => x.m);
+    const lo = Math.min(...sd) - 1, hi = Math.max(...sd) + 10;
+    const centre = (Math.min(...sm) + Math.max(...sm)) / 2 + 8;
+    const cands = [];
+    for (let d = lo; d <= hi; d++) {
+      cands.push({ deg: d, alt: 0, m: degMidi(d, 0, key.tonic, sc) });
+      if (minor && (mod(d, 7) === 6 || mod(d, 7) === 5)) cands.push({ deg: d, alt: 1, m: degMidi(d, 1, key.tonic, sc) });
+    }
+    const K = cands.length, n = rh.length;
+    const sAt = (t) => { for (const x of sub.notes) if (x.t <= t + 1e-9 && t < x.t + x.d - 1e-9) return x.m; return sm[sm.length - 1]; };
+    // vertical cost of each candidate at each note, and whether its attack is dissonant
+    const vert = [], dissAt = [];
+    for (let i = 0; i < n; i++) {
+      const { t, d } = rh[i], row = [], drow = [];
+      const over = sub.notes.filter((x) => x.t < t + d - 1e-9 && x.t + x.d > t + 1e-9);
+      for (const c of cands) {
+        let cost = 0, attack = 0;
+        for (const x of over) {
+          const u = Math.max(t, x.t), strong = Math.abs(u - Math.round(u)) < 1e-9;
+          const iv = c.m - x.m, ic = mod(iv, 12);
+          if (iv < 0) cost += 2.5; else if (iv > 17) cost += 1.5;
+          if (ic === 3 || ic === 4 || ic === 8 || ic === 9) continue;
+          if (ic === 0) cost += iv === 0 ? 2.5 : 0.8;
+          else if (ic === 7) cost += strong ? 1.8 : 0.5;
+          else if (ic === 5) cost += strong ? 2.5 : 0.6;
+          else if (u <= t + 1e-9) attack = strong ? 2 : 1;               // judged with its neighbours below
+          else cost += strong ? 3 : 1.2;                                   // the subject moves into a clash
+        }
+        cost += 0.06 * Math.max(0, Math.abs(c.m - centre) - 5) + 0.25 * gauss(r);
+        row.push(cost); drow.push(attack);
+      }
+      vert.push(row); dissAt.push(drow);
+    }
+    const mel = (a, b) => {
+      const dd = Math.abs(b - a);
+      return [0.8, 0, 0, 0.5, 0.5, 1, 6, 1.3, 2.2, 2.2, 5, 5, 1.8][dd] ?? 8;
+    };
+    const altBad = (a, b) => {                                             // a -> b, candidates
+      let c = 0;
+      if (a.alt && mod(a.deg, 7) === 6 && b.deg !== a.deg + 1) c += 3;     // raised leading note must rise
+      if (a.alt && mod(a.deg, 7) === 5 && !(b.deg === a.deg + 1 && b.alt)) c += 3;
+      if (minor && !a.alt && mod(a.deg, 7) === 6 && b.deg === a.deg + 1) c += 1.5;
+      if (Math.abs(b.m - a.m) === 3 && Math.abs(b.deg - a.deg) === 1) c += 5; // augmented second
+      if (a.deg === b.deg && a.alt !== b.alt) c += 4;                      // chromatic inflection
+      if (b.alt) c += 0.6;                                                 // raised notes only where needed
+      return c;
+    };
+    // the attack of note j is judged once its successor k is known (i is its predecessor)
+    const judge = (i, j, k, idx) => {
+      const a = dissAt[idx][j];
+      if (!a) return 0;
+      const inStep = i !== null && Math.abs(cands[j].m - cands[i].m) <= 2 && cands[j].m !== cands[i].m;
+      const outStep = k !== null && Math.abs(cands[k].m - cands[j].m) <= 2 && cands[k].m !== cands[j].m;
+      if (a === 2 && i !== null && cands[i].m === cands[j].m && k !== null && cands[k].m < cands[j].m && cands[j].m - cands[k].m <= 2) return -0.4; // suspension
+      if (inStep && outStep) return a === 2 ? 2.5 : 0.2;
+      return 8;
+    };
+    // Viterbi over (previous, current)
+    let V = new Map();
+    for (let j = 0; j < K; j++) V.set(-1 * K + j, { c: vert[0][j], back: null });   // prev = none (-1)
+    const hist = [V];
+    for (let idx = 1; idx < n; idx++) {
+      const W = new Map();
+      for (const [key2, st] of V) {
+        const i = Math.floor(key2 / K) === -1 ? null : Math.floor(key2 / K), j = mod(key2, K);
+        for (let k = 0; k < K; k++) {
+          const dd = Math.abs(cands[k].m - cands[j].m);
+          if (dd > 12) continue;
+          let c = st.c + vert[idx][k] + mel(cands[j].m, cands[k].m) + altBad(cands[j], cands[k]) + judge(i, j, k, idx - 1);
+          if (i !== null) {
+            const d1 = cands[j].m - cands[i].m, d2 = cands[k].m - cands[j].m;
+            if (Math.abs(d1) >= 5 && !(d2 && Math.abs(d2) <= 2 && Math.sign(d2) !== Math.sign(d1))) c += 1.5;
+            if (Math.abs(d1) >= 3 && Math.abs(d2) >= 3 && Math.sign(d1) === Math.sign(d2)) c += 1.2;
+            if (cands[k].m === cands[i].m && d1) c += 1.2;                 // x y x: trilling back and forth
+          }
+          const s0 = sAt(rh[idx].t - 0.01), s1 = sAt(rh[idx].t), cm = cands[k].m - cands[j].m, smv = s1 - s0;
+          if (cm && smv && Math.sign(cm) === Math.sign(smv)) {
+            c += 0.3;
+            const i0 = mod(cands[j].m - s0, 12), i1 = mod(cands[k].m - s1, 12);
+            if (i0 === i1 && (i1 === 0 || i1 === 7)) c += 8;
+          } else if (cm && smv) c -= 0.2;
+          const sp = sAt(rh[idx - 1].t), spm = s1 - sp;                    // from the previous attack, across any semiquaver
+          if (cm && spm && Math.sign(cm) === Math.sign(spm)) {
+            const i0 = mod(cands[j].m - sp, 12), i1 = mod(cands[k].m - s1, 12);
+            if (i0 === i1 && (i1 === 0 || i1 === 7)) c += 6;
+          }
+          const nk = j * K + k, cur = W.get(nk);
+          if (!cur || c < cur.c) W.set(nk, { c, back: key2 });
+        }
+      }
+      // keep the search small: the best 600 (previous, current) pairs
+      V = new Map([...W.entries()].sort((a, b) => a[1].c - b[1].c).slice(0, 600));
+      hist.push(V);
+    }
+    let bestK = null, bestC = Infinity;
+    for (const [k2, st] of V) {
+      const j = mod(k2, K), i = Math.floor(k2 / K);
+      const c = st.c + judge(i < 0 ? null : i, j, null, n - 1) + (mod(cands[j].m - sm[sm.length - 1], 12) === 0 ? 0.5 : 0);
+      if (c < bestC) { bestC = c; bestK = k2; }
+    }
+    if (bestK === null) return null;
+    const seq = [];
+    for (let idx = n - 1, k2 = bestK; idx >= 0; idx--) { seq.push(mod(k2, K)); k2 = hist[idx].get(k2).back; }
+    seq.reverse();
+    // tie repeated pitches into one longer note (this is how the suspensions are written)
+    const notes = [];
+    seq.forEach((j, idx) => {
+      const c = cands[j], last = notes[notes.length - 1];
+      if (last && last.m === c.m && Math.abs(last.t + last.d - rh[idx].t) < 1e-9) last.d += rh[idx].d;
+      else notes.push({ t: rh[idx].t, d: rh[idx].d, deg: c.deg, alt: c.alt, m: c.m });
+    });
+    return { notes, span: sub.span, c: bestC / n };
+  }
+
+  function composeCountersubject(sub, p, key, r) {
+    let best = null;
+    for (let k = 0; k < 12; k++) {
+      const res = csPitches(sub, csRhythm(sub, p, r), key, r);
+      if (!res || res.notes.length < 4) continue;
+      const on = (ns) => ns.map((x) => ({ on: x.t, d: x.d, m: x.m }));
+      res.c += 3 * parallels(on(res.notes), on(sub.notes)) + 0.5 * fourths(on(sub.notes), on(res.notes));
+      if (!best || res.c < best.c) best = res;
+    }
+    return best;
+  }
+
+  // shared scoring for lines dropped into the texture: clashes, parallels, range, crossings
+  function lineScore(notes, voice, others, ranges, rank) {
+    const [lo, hi] = ranges[voice];
+    let s = 3 * notes.reduce((a, x) => a + Math.max(0, lo - x.m, x.m - hi), 0);
+    const on = notes[0].on, end = notes[notes.length - 1].on + notes[notes.length - 1].d;
+    for (const q of others) {
+      if (!(on < q.end && q.onset < end)) continue;
+      s += strongClashes(notes, q.notes) + 0.5 * fourths(notes, q.notes) + 3 * parallels(notes, q.notes);
+      const above = rank[voice] < rank[q.voice];
+      for (const x of notes) for (const y of q.notes) if (y.on <= x.on && x.on < y.on + y.d && (above ? x.m < y.m : x.m > y.m)) s += 1.5;
+    }
+    return s;
+  }
+
+  function voiceRanks(plan, rangeOffset) {
+    const ranges = plan.voice_ranges.map(([lo, hi]) => [lo + rangeOffset, hi + rangeOffset]);
+    const order = [...Array(plan.voices).keys()].sort((a, b) => (ranges[b][0] + ranges[b][1]) - (ranges[a][0] + ranges[a][1]));
+    const rank = []; order.forEach((v, i) => { rank[v] = i; });
+    return { ranges, rank };
+  }
+
+  function addCountersubjects(cs, placed, key, plan, rangeOffset, r) {
+    if (!cs) return [];
+    const { ranges, rank } = voiceRanks(plan, rangeOffset);
+    const items = [];
+    const busy = (v, a, b) => placed.concat(items).some((q) => q.voice === v && a < q.end - 1e-9 && q.onset < b - 1e-9);
+    placed.forEach((e, i) => {
+      if (i === 0 || e.inv || e.sc !== 1) return;
+      if (!e.expo && r() > 0.85) return;                                  // Bach does not bring it back every time
+      let best = null;
+      for (let v = 0; v < plan.voices; v++) {
+        if (v === e.voice || busy(v, e.onset, e.end)) continue;
+        // the voice that has just finished the subject carries on into the countersubject
+        const justDone = placed.some((q) => q.voice === v && Math.abs(q.end - e.onset) <= 1);
+        if (e.expo && !justDone) continue;
+        for (let o = -3; o <= 3; o++) {
+          const pe = placeEntry(cs, { transform: "x1", midi_shift: e.midi_shift + 12 * o, dia_shift: e.dia_shift + 7 * o }, key);
+          const notes = pe.notes.map((x) => ({ on: e.onset + x.t, d: x.d, m: x.m }));
+          const s = lineScore(notes, v, placed.concat(items), ranges, rank) + (justDone ? -1 : 0) + 0.3 * r();
+          if (!best || s < best.s) best = { s, v, notes };
+        }
+      }
+      if (!best || best.s > 4) return;
+      const end = best.notes[best.notes.length - 1].on + best.notes[best.notes.length - 1].d;
+      items.push({ kind: "cs", voice: best.v, onset: best.notes[0].on, end, notes: best.notes, against: i });
+    });
+    return items;
+  }
+
+  // ------------------------------------------------------------------ 3c. episodes
+  // Between groups of entries Bach rarely writes free music: he takes a fragment of the subject
+  // or countersubject and moves it through a sequence, usually stepping down, with a second voice
+  // imitating it a little later. The same here, in the gaps the plan leaves.
+  function motifFrom(line, fromEnd) {
+    const ns = line.notes;
+    let pick = [];
+    if (!fromEnd) {
+      for (const x of ns) { pick.push(x); const len = x.t + x.d - ns[0].t; if (pick.length >= 4 && len >= 1) break; }
+    } else {
+      for (let i = ns.length - 2; i >= 0; i--) { pick.unshift(ns[i]); const len = ns[ns.length - 2].t + ns[ns.length - 2].d - pick[0].t; if (pick.length >= 4 && len >= 1) break; }
+    }
+    const t0 = pick[0].t, len = pick[pick.length - 1].t + pick[pick.length - 1].d - t0;
+    const P = len <= 1 ? 1 : len <= 2 ? 2 : 4;
+    const notes = pick.filter((x) => x.t - t0 < P).map((x) => ({ t: x.t - t0, d: x.d, deg: x.deg }));
+    const last = notes[notes.length - 1]; last.d = P - last.t;
+    return { notes, P };
+  }
+
+  function seqNotes(motif, start, reps, step, base, key, until) {
+    const out = [];
+    for (let k = 0; k < reps; k++) for (const x of motif.notes) {
+      const on = start + k * motif.P + x.t;
+      if (on + x.d > until + 1e-9) continue;
+      out.push({ on, d: x.d, deg: x.deg + base + k * step });
+    }
+    for (let i = 0; i < out.length; i++) {
+      let alt = 0;
+      const nx = out[i + 1];
+      if (key.mode === "minor" && mod(out[i].deg, 7) === 6 && nx && nx.deg === out[i].deg + 1) alt = 1;
+      out[i].m = degMidi(out[i].deg, alt, key.tonic, key.scale);
+    }
+    return out.map(({ on, d, m }) => ({ on, d, m }));
+  }
+
+  function addEpisodes(sub, cs, placed, extra, key, plan, rangeOffset, r) {
+    const { ranges, rank } = voiceRanks(plan, rangeOffset);
+    const ents = placed.slice().sort((a, b) => a.onset - b.onset);
+    const expoEnd = Math.max(...placed.filter((q) => q.expo).map((q) => q.end));
+    const gaps = [];
+    let cur = -Infinity;
+    for (const e of ents) {
+      if (cur >= expoEnd - 1e-9 && e.onset - cur >= 3) gaps.push([cur, e.onset]);
+      cur = Math.max(cur, e.end);
+    }
+    const motifs = [motifFrom(sub, false), motifFrom(sub, true)];
+    if (cs) motifs.push(motifFrom(cs, false));
+    const all = placed.concat(extra), items = [];
+    const lastPitch = (v, t) => {
+      let best = null;
+      for (const q of all) if (q.voice === v) for (const x of q.notes) if (x.on < t && (!best || x.on > best.on)) best = x;
+      return best ? best.m : null;
+    };
+    for (const [a, b] of gaps) {
+      const start = Math.ceil(a - 1e-9);
+      let best = null;
+      for (let trial = 0; trial < 40; trial++) {
+        const motif = pick(r, motifs), P = motif.P;
+        const reps = Math.min(4, Math.floor((b - start) / P));
+        if (reps < 2) continue;
+        const step = weighted(r, [[-1, 4], [1, 2], [-2, 1]]);
+        const A = Math.floor(r() * plan.voices);
+        let B = Math.floor(r() * plan.voices); if (B === A) B = (A + 1) % plan.voices;
+        const delay = P === 4 ? pick(r, [1, 2]) : P / 2;           // never a whole period: that is parallel motion
+        const fit = (v, base, st0) => {
+          const ns = seqNotes(motif, st0, reps, step, base, key, b);
+          return ns.length ? ns : null;
+        };
+        // put the leader where its voice can carry the whole sequence, near where it last was
+        let bestA = null;
+        for (let base = -16; base <= 16; base++) {
+          const ns = fit(A, base, start);
+          if (!ns) continue;
+          const [lo, hi] = ranges[A], lp = lastPitch(A, start);
+          const s = ns.reduce((x, y) => x + Math.max(0, lo - y.m, y.m - hi), 0) * 3 + (lp === null ? 0 : 0.15 * Math.abs(ns[0].m - lp));
+          if (!bestA || s < bestA.s) bestA = { s, base, ns };
+        }
+        if (!bestA) continue;
+        const lineA = { voice: A, onset: start, end: b, notes: bestA.ns };
+        let s = lineScore(bestA.ns, A, all, ranges, rank);
+        let lineB = null, sB = 2 * reps;
+        if (plan.voices > 1) for (const dI of [-7, -2, -5, 2, 5, 7, -9, -14, -4, 3]) {
+          const nsB = fit(B, bestA.base + dI, start + delay);
+          if (!nsB || nsB.length < motif.notes.length) continue;
+          const sb = lineScore(nsB, B, all.concat([lineA]), ranges, rank);
+          if (sb < sB) { sB = sb; lineB = { voice: B, onset: nsB[0].on, end: b, notes: nsB }; }
+        }
+        s = (s + sB) / reps + 0.3 * r();
+        if (!best || s < best.s) best = { s, lines: lineB ? [lineA, lineB] : [lineA] };
+      }
+      if (!best || best.s > 1) continue;
+      for (const L of best.lines) {
+        const end = L.notes[L.notes.length - 1].on + L.notes[L.notes.length - 1].d;
+        const it = { kind: "episode", voice: L.voice, onset: L.notes[0].on, end, notes: L.notes };
+        items.push(it); all.push(it);
+      }
+    }
+    return items;
   }
 
   // ------------------------------------------------------------------ 4. harmony
@@ -660,7 +971,9 @@
             for (let j = i + 1; j < nv; j++) {
               const b = pitches[j];
               if (b === null) continue;
-              const fi = fixed[i][t] === null && t >= entered[i], fj = fixed[j][t] === null && t >= entered[j];
+              // a pair is judged if either voice is free now or was free a moment ago (moving into fixed material)
+              const freeAt = (v, u) => u >= 0 && fixed[v][u] === null && u >= entered[v];
+              const fi = freeAt(i, t) || freeAt(i, t - 1), fj = freeAt(j, t) || freeAt(j, t - 1);
               if (!fi && !fj) continue;
               const ic = Math.abs(a - b) % 12;
               if (!CONSONANT.has(ic) && !(ic === 5 && Math.min(a, b) !== bass)) c += strong ? 3 : 0.7;
@@ -693,7 +1006,11 @@
     for (let n = states[0].node; n; n = n.parent) grid.push(n.pitches);
     grid.reverse();
     const notes = [];
-    placed.forEach((q, ei) => q.notes.forEach((x) => notes.push({ v: q.voice, on: x.on, d: x.d, m: x.m, entry: ei })));
+    let ei = 0;
+    placed.forEach((q) => {
+      const idx = q.kind === "subject" || !q.kind ? ei++ : -1;
+      q.notes.forEach((x) => notes.push({ v: q.voice, on: x.on, d: x.d, m: x.m, entry: idx, kind: q.kind || "subject" }));
+    });
     for (let v = 0; v < nv; v++) {
       let t = 0;
       while (t < T) {
@@ -701,7 +1018,7 @@
         const m = grid[t][v];
         let u = t + 1;
         while (u < T && fixed[v][u] === null && grid[u][v] === m && u - t < 4 * spb) u++;
-        notes.push({ v, on: t * step, d: (u - t) * step, m, entry: -1 });
+        notes.push({ v, on: t * step, d: (u - t) * step, m, entry: -1, kind: "free" });
         t = u;
       }
     }
@@ -719,11 +1036,16 @@
     const plan = choosePlan(plans, p, r);
     const rangeOffset = sub.notes[0].m - plan.subject_first_midi;
     const placed = realise(sub, plan, key, p, rangeOffset);
-    const res = fill(placed, plan, key, { seed: seed + 7, rangeOffset, onProgress, beam });
+    const cs = composeCountersubject(sub, p, key, r);
+    const csItems = addCountersubjects(cs, placed, key, plan, rangeOffset, r);
+    const epItems = addEpisodes(sub, cs, placed, csItems, key, plan, rangeOffset, r);
+    const res = fill(placed.concat(csItems, epItems), plan, key, { seed: seed + 7, rangeOffset, onProgress, beam });
     return {
       request: text, seed, params: p, key: p.keyName, tempo: p.tempo, timbre: p.timbre, voices: plan.voices,
       plan: { number: plan.number, key: plan.key + " " + plan.mode, entries: plan.entries.length },
       subject: sub.notes.map((x) => ({ t: x.t, d: x.d, m: x.m })),
+      countersubject: cs ? cs.notes.map((x) => ({ t: x.t, d: x.d, m: x.m })) : null,
+      counts: { countersubjects: csItems.length, episodes: epItems.length },
       entries: placed.map((q) => ({ voice: q.voice, onset: q.onset, end: q.end, inv: q.inv, localKey: q.localKey })),
       notes: res.notes, length: res.total, chords: res.chords,
     };

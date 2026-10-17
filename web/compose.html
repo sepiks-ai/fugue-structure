@@ -8,17 +8,17 @@
 <style>
 :root {
   --bg: #f7f5f0; --panel: #ffffff; --ink: #1d1b18; --muted: #6b665e; --rule: #e2ddd3; --lane: #efebe3;
-  --accent: #2f5d8a; --accent2: #b5562e; --free: #b9b2a5; --chip: #eef2f6;
+  --accent: #2f5d8a; --accent2: #b5562e; --cs: #4f8a5b; --ep: #a57f2c; --free: #b9b2a5; --chip: #eef2f6;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #15161a; --panel: #1d1f24; --ink: #ecebe7; --muted: #9a978f; --rule: #2e3037; --lane: #24262c;
-    --accent: #7fb0e0; --accent2: #f0905f; --free: #4c4f57; --chip: #243040;
+    --accent: #7fb0e0; --accent2: #f0905f; --cs: #8cc79a; --ep: #d9b46a; --free: #4c4f57; --chip: #243040;
   }
 }
 :root[data-theme="dark"] {
   --bg: #15161a; --panel: #1d1f24; --ink: #ecebe7; --muted: #9a978f; --rule: #2e3037; --lane: #24262c;
-  --accent: #7fb0e0; --accent2: #f0905f; --free: #4c4f57; --chip: #243040;
+  --accent: #7fb0e0; --accent2: #f0905f; --cs: #8cc79a; --ep: #d9b46a; --free: #4c4f57; --chip: #243040;
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 Georgia, "Iowan Old Style", "Palatino Linotype", serif; }
@@ -112,11 +112,11 @@ svg#roll { width: 100%; height: auto; display: block; background: var(--lane); b
       <button type="button" data-a="legato">Legato</button><button type="button" data-a="articulated">Articulated</button><button type="button" data-a="detached">Detached</button>
     </span>
   </div>
-  <div class="legend"><span style="--c:var(--accent)">Subject</span><span style="--c:var(--accent2)">Subject inverted</span><span style="--c:var(--free)">Free counterpoint</span></div>
+  <div class="legend"><span style="--c:var(--accent)">Subject</span><span style="--c:var(--accent2)">Subject inverted</span><span style="--c:var(--cs)">Countersubject</span><span style="--c:var(--ep)">Episode (subject fragments in sequence)</span><span style="--c:var(--free)">Free counterpoint</span></div>
   <svg id="roll" role="img" aria-label="Piano roll of the fugue"></svg>
 </section>
 
-<p class="how">How it works: your words set the key, mode, number of voices, speed and the character of the subject. A short theme (the subject) is composed to match. The plan of one of Bach's fugues decides when each voice states it, at which pitch and whether upside down; the program then writes the free counterpoint around those entries, quaver by quaver, under rules of harmony and voice-leading. The architecture is Bach's and the music in between is the machine's, which is where the difference lies. Harpsichord, organ and piano recordings from the Versilian Community Sample Library (CC0). More in <a href="https://paulharrald.substack.com/">the article</a>, on the <a href="index.html">Fugue Map</a>, and in the <a href="https://github.com/sepiks-ai/fugue-structure">code</a>.</p>
+<p class="how">How it works: your words set the key, mode, number of voices, speed and the character of the subject. A short theme (the subject) is composed to match. The plan of one of Bach's fugues decides when each voice states it, at which pitch and whether upside down; a countersubject is written once against the subject (in thirds, sixths and suspensions, so that it works above or below) and returns against later entries; the gaps between groups of entries become episodes, where a fragment of the subject or countersubject moves through a sequence with a second voice imitating it. The program then writes the remaining free counterpoint, quaver by quaver, under rules of harmony and voice-leading. The plan is Bach's; the material and the music in between are the machine's. Harpsichord, organ and piano recordings from the Versilian Community Sample Library (CC0). More in <a href="https://paulharrald.substack.com/">the article</a>, on the <a href="index.html">Fugue Map</a>, and in the <a href="https://github.com/sepiks-ai/fugue-structure">code</a>.</p>
 </div>
 <div class="toast" id="toast"></div>
 
@@ -168,7 +168,7 @@ function render() {
   const p = piece;
   $("card").hidden = false;
   $("title").textContent = `Fugue in ${p.key}, ${p.voices} voices`;
-  $("meta").innerHTML = `Plan from Bach's No. ${p.plan.number} (${p.plan.key.replace("b ", "♭ ").replace("# ", "♯ ")}) · ${p.entries.length} entries, ${p.entries.filter((e) => e.inv).length} inverted · ${Math.round(p.length * 60 / p.tempo)} seconds · version ${seed + 1}`;
+  $("meta").innerHTML = `Plan from Bach's No. ${p.plan.number} (${p.plan.key.replace("b ", "♭ ").replace("# ", "♯ ")}) · ${p.entries.length} entries, ${p.entries.filter((e) => e.inv).length} inverted${p.counts ? `, countersubject ${p.counts.countersubjects} times, ${p.counts.episodes} episode lines` : ""} · ${Math.round(p.length * 60 / p.tempo)} seconds · version ${seed + 1}`;
   $("heard").innerHTML = p.params.heard.map((h) => `<span>${h.replace(/[<>&]/g, "")}</span>`).join("");
   $("subject").textContent = "Subject: " + p.subject.map((x) => noteName(x.m)).join(" ");
   drawRoll();
@@ -184,9 +184,9 @@ function drawRoll() {
   let out = "";
   for (let b = 0; b <= p.length; b += 4) out += `<line x1="${x(b)}" x2="${x(b)}" y1="0" y2="${H}" stroke="var(--rule)" stroke-width="${b % 16 === 0 ? 1 : 0.4}"/>`;
   for (const pass of [0, 1]) for (const n of p.notes) {
-    const isEntry = n.entry >= 0;
-    if ((pass === 0) === isEntry) continue;
-    const c = !isEntry ? "var(--free)" : inv.has(n.entry) ? "var(--accent2)" : "var(--accent)";
+    const isFree = n.kind ? n.kind === "free" : n.entry < 0;
+    if ((pass === 0) !== isFree) continue;
+    const c = isFree ? "var(--free)" : n.kind === "cs" ? "var(--cs)" : n.kind === "episode" ? "var(--ep)" : inv.has(n.entry) ? "var(--accent2)" : "var(--accent)";
     out += `<rect x="${x(n.on).toFixed(1)}" y="${(y(n.m) - rowH / 2).toFixed(1)}" width="${Math.max(1.5, x(n.on + n.d) - x(n.on) - 0.8).toFixed(1)}" height="${rowH.toFixed(1)}" rx="1" fill="${c}"/>`;
   }
   out += `<line id="head" x1="0" x2="0" y1="0" y2="${H}" stroke="var(--ink)" stroke-width="1.5" opacity="0"/>`;
@@ -349,7 +349,8 @@ function noteTimes(n, fromQ, t0, spq) {
   const start = t0 + clock(n.on, spq) - clock(fromQ, spq) + 0.006 * jitter(n, 1);
   const dur = Math.max(0.06, clock(n.on + len, spq) - clock(n.on, spq));
   const beat = n.on % 4 === 0 ? 1.08 : n.on % 1 === 0 ? 1.0 : 0.92;
-  const vel = beat * (n.entry >= 0 ? 1.1 : 0.88) * (1 + 0.06 * jitter(n, 2));
+  const weight = n.entry >= 0 ? 1.1 : n.kind === "cs" ? 1.0 : n.kind === "episode" ? 0.97 : 0.88;
+  const vel = beat * weight * (1 + 0.06 * jitter(n, 2));
   return [Math.max(t0, start), dur, vel];
 }
 
