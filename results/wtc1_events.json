@@ -1,0 +1,8208 @@
+[
+ {
+  "piece": "wtc1f01",
+  "voices": 4,
+  "notes": 739,
+  "chords_in_voices": 1,
+  "subject_notes": 15,
+  "cs_notes": 14,
+  "full_entries": 22,
+  "cs_entries": 1,
+  "cov_subject": [
+   0.42219215155615697,
+   0.3786270346779901
+  ],
+  "cov_subj_cs": [
+   0.44113667117726657,
+   0.39561217268223636
+  ],
+  "cov_all": [
+   0.5453315290933695,
+   0.47983014861995754
+  ],
+  "events": [
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 0.5,
+    "n": 15,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 94.5,
+    "n": 15,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 79.5,
+    "n": 15,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 18.5,
+    "n": 15,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 32.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 39.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 52.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 62.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 73.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 6.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 24.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 61.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 12.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 25.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 44.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 64.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 72.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 82.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 92.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 38.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 56.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 66.0,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 6.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 53.5,
+    "n": 10,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 13.5,
+    "n": 8,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 58.5,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 48.5,
+    "n": 7,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 100.5,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 19.5,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 38.5,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 98.5,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 24.5,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 20.5,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 69.0,
+    "n": 5,
+    "transform": "x1"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f02",
+  "voices": 3,
+  "notes": 747,
+  "chords_in_voices": 7,
+  "subject_notes": 21,
+  "cs_notes": 19,
+  "full_entries": 6,
+  "cs_entries": 4,
+  "cov_subject": [
+   0.16331994645247658,
+   0.16022544283413848
+  ],
+  "cov_subj_cs": [
+   0.26506024096385544,
+   0.2665056360708535
+  ],
+  "cov_all": [
+   0.6037483266398929,
+   0.5636070853462157
+  ],
+  "events": [
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 0.5,
+    "n": 21,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 24.5,
+    "n": 21,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 40.5,
+    "n": 20,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 76.5,
+    "n": 20,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 114.5,
+    "n": 20,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 102.5,
+    "n": 20,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 8.5,
+    "n": 19,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 76.5,
+    "n": 19,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 24.5,
+    "n": 19,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 40.5,
+    "n": 19,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 18.5,
+    "n": 7,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 64.0,
+    "n": 7,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 103.5,
+    "n": 7,
+    "transform": "AUG~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 48.25,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 50.25,
+    "n": 7,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 52.0,
+    "n": 7,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 54.25,
+    "n": 7,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 56.0,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 101.5,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 32.5,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 34.25,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 36.0,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 38.25,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 70.0,
+    "n": 7,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 84.25,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 86.0,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 88.25,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 90.0,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 92.25,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 94.0,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 96.0,
+    "n": 7,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 100.0,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 21.75,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 67.25,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 58.0,
+    "n": 6,
+    "transform": "AUG~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 73.25,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 34.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 38.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 86.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 90.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 32.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 36.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 84.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 88.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 27.0,
+    "n": 5,
+    "transform": "AUG~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 107.0,
+    "n": 5,
+    "transform": "INV+AUG~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 61.0,
+    "n": 5,
+    "transform": "INV+AUG~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 105.0,
+    "n": 5,
+    "transform": "AUG~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 110.0,
+    "n": 5,
+    "transform": "INV+AUG~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 59.0,
+    "n": 5,
+    "transform": "AUG~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 79.0,
+    "n": 5,
+    "transform": "AUG~"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f03",
+  "voices": 3,
+  "notes": 1414,
+  "chords_in_voices": 4,
+  "subject_notes": 21,
+  "cs_notes": 25,
+  "full_entries": 12,
+  "cs_entries": 4,
+  "cov_subject": [
+   0.16053748231966053,
+   0.16268382352941177
+  ],
+  "cov_subj_cs": [
+   0.2263083451202263,
+   0.22104779411764705
+  ],
+  "cov_all": [
+   0.40806223479490805,
+   0.3552389705882353
+  ],
+  "events": [
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 9.5,
+    "n": 25,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 173.5,
+    "n": 25,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 53.5,
+    "n": 23,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 1.5,
+    "n": 21,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 165.5,
+    "n": 21,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 9.5,
+    "n": 21,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 173.75,
+    "n": 21,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 17.5,
+    "n": 21,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 53.5,
+    "n": 21,
+    "transform": "x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 95.5,
+    "n": 20,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 37.75,
+    "n": 17,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 95.75,
+    "n": 17,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 203.75,
+    "n": 17,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 73.5,
+    "n": 17,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 181.5,
+    "n": 17,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 103.5,
+    "n": 16,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 139.75,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 143.75,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 155.75,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 159.75,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 104.0,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 211.5,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 18.0,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 37.5,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 182.0,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 203.5,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 74.0,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 135.75,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 151.75,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 159.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 166.75,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 49.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 52.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 87.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 91.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 147.75,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 155.25,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 22.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 42.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 186.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 210.25,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 78.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 110.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 115.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 117.25,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 163.75,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 170.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 44.25,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 118.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 213.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 82.5,
+    "n": 5,
+    "transform": "AUG~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 211.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 28.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 32.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 64.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 68.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 190.25,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 194.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 198.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f04",
+  "voices": 5,
+  "notes": 1326,
+  "chords_in_voices": 0,
+  "subject_notes": 4,
+  "cs_notes": 11,
+  "full_entries": 45,
+  "cs_entries": 1,
+  "cov_subject": [
+   0.13574660633484162,
+   0.24597835624451594
+  ],
+  "cov_subj_cs": [
+   0.14404223227752638,
+   0.2535829189821585
+  ],
+  "cov_all": [
+   0.14404223227752638,
+   0.2535829189821585
+  ],
+  "events": [
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 12.0,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 0.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 35.0,
+    "n": 4,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 59.0,
+    "n": 4,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 114.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 134.0,
+    "n": 4,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 386.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 12.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 40.0,
+    "n": 4,
+    "transform": "DIM~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 74.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 87.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 138.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 202.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 248.0,
+    "n": 4,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 320.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 26.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 55.0,
+    "n": 4,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 98.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 126.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 150.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 257.5,
+    "n": 4,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 340.0,
+    "n": 4,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 46.0,
+    "n": 4,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 82.0,
+    "n": 4,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 135.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 203.5,
+    "n": 4,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 286.0,
+    "n": 4,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 374.0,
+    "n": 4,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 397.5,
+    "n": 4,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 446.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 4,
+    "onset": 54.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 4,
+    "onset": 72.0,
+    "n": 4,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 4,
+    "onset": 112.0,
+    "n": 4,
+    "transform": "INV+DIM~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 4,
+    "onset": 134.0,
+    "n": 4,
+    "transform": "INV+DIM~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 4,
+    "onset": 172.0,
+    "n": 4,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 4,
+    "onset": 191.5,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 4,
+    "onset": 214.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 4,
+    "onset": 232.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 4,
+    "onset": 260.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 4,
+    "onset": 279.5,
+    "n": 4,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 4,
+    "onset": 300.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 4,
+    "onset": 352.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 4,
+    "onset": 372.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 4,
+    "onset": 382.0,
+    "n": 4,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 4,
+    "onset": 402.0,
+    "n": 4,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 4,
+    "onset": 416.0,
+    "n": 4,
+    "transform": "INV+x1~"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f05",
+  "voices": 4,
+  "notes": 779,
+  "chords_in_voices": 1,
+  "subject_notes": 14,
+  "cs_notes": 8,
+  "full_entries": 11,
+  "cs_entries": 1,
+  "cov_subject": [
+   0.18741976893453144,
+   0.1266816143497758
+  ],
+  "cov_subj_cs": [
+   0.19768934531450577,
+   0.13863976083707025
+  ],
+  "cov_all": [
+   0.47753530166880614,
+   0.24028400597907323
+  ],
+  "events": [
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 1.0,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 13.0,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 41.0,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 25.0,
+    "n": 13,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 57.0,
+    "n": 13,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 5.0,
+    "n": 13,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 53.0,
+    "n": 13,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 45.0,
+    "n": 13,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 17.0,
+    "n": 13,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 29.0,
+    "n": 13,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 49.0,
+    "n": 13,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 5.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 76.0,
+    "n": 10,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 32.0,
+    "n": 9,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 36.0,
+    "n": 9,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 40.0,
+    "n": 9,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 77.0,
+    "n": 9,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 68.0,
+    "n": 9,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 72.0,
+    "n": 9,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 48.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 78.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 80.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 90.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 92.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 93.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 94.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 95.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 21.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 23.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 79.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 64.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 89.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 91.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 93.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 94.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 95.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 85.625,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 84.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 24.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f06",
+  "voices": 3,
+  "notes": 706,
+  "chords_in_voices": 12,
+  "subject_notes": 12,
+  "cs_notes": 21,
+  "full_entries": 16,
+  "cs_entries": 1,
+  "cov_subject": [
+   0.254957507082153,
+   0.25875625446747674
+  ],
+  "cov_subj_cs": [
+   0.2847025495750708,
+   0.2780557541100786
+  ],
+  "cov_all": [
+   0.5892351274787535,
+   0.5275196568977841
+  ],
+  "events": [
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 7.25,
+    "n": 21,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 0.5,
+    "n": 12,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 36.5,
+    "n": 12,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 6.5,
+    "n": 12,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 51.5,
+    "n": 12,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 81.5,
+    "n": 12,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 117.5,
+    "n": 12,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 15.5,
+    "n": 12,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 48.5,
+    "n": 12,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 114.5,
+    "n": 12,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 63.5,
+    "n": 11,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 78.5,
+    "n": 11,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 60.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 66.5,
+    "n": 11,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 99.5,
+    "n": 10,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 39.5,
+    "n": 9,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 84.5,
+    "n": 9,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 16.25,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 43.25,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 61.25,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 100.25,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 106.25,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 109.25,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 37.25,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 46.25,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 112.25,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 13.25,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 22.25,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 79.25,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 102.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 126.0,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 72.5,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 96.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 102.5,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 105.5,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 108.5,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 111.5,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 126.0,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 75.5,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 90.25,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 93.25,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 27.25,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 30.25,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 21.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 33.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 39.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 42.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 45.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 105.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 108.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 111.5,
+    "n": 5,
+    "transform": "INV+x1"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f07",
+  "voices": 3,
+  "notes": 900,
+  "chords_in_voices": 0,
+  "subject_notes": 23,
+  "cs_notes": 20,
+  "full_entries": 2,
+  "cs_entries": 4,
+  "cov_subject": [
+   0.051111111111111114,
+   0.04078857919782461
+  ],
+  "cov_subj_cs": [
+   0.13,
+   0.11556764106050306
+  ],
+  "cov_all": [
+   0.31555555555555553,
+   0.28891910265125764
+  ],
+  "events": [
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 0.0,
+    "n": 23,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 20.0,
+    "n": 23,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 8.0,
+    "n": 20,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 66.0,
+    "n": 17,
+    "transform": "x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 100.0,
+    "n": 17,
+    "transform": "x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 40.0,
+    "n": 17,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 111.0,
+    "n": 16,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 78.0,
+    "n": 16,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 39.5,
+    "n": 10,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 84.0,
+    "n": 10,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 88.0,
+    "n": 10,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 8.0,
+    "n": 10,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 66.0,
+    "n": 10,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 131.5,
+    "n": 10,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 99.5,
+    "n": 10,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 88.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 81.0,
+    "n": 5,
+    "transform": "INV+DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 129.75,
+    "n": 5,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 20.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 80.0,
+    "n": 5,
+    "transform": "INV+DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 86.25,
+    "n": 5,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 90.25,
+    "n": 5,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 112.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 55.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 92.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 96.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 106.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 110.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f08",
+  "voices": 3,
+  "notes": 1385,
+  "chords_in_voices": 0,
+  "subject_notes": 12,
+  "cs_notes": 14,
+  "full_entries": 25,
+  "cs_entries": 1,
+  "cov_subject": [
+   0.1963898916967509,
+   0.251010101010101
+  ],
+  "cov_subj_cs": [
+   0.20649819494584837,
+   0.2611111111111111
+  ],
+  "cov_all": [
+   0.26137184115523465,
+   0.32095959595959594
+  ],
+  "events": [
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 10.0,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 0.0,
+    "n": 12,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 106.0,
+    "n": 12,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 186.0,
+    "n": 12,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 242.5,
+    "n": 12,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 266.0,
+    "n": 12,
+    "transform": "AUG~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 318.5,
+    "n": 12,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 92.0,
+    "n": 12,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 103.0,
+    "n": 12,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 226.5,
+    "n": 12,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 254.0,
+    "n": 12,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 274.5,
+    "n": 12,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 306.0,
+    "n": 12,
+    "transform": "AUG~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 28.0,
+    "n": 12,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 244.0,
+    "n": 12,
+    "transform": "AUG~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 264.0,
+    "n": 12,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 74.0,
+    "n": 10,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 76.0,
+    "n": 10,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 140.0,
+    "n": 9,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 205.0,
+    "n": 9,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 116.0,
+    "n": 9,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 176.0,
+    "n": 9,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 206.0,
+    "n": 9,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 174.0,
+    "n": 9,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 204.0,
+    "n": 9,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 304.5,
+    "n": 9,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 213.0,
+    "n": 8,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 214.0,
+    "n": 8,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 212.0,
+    "n": 8,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 24.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 94.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 34.0,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 85.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 169.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 233.5,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 163.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 293.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 80.25,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 181.0,
+    "n": 5,
+    "transform": "x1"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f09",
+  "voices": 3,
+  "notes": 733,
+  "chords_in_voices": 0,
+  "subject_notes": 11,
+  "cs_notes": 16,
+  "full_entries": 11,
+  "cs_entries": 12,
+  "cov_subject": [
+   0.165075034106412,
+   0.13793103448275862
+  ],
+  "cov_subj_cs": [
+   0.4147339699863574,
+   0.2977291841883936
+  ],
+  "cov_all": [
+   0.538881309686221,
+   0.3809924306139613
+  ],
+  "events": [
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 5.5,
+    "n": 16,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 85.5,
+    "n": 16,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 89.5,
+    "n": 16,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 27.5,
+    "n": 16,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 49.5,
+    "n": 16,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 53.5,
+    "n": 16,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 15.5,
+    "n": 16,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 11.5,
+    "n": 15,
+    "transform": "x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 31.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 69.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 93.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 101.5,
+    "n": 14,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 1.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 27.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 61.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 81.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 5.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 23.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 77.75,
+    "n": 11,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 97.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 11.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 35.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 73.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 65.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 97.5,
+    "n": 11,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 41.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 45.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 77.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 108.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 37.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 57.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 83.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 19.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 21.5,
+    "n": 6,
+    "transform": "x1~"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f10",
+  "voices": 2,
+  "notes": 810,
+  "chords_in_voices": 0,
+  "subject_notes": 24,
+  "cs_notes": 17,
+  "full_entries": 8,
+  "cs_entries": 10,
+  "cov_subject": [
+   0.23703703703703705,
+   0.2029598308668076
+  ],
+  "cov_subj_cs": [
+   0.43580246913580245,
+   0.4365750528541226
+  ],
+  "cov_all": [
+   0.4580246913580247,
+   0.45560253699788583
+  ],
+  "events": [
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 0.0,
+    "n": 24,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 30.0,
+    "n": 24,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 63.0,
+    "n": 24,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 93.0,
+    "n": 24,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 6.0,
+    "n": 24,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 36.0,
+    "n": 24,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 57.0,
+    "n": 24,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 87.0,
+    "n": 24,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 6.0,
+    "n": 17,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 36.0,
+    "n": 17,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 69.0,
+    "n": 17,
+    "transform": "x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 75.0,
+    "n": 17,
+    "transform": "x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 12.0,
+    "n": 17,
+    "transform": "x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 18.0,
+    "n": 17,
+    "transform": "x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 63.0,
+    "n": 17,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 87.0,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 30.0,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 93.0,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 114.0,
+    "n": 13,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 98.25,
+    "n": 5,
+    "transform": "x1~"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f11",
+  "voices": 3,
+  "notes": 670,
+  "chords_in_voices": 0,
+  "subject_notes": 18,
+  "cs_notes": 17,
+  "full_entries": 10,
+  "cs_entries": 3,
+  "cov_subject": [
+   0.2462686567164179,
+   0.21198568872987478
+  ],
+  "cov_subj_cs": [
+   0.3194029850746269,
+   0.27191413237924866
+  ],
+  "cov_all": [
+   0.6044776119402985,
+   0.5411449016100179
+  ],
+  "events": [
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 0.0,
+    "n": 18,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 31.5,
+    "n": 18,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 6.0,
+    "n": 18,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 25.5,
+    "n": 18,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 13.5,
+    "n": 18,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 6.0,
+    "n": 17,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 31.5,
+    "n": 16,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 19.5,
+    "n": 16,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 40.5,
+    "n": 15,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 57.0,
+    "n": 15,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 54.0,
+    "n": 15,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 37.5,
+    "n": 15,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 60.0,
+    "n": 15,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 72.0,
+    "n": 10,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 75.25,
+    "n": 10,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 69.0,
+    "n": 10,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 52.25,
+    "n": 9,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 48.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 69.5,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 25.75,
+    "n": 5,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 65.75,
+    "n": 5,
+    "transform": "INV+DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 76.0,
+    "n": 5,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 81.25,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 83.5,
+    "n": 5,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 86.5,
+    "n": 5,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 94.0,
+    "n": 5,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 98.5,
+    "n": 5,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 12.25,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 63.25,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 79.0,
+    "n": 5,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 85.0,
+    "n": 5,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 95.5,
+    "n": 5,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 97.0,
+    "n": 5,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 98.75,
+    "n": 5,
+    "transform": "INV+DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 100.0,
+    "n": 5,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 73.0,
+    "n": 5,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 91.25,
+    "n": 5,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 12.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 54.75,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 14.25,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 39.25,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 60.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 67.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 71.0,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 72.5,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 51.0,
+    "n": 5,
+    "transform": "AUG~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 75.5,
+    "n": 5,
+    "transform": "AUG~"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f12",
+  "voices": 4,
+  "notes": 1319,
+  "chords_in_voices": 0,
+  "subject_notes": 13,
+  "cs_notes": 25,
+  "full_entries": 10,
+  "cs_entries": 3,
+  "cov_subject": [
+   0.08491281273692192,
+   0.17018989609458976
+  ],
+  "cov_subj_cs": [
+   0.14025777103866566,
+   0.2178430670010749
+  ],
+  "cov_all": [
+   0.14025777103866566,
+   0.2178430670010749
+  ],
+  "events": [
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 13.0,
+    "n": 25,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 25.0,
+    "n": 24,
+    "transform": "x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 49.0,
+    "n": 24,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 1.0,
+    "n": 13,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 13.0,
+    "n": 13,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 73.0,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 159.0,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 133.0,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 25.0,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 107.0,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 209.0,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 49.0,
+    "n": 10,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 185.0,
+    "n": 10,
+    "transform": "x1"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f13",
+  "voices": 3,
+  "notes": 858,
+  "chords_in_voices": 0,
+  "subject_notes": 16,
+  "cs_notes": 25,
+  "full_entries": 7,
+  "cs_entries": 3,
+  "cov_subject": [
+   0.1282051282051282,
+   0.13877551020408163
+  ],
+  "cov_subj_cs": [
+   0.20862470862470864,
+   0.20340136054421767
+  ],
+  "cov_all": [
+   0.30303030303030304,
+   0.2714285714285714
+  ],
+  "events": [
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 8.5,
+    "n": 25,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 16.5,
+    "n": 25,
+    "transform": "x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 42.5,
+    "n": 19,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 0.5,
+    "n": 16,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 122.5,
+    "n": 16,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 8.5,
+    "n": 16,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 56.5,
+    "n": 16,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 108.5,
+    "n": 16,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 16.5,
+    "n": 15,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 76.5,
+    "n": 15,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 76.5,
+    "n": 9,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 59.5,
+    "n": 9,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 125.5,
+    "n": 9,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 42.5,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 106.5,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 53.5,
+    "n": 5,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 119.5,
+    "n": 5,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 118.5,
+    "n": 5,
+    "transform": "AUG~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 52.5,
+    "n": 5,
+    "transform": "AUG~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 38.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 49.5,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 55.75,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 121.75,
+    "n": 5,
+    "transform": "INV+x1~"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f14",
+  "voices": 4,
+  "notes": 811,
+  "chords_in_voices": 0,
+  "subject_notes": 18,
+  "cs_notes": 23,
+  "full_entries": 8,
+  "cs_entries": 5,
+  "cov_subject": [
+   0.17755856966707767,
+   0.2141863699582754
+  ],
+  "cov_subj_cs": [
+   0.311960542540074,
+   0.3320584144645341
+  ],
+  "cov_all": [
+   0.5376078914919852,
+   0.5100834492350487
+  ],
+  "events": [
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 21.5,
+    "n": 23,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 147.5,
+    "n": 23,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 87.5,
+    "n": 23,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 45.5,
+    "n": 20,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 3,
+    "onset": 171.75,
+    "n": 20,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 1.0,
+    "n": 18,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 169.0,
+    "n": 18,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 19.0,
+    "n": 18,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 118.0,
+    "n": 18,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 43.0,
+    "n": 18,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 187.0,
+    "n": 18,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 85.0,
+    "n": 18,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 217.0,
+    "n": 18,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 219.5,
+    "n": 14,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 219.5,
+    "n": 12,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 84.5,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 204.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 210.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 231.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 42.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 111.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 114.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 204.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 210.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 84.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 108.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 111.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 123.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 126.5,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 129.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 135.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 141.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 207.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 213.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 108.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 168.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 186.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 189.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 201.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 207.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 213.5,
+    "n": 6,
+    "transform": "x1~"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f15",
+  "voices": 3,
+  "notes": 1698,
+  "chords_in_voices": 0,
+  "subject_notes": 30,
+  "cs_notes": 35,
+  "full_entries": 5,
+  "cs_entries": 2,
+  "cov_subject": [
+   0.08539458186101295,
+   0.09176470588235294
+  ],
+  "cov_subj_cs": [
+   0.12367491166077739,
+   0.12549019607843137
+  ],
+  "cov_all": [
+   0.36925795053003535,
+   0.3417647058823529
+  ],
+  "events": [
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 12.0,
+    "n": 35,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 0.0,
+    "n": 30,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 111.0,
+    "n": 30,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 12.0,
+    "n": 30,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 30.0,
+    "n": 30,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 69.0,
+    "n": 30,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 205.5,
+    "n": 25,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 69.0,
+    "n": 21,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 57.0,
+    "n": 21,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 126.0,
+    "n": 21,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 81.0,
+    "n": 21,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 150.25,
+    "n": 13,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 234.0,
+    "n": 13,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 178.5,
+    "n": 13,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 228.0,
+    "n": 13,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 234.0,
+    "n": 13,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 153.0,
+    "n": 13,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 181.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 231.25,
+    "n": 11,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 124.5,
+    "n": 8,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 57.0,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 101.25,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 158.25,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 162.75,
+    "n": 6,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 164.25,
+    "n": 6,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 224.25,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 78.25,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 136.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 172.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 200.5,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 44.25,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 66.25,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 104.25,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 107.25,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 162.75,
+    "n": 6,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 164.25,
+    "n": 6,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 175.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 218.25,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 235.5,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 85.0,
+    "n": 6,
+    "transform": "INV+DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 86.5,
+    "n": 6,
+    "transform": "INV+DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 88.0,
+    "n": 6,
+    "transform": "INV+DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 130.0,
+    "n": 6,
+    "transform": "INV+DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 131.5,
+    "n": 6,
+    "transform": "INV+DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 133.0,
+    "n": 6,
+    "transform": "INV+DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 35.5,
+    "n": 6,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 37.0,
+    "n": 6,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 118.0,
+    "n": 6,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 209.5,
+    "n": 6,
+    "transform": "INV+DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 211.0,
+    "n": 6,
+    "transform": "INV+DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 212.5,
+    "n": 6,
+    "transform": "INV+DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 61.0,
+    "n": 6,
+    "transform": "INV+DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 62.5,
+    "n": 6,
+    "transform": "INV+DIM~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 64.0,
+    "n": 6,
+    "transform": "INV+DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 176.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 214.75,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 68.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 245.25,
+    "n": 5,
+    "transform": "INV+DIM~"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f16",
+  "voices": 4,
+  "notes": 754,
+  "chords_in_voices": 0,
+  "subject_notes": 11,
+  "cs_notes": 11,
+  "full_entries": 14,
+  "cs_entries": 9,
+  "cov_subject": [
+   0.20291777188328913,
+   0.21188630490956073
+  ],
+  "cov_subj_cs": [
+   0.33421750663129973,
+   0.3475452196382429
+  ],
+  "cov_all": [
+   0.5610079575596817,
+   0.5090439276485789
+  ],
+  "events": [
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 0.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 44.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 122.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 6.5,
+    "n": 11,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 56.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 82.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 16.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 50.5,
+    "n": 11,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 64.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 76.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 22.5,
+    "n": 11,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 110.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 128.5,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 7.0,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 78.0,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 18.0,
+    "n": 11,
+    "transform": "x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 66.0,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 23.0,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 57.0,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 84.25,
+    "n": 11,
+    "transform": "x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 124.0,
+    "n": 11,
+    "transform": "x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 3,
+    "onset": 44.0,
+    "n": 11,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 108.5,
+    "n": 10,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 108.0,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 89.0,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 124.0,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 116.0,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 50.25,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 56.5,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 69.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 72.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 76.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 91.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 114.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 14.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 35.0,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 74.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 114.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 32.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 34.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 74.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 94.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 96.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 98.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 100.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 102.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 104.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 122.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 30.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 36.25,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 85.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f17",
+  "voices": 4,
+  "notes": 891,
+  "chords_in_voices": 0,
+  "subject_notes": 7,
+  "cs_notes": 16,
+  "full_entries": 11,
+  "cs_entries": 2,
+  "cov_subject": [
+   0.08641975308641975,
+   0.10709987966305656
+  ],
+  "cov_subj_cs": [
+   0.122334455667789,
+   0.13297232250300842
+  ],
+  "cov_all": [
+   0.5308641975308642,
+   0.41997593261131166
+  ],
+  "events": [
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 5.25,
+    "n": 16,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 13.25,
+    "n": 16,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 1.0,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 37.0,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 65.0,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 109.0,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 105.0,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 17.0,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 117.0,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 131.0,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 49.0,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 69.0,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 113.0,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 90.25,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 94.25,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 96.25,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 98.25,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 100.25,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 19.25,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 30.25,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 34.25,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 68.25,
+    "n": 7,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 133.75,
+    "n": 7,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 47.25,
+    "n": 7,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 62.75,
+    "n": 7,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 64.75,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 26.25,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 58.25,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 86.25,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 15.25,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 16.75,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 49.5,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 51.75,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 79.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 82.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 83.75,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 92.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 102.0,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 103.75,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 112.25,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 114.5,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 23.75,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 53.5,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 55.25,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 116.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 118.5,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 120.25,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 122.25,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 124.75,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 126.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 130.0,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 41.5,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 43.25,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 45.25,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 60.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 66.5,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 36.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 73.5,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 75.25,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 77.25,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 136.25,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 21.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 40.0,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 48.0,
+    "n": 5,
+    "transform": "AUG~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 60.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 109.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 128.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 26.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 36.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 52.0,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 104.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 30.0,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 103.0,
+    "n": 5,
+    "transform": "x1"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f18",
+  "voices": 4,
+  "notes": 805,
+  "chords_in_voices": 0,
+  "subject_notes": 16,
+  "cs_notes": 15,
+  "full_entries": 11,
+  "cs_entries": 7,
+  "cov_subject": [
+   0.20993788819875778,
+   0.17307692307692307
+  ],
+  "cov_subj_cs": [
+   0.33664596273291925,
+   0.26619433198380565
+  ],
+  "cov_all": [
+   0.41490683229813663,
+   0.3314777327935223
+  ],
+  "events": [
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 1.0,
+    "n": 16,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 65.0,
+    "n": 16,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 17.0,
+    "n": 16,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 57.0,
+    "n": 16,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 41.0,
+    "n": 15,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 9.0,
+    "n": 15,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 73.0,
+    "n": 15,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 93.0,
+    "n": 15,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 145.5,
+    "n": 15,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 25.0,
+    "n": 15,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 101.0,
+    "n": 15,
+    "transform": "x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 9.0,
+    "n": 15,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 58.0,
+    "n": 15,
+    "transform": "x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 126.0,
+    "n": 15,
+    "transform": "x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 41.0,
+    "n": 15,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 73.0,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 17.0,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 25.0,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 51.0,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 115.5,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 119.0,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 146.5,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 93.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 125.0,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 40.5,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 144.75,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 141.0,
+    "n": 5,
+    "transform": "AUG~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 54.0,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 122.0,
+    "n": 5,
+    "transform": "x1"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f19",
+  "voices": 3,
+  "notes": 1182,
+  "chords_in_voices": 0,
+  "subject_notes": 6,
+  "cs_notes": 8,
+  "full_entries": 24,
+  "cs_entries": 10,
+  "cov_subject": [
+   0.1218274111675127,
+   0.12360446570972887
+  ],
+  "cov_subj_cs": [
+   0.18358714043993232,
+   0.189792663476874
+  ],
+  "cov_all": [
+   0.22165820642978004,
+   0.2284688995215311
+  ],
+  "events": [
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 4.5,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 40.5,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 189.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 18.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 103.5,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 9.0,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 139.5,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 27.0,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 0.0,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 36.0,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 88.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 111.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 158.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 187.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 90.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 110.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 117.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 136.0,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 163.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 184.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 13.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 39.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 54.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 70.0,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 99.0,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 109.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 144.0,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 148.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 173.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 176.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 186.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 196.0,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 121.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 58.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 135.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 152.5,
+    "n": 5,
+    "transform": "DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 195.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 16.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 31.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 4.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 113.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 22.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 63.0,
+    "n": 5,
+    "transform": "x1~"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f20",
+  "voices": 4,
+  "notes": 2402,
+  "chords_in_voices": 15,
+  "subject_notes": 31,
+  "cs_notes": 27,
+  "full_entries": 26,
+  "cs_entries": 1,
+  "cov_subject": [
+   0.3263946711074105,
+   0.2644424540976265
+  ],
+  "cov_subj_cs": [
+   0.3376353039134055,
+   0.2751903269144648
+  ],
+  "cov_all": [
+   0.488759367194005,
+   0.41603224361845054
+  ],
+  "events": [
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 0.5,
+    "n": 31,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 122.5,
+    "n": 31,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 144.5,
+    "n": 31,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 190.5,
+    "n": 31,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 12.5,
+    "n": 31,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 106.5,
+    "n": 31,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 168.5,
+    "n": 31,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 210.5,
+    "n": 31,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 28.5,
+    "n": 31,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 124.5,
+    "n": 31,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 170.5,
+    "n": 31,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 208.5,
+    "n": 31,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 254.5,
+    "n": 31,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 40.5,
+    "n": 31,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 108.5,
+    "n": 31,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 142.5,
+    "n": 31,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 192.5,
+    "n": 31,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 256.5,
+    "n": 31,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 92.5,
+    "n": 29,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 268.5,
+    "n": 29,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 54.5,
+    "n": 29,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 80.5,
+    "n": 29,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 68.5,
+    "n": 29,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 290.5,
+    "n": 27,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 226.5,
+    "n": 27,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 288.5,
+    "n": 27,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 13.0,
+    "n": 27,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 266.5,
+    "n": 23,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 304.5,
+    "n": 18,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 300.5,
+    "n": 17,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 228.5,
+    "n": 16,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 244.5,
+    "n": 15,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 330.5,
+    "n": 15,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 306.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 41.0,
+    "n": 11,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 66.5,
+    "n": 10,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 332.5,
+    "n": 10,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 246.5,
+    "n": 10,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 126.5,
+    "n": 9,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 29.0,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 41.0,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 109.0,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 227.0,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 209.0,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 227.0,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 188.5,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 318.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 140.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 32.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 82.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 185.5,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 205.75,
+    "n": 5,
+    "transform": "INV+DIM~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 237.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 239.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 241.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 336.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 70.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 138.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 142.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 192.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 194.5,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 275.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 334.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 344.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 42.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 51.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 98.5,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 115.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 136.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 94.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 98.5,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 122.5,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 181.5,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 224.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 270.5,
+    "n": 5,
+    "transform": "INV+x1~"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f21",
+  "voices": 3,
+  "notes": 952,
+  "chords_in_voices": 0,
+  "subject_notes": 38,
+  "cs_notes": 27,
+  "full_entries": 4,
+  "cs_entries": 3,
+  "cov_subject": [
+   0.15966386554621848,
+   0.14170337738619676
+  ],
+  "cov_subj_cs": [
+   0.24369747899159663,
+   0.24522760646108663
+  ],
+  "cov_all": [
+   0.5199579831932774,
+   0.44713656387665196
+  ],
+  "events": [
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 0.5,
+    "n": 38,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 108.5,
+    "n": 38,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 63.5,
+    "n": 38,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 24.5,
+    "n": 38,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 12.75,
+    "n": 27,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 120.75,
+    "n": 27,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 36.75,
+    "n": 26,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 47.75,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 54.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 57.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 60.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 63.75,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 95.5,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 99.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 47.75,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 75.25,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 107.5,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 87.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 90.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 93.5,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 31.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 34.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 43.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 46.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 49.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 52.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 72.0,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 82.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 85.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 97.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 133.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 136.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 19.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 22.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 25.0,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 33.0,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 43.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 46.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 51.0,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 84.0,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 117.0,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 127.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 130.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 133.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 136.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 49.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 52.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 70.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 73.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 82.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 85.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 115.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 118.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 127.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 130.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 135.0,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 138.0,
+    "n": 5,
+    "transform": "x1"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f22",
+  "voices": 5,
+  "notes": 745,
+  "chords_in_voices": 0,
+  "subject_notes": 5,
+  "cs_notes": 8,
+  "full_entries": 9,
+  "cs_entries": 19,
+  "cov_subject": [
+   0.06040268456375839,
+   0.05585106382978723
+  ],
+  "cov_subj_cs": [
+   0.21879194630872484,
+   0.16046099290780141
+  ],
+  "cov_all": [
+   0.4469798657718121,
+   0.3523936170212766
+  ],
+  "events": [
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 8.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 104.0,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 271.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 13.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 93.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 221.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 277.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 42.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 50.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 221.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 275.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 3,
+    "onset": 72.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 3,
+    "onset": 132.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 3,
+    "onset": 213.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 4,
+    "onset": 65.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 4,
+    "onset": 132.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "CS1",
+    "voice": 4,
+    "onset": 184.5,
+    "n": 6,
+    "transform": "INV+DIM~"
+   },
+   {
+    "material": "CS1",
+    "voice": 4,
+    "onset": 267.0,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 4,
+    "onset": 279.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 0.0,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 96.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 196.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 198.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 268.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 112.0,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 272.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 4,
+    "onset": 56.0,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 4,
+    "onset": 124.0,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 45.5,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 277.0,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 106.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 146.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 186.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 227.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 232.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 244.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 292.0,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 78.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 92.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 183.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 190.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 202.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 227.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 232.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 251.0,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 258.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 281.0,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 46.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 56.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 82.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 120.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 125.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 142.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 152.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 222.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 244.0,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 260.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 4,
+    "onset": 71.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 4,
+    "onset": 150.0,
+    "n": 5,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 4,
+    "onset": 158.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 4,
+    "onset": 190.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 4,
+    "onset": 220.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f23",
+  "voices": 4,
+  "notes": 827,
+  "chords_in_voices": 0,
+  "subject_notes": 14,
+  "cs_notes": 21,
+  "full_entries": 9,
+  "cs_entries": 3,
+  "cov_subject": [
+   0.14510278113663846,
+   0.17418159357628166
+  ],
+  "cov_subj_cs": [
+   0.21160822249093109,
+   0.22730080296479308
+  ],
+  "cov_all": [
+   0.652962515114873,
+   0.5966646077825818
+  ],
+  "events": [
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 9.5,
+    "n": 21,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 1,
+    "onset": 121.5,
+    "n": 17,
+    "transform": "x1"
+   },
+   {
+    "material": "CS1",
+    "voice": 2,
+    "onset": 25.5,
+    "n": 17,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 0.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 42.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 3,
+    "onset": 82.5,
+    "n": 14,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 92.5,
+    "n": 13,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 60.5,
+    "n": 13,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 76.5,
+    "n": 13,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 112.5,
+    "n": 13,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 16.5,
+    "n": 13,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 68.5,
+    "n": 13,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 17.5,
+    "n": 8,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 52.5,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 56.5,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 58.5,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 68.5,
+    "n": 7,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 72.0,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 75.75,
+    "n": 7,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 110.0,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 112.0,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 115.75,
+    "n": 7,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 130.5,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 54.5,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 36.5,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 42.0,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 83.0,
+    "n": 7,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 91.5,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 104.5,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 34.5,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 38.5,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 40.5,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 60.5,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 90.5,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 94.0,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 95.75,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 102.5,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 106.5,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 108.5,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 111.5,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 122.0,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 127.75,
+    "n": 7,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 64.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 77.75,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 80.75,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 20.0,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 26.5,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 39.5,
+    "n": 6,
+    "transform": "INV+AUG~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 46.0,
+    "n": 6,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 57.5,
+    "n": 6,
+    "transform": "INV+AUG~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 72.75,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 57.5,
+    "n": 6,
+    "transform": "INV+AUG~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 62.0,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 87.75,
+    "n": 6,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 107.5,
+    "n": 6,
+    "transform": "INV+AUG~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 117.0,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 8.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 120.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 24.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 100.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 23.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 30.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 85.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 88.0,
+    "n": 5,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 50.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 77.5,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 97.0,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 130.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 54.0,
+    "n": 5,
+    "transform": "INV+AUG~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 119.0,
+    "n": 5,
+    "transform": "x1~"
+   }
+  ]
+ },
+ {
+  "piece": "wtc1f24",
+  "voices": 4,
+  "notes": 1809,
+  "chords_in_voices": 0,
+  "subject_notes": 21,
+  "cs_notes": 24,
+  "full_entries": 10,
+  "cs_entries": 1,
+  "cov_subject": [
+   0.11332227750138198,
+   0.13206506754893851
+  ],
+  "cov_subj_cs": [
+   0.1265892758430072,
+   0.14722911497105046
+  ],
+  "cov_all": [
+   0.2664455500276396,
+   0.25392886683209265
+  ],
+  "events": [
+   {
+    "material": "CS1",
+    "voice": 0,
+    "onset": 12.75,
+    "n": 24,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 0.5,
+    "n": 21,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 116.5,
+    "n": 21,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 32.5,
+    "n": 21,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 148.5,
+    "n": 21,
+    "transform": "x1~"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 226.5,
+    "n": 21,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 0,
+    "onset": 80.5,
+    "n": 20,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 172.5,
+    "n": 20,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 210.5,
+    "n": 20,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 1,
+    "onset": 238.5,
+    "n": 20,
+    "transform": "x1"
+   },
+   {
+    "material": "SUBJECT",
+    "voice": 2,
+    "onset": 276.5,
+    "n": 20,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 32.75,
+    "n": 10,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 132.5,
+    "n": 9,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 164.5,
+    "n": 9,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 272.5,
+    "n": 9,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 168.5,
+    "n": 9,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 136.5,
+    "n": 9,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 160.5,
+    "n": 9,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 210.75,
+    "n": 9,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 48.75,
+    "n": 9,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 132.75,
+    "n": 9,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 136.75,
+    "n": 9,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 160.75,
+    "n": 9,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 164.75,
+    "n": 9,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 148.75,
+    "n": 9,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 168.75,
+    "n": 9,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 272.75,
+    "n": 9,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 0,
+    "onset": 292.5,
+    "n": 7,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 173.25,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 277.25,
+    "n": 7,
+    "transform": "INV+x1"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 0,
+    "onset": 227.75,
+    "n": 6,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 3,
+    "onset": 116.75,
+    "n": 6,
+    "transform": "x1"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 258.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 262.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 1,
+    "onset": 267.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 65.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 69.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 73.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 77.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 101.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 105.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 110.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 2,
+    "onset": 114.0,
+    "n": 5,
+    "transform": "INV+x1~"
+   },
+   {
+    "material": "FRAG(SUBJECT)",
+    "voice": 3,
+    "onset": 48.5,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 1,
+    "onset": 269.5,
+    "n": 5,
+    "transform": "AUG~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 82.75,
+    "n": 5,
+    "transform": "x1~"
+   },
+   {
+    "material": "FRAG(CS1)",
+    "voice": 2,
+    "onset": 107.5,
+    "n": 5,
+    "transform": "AUG~"
+   }
+  ]
+ }
+]
