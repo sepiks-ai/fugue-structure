@@ -94,6 +94,7 @@ footer { max-width: 1100px; margin: 0 auto; padding: 0 16px 30px; color: var(--m
     <div class="stats" id="stats"></div>
     <div class="controls" id="controls" hidden>
       <button id="play" type="button">▶ Play</button>
+      <a id="mp3" download>Download MP3</a>
       <a id="midi" download>Download MIDI</a>
       <span class="note" id="gnote"></span>
     </div>
@@ -151,6 +152,7 @@ function draw(f, nullRow) {
   $("controls").hidden = !f.generated;
   if (f.generated) {
     $("midi").href = BASE + f.piece + ".mid";
+    $("mp3").href = BASE + f.piece + ".mp3";
     $("gnote").textContent = "Subject: " + f.subject_text.split(" ").map(t => t.split("/")[0]).join(" ");
     current = f;
   }

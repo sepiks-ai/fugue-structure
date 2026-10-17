@@ -53,6 +53,8 @@ PYTHONPATH=src python -m fugue.skeleton --name gen01 \
   --subject "C4/1 G4/1 A4/.5 G4/.5 F4/.5 E4/.5 D4/.25 E4/.25 F4/.5 E4/.5 D4/.5 C4/.5 B3/.5 C4/1"
 ```
 
+Then `PYTHONPATH=src python -m fugue.render gen01` writes `results/gen01.mp3`.
+
 Writes `results/gen01.mid` and adds the piece to `results/generated.json`, which
 the Fugue Map lists under *Generated* with a Play button. Notes are written as
 `name+octave/length in crotchets`. Options: `--key G`, `--template wtc1f05`, `--seed 3`.
