@@ -21,7 +21,7 @@ jobs:
       - name: Assemble site
         run: |
           mkdir -p _site/results
-          cp web/* _site/
+          cp -r web/. _site/
           cp results/*.json results/*.mid results/*.mp3 _site/results/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

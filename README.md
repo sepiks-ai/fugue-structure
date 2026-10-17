@@ -113,3 +113,12 @@ PYTHONPATH=src pytest -q tests     # matcher tests; no score data needed
 2. Giraud, M., Groult, R. & Levé, F. (2012). Subject and Counter-Subject Detection for Analysis of the Well-Tempered Clavier Fugues. HAL: hal-00712554.
 3. Giraud, M., Groult, R., Leguy, E. & Levé, F. (2015). Computational Fugue Analysis. *Computer Music Journal*, 39(2), 77–96.
 4. Wang, Z., Min, L. & Xia, G. (2024). Whole-Song Hierarchical Generation of Symbolic Music Using Cascaded Diffusion Models. *ICLR 2024*. arXiv:2405.09901.
+
+## Sound
+
+Harpsichord, organ and piano are recordings from the Versilian Community Sample
+Library (CC0 1.0, https://versilian-studios.com/vcsl/), converted by
+`scripts/build_samples.py` into `web/samples/` (4.8 MB). Strings remain synthesised.
+Playback adds a generated room reverb, spreads the voices across the stereo field,
+brings out the voice carrying the subject, varies timing and weight slightly, and
+slows into the final cadence.
