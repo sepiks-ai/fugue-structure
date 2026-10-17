@@ -428,21 +428,53 @@
     return n;
   }
 
-  function realise(sub, plan, key, p) {
-    const scale = sub.span / plan.subject_span;
-    let ents = plan.entries.slice();
-    const maxN = p.length === "short" ? Math.max(plan.voices + 3, 7) : p.length === "long" ? 99 : 16;
-    ents = ents.slice(0, maxN);
-    const t0 = ents[0].onset;
+  // The exposition is built here rather than read from the plan: the analyser can miss Bach's
+  // (tonal) answers, which leaves gaps of dozens of beats, or a voice that never enters.
+  // Each voice enters in Bach's order, one subject-length after the last, subject and answer
+  // alternating, at the octave that sits best in that voice's range. Bach's later entries follow.
+  function buildEntries(sub, plan, key, p, rangeOffset) {
+    const nv = plan.voices, span = sub.span, scale = span / plan.subject_span;
+    const firstOn = [];
+    for (let v = 0; v < nv; v++) {
+      const os = plan.entries.filter((e) => e.voice === v).map((e) => e.onset);
+      firstOn.push(os.length ? Math.min(...os) : Infinity);
+    }
+    const order = [...Array(nv).keys()].sort((a, b) => firstOn[a] - firstOn[b]);
+    const ranges = plan.voice_ranges.map(([lo, hi]) => [lo + rangeOffset, hi + rangeOffset]);
+    const expo = order.map((v, k) => {
+      const base = k % 2 === 0 ? 0 : 7;                       // subject, answer, subject, answer
+      let best = null;
+      for (let o = -3; o <= 3; o++) {
+        const shift = base + 12 * o;
+        const ms = sub.notes.map((x) => x.m + shift);
+        const [lo, hi] = ranges[v];
+        const out = ms.reduce((a, m) => a + Math.max(0, lo - m, m - hi), 0);
+        const centre = Math.abs((Math.min(...ms) + Math.max(...ms)) / 2 - (lo + hi) / 2);
+        const sc = out * 10 + centre;
+        if (!best || sc < best.sc) best = { sc, shift };
+      }
+      const oct = Math.floor(best.shift / 12), dia = (base === 7 ? 4 : 0) + 7 * oct;
+      return { voice: v, onset: k * span, transform: "x1", midi_shift: best.shift, dia_shift: dia, expo: true };
+    });
+    const known = order.filter((v) => isFinite(firstOn[v]));
+    const bachExpoEnd = Math.max(...known.map((v) => firstOn[v]));
+    const ourExpoEnd = (order.length - 1) * span;
+    const rest = plan.entries
+      .filter((e) => e.onset > bachExpoEnd + 1e-9)
+      .map((e) => Object.assign({}, e, { onset: ourExpoEnd + (e.onset - bachExpoEnd) * scale }));
+    const maxN = p.length === "short" ? Math.max(nv + 3, 7) : p.length === "long" ? 99 : 16;
+    return expo.concat(rest).slice(0, Math.max(maxN, nv));
+  }
+
+  function realise(sub, plan, key, p, rangeOffset) {
+    const ents = buildEntries(sub, plan, key, p, rangeOffset || 0);
     const placed = [];
-    const seen = new Set();
     for (const e of ents) {
-      const first = !seen.has(e.voice);
-      seen.add(e.voice);
-      const base = Math.round((e.onset - t0) * scale);
+      const first = !!e.expo;
+      const base = Math.round(e.onset);
       const pe = placeEntry(sub, e, key);
       let best = null;
-      for (const off of [0, 1, -1, 2, -2, 3, -3, 4, 6, 8]) {
+      for (const off of first ? [0, 1, 2, 3, 4] : [0, 1, -1, 2, -2, 3, -3, 4, 6, 8]) {
         const on = base + off;
         if (on < 0) continue;
         const notes = pe.notes.map((x) => ({ on: on + x.t, d: x.d, m: x.m }));
@@ -683,7 +715,7 @@
     const sub = (p.subject && parseSubject(p.subject, key)) || composeSubject(p, key, r);
     const plan = choosePlan(plans, p, r);
     const rangeOffset = sub.notes[0].m - plan.subject_first_midi;
-    const placed = realise(sub, plan, key, p);
+    const placed = realise(sub, plan, key, p, rangeOffset);
     const res = fill(placed, plan, key, { seed: seed + 7, rangeOffset, onProgress });
     return {
       request: text, seed, params: p, key: p.keyName, tempo: p.tempo, timbre: p.timbre, voices: plan.voices,
