@@ -48,6 +48,13 @@ h2 { margin: 0; font-size: 24px; font-weight: normal; }
 .chips span { background: var(--chip); border-radius: 999px; padding: 3px 10px; font-size: 13px; }
 .subject { font: 13px/1.5 ui-monospace, Menlo, Consolas, monospace; color: var(--muted); margin: 0 0 14px; overflow-wrap: anywhere; }
 .controls { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+.perf { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: 0 0 16px; font-size: 14px; color: var(--muted); }
+.perf input[type=range] { flex: 1 1 200px; accent-color: var(--accent); }
+.perf output { color: var(--ink); font-variant-numeric: tabular-nums; display: inline-block; min-width: 4.2em; }
+.touch { display: inline-flex; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+.touch button { border: 0; border-radius: 0; padding: 6px 12px; font-size: 14px; }
+.touch button + button { border-left: 1px solid var(--rule); }
+.touch button[aria-pressed="true"] { background: var(--accent); color: var(--panel); }
 .legend { display: flex; gap: 16px; font-size: 13px; color: var(--muted); margin: 0 0 6px; flex-wrap: wrap; }
 .legend span::before { content: ""; display: inline-block; width: 12px; height: 8px; border-radius: 2px; margin-right: 6px; background: var(--c); }
 svg#roll { width: 100%; height: auto; display: block; background: var(--lane); border-radius: 6px; }
@@ -93,6 +100,13 @@ svg#roll { width: 100%; height: auto; display: block; background: var(--lane); b
     <button id="wav" type="button">Download WAV</button>
     <button id="share" type="button">Copy link</button>
   </div>
+  <div class="perf">
+    <label for="tempo">Tempo <output id="tempoOut">♩ = 72</output></label>
+    <input id="tempo" type="range" min="30" max="160" step="1" value="72">
+    <span class="touch" role="group" aria-label="Touch">
+      <button type="button" data-a="legato">Legato</button><button type="button" data-a="articulated">Articulated</button><button type="button" data-a="detached">Detached</button>
+    </span>
+  </div>
   <div class="legend"><span style="--c:var(--accent)">Subject</span><span style="--c:var(--accent2)">Subject inverted</span><span style="--c:var(--free)">Free counterpoint</span></div>
   <svg id="roll" role="img" aria-label="Piano roll of the fugue"></svg>
 </section>
@@ -104,7 +118,7 @@ svg#roll { width: 100%; height: auto; display: block; background: var(--lane); b
 <script src="engine.js"></script>
 <script>
 const $ = (id) => document.getElementById(id);
-let plans = null, piece = null, seed = 0, worker = null, jobId = 0;
+let plans = null, piece = null, seed = 0, worker = null, jobId = 0, pendingPerf = {};
 
 async function loadPlans() {
   for (const b of ["results/", "../results/"]) {
@@ -123,7 +137,10 @@ function compose(text, s) {
   setProgress(0.02);
   const id = ++jobId;
   try { history.replaceState(null, "", "#q=" + encodeURIComponent(text) + "&s=" + s); } catch (e) {}
-  const done = (p) => { if (id !== jobId) return; piece = p; render(); $("go").disabled = false; $("again").disabled = false; setProgress(null); };
+  const done = (p) => {
+    if (id !== jobId) return; piece = p;
+    perf.tempo = pendingPerf.t || p.tempo; perf.artic = pendingPerf.a || p.params.articulation || "articulated";
+    pendingPerf = {}; render(); setPerfUI(); updateHash(); $("go").disabled = false; $("again").disabled = false; setProgress(null); };
   const fail = (msg) => { $("go").disabled = false; $("again").disabled = false; setProgress(null); $("card").hidden = false; $("title").innerHTML = `<span class="err">${msg}</span>`; };
   try {
     worker = worker || new Worker("worker.js");
@@ -175,52 +192,70 @@ function drawRoll() {
 }
 
 // ---------------------------------------------------------------- sound
-function schedule(ctx, dest, p, t0) {
-  const spq = 60 / p.tempo, nodes = [];
+const perf = { tempo: 72, artic: "articulated" };
+const ARTIC = {                       // fraction of the written length actually sounded
+  legato: (q) => 1.0,
+  articulated: (q) => (q <= 0.5 ? 0.82 : 0.94),
+  detached: (q) => (q <= 0.25 ? 0.5 : q <= 0.5 ? 0.45 : q <= 1 ? 0.55 : 0.8),
+};
+
+function makeChain(ctx, dest, p) {
   // level: loud enough for laptop and phone speakers, with a limiter so chords do not distort
   const master = ctx.createGain(), comp = ctx.createDynamicsCompressor(), makeup = ctx.createGain();
   master.gain.value = { harpsichord: 0.55, organ: 0.17, piano: 0.4, strings: 0.22 }[p.timbre] * (4 / Math.max(3, p.voices));
   comp.threshold.value = -12; comp.knee.value = 6; comp.ratio.value = 12; comp.attack.value = 0.003; comp.release.value = 0.2;
   makeup.gain.value = 1.1;
   master.connect(comp).connect(makeup).connect(dest);
-  for (const n of p.notes) {
-    const t = t0 + n.on * spq, d = Math.max(0.1, n.d * spq), f = 440 * Math.pow(2, (n.m - 69) / 12);
-    const g = ctx.createGain(), lp = ctx.createBiquadFilter(); lp.type = "lowpass";
-    const o = ctx.createOscillator(), organ = p.timbre === "organ";
-    const o2 = organ ? ctx.createOscillator() : null, g2 = organ ? ctx.createGain() : null;
-    let end;
-    if (p.timbre === "organ") {
-      o.type = "sine"; o2.type = "triangle"; o.frequency.value = f; o2.frequency.value = f * 2; g2.gain.value = 0.5;
-      lp.frequency.value = 3000;
-      g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.8, t + 0.03);
-      g.gain.setValueAtTime(0.8, t + d - 0.02); g.gain.linearRampToValueAtTime(0.0001, t + d + 0.06); end = t + d + 0.08;
-    } else if (p.timbre === "strings") {
-      o.type = "sawtooth"; o.frequency.value = f;
-      lp.frequency.value = Math.min(5000, f * 5);
-      g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.7, t + 0.06);
-      g.gain.setValueAtTime(0.7, t + d - 0.03); g.gain.linearRampToValueAtTime(0.0001, t + d + 0.12); end = t + d + 0.14;
-    } else if (p.timbre === "piano") {
-      o.type = "triangle"; o.frequency.value = f;
-      lp.frequency.value = Math.min(6000, f * 6);
-      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.9, t + 0.005);
-      g.gain.exponentialRampToValueAtTime(0.25, t + 0.6); g.gain.exponentialRampToValueAtTime(0.0001, t + d + 0.25); end = t + d + 0.3;
-    } else {
-      o.type = "sawtooth"; o.frequency.value = f;
-      lp.frequency.setValueAtTime(Math.min(6000, f * 8), t); lp.frequency.exponentialRampToValueAtTime(Math.max(300, f * 1.5), t + d);
-      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.5, t + 0.005);
-      g.gain.exponentialRampToValueAtTime(0.12, t + 0.25); g.gain.exponentialRampToValueAtTime(0.0001, t + d + 0.08); end = t + d + 0.1;
-    }
-    o.connect(lp); lp.connect(g).connect(master);
-    o.start(t); o.stop(end); nodes.push(o);
-    if (o2) { o2.connect(g2).connect(lp); o2.start(t); o2.stop(end); nodes.push(o2); }
+  return master;
+}
+
+function voiceNote(ctx, master, p, n, t, d) {
+  const f = 440 * Math.pow(2, (n.m - 69) / 12), nodes = [];
+  const g = ctx.createGain(), lp = ctx.createBiquadFilter(); lp.type = "lowpass";
+  const o = ctx.createOscillator(), organ = p.timbre === "organ";
+  const o2 = organ ? ctx.createOscillator() : null, g2 = organ ? ctx.createGain() : null;
+  let end;
+  if (organ) {
+    o.type = "sine"; o2.type = "triangle"; o.frequency.value = f; o2.frequency.value = f * 2; g2.gain.value = 0.5;
+    lp.frequency.value = 3000;
+    g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.8, t + 0.02);
+    g.gain.setValueAtTime(0.8, t + Math.max(0.03, d - 0.02)); g.gain.linearRampToValueAtTime(0.0001, t + d + 0.05); end = t + d + 0.07;
+  } else if (p.timbre === "strings") {
+    o.type = "sawtooth"; o.frequency.value = f; lp.frequency.value = Math.min(5000, f * 5);
+    g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.7, t + Math.min(0.06, d / 2));
+    g.gain.setValueAtTime(0.7, t + Math.max(0.07, d - 0.03)); g.gain.linearRampToValueAtTime(0.0001, t + d + 0.1); end = t + d + 0.12;
+  } else if (p.timbre === "piano") {
+    o.type = "triangle"; o.frequency.value = f; lp.frequency.value = Math.min(6000, f * 6);
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.9, t + 0.005);
+    g.gain.exponentialRampToValueAtTime(0.25, t + 0.6); g.gain.setTargetAtTime(0.0001, t + d, 0.06); end = t + d + 0.35;
+  } else {
+    o.type = "sawtooth"; o.frequency.value = f;
+    lp.frequency.setValueAtTime(Math.min(6000, f * 8), t); lp.frequency.exponentialRampToValueAtTime(Math.max(300, f * 1.5), t + d + 0.05);
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.5, t + 0.005);
+    g.gain.setTargetAtTime(0.12, t + 0.005, 0.08); g.gain.setTargetAtTime(0.0001, t + d, 0.025); end = t + d + 0.15;
   }
+  o.connect(lp); lp.connect(g).connect(master);
+  o.start(t); o.stop(end); nodes.push(o);
+  if (o2) { o2.connect(g2).connect(lp); o2.start(t); o2.stop(end); nodes.push(o2); }
   return nodes;
 }
 
-let ctx = null, playing = [], raf = 0, startAt = 0;
+function noteTimes(n, fromQ, t0, spq) {
+  const len = n.d * ARTIC[perf.artic](n.d) + (perf.artic === "legato" ? 0.02 / spq : 0);
+  return [t0 + (n.on - fromQ) * spq, Math.max(0.06, len * spq)];
+}
+
+// offline (for WAV): schedule everything
+function scheduleAll(ctx, dest, p, t0) {
+  const spq = 60 / perf.tempo, master = makeChain(ctx, dest, p);
+  for (const n of p.notes) { const [t, d] = noteTimes(n, 0, t0, spq); voiceNote(ctx, master, p, n, t, d); }
+}
+
+// live: a look-ahead scheduler (schedules ~1.5 s ahead), so long pieces never flood the browser
+let ctx = null, live = null, raf = 0;
 function stop() {
-  playing.forEach((o) => { try { o.stop(); } catch (e) {} });
-  playing = []; cancelAnimationFrame(raf);
+  if (live) { clearInterval(live.timer); live.nodes.forEach((o) => { try { o.stop(); } catch (e) {} }); }
+  live = null; cancelAnimationFrame(raf);
   const h = document.getElementById("head"); if (h) h.setAttribute("opacity", 0);
   $("play").textContent = "▶ Play";
 }
@@ -235,22 +270,40 @@ function unlockAudio() {
     a.setAttribute("playsinline", ""); a.volume = 0.01; a.play().catch(() => {});
   } catch (e) {}
 }
-function play() {
+function playFrom(fromQ) {
   unlockAudio();
   ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
   if (ctx.state === "suspended") ctx.resume();
-  startAt = ctx.currentTime + 0.15;
-  playing = schedule(ctx, ctx.destination, piece, startAt);
+  stop();
+  const spq = 60 / perf.tempo, t0 = ctx.currentTime + 0.12;
+  const notes = piece.notes.filter((n) => n.on >= fromQ - 1e-9);
+  const L = { t0, spq, fromQ, i: 0, nodes: [], master: makeChain(ctx, ctx.destination, piece) };
+  const pump = () => {
+    const horizon = ctx.currentTime + 1.5;
+    while (L.i < notes.length) {
+      const [t, d] = noteTimes(notes[L.i], fromQ, t0, spq);
+      if (t > horizon) break;
+      if (t >= ctx.currentTime - 0.05) L.nodes.push(...voiceNote(ctx, L.master, piece, notes[L.i], t, d));
+      L.i++;
+    }
+    if (L.nodes.length > 400) L.nodes = L.nodes.slice(-200);
+  };
+  pump();
+  L.timer = setInterval(pump, 100);
+  live = L;
   $("play").textContent = "■ Stop";
-  const head = document.getElementById("head"), spq = 60 / piece.tempo;
+  const head = document.getElementById("head");
   const tick = () => {
-    const q = (ctx.currentTime - startAt) / spq;
+    if (!live) return;
+    const q = fromQ + (ctx.currentTime - t0) / spq;
     if (q > piece.length + 1) { stop(); return; }
     if (q >= 0) { const px = xOf(q); head.setAttribute("x1", px); head.setAttribute("x2", px); head.setAttribute("opacity", 0.8); }
     raf = requestAnimationFrame(tick);
   };
   raf = requestAnimationFrame(tick);
 }
+function position() { return live ? Math.max(0, live.fromQ + (ctx.currentTime - live.t0) / live.spq) : 0; }
+function play() { playFrom(0); }
 
 function fileBase() { return `fugue-${piece.key.replace(/[♯]/g, "-sharp").replace(/[♭]/g, "-flat").replace(/\s+/g, "-").toLowerCase()}-v${seed + 1}`; }
 function save(blob, name) {
@@ -258,9 +311,9 @@ function save(blob, name) {
   document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
 }
 async function renderWav() {
-  const sr = 44100, secs = piece.length * 60 / piece.tempo + 1.5;
+  const sr = 44100, secs = piece.length * 60 / perf.tempo + 1.5;
   const off = new OfflineAudioContext(2, Math.ceil(sr * secs), sr);
-  schedule(off, off.destination, piece, 0.05);
+  scheduleAll(off, off.destination, piece, 0.05);
   const buf = await off.startRendering();
   const n = buf.length, ch = [buf.getChannelData(0), buf.getChannelData(1)];
   let peak = 1e-9; for (const c of ch) for (let i = 0; i < n; i++) peak = Math.max(peak, Math.abs(c[i]));
@@ -277,7 +330,27 @@ async function renderWav() {
 $("f").addEventListener("submit", (ev) => { ev.preventDefault(); const t = $("q").value.trim() || $("q").placeholder; $("q").value = t; compose(t, 0); });
 document.querySelectorAll(".examples button").forEach((b) => b.addEventListener("click", () => { $("q").value = b.textContent; compose(b.textContent, 0); }));
 $("again").addEventListener("click", () => compose(piece.request, seed + 1));
-$("play").addEventListener("click", () => (playing.length ? stop() : play()));
+$("play").addEventListener("click", () => (live ? stop() : play()));
+function setPerfUI() {
+  $("tempo").value = perf.tempo; $("tempoOut").textContent = "♩ = " + perf.tempo;
+  document.querySelectorAll(".touch button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.a === perf.artic)));
+}
+function updateHash() {
+  if (!piece) return;
+  try { history.replaceState(null, "", "#q=" + encodeURIComponent(piece.request) + "&s=" + seed + "&t=" + perf.tempo + "&a=" + perf.artic); } catch (e) {}
+  const secs = Math.round(piece.length * 60 / perf.tempo);
+  $("meta").innerHTML = $("meta").innerHTML.replace(/\d+ seconds/, secs + " seconds");
+}
+function perfChanged() {
+  setPerfUI(); updateHash();
+  if (live) { const q = position(); playFrom(q); }     // carry on from the same bar at the new setting
+}
+let tempoTimer = 0;
+$("tempo").addEventListener("input", () => {
+  perf.tempo = +$("tempo").value; $("tempoOut").textContent = "♩ = " + perf.tempo;
+  clearTimeout(tempoTimer); tempoTimer = setTimeout(perfChanged, 120);
+});
+document.querySelectorAll(".touch button").forEach((b) => b.addEventListener("click", () => { perf.artic = b.dataset.a; perfChanged(); }));
 $("midi").addEventListener("click", () => save(new Blob([FugueEngine.toMidi(piece)], { type: "audio/midi" }), fileBase() + ".mid"));
 $("wav").addEventListener("click", async () => {
   const b = $("wav"); b.disabled = true; b.textContent = "Rendering, about half a minute…";
@@ -293,7 +366,11 @@ $("share").addEventListener("click", async () => {
   try { plans = await loadPlans(); }
   catch (e) { $("card").hidden = false; $("title").innerHTML = `<span class="err">${e.message}</span>`; return; }
   const h = new URLSearchParams(location.hash.slice(1));
-  if (h.get("q")) { $("q").value = h.get("q"); compose(h.get("q"), parseInt(h.get("s") || "0", 10) || 0); }
+  if (h.get("q")) {
+    const t = parseInt(h.get("t") || "", 10), a = h.get("a");
+    pendingPerf = { t: t >= 30 && t <= 160 ? t : null, a: ["legato", "articulated", "detached"].includes(a) ? a : null };
+    $("q").value = h.get("q"); compose(h.get("q"), parseInt(h.get("s") || "0", 10) || 0);
+  }
 })();
 </script>
 </body>
