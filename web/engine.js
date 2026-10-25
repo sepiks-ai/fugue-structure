@@ -1028,6 +1028,7 @@
 
   // ------------------------------------------------------------------ the whole pipeline
   function generate(text, plans, seed, onProgress, opts) {
+    if (LEARNED && !(opts && opts.rules)) return generateLearned(text, seed, onProgress, opts);
     const beam = (opts && opts.beam) || 30;
     const p = interpret(text, seed);
     const key = homeKey(p);
@@ -1048,6 +1049,101 @@
       counts: { countersubjects: csItems.length, episodes: epItems.length },
       entries: placed.map((q) => ({ voice: q.voice, onset: q.onset, end: q.end, inv: q.inv, localKey: q.localKey })),
       notes: res.notes, length: res.total, chords: res.chords,
+    };
+  }
+
+  // ------------------------------------------------------------------ the learned generator
+  // Everything between the thematic material is written by the counterpoint model; the plan comes from
+  // the learned plan model; the countersubject is the line the model writes against the answer.
+  let LEARNED = null;                                    // { L: learned.js API, PM: plan model }
+  function useLearned(L, PM) { LEARNED = { L, PM }; }
+  function learnedPlan(sp, sub, key, nv, PM) {
+    const ms = sub.notes.map((x) => x.m - sub.notes[0].m), subMid = (Math.min(...ms) + Math.max(...ms)) / 2;
+    const R = (PM.ranges[String(nv)] || PM.ranges["3"]).slice().sort((a, b) => a[0] - b[0]).map(([, lo, hi]) => [lo, hi]);
+    const FORM = { plain: "x1", inv: "INV+x1", aug: "AUG", dim: "DIM" };
+    const entries = sp.entries.map((e) => {
+      const [lo, hi] = R[e.rank], semis = key.scale[e.degree];
+      let best = 0, bd = 1e9;
+      for (let k = -3; k <= 3; k++) { const dd = Math.abs(semis + 12 * k + subMid - (lo + hi) / 2); if (dd < bd) { bd = dd; best = k; } }
+      return { voice: e.rank, onset: e.onset, transform: FORM[e.form] || "x1", dia_shift: e.degree + 7 * best, midi_shift: semis + 12 * best };
+    });
+    return { number: null, learned: true, key: "", mode: key.mode, voices: nv, voice_ranges: R, subject_span: 1, subject_first_midi: 0, entries };
+  }
+  function lineToSubject(notes, t0, span, key, shift) {   // a heard line -> a line in the home key, as the subject is stored
+    const out = [];
+    for (const x of notes) {
+      const midi = x.m - shift, rel = midi - key.tonic, oct = Math.floor(rel / 12), pc = mod(rel, 12);
+      let deg = 0; for (let i = 6; i >= 0; i--) if (key.scale[i] <= pc) { deg = i; break; }
+      out.push({ t: x.on - t0, d: x.d, deg: deg + 7 * oct, alt: pc - key.scale[deg], m: midi });
+    }
+    return out.length >= 4 ? { notes: out, span } : null;
+  }
+  function generateLearned(text, seed, onProgress, opts) {
+    const { L, PM } = LEARNED;
+    const p = interpret(text, seed);
+    const key = homeKey(p);
+    const r = mulberry(hash(text.toLowerCase()) ^ Math.imul(seed + 1, 2654435761));
+    const sub = (p.subject && parseSubject(p.subject, key)) || composeSubject(p, key, r);
+    const nv = Math.max(2, Math.min(5, p.voices));
+    const sp = L.samplePlan(PM, nv, r, { length: p.length, stretto: p.stretto, inversion: p.inversion });
+    const plan = learnedPlan(sp, sub, key, nv, PM);
+    const rangeOffset = sub.notes[0].m;
+    const placed = realise(sub, plan, key, p, rangeOffset);
+    const ranges = plan.voice_ranges.map(([lo, hi]) => [lo + rangeOffset - 2, hi + rangeOffset + 2]);
+    const particles = (opts && opts.beam) >= 100 ? 16 : 8, sweeps = 2;
+    const prog = (a, b) => (f) => onProgress && onProgress(a + (b - a) * f);
+    // 1. the exposition's opening: the model writes the first voice's line against the answer
+    let cs = null;
+    const e1 = placed[0], e2 = placed[1];
+    if (e2) {
+      const head = L.compose({ voices: nv, placed: placed.filter((q) => q.onset < e2.end - 1e-9), total: e2.end, tonic: key.tonic, mode: key.mode,
+        ranges, seed: seed * 7919 + 13, particles, sweeps, onProgress: prog(0, 0.25) });
+      const line = head.notes.filter((n) => n.v === e1.voice && n.on >= e2.onset - 1e-9 && n.on < e2.end - 1e-9);
+      cs = lineToSubject(line, e2.onset, sub.span, key, e2.midi_shift);
+    }
+    const csItems = addCountersubjects(cs, placed, key, plan, rangeOffset, r);
+    const epItems = addEpisodes(sub, cs, placed, csItems, key, plan, rangeOffset, r);
+    const fixed = placed.concat(csItems, epItems);
+    const lastEnd = Math.max(...fixed.map((q) => q.end));
+    const total = (Math.ceil((lastEnd + 2) / 4) + 1) * 4;
+    // 2. everything else
+    const res = L.compose({ voices: nv, placed: fixed, total: total - 4, tonic: key.tonic, mode: key.mode, ranges, seed: seed * 104729 + 7,
+      particles, sweeps, onProgress: prog(0.25, 1) });
+    // 3. a final chord: each voice moves to the nearest note of the tonic triad (major, as Bach ends most minor fugues)
+    const notes = [];
+    let ei = 0;
+    for (const q of fixed) {
+      const idx = q.kind === "subject" || !q.kind ? ei++ : -1;
+      for (const x of q.notes) notes.push({ v: q.voice, on: x.on, d: x.d, m: x.m, entry: idx, kind: q.kind || "subject" });
+    }
+    notes.push(...res.notes);
+    const triad = [0, 4, 7].map((x) => mod(key.tonic + x, 12));
+    const order = [...Array(nv).keys()];
+    let lastBass = null;
+    for (const v of order.slice().reverse()) {
+      const mine = notes.filter((n) => n.v === v && n.on < total - 4);
+      const last = mine.length ? mine.reduce((a, b) => (a.on > b.on ? a : b)) : null;
+      if (!last) continue;
+      if (last.on + last.d > total - 4) last.d = total - 4 - last.on;
+      let best = null;
+      for (let m = last.m - 7; m <= last.m + 7; m++) {
+        const pc = mod(m, 12); if (!triad.includes(pc)) continue;
+        if (v === nv - 1 && pc !== mod(key.tonic, 12)) continue;      // the bass ends on the tonic
+        if (!best || Math.abs(m - last.m) < Math.abs(best - last.m)) best = m;
+      }
+      notes.push({ v, on: total - 4, d: 4, m: best, entry: -1, kind: "free" });
+      if (v === nv - 1) lastBass = best;
+    }
+    void lastBass;
+    notes.sort((a, b) => a.on - b.on || a.v - b.v);
+    return {
+      request: text, seed, params: p, key: p.keyName, tempo: p.tempo, timbre: p.timbre, voices: nv,
+      plan: { number: null, learned: true, key: p.keyName, entries: placed.length },
+      subject: sub.notes.map((x) => ({ t: x.t, d: x.d, m: x.m })),
+      countersubject: cs ? cs.notes.map((x) => ({ t: x.t, d: x.d, m: x.m })) : null,
+      counts: { countersubjects: csItems.length, episodes: epItems.length },
+      entries: placed.map((q) => ({ voice: q.voice, onset: q.onset, end: q.end, inv: q.inv, localKey: q.localKey })),
+      notes, length: total, chords: [], learned: true,
     };
   }
 
@@ -1080,7 +1176,7 @@
     return new Uint8Array(bytes);
   }
 
-  const API = { interpret, generate, toMidi, composeSubject, homeKey, choosePlan, realise, fill, keyName, mulberry, hash };
+  const API = { interpret, generate, generateLearned, useLearned, toMidi, composeSubject, homeKey, choosePlan, realise, fill, keyName, mulberry, hash };
   if (typeof module !== "undefined" && module.exports) module.exports = API;
   else root.FugueEngine = API;
 })(typeof self !== "undefined" ? self : this);

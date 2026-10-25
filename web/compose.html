@@ -80,7 +80,8 @@ svg#roll { width: 100%; height: auto; display: block; background: var(--lane); b
   <label for="q" class="visually-hidden" style="position:absolute;left:-9999px">Describe your fugue</label>
   <input id="q" name="q" placeholder="A sombre fugue in D minor for three voices" maxlength="300">
   <button class="primary" id="go" type="submit">Compose</button>
-  <label class="care"><input type="checkbox" id="care"> Take more care <span>(slower: searches about three times as many possibilities)</span></label>
+  <label class="care"><input type="checkbox" id="care"> Take more care <span>(slower: keeps twice as many drafts going)</span></label>
+  <label class="care"><input type="checkbox" id="rules"> Use the old hand-written rules instead of the learned composer <span>(to hear the difference)</span></label>
 </form>
 <div class="examples">Try:
   <button type="button">A sombre fugue in D minor for three voices</button>
@@ -116,7 +117,7 @@ svg#roll { width: 100%; height: auto; display: block; background: var(--lane); b
   <svg id="roll" role="img" aria-label="Piano roll of the fugue"></svg>
 </section>
 
-<p class="how">How it works: your words set the key, mode, number of voices, speed and the character of the subject. A short theme (the subject) is composed to match. The plan of one of Bach's fugues decides when each voice states it, at which pitch and whether upside down; a countersubject is written once against the subject (in thirds, sixths and suspensions, so that it works above or below) and returns against later entries; the gaps between groups of entries become episodes, where a fragment of the subject or countersubject moves through a sequence with a second voice imitating it. The program then writes the remaining free counterpoint, quaver by quaver, under rules of harmony and voice-leading. The plan is Bach's; the material and the music in between are the machine's. Harpsichord, organ and piano recordings from the Versilian Community Sample Library (CC0). More in <a href="https://paulharrald.substack.com/">the article</a>, on the <a href="index.html">Fugue Map</a>, and in the <a href="https://github.com/sepiks-ai/fugue-structure">code</a>.</p>
+<p class="how">How it works: your words set the key, mode, number of voices, speed and the character of the subject. A short theme (the subject) is composed to match. A plan model, learned from the 48 fugues of the <i>Well-Tempered Clavier</i>, decides when each voice states the subject, in which key, whether in stretto and whether upside down. A small neural network trained on the same 48 fugues then writes the music around those entries, semiquaver by semiquaver: each voice hears what the others have just played and what the subject is about to do. The line it writes against the first answer becomes the countersubject and returns later; between groups of entries, fragments of the subject move through sequences. Harmony, rhythm and the treatment of dissonance are learned from Bach, not written as rules. Training data: Kyle Rother's open edition of the fugues (CC BY 4.0). Harpsichord, organ and piano recordings from the Versilian Community Sample Library (CC0). More in <a href="https://paulharrald.substack.com/">the article</a>, on the <a href="index.html">Fugue Map</a>, and in the <a href="https://github.com/sepiks-ai/fugue-structure">code</a>.</p>
 </div>
 <div class="toast" id="toast"></div>
 
@@ -158,7 +159,7 @@ function compose(text, s) {
       else done(d.piece);
     };
     worker.onerror = () => { worker = null; setTimeout(() => done(FugueEngine.generate(text, plans, s, null, { beam: $("care").checked ? 100 : 30 })), 10); };
-    worker.postMessage({ text, plans, seed: s, id, beam: $("care").checked ? 100 : 30 });
+    worker.postMessage({ text, plans, seed: s, id, beam: $("care").checked ? 100 : 30, rules: $("rules").checked });
   } catch (e) {                              // no workers (e.g. opened as a file): compose on the page
     setTimeout(() => { try { done(FugueEngine.generate(text, plans, s, null, { beam: $("care").checked ? 100 : 30 })); } catch (err) { fail(String(err)); } }, 20);
   }
@@ -168,7 +169,8 @@ function render() {
   const p = piece;
   $("card").hidden = false;
   $("title").textContent = `Fugue in ${p.key}, ${p.voices} voices`;
-  $("meta").innerHTML = `Plan from Bach's No. ${p.plan.number} (${p.plan.key.replace("b ", "♭ ").replace("# ", "♯ ")}) · ${p.entries.length} entries, ${p.entries.filter((e) => e.inv).length} inverted${p.counts ? `, countersubject ${p.counts.countersubjects} times, ${p.counts.episodes} episode lines` : ""} · ${Math.round(p.length * 60 / p.tempo)} seconds · version ${seed + 1}`;
+  const planText = p.plan.learned ? "Learned composer · a new plan, sampled from what was learned from Bach's 48 fugues" : `Hand-written rules · plan from Bach's No. ${p.plan.number} (${p.plan.key.replace("b ", "♭ ").replace("# ", "♯ ")})`;
+  $("meta").innerHTML = `${planText} · ${p.entries.length} entries, ${p.entries.filter((e) => e.inv).length} inverted${p.counts ? `, countersubject ${p.counts.countersubjects} times, ${p.counts.episodes} episode lines` : ""} · ${Math.round(p.length * 60 / p.tempo)} seconds · version ${seed + 1}`;
   $("heard").innerHTML = p.params.heard.map((h) => `<span>${h.replace(/[<>&]/g, "")}</span>`).join("");
   $("subject").textContent = "Subject: " + p.subject.map((x) => noteName(x.m)).join(" ");
   drawRoll();
