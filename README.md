@@ -117,21 +117,34 @@ may be "not yet written"), the beat, the scale degree and the voice's role. On s
 a loss of 1.00 nats per step (perplexity 2.7), against 1.26 for a melody-only model of the same voice and
 1.85 for frequencies alone: the other voices account for about a quarter of the remaining uncertainty.
 
-**Plan model** (`scripts/build_open_plans.py`, `scripts/learn_plans.py` → `results/plan_model.json`):
+**Plan model** (`scripts/build_open_plans.py`, `scripts/learn_plans.py`, `scripts/learn_subjects.py` → `results/plan_model.json`):
 entries are found with a tolerant matcher (85% of intervals and rhythm), the subject being the longest opening
 of the first voice that recurs. From the 48 plans it estimates, with Dirichlet smoothing, the exposition order,
 the key of each later entry given the previous one and the position in the piece, the time between entries
 (so stretto), inversion and augmentation, the voice, the length, and when to stop.
 
+**Subject** (`learnedSubject` in `web/engine.js`, `scripts/learn_subjects.py`): the counterpoint model plays the
+opening of a fugue alone, as Bach's first voice does, 48 times over (pitch choices sharpened to temperature 0.75).
+Each line is cut where a phrase can end (on a beat, on a note of the tonic triad, near a length drawn from the
+48 subjects), and the one kept scores best on the model's own confidence plus its likeness to Bach's subjects:
+seven measures (notes per crotchet, range, share of steps, share of leaps, number of note lengths, longest note,
+where the highest note falls), each with a mean and spread estimated from the 48. The description moves the
+targets (lively asks for more notes, angular for more leaps, chromatic welcomes altered notes).
+
 **Generation** (`web/learned.js`): eight drafts sample the model step by step, lowest voice first, then each
 voice reconsiders knowing the others' choices (a Gibbs sweep); every bar the drafts with the most probable
 pitch choices are kept (rhythm is left to the model, since ranking by full likelihood favours held notes).
-The line the model writes against the first answer becomes the countersubject. Imposed: voice ranges, a few
-texture limits (how many voices may rest at once, how long a rest or a held note may last), subject-fragment
-sequences in episodes, and the final chord.
+Each step is two decisions: whether to move (a new note, a hold or a rest), then which note. Three settings were
+chosen by measuring the results against Bach's fugues: pitch temperature 0.85 with nucleus 0.95; the odds of
+moving raised by e^0.6 between beats (the model alone holds notes more often than Bach does); and on the beat, no
+leap into a second, tritone or seventh against a sounding voice. The line the model writes against the first
+answer becomes the countersubject. Also imposed: voice ranges, a few texture limits (how many voices may rest at
+once, how long a rest or a held note may last), subject-fragment sequences in episodes, and the final chord.
 
-On the beat, compared with Bach's own fugues (same measure): dissonance 24% (Bach 22.6%), suspensions 7.5%
-(8.7%), untreated dissonance 2.2% (1.1%); the earlier rule-based composer gave 3–8% dissonance in all.
+On the beat, compared with Bach's own fugues (same measure, 12 pieces): suspensions 8.5% of voice pairs (Bach
+8.7%), untreated dissonance 1.3% (1.1%), all dissonance 25.7% (22.6%); notes of a quaver or shorter, 77% (79%).
+Before these settings: suspensions 7.5%, untreated 2.2%, quick notes about 65%. The earlier rule-based composer
+gave 3–8% dissonance in all.
 `node tests/test_learned.js` checks that the browser computes exactly what the trained Python model does.
 
 ## Reproduce
@@ -144,7 +157,7 @@ PYTHONPATH=src python -m fugue.null_baseline data/bach-wtc/kern 'wtc1f*.krn' res
 PYTHONPATH=src pytest -q tests     # matcher tests; no score data needed
 # the learned composer (open data; needs lilypond, mido, torch; see the section above)
 python scripts/open_wtc.py <midi_dir> <rother_ly_root> data/open_wtc.json
-python scripts/build_open_plans.py && python scripts/learn_plans.py
+python scripts/build_open_plans.py && python scripts/learn_plans.py && python scripts/learn_subjects.py
 python scripts/train_counterpoint.py            # six held-out fugues, reports held-out loss
 python scripts/train_counterpoint.py --all --epochs=3 && python scripts/export_counterpoint.py
 node tests/test_learned.js
@@ -167,11 +180,14 @@ node tests/test_learned.js
 ## Sound
 
 Recordings from the Versilian Community Sample Library (CC0 1.0,
-https://versilian-studios.com/vcsl/), chosen by measured signal-to-noise: an English
-harpsichord (105 dB) with its lute stop, an open-diapason organ stop (60 dB) and a soft
-Renaissance flute stop, and a Steinway B. `scripts/build_samples.py` converts them
+https://versilian-studios.com/vcsl/), chosen by measured signal-to-noise and evenness: the harpsichord
+VCSL calls "Unk" (sampled at every semitone from F1 to F6, 104 dB, even in brightness from bass to treble),
+played with its recorded key releases; an English harpsichord's lute stop; an open-diapason organ stop (60 dB)
+and a soft Renaissance flute stop; and a Steinway B. `scripts/build_samples.py` converts them
 (high-pass at 35 Hz, each note ends where it nears its own noise floor, quiet samples
-lifted by at most 6 dB). Strings remain synthesised. Playback adds a room whose tail
-darkens as it decays, softens the harpsichord's treble a little, spreads the voices
-across the stereo field, brings out the subject, varies timing slightly and slows
+lifted by at most 6 dB). Strings remain synthesised. The room is a recorded one, convolved: St Andrew's Church
+for harpsichord, piano and strings, the Lady Chapel of St Albans Cathedral for organ (impulse responses from
+the OpenAIR library, University of York, via Reverb.js; CC BY-SA 3.0, see `web/rooms/LICENCE.md`), matched in
+loudness to the synthetic room that remains as a fallback. Playback softens the harpsichord's treble a little,
+spreads the voices across the stereo field, brings out the subject, varies timing slightly and slows
 into the final cadence. Readers can switch instrument, tempo and touch while it plays.

@@ -27,6 +27,9 @@ E.useLearned(L, JSON.parse(fs.readFileSync(path.join(__dirname, "../web/model/pl
 for (const q of ["A sombre fugue in D minor for three voices", "Bright and lively, four voices, in G major", "a short duet in E minor"]) {
   const t0 = Date.now(), g = E.generate(q, [], 1), ms = Date.now() - t0;
   assert.ok(g.learned, q + ": learned composer used");
+  assert.ok(g.subjectLearned, q + ": subject written by the model");
+  const sm = g.subject.map((x) => x.m);
+  assert.ok(sm.length >= 5 && Math.max(...sm) - Math.min(...sm) <= 16, q + ": subject of a playable shape");
   assert.ok(new Set(g.entries.map((e) => e.voice)).size === g.voices, q + ": every voice states the subject");
   assert.deepStrictEqual(E.generate(q, [], 1).notes, g.notes, q + ": reproducible from request and seed");
   for (let v = 0; v < g.voices; v++) {                      // no voice falls silent for long once it has entered

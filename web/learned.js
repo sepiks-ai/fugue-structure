@@ -5,6 +5,7 @@
   "use strict";
   const STEP = 0.25, OWN = 12, OFFS = [-4, -3, -2, -1, 0, 1, 2, 4], IV = 16;
   const HOLD = 2 * IV + 1, REST = 2 * IV + 2, N_OUT = 2 * IV + 3;
+  const CLASH = [0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1];          // seconds, tritone, sevenths (fourths are left to context)
   const SLOTS = ["above1", "above2", "below1", "below2"];
   const mod = (a, n) => ((a % n) + n) % n;
   const clampI = (x, lim) => Math.max(-lim, Math.min(lim, x));
@@ -91,7 +92,7 @@
   // Particles: several candidate continuations sample the model step by step (lowest voice first at each
   // step, so upper voices hear it); each bar the weaker half is replaced by copies of the stronger.
   function compose(opts) {
-    const { voices: nv, placed, total, tonic, mode, ranges, seed = 1, particles = 8, temperature = 1.0, nucleus = 0.98, sweeps = 1, onProgress } = opts;
+    const { voices: nv, placed, total, tonic, mode, ranges, seed = 1, particles = 8, temperature = 1.0, nucleus = 0.98, sweeps = 1, onProgress, solo = false, moveBias = 0, strictBeats = false } = opts;
     const bar = 16, num = 4, T = Math.round(total / STEP);
     let r = seed >>> 0;
     const rnd = () => { r += 0x6d2b79f5; let x = r; x = Math.imul(x ^ (x >>> 15), x | 1); x ^= x + Math.imul(x ^ (x >>> 7), x | 61); return ((x ^ (x >>> 14)) >>> 0) / 4294967296; };
@@ -125,23 +126,46 @@
       let restRun = 0; for (let s = t - 1; s >= 0 && st.pitch[v][s] < 0 && restRun < 64; s--) restRun++;
       let holdRun = 0; for (let s = t - 1; s > 0 && !st.onset[v][s] && st.pitch[v][s] >= 0 && holdRun < 64; s--) holdRun++;
       let entrySoon = false; for (let s = t + 1; s < Math.min(T, t + 33); s++) if (isFixed[v][s]) { entrySoon = true; break; }
-      const noRest = resting >= (nv >= 4 ? 2 : 1) || (restRun >= 24 && !entrySoon);
-      for (let k = 0; k < N_OUT; k++) {
-        let ok = true;
-        if (k < HOLD) { const m = p0 + k - IV; if (m < lo || m > hi) ok = false; }
-        else if (k === HOLD && (t === 0 || st.pitch[v][t - 1] < 0 || holdRun >= 31)) ok = false;
-        else if (k === REST && noRest) ok = false;
-        probs[k] = ok ? lg[k] / temperature : -1e9; if (probs[k] > mx) mx = probs[k];
+      const noRest = solo || resting >= (nv >= 4 ? 2 : 1) || (restRun >= 24 && !entrySoon);
+      // on the beat, a note that clashes with what another voice is sounding must arrive by step (as a passing note
+      // or appoggiatura does); a leap into a clash is the one dissonance Bach almost never writes
+      const sounding = [];
+      if (strictBeats && t % 4 === 0) for (let u = 0; u < nv; u++) if (u !== v && st.known[u][t] && st.pitch[u][t] >= 0) sounding.push(st.pitch[u][t]);
+      for (let pass = 0; pass < 2; pass++) {
+        let any = false; mx = -1e9;
+        for (let k = 0; k < N_OUT; k++) {
+          let ok = true;
+          if (k < HOLD) {
+            const m = p0 + k - IV; if (m < lo || m > hi) ok = false;
+            else if (pass === 0 && Math.abs(k - IV) > 2) for (const q of sounding) if (CLASH[Math.abs(m - q) % 12]) { ok = false; break; }
+          }
+          else if (k === HOLD && (t === 0 || st.pitch[v][t - 1] < 0 || holdRun >= 31)) ok = false;
+          else if (k === REST && noRest) ok = false;
+          probs[k] = ok ? lg[k] : -1e9; if (probs[k] > mx) mx = probs[k]; if (ok) any = true;
+        }
+        if (any) break;
       }
       let sum = 0; for (let k = 0; k < N_OUT; k++) { probs[k] = Math.exp(probs[k] - mx); sum += probs[k]; }
-      // nucleus: sample from the smallest set of tokens holding most of the probability
-      const sorted = [...probs.keys()].sort((x, y) => probs[y] - probs[x]);
-      let acc = 0, cut = 0; for (; cut < N_OUT; cut++) { acc += probs[sorted[cut]] / sum; if (acc >= nucleus) { cut++; break; } }
-      let u = rnd() * acc * sum, pick = sorted[0];
-      for (let j = 0; j < cut; j++) { u -= probs[sorted[j]]; if (u <= 0) { pick = sorted[j]; break; } }
+      // two decisions, as a player makes them: whether to move (a new note, hold, or rest), sampled as the model
+      // says; then, if moving, which note, where temperature and nucleus sharpen the choice
+      let on = 0; for (let k = 0; k < HOLD; k++) on += probs[k];
+      // the model moves on a little less often than Bach did; the nudge is kept off the beats, where holding a note
+      // over (a suspension) is the point
+      const onB = on * Math.exp(t % 4 ? moveBias : 0), sumB = sum - on + onB;
+      let pick, u0 = rnd() * sumB;
+      if (u0 >= onB) pick = u0 - onB < probs[HOLD] ? HOLD : REST;
+      else {
+        const pp = new Float64Array(HOLD); let ps = 0, pm = 0;
+        for (let k = 0; k < HOLD; k++) if (probs[k] > pm) pm = probs[k];
+        for (let k = 0; k < HOLD; k++) { pp[k] = probs[k] > 0 ? Math.pow(probs[k] / pm, 1 / temperature) : 0; ps += pp[k]; }
+        const sorted = [...pp.keys()].sort((x, y) => pp[y] - pp[x]);
+        let acc = 0, cut = 0; for (; cut < HOLD; cut++) { acc += pp[sorted[cut]] / ps; if (acc >= nucleus) { cut++; break; } }
+        let u = rnd() * acc * ps; pick = sorted[0];
+        for (let j = 0; j < cut; j++) { u -= pp[sorted[j]]; if (u <= 0) { pick = sorted[j]; break; } }
+      }
       // candidates are compared on their pitch choices only: the rhythm is left to the model, since
       // ranking by the full likelihood favours holding notes (the safest prediction) and slows everything down
-      if (count && pick < HOLD) { let on = 0; for (let k = 0; k < HOLD; k++) on += probs[k]; st.lp += Math.log(probs[pick] / on + 1e-12); st.n++; }
+      if (count && pick < HOLD) { st.lp += Math.log(probs[pick] / on + 1e-12); st.n++; }
       if (pick === REST) { st.pitch[v][t] = -1; st.onset[v][t] = 0; }
       else if (pick === HOLD) { st.pitch[v][t] = st.pitch[v][t - 1]; st.onset[v][t] = 0; }
       else { st.pitch[v][t] = p0 + pick - IV; st.onset[v][t] = 1; }
@@ -177,7 +201,7 @@
         t = u;
       }
     }
-    return { notes, logp: best.lp };
+    return { notes, logp: best.lp, n: best.n, pitch: best.pitch, onset: best.onset };
   }
 
   // ---------------------------------------------------------------- plans from the learned plan model
