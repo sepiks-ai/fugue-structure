@@ -40,6 +40,18 @@ button:disabled { opacity: .5; cursor: default; }
 .care span { font-size: 13px; }
 .examples { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 26px; font-size: 14px; color: var(--muted); align-items: center; }
 .examples button { font-size: 14px; padding: 5px 11px; border-radius: 999px; background: transparent; color: var(--ink); }
+.mood { margin: -10px 0 26px; max-width: 620px; }
+.mood p { margin: 0 0 6px; font-size: 14px; color: var(--muted); }
+svg#plane { width: 100%; height: auto; display: block; touch-action: none; user-select: none; -webkit-user-select: none; cursor: crosshair; border-radius: 10px; }
+#plane .bg { fill: var(--panel); stroke: var(--rule); }
+#plane .axis { stroke: var(--rule); stroke-dasharray: 3 4; }
+#plane .pole { font: italic 15px Georgia, serif; fill: var(--muted); }
+#plane .w { font: 13px Georgia, serif; fill: var(--muted); opacity: .75; transition: opacity .12s, fill .12s; }
+#plane .w.on { fill: var(--ink); opacity: 1; font-weight: bold; }
+#plane .reach { fill: var(--accent); opacity: .08; }
+#plane .dot { fill: var(--accent); stroke: var(--panel); stroke-width: 3; }
+#plane g.mk { cursor: grab; outline: none; }
+#plane g.mk:focus-visible .dot { stroke: var(--ink); }
 .progress { height: 3px; background: var(--lane); border-radius: 2px; overflow: hidden; margin: 0 0 18px; visibility: hidden; }
 .progress i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .15s; }
 .card { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 20px; margin-bottom: 26px; }
@@ -66,7 +78,8 @@ svg#roll { width: 100%; height: auto; display: block; background: var(--lane); b
 .how a, .meta a { color: var(--accent); }
 .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--ink); color: var(--bg);
   padding: 8px 14px; border-radius: 6px; font-size: 14px; opacity: 0; transition: opacity .2s; pointer-events: none; }
-@media (max-width: 560px) { h1 { font-size: 28px; } #q { font-size: 16px; } }
+@media (max-width: 560px) { h1 { font-size: 28px; } #q { font-size: 16px; }
+  #plane .w { font-size: 19px; } #plane .pole { font-size: 21px; } }
 </style>
 </head>
 <body>
@@ -80,7 +93,8 @@ svg#roll { width: 100%; height: auto; display: block; background: var(--lane); b
   <label for="q" class="visually-hidden" style="position:absolute;left:-9999px">Describe your fugue</label>
   <input id="q" name="q" placeholder="A sombre fugue in D minor for three voices" maxlength="300">
   <button class="primary" id="go" type="submit">Compose</button>
-  <label class="care"><input type="checkbox" id="care"> Take more care <span>(slower: searches about three times as many possibilities)</span></label>
+  <label class="care"><input type="checkbox" id="care"> Take more care <span>(slower: keeps twice as many drafts going)</span></label>
+  <label class="care"><input type="checkbox" id="rules"> Use the old hand-written rules instead of the learned composer <span>(to hear the difference)</span></label>
 </form>
 <div class="examples">Try:
   <button type="button">A sombre fugue in D minor for three voices</button>
@@ -89,6 +103,10 @@ svg#roll { width: 100%; height: auto; display: block; background: var(--lane); b
   <button type="button">A short dance-like duet in E minor</button>
   <button type="button">Stately fugue in C with lots of stretto</button>
   <button type="button">An inverted mirror fugue in A minor for strings</button>
+</div>
+<div class="mood">
+  <p>Or drag the dot: the words nearest it go into your description, and the fugue is composed when you let go.</p>
+  <svg id="plane" viewBox="0 0 600 340" role="application" aria-label="Mood plane: sombre to bright across, calm to lively up and down. Arrow keys move the dot, Enter composes."></svg>
 </div>
 <div class="progress" id="prog"><i></i></div>
 
@@ -116,7 +134,7 @@ svg#roll { width: 100%; height: auto; display: block; background: var(--lane); b
   <svg id="roll" role="img" aria-label="Piano roll of the fugue"></svg>
 </section>
 
-<p class="how">How it works: your words set the key, mode, number of voices, speed and the character of the subject. A short theme (the subject) is composed to match. The plan of one of Bach's fugues decides when each voice states it, at which pitch and whether upside down; a countersubject is written once against the subject (in thirds, sixths and suspensions, so that it works above or below) and returns against later entries; the gaps between groups of entries become episodes, where a fragment of the subject or countersubject moves through a sequence with a second voice imitating it. The program then writes the remaining free counterpoint, quaver by quaver, under rules of harmony and voice-leading. The plan is Bach's; the material and the music in between are the machine's. Harpsichord, organ and piano recordings from the Versilian Community Sample Library (CC0). More in <a href="https://paulharrald.substack.com/">the article</a>, on the <a href="index.html">Fugue Map</a>, and in the <a href="https://github.com/sepiks-ai/fugue-structure">code</a>.</p>
+<p class="how">How it works: your words set the key, mode, number of voices, speed and the character of the subject. The theme (the subject) is written by the model too: it plays the opening of a fugue alone, as Bach's first voice does, a few dozen times over, and the line kept is the one most like Bach's 48 subjects in shape, nudged by your words (lively asks for more notes, angular for more leaps). A plan model, learned from the 48 fugues of the <i>Well-Tempered Clavier</i>, decides when each voice states the subject, in which key, whether in stretto and whether upside down. A small neural network trained on the same 48 fugues then writes the music around those entries, semiquaver by semiquaver: each voice hears what the others have just played and what the subject is about to do. The line it writes against the first answer becomes the countersubject and returns later; between groups of entries, fragments of the subject move through sequences. Harmony, rhythm and the treatment of dissonance are learned from Bach. Three settings were tuned by measuring the results against his: pitch choices are sharpened a little, the music is nudged to move on between beats (the model on its own moves less often than Bach), and a voice may not leap into a clash on the beat. Training data: Kyle Rother's open edition of the fugues (CC BY 4.0). Harpsichord, organ and piano recordings from the Versilian Community Sample Library (CC0); the rooms are St Andrew's Church and the Lady Chapel of St Albans Cathedral, from the OpenAIR library (CC BY-SA 3.0). More in <a href="https://paulharrald.substack.com/">the article</a>, on the <a href="index.html">Fugue Map</a>, and in the <a href="https://github.com/sepiks-ai/fugue-structure">code</a>.</p>
 </div>
 <div class="toast" id="toast"></div>
 
@@ -136,6 +154,7 @@ function setProgress(f) { $("prog").style.visibility = f === null ? "hidden" : "
 function noteName(m) { return ["C", "C♯", "D", "E♭", "E", "F", "F♯", "G", "A♭", "A", "B♭", "B"][((m % 12) + 12) % 12] + (Math.floor(m / 12) - 1); }
 
 function compose(text, s) {
+  moodFromText();
   stop();
   seed = s;
   $("go").disabled = true; $("again").disabled = true;
@@ -158,7 +177,7 @@ function compose(text, s) {
       else done(d.piece);
     };
     worker.onerror = () => { worker = null; setTimeout(() => done(FugueEngine.generate(text, plans, s, null, { beam: $("care").checked ? 100 : 30 })), 10); };
-    worker.postMessage({ text, plans, seed: s, id, beam: $("care").checked ? 100 : 30 });
+    worker.postMessage({ text, plans, seed: s, id, beam: $("care").checked ? 100 : 30, rules: $("rules").checked });
   } catch (e) {                              // no workers (e.g. opened as a file): compose on the page
     setTimeout(() => { try { done(FugueEngine.generate(text, plans, s, null, { beam: $("care").checked ? 100 : 30 })); } catch (err) { fail(String(err)); } }, 20);
   }
@@ -168,7 +187,8 @@ function render() {
   const p = piece;
   $("card").hidden = false;
   $("title").textContent = `Fugue in ${p.key}, ${p.voices} voices`;
-  $("meta").innerHTML = `Plan from Bach's No. ${p.plan.number} (${p.plan.key.replace("b ", "♭ ").replace("# ", "♯ ")}) · ${p.entries.length} entries, ${p.entries.filter((e) => e.inv).length} inverted${p.counts ? `, countersubject ${p.counts.countersubjects} times, ${p.counts.episodes} episode lines` : ""} · ${Math.round(p.length * 60 / p.tempo)} seconds · version ${seed + 1}`;
+  const planText = p.plan.learned ? "Learned composer · " + (p.subjectLearned ? "subject written by the model · " : "") + "a new plan, sampled from what was learned from Bach's 48 fugues" : `Hand-written rules · plan from Bach's No. ${p.plan.number} (${p.plan.key.replace("b ", "♭ ").replace("# ", "♯ ")})`;
+  $("meta").innerHTML = `${planText} · ${p.entries.length} entries, ${p.entries.filter((e) => e.inv).length} inverted${p.counts ? `, countersubject ${p.counts.countersubjects} times, ${p.counts.episodes} episode lines` : ""} · ${Math.round(p.length * 60 / p.tempo)} seconds · version ${seed + 1}`;
   $("heard").innerHTML = p.params.heard.map((h) => `<span>${h.replace(/[<>&]/g, "")}</span>`).join("");
   $("subject").textContent = "Subject: " + p.subject.map((x) => noteName(x.m)).join(" ");
   drawRoll();
@@ -212,24 +232,67 @@ const INSTRUMENTS = [["harpsichord", "Harpsichord"], ["harpsichord_lute", "Harps
 const SAMPLE_OFFSET = 0.024;                                       // MP3 encoder delay, measured
 const lib = {};                                                    // inst -> {list, buffers} | "failed"
 let manifest = null;
+async function fetchDecode(url, dec) {
+  const ab = await (await fetch(url)).arrayBuffer();
+  return new Promise((ok, no) => dec.decodeAudioData(ab, ok, no));
+}
 async function loadInstrument(inst) {
+  loadRoom(inst);                                                  // the room loads alongside, never blocking the notes
   if (!SAMPLED[inst]) return null;
   if (lib[inst]) return lib[inst] === "failed" ? null : lib[inst];
   try {
     manifest = manifest || await (await fetch("samples/manifest.json")).json();
     const dec = new (window.OfflineAudioContext || window.webkitOfflineAudioContext)(1, 1, 44100);
-    const list = manifest[inst], buffers = new Map();
-    await Promise.all(list.map(async (m) => {
-      const ab = await (await fetch(`samples/${inst}/${m}.mp3`)).arrayBuffer();
-      buffers.set(m, await new Promise((ok, no) => dec.decodeAudioData(ab, ok, no)));
+    const list = manifest[inst], buffers = new Map(), releases = new Map();
+    await Promise.all(list.map(async (m) => buffers.set(m, await fetchDecode(`samples/${inst}/${m}.mp3`, dec))));
+    // the sound of the jack falling back onto the string, recorded separately for each key
+    const rl = manifest[inst + "_release"] || [];
+    await Promise.all(rl.map(async (m) => {
+      try { releases.set(m, await fetchDecode(`samples/${inst}_release/${m}.mp3`, dec)); } catch (e) {}
     }));
     // match levels across instruments: scale so the note nearest middle C peaks at a common value
     let ref = list[0]; for (const m of list) if (Math.abs(m - 60) < Math.abs(ref - 60)) ref = m;
     const d = buffers.get(ref).getChannelData(0); let pk = 1e-6; for (let i = 0; i < d.length; i++) pk = Math.max(pk, Math.abs(d[i]));
     SAMPLED[inst] = 0.32 / pk;
-    lib[inst] = { list, buffers };
+    lib[inst] = { list, buffers, releases };
     return lib[inst];
   } catch (e) { lib[inst] = "failed"; return null; }
+}
+
+// ---- rooms: impulse responses recorded in real buildings (OpenAIR, CC BY-SA 3.0; see rooms/LICENCE.md)
+const ROOM_OF = { organ: "lady-chapel-st-albans", organ_soft: "lady-chapel-st-albans" };   // everything else: St Andrew's
+const rooms = {};                                                  // name -> {sr, data:[L,R], energy} | "failed" | Promise
+function roomName(timbre) { return ROOM_OF[timbre] || "st-andrews-church"; }
+function loadRoom(timbre) {
+  const name = roomName(timbre);
+  if (!rooms[name]) rooms[name] = (async () => {
+    try {
+      const dec = new (window.OfflineAudioContext || window.webkitOfflineAudioContext)(2, 1, 44100);
+      const b = await fetchDecode(`rooms/${name}.wav`, dec);
+      const data = [0, 1].map((c) => b.getChannelData(Math.min(c, b.numberOfChannels - 1)).slice());
+      let e = 0; for (const c of data) for (let i = 0; i < c.length; i++) e += c[i] * c[i];
+      return (rooms[name] = { sr: b.sampleRate, data, energy: e });
+    } catch (e) { return (rooms[name] = "failed"); }
+  })();
+  return rooms[name];
+}
+function energyOf(buf) {
+  let e = 0; for (let c = 0; c < buf.numberOfChannels; c++) { const d = buf.getChannelData(c); for (let i = 0; i < d.length; i++) e += d[i] * d[i]; }
+  return e;
+}
+// the recorded room, at this context's sample rate (a convolver insists they match) and at the same loudness as the
+// synthetic room it replaces, so the balance of dry and wet stays as tuned
+function recordedRoom(ctx, timbre, secs) {
+  const R = rooms[roomName(timbre)];
+  if (!R || R === "failed" || R instanceof Promise) return null;
+  const ratio = ctx.sampleRate / R.sr, n = Math.floor(R.data[0].length * ratio), buf = ctx.createBuffer(2, n, ctx.sampleRate);
+  for (let c = 0; c < 2; c++) {
+    const src = R.data[c], out = buf.getChannelData(c);
+    for (let i = 0; i < n; i++) { const x = i / ratio, j = Math.floor(x), f = x - j; out[i] = (src[j] || 0) * (1 - f) + (src[j + 1] || 0) * f; }
+  }
+  const g = Math.sqrt(energyOf(impulse(ctx, secs, 7)) / Math.max(1e-9, energyOf(buf)));
+  for (let c = 0; c < 2; c++) { const d = buf.getChannelData(c); for (let i = 0; i < n; i++) d[i] *= g; }
+  return buf;
 }
 
 function impulse(ctx, secs, seed) {
@@ -254,7 +317,7 @@ function makeChain(ctx, dest, p) {
     piano: [2.0, 0.42], strings: [2.4, 0.55] }[p.timbre] || [2, 0.5];
   const bus = ctx.createGain(), comp = ctx.createDynamicsCompressor(), makeup = ctx.createGain();
   const conv = ctx.createConvolver(), wet = ctx.createGain();
-  conv.buffer = impulse(ctx, room[0], 7); wet.gain.value = room[1] * 0.35;
+  conv.buffer = recordedRoom(ctx, p.timbre, room[0]) || impulse(ctx, room[0], 7); wet.gain.value = room[1] * 0.35;
   bus.gain.value = (SAMPLED[p.timbre] && lib[p.timbre] && lib[p.timbre] !== "failed" ? 0.5 :
     { harpsichord: 0.55, organ: 0.17, piano: 0.4, strings: 0.22 }[p.timbre] || 0.4) * (4 / Math.max(3, p.voices));
   // a gentle limiter that only catches peaks; it no longer lifts quiet tails and noise
@@ -292,7 +355,14 @@ function sampledNote(ctx, chain, p, n, t, d, vel) {
   src.connect(g).connect(chain.pans[n.v] || chain.bus);
   src.start(t, SAMPLE_OFFSET);
   src.stop(t + d + rel * 8);
-  return [src];
+  const rb = L.releases && L.releases.get(s);
+  if (!rb) return [src];
+  // key let go: the jack drops and its damper touches the string; recorded at the sustain's level, so played at it
+  const r = ctx.createBufferSource(), rg = ctx.createGain();
+  r.buffer = rb; r.playbackRate.value = src.playbackRate.value; rg.gain.value = lvl * 0.8;
+  r.connect(rg).connect(chain.pans[n.v] || chain.bus);
+  r.start(t + d, SAMPLE_OFFSET); r.stop(t + d + rb.duration);
+  return [src, r];
 }
 
 function synthNote(ctx, chain, p, n, t, d, vel) {
@@ -389,6 +459,7 @@ async function playFrom(fromQ) {
     await loadInstrument(piece.timbre);
     $("play").disabled = false;
   }
+  await Promise.race([loadRoom(piece.timbre), new Promise((ok) => setTimeout(ok, 1500))]);
   const spq = 60 / perf.tempo, t0 = ctx.currentTime + 0.12;
   const notes = piece.notes.filter((n) => n.on >= fromQ - 1e-9);
   const L = { t0, spq, fromQ, i: 0, nodes: [], chain: makeChain(ctx, ctx.destination, piece) };
@@ -425,7 +496,7 @@ function save(blob, name) {
   document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
 }
 async function renderWav() {
-  await loadInstrument(piece.timbre);
+  await loadInstrument(piece.timbre); await loadRoom(piece.timbre);
   const sr = 44100, secs = clock(piece.length, 60 / perf.tempo) + 3.5;
   const off = new OfflineAudioContext(2, Math.ceil(sr * secs), sr);
   scheduleAll(off, off.destination, piece, 0.05);
@@ -440,6 +511,105 @@ async function renderWav() {
   for (let i = 0, o = 44; i < n; i++) for (const c of ch) { view.setInt16(o, Math.max(-1, Math.min(1, c[i] * g)) * 32767, true); o += 2; }
   return new Blob([view], { type: "audio/wav" });
 }
+
+
+// ---------------------------------------------------------------- mood plane
+// every word here is one the interpreter understands; its place is where its effect on the music lies:
+// across, minor to major; up, slow and smooth to quick and running
+const MOOD = [
+  ["sombre", -1, 0], ["bright", 1, 0], ["calm", 0, -1], ["lively", 0, 1],
+  ["lament", -0.85, -0.78], ["mournful", -0.62, -0.58], ["elegiac", -0.86, -0.36], ["pensive", -0.4, -0.8],
+  ["wistful", -0.52, -0.2], ["brooding", -0.78, 0.12], ["serious", -0.28, -0.32], ["solemn", -0.18, -0.6],
+  ["stormy", -0.78, 0.74], ["anguished", -0.88, 0.42], ["restless", -0.42, 0.56], ["chromatic", -0.5, 0.25],
+  ["fierce", -0.55, 0.9], ["mysterious", -0.22, 0.14],
+  ["stately", 0.12, -0.5], ["majestic", 0.3, -0.76], ["measured", -0.05, -0.82], ["noble", 0.34, -0.3],
+  ["serene", 0.78, -0.72], ["gentle", 0.52, -0.54], ["tender", 0.58, -0.88], ["graceful", 0.84, -0.4],
+  ["hopeful", 0.55, -0.16], ["pastoral", 0.3, -0.95],
+  ["joyful", 0.6, 0.42], ["playful", 0.86, 0.26], ["dancing", 0.5, 0.74], ["sparkling", 0.84, 0.66],
+  ["triumphant", 0.24, 0.48], ["jubilant", 0.8, 0.92], ["cheerful", 0.62, 0.14], ["busy", -0.06, 0.62],
+  ["nimble", 0.3, 0.9], ["bold", 0.08, 0.3],
+];
+const PW = 600, PH = 340, PAD = 34;
+const px = (x) => PW / 2 + x * (PW / 2 - PAD - 26), py = (y) => PH / 2 - y * (PH / 2 - PAD);
+const REACH = 0.36;                                                 // how far the dot "hears", in plane units
+let moodAt = [0, 0], dragging = false, keepDot = false;
+function buildPlane() {
+  const svg = $("plane"), ns = "http://www.w3.org/2000/svg";
+  const el = (tag, at, txt) => { const e = document.createElementNS(ns, tag); for (const k in at) e.setAttribute(k, at[k]); if (txt) e.textContent = txt; svg.appendChild(e); return e; };
+  el("rect", { class: "bg", x: 0.5, y: 0.5, width: PW - 1, height: PH - 1, rx: 10 });
+  el("line", { class: "axis", x1: px(-1), y1: py(0), x2: px(1), y2: py(0) });
+  el("line", { class: "axis", x1: px(0), y1: py(-1), x2: px(0), y2: py(1) });
+  for (const [w, x, y] of MOOD) {
+    const pole = Math.abs(x) === 1 || Math.abs(y) === 1;
+    const t = el("text", { class: pole ? "pole w" : "w", x: px(x), y: py(y) + 4, "text-anchor": x === -1 ? "start" : x === 1 ? "end" : "middle" }, w);
+    if (x === -1) t.setAttribute("x", 8); if (x === 1) t.setAttribute("x", PW - 8);
+    if (y === 1) t.setAttribute("y", 20); if (y === -1) t.setAttribute("y", PH - 9);
+    t.dataset.w = w;
+  }
+  const g = el("g", { class: "mk", tabindex: 0 });
+  const reach = document.createElementNS(ns, "ellipse"); reach.setAttribute("class", "reach");
+  reach.setAttribute("rx", REACH * (PW / 2 - PAD - 26)); reach.setAttribute("ry", REACH * (PH / 2 - PAD));
+  const dot = document.createElementNS(ns, "circle"); dot.setAttribute("class", "dot"); dot.setAttribute("r", 9);
+  g.append(reach, dot);
+  const toPlane = (ev) => {
+    const r = svg.getBoundingClientRect(), X = (ev.clientX - r.left) / r.width * PW, Y = (ev.clientY - r.top) / r.height * PH;
+    return [Math.max(-1, Math.min(1, (X - PW / 2) / (PW / 2 - PAD - 26))), Math.max(-1, Math.min(1, (PH / 2 - Y) / (PH / 2 - PAD)))];
+  };
+  svg.addEventListener("pointerdown", (ev) => { dragging = true; svg.setPointerCapture(ev.pointerId); moveMood(toPlane(ev)); ev.preventDefault(); });
+  svg.addEventListener("pointermove", (ev) => { if (dragging) moveMood(toPlane(ev)); });
+  const end = () => { if (!dragging) return; dragging = false; keepDot = true; const t = $("q").value.trim(); if (t) compose(t, 0); };
+  svg.addEventListener("pointerup", end); svg.addEventListener("pointercancel", end);
+  g.addEventListener("keydown", (ev) => {
+    const d = { ArrowLeft: [-0.1, 0], ArrowRight: [0.1, 0], ArrowUp: [0, 0.1], ArrowDown: [0, -0.1] }[ev.key];
+    if (d) { ev.preventDefault(); moveMood([Math.max(-1, Math.min(1, moodAt[0] + d[0])), Math.max(-1, Math.min(1, moodAt[1] + d[1]))]); }
+    if (ev.key === "Enter") { ev.preventDefault(); keepDot = true; const t = $("q").value.trim(); if (t) compose(t, 0); }
+  });
+  placeDot();
+}
+function placeDot() {
+  const g = document.querySelector("#plane g.mk"); if (!g) return;
+  g.setAttribute("transform", `translate(${px(moodAt[0])},${py(moodAt[1])})`);
+}
+function nearWords([x, y]) {
+  if (Math.hypot(x, y) < 0.18) return [];                           // the middle says nothing
+  return MOOD.map(([w, a, b]) => [w, Math.hypot(a - x, b - y)]).filter((e) => e[1] < REACH)
+    .sort((a, b) => a[1] - b[1]).slice(0, 2).map((e) => e[0]);
+}
+function markWords(words) {
+  document.querySelectorAll("#plane text.w").forEach((t) => t.classList.toggle("on", words.includes(t.dataset.w)));
+}
+// take the plane's words out of the description and put the new ones in, leaving key, voices and instrument alone
+function withMood(text, words) {
+  let t = text;
+  for (const [w] of MOOD) t = t.replace(new RegExp(`\\b${w}\\b(\\s*,\\s*|\\s+and\\s+|\\s+)?`, "gi"), "");
+  t = t.replace(/\s{2,}/g, " ").replace(/^[\s,]*(and\s+)?/i, "").replace(/\s+,/g, ",").trim();
+  if (!words.length) return t ? t[0].toUpperCase() + t.slice(1) : "A fugue";
+  const phrase = words.join(" and "), art = /^[aeiou]/i.test(phrase) ? "An" : "A";
+  if (/\b(an?|the)\s+fugue\b/i.test(t)) return t.replace(/\b(an?|the)\s+(?=fugue\b)/i, (m) => `${m.trim().toLowerCase() === "the" ? "The" : art} ${phrase} `)
+    .replace(/^an? /, (m) => m[0].toUpperCase() + m.slice(1));
+  if (/^fugue\b/i.test(t)) return `${art} ${phrase} ${t[0].toLowerCase() + t.slice(1)}`;
+  if (!t) return `${art} ${phrase} fugue`;
+  return `${phrase[0].toUpperCase() + phrase.slice(1)}, ${t[0].toLowerCase() + t.slice(1)}`;
+}
+function moveMood(at) {
+  moodAt = at; placeDot();
+  const words = nearWords(at); markWords(words);
+  let t = withMood($("q").value.trim() || $("q").placeholder, words);
+  // the across axis is the mode: crossing it turns a named key to its major or minor, rather than contradict it
+  if (at[0] > 0.25) t = t.replace(/\b([A-G](?:[#♯b♭]|-sharp|-flat| sharp| flat)?)\s+minor\b/i, "$1 major");
+  if (at[0] < -0.25) t = t.replace(/\b([A-G](?:[#♯b♭]|-sharp|-flat| sharp| flat)?)\s+major\b/i, "$1 minor");
+  $("q").value = t;
+}
+// typing (or an example, or a shared link) moves the dot to where the description's words sit
+function moodFromText() {
+  if (dragging) return;
+  if (keepDot) { keepDot = false; return; }
+  const lw = ($("q").value || "").toLowerCase(), hit = MOOD.filter(([w]) => new RegExp(`\\b${w}\\b`).test(lw));
+  moodAt = hit.length ? [hit.reduce((s, h) => s + h[1], 0) / hit.length, hit.reduce((s, h) => s + h[2], 0) / hit.length] : [0, 0];
+  placeDot(); markWords(hit.map((h) => h[0]));
+}
+buildPlane();
+$("q").addEventListener("input", moodFromText);
 
 // ---------------------------------------------------------------- wiring
 $("f").addEventListener("submit", (ev) => { ev.preventDefault(); const t = $("q").value.trim() || $("q").placeholder; $("q").value = t; compose(t, 0); });

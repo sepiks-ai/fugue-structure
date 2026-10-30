@@ -1028,6 +1028,7 @@
 
   // ------------------------------------------------------------------ the whole pipeline
   function generate(text, plans, seed, onProgress, opts) {
+    if (LEARNED && !(opts && opts.rules)) return generateLearned(text, seed, onProgress, opts);
     const beam = (opts && opts.beam) || 30;
     const p = interpret(text, seed);
     const key = homeKey(p);
@@ -1048,6 +1049,174 @@
       counts: { countersubjects: csItems.length, episodes: epItems.length },
       entries: placed.map((q) => ({ voice: q.voice, onset: q.onset, end: q.end, inv: q.inv, localKey: q.localKey })),
       notes: res.notes, length: res.total, chords: res.chords,
+    };
+  }
+
+  // ------------------------------------------------------------------ the learned generator
+  // Everything between the thematic material is written by the counterpoint model; the plan comes from
+  // the learned plan model; the countersubject is the line the model writes against the answer.
+  let LEARNED = null;                                    // { L: learned.js API, PM: plan model }
+  function useLearned(L, PM) { LEARNED = { L, PM }; }
+  function learnedPlan(sp, sub, key, nv, PM) {
+    const ms = sub.notes.map((x) => x.m - sub.notes[0].m), subMid = (Math.min(...ms) + Math.max(...ms)) / 2;
+    const R = (PM.ranges[String(nv)] || PM.ranges["3"]).slice().sort((a, b) => a[0] - b[0]).map(([, lo, hi]) => [lo, hi]);
+    const FORM = { plain: "x1", inv: "INV+x1", aug: "AUG", dim: "DIM" };
+    const entries = sp.entries.map((e) => {
+      const [lo, hi] = R[e.rank], semis = key.scale[e.degree];
+      let best = 0, bd = 1e9;
+      for (let k = -3; k <= 3; k++) { const dd = Math.abs(semis + 12 * k + subMid - (lo + hi) / 2); if (dd < bd) { bd = dd; best = k; } }
+      return { voice: e.rank, onset: e.onset, transform: FORM[e.form] || "x1", dia_shift: e.degree + 7 * best, midi_shift: semis + 12 * best };
+    });
+    return { number: null, learned: true, key: "", mode: key.mode, voices: nv, voice_ranges: R, subject_span: 1, subject_first_midi: 0, entries };
+  }
+  function lineToSubject(notes, t0, span, key, shift) {   // a heard line -> a line in the home key, as the subject is stored
+    const out = [];
+    for (const x of notes) {
+      const midi = x.m - shift, rel = midi - key.tonic, oct = Math.floor(rel / 12), pc = mod(rel, 12);
+      let deg = 0; for (let i = 6; i >= 0; i--) if (key.scale[i] <= pc) { deg = i; break; }
+      out.push({ t: x.on - t0, d: x.d, deg: deg + 7 * oct, alt: pc - key.scale[deg], m: midi });
+    }
+    return out.length >= 4 ? { notes: out, span } : null;
+  }
+  // a subject written by the model: it plays the opening of a fugue alone, as Bach's first voice does, many times
+  // over; the lines are cut where a phrase can end and the one that best fits the description is kept.
+  // Lengths come from the 48 subjects (in crotchets); everything about the line itself comes from the model.
+  const SUBJECT_SPANS = [[4, 6], [6, 9], [8, 11], [12, 13]];
+  let SUBJ_TEMP = 0.75, SUBJ_NUC = 0.93, SUBJ_N = 48;
+  function subjectSampling(t, nuc, n) { SUBJ_TEMP = t; SUBJ_NUC = nuc; SUBJ_N = n; }
+  function learnedSubject(p, key, nv, voice, r, seed) {
+    const { L } = LEARNED;
+    const spans = p.length === "short" ? [[4, 6], [6, 9]] : p.length === "long" ? [[8, 11], [12, 13]] : SUBJECT_SPANS;
+    const triad = new Set([0, key.mode === "minor" ? 3 : 4, 7].map((x) => mod(key.tonic + x, 12)));
+    const SUBJ = LEARNED.PM.subject;
+    let best = null;
+    let tried = 0, kept = 0; const why = {};
+    for (let c = 0; c < SUBJ_N; c++) {
+      const span = weighted(r, spans); tried++;
+      const first = r() < 0.65 ? key.tonic : key.tonic + 7 > 67 ? key.tonic - 5 : key.tonic + 7;
+      const T = Math.round((span + 2) / 0.25);
+      const res = L.compose({ voices: nv, placed: [{ voice, onset: 0, end: 0.25, notes: [{ on: 0, d: 0.25, m: first }] }], total: T * 0.25,
+        tonic: key.tonic, mode: key.mode, ranges: [...Array(nv)].map(() => [first - 9, first + 14]),
+        seed: (seed * 7907 + c * 131 + 17) >>> 0, particles: 1, sweeps: 0, temperature: SUBJ_TEMP, nucleus: SUBJ_NUC, solo: true });
+      // read the line back off the grid
+      const P = res.pitch[voice], O = res.onset[voice], line = [];
+      let rest = false;
+      for (let t = 0; t < T; t++) {
+        if (P[t] < 0) { if (t * 0.25 < span) rest = true; continue; }
+        if (t === 0 || O[t] || P[t] !== P[t - 1]) line.push({ on: t * 0.25, d: 0.25, m: P[t] }); else line[line.length - 1].d += 0.25;
+      }
+      if (rest) { why.rest = (why.rest || 0) + 1; continue; }
+      // where can it end? on a beat, on a note of the tonic triad, near the length chosen; the last note is held
+      // to the next beat at least (the answer enters after it)
+      let cut = -1;
+      for (let i = line.length - 1; i >= 4; i--) {
+        const e = line[i].on;
+        if (e % 1 !== 0 || e > span - 0.5 || e < span - 2.5 || !triad.has(mod(line[i].m, 12))) continue;
+        if (cut < 0 || Math.abs(e - (span - 1)) < Math.abs(line[cut].on - (span - 1))) cut = i;
+      }
+      if (cut < 0) { why.cut = (why.cut || 0) + 1; continue; }
+      const notes = line.slice(0, cut + 1).map((x) => Object.assign({}, x));
+      notes[cut].d = Math.max(1, Math.min(2, Math.ceil(notes[cut].d)));
+      const spanHere = notes[cut].on + notes[cut].d;
+      const m = notes.map((x) => x.m), ints = m.slice(1).map((x, i) => x - m[i]);
+      const range = Math.max(...m) - Math.min(...m);
+      if (notes.length < 5 || notes.length > 24 || range < 5 || range > 16 || ints.some((x) => Math.abs(x) > 12)) { why.shape = (why.shape || 0) + 1; continue; }
+      let run = 1, bad = false; for (let i = 1; i < m.length; i++) { run = m[i] === m[i - 1] ? run + 1 : 1; if (run > 2) bad = true; }
+      if (bad) { why.repeat = (why.repeat || 0) + 1; continue; }
+      const sub = lineToSubject(notes, 0, spanHere, key, 0);
+      if (!sub) continue;
+      // how like Bach's subjects it is (measures learned from the 48, scripts/learn_subjects.py), with the words
+      // moving the targets: lively asks for more notes, angular for more leaps; and how sure the model was
+      const steps = ints.filter((x) => Math.abs(x) <= 2).length / ints.length;
+      const meas = { log_density: Math.log(notes.length / spanHere), range, steps, leaps: ints.filter((x) => Math.abs(x) >= 5).length / ints.length,
+        lengths: new Set(notes.map((x) => x.d)).size, longest: Math.max(...notes.map((x) => x.d)) / spanHere,
+        peak_at: m.indexOf(Math.max(...m)) / (m.length - 1) };
+      const shift = { log_density: 0.45 * p.motion, steps: -0.15 * p.leap, leaps: 0.1 * p.leap };
+      const minorOk = (x) => key.mode === "minor" && x.alt === 1 && [5, 6].includes(mod(x.deg, 7));
+      const alts = sub.notes.filter((x) => x.alt !== 0 && !minorOk(x)).length;
+      let sc = res.logp / Math.max(1, res.n);
+      for (const k in meas) { const [mu, sd] = SUBJ.measures[k]; const z = (meas[k] - mu - (shift[k] || 0)) / sd; sc -= 0.3 * z * z; }
+      sc += p.chromatic ? 0.4 * Math.min(3, alts) : -0.3 * alts;
+      if (ints.some((x) => Math.abs(x) === 6)) sc -= 1;
+      sc += 0.15 * gauss(r);
+      kept++;
+      if (!best || sc > best.sc) best = { sc, sub };
+    }
+    if (typeof process !== "undefined" && process.env && process.env.SUBJ_DEBUG) console.log("subject candidates kept", kept, "of", tried, JSON.stringify(why));
+    return best && best.sub;
+  }
+  function generateLearned(text, seed, onProgress, opts) {
+    const { L, PM } = LEARNED;
+    const p = interpret(text, seed);
+    const key = homeKey(p);
+    const r = mulberry(hash(text.toLowerCase()) ^ Math.imul(seed + 1, 2654435761));
+    const nv = Math.max(2, Math.min(5, p.voices));
+    const sp = L.samplePlan(PM, nv, r, { length: p.length, stretto: p.stretto, inversion: p.inversion });
+    const given = p.subject && parseSubject(p.subject, key);
+    const heard = given || (opts && opts.ruleSubject) || !PM.subject ? null : learnedSubject(p, key, nv, sp.entries[0].rank, r, seed);
+    const sub = given || heard || composeSubject(p, key, r);
+    const plan = learnedPlan(sp, sub, key, nv, PM);
+    const rangeOffset = sub.notes[0].m;
+    const placed = realise(sub, plan, key, p, rangeOffset);
+    const ranges = plan.voice_ranges.map(([lo, hi]) => [lo + rangeOffset - 2, hi + rangeOffset + 2]);
+    const particles = (opts && opts.beam) >= 100 ? 16 : 8, sweeps = 2;
+    // sampling settings, chosen by measuring the results against the 48 fugues (rate of suspensions, of clashes
+    // left untreated, and of quick notes): pitch choices a little sharpened, a nudge to move on between the beats,
+    // and no leaping into a clash on the beat
+    const STYLE = { temperature: 0.85, nucleus: 0.95, moveBias: 0.6, strictBeats: true };
+    const prog = (a, b) => (f) => onProgress && onProgress(a + (b - a) * f);
+    // 1. the exposition's opening: the model writes the first voice's line against the answer
+    let cs = null;
+    const e1 = placed[0], e2 = placed[1];
+    if (e2) {
+      const head = L.compose({ voices: nv, placed: placed.filter((q) => q.onset < e2.end - 1e-9), total: e2.end, tonic: key.tonic, mode: key.mode,
+        ranges, seed: seed * 7919 + 13, particles, sweeps, ...STYLE, onProgress: prog(0, 0.25) });
+      const line = head.notes.filter((n) => n.v === e1.voice && n.on >= e2.onset - 1e-9 && n.on < e2.end - 1e-9);
+      cs = lineToSubject(line, e2.onset, sub.span, key, e2.midi_shift);
+    }
+    const csItems = addCountersubjects(cs, placed, key, plan, rangeOffset, r);
+    const epItems = addEpisodes(sub, cs, placed, csItems, key, plan, rangeOffset, r);
+    const fixed = placed.concat(csItems, epItems);
+    const lastEnd = Math.max(...fixed.map((q) => q.end));
+    const total = (Math.ceil((lastEnd + 2) / 4) + 1) * 4;
+    // 2. everything else
+    const res = L.compose({ voices: nv, placed: fixed, total: total - 4, tonic: key.tonic, mode: key.mode, ranges, seed: seed * 104729 + 7,
+      particles, sweeps, ...STYLE, onProgress: prog(0.25, 1) });
+    // 3. a final chord: each voice moves to the nearest note of the tonic triad (major, as Bach ends most minor fugues)
+    const notes = [];
+    let ei = 0;
+    for (const q of fixed) {
+      const idx = q.kind === "subject" || !q.kind ? ei++ : -1;
+      for (const x of q.notes) notes.push({ v: q.voice, on: x.on, d: x.d, m: x.m, entry: idx, kind: q.kind || "subject" });
+    }
+    notes.push(...res.notes);
+    const triad = [0, 4, 7].map((x) => mod(key.tonic + x, 12));
+    const order = [...Array(nv).keys()];
+    let lastBass = null;
+    for (const v of order.slice().reverse()) {
+      const mine = notes.filter((n) => n.v === v && n.on < total - 4);
+      const last = mine.length ? mine.reduce((a, b) => (a.on > b.on ? a : b)) : null;
+      if (!last) continue;
+      if (last.on + last.d > total - 4) last.d = total - 4 - last.on;
+      let best = null;
+      for (let m = last.m - 7; m <= last.m + 7; m++) {
+        const pc = mod(m, 12); if (!triad.includes(pc)) continue;
+        if (v === nv - 1 && pc !== mod(key.tonic, 12)) continue;      // the bass ends on the tonic
+        if (!best || Math.abs(m - last.m) < Math.abs(best - last.m)) best = m;
+      }
+      notes.push({ v, on: total - 4, d: 4, m: best, entry: -1, kind: "free" });
+      if (v === nv - 1) lastBass = best;
+    }
+    void lastBass;
+    notes.sort((a, b) => a.on - b.on || a.v - b.v);
+    return {
+      request: text, seed, params: p, key: p.keyName, tempo: p.tempo, timbre: p.timbre, voices: nv,
+      plan: { number: null, learned: true, key: p.keyName, entries: placed.length },
+      subject: sub.notes.map((x) => ({ t: x.t, d: x.d, m: x.m })),
+      countersubject: cs ? cs.notes.map((x) => ({ t: x.t, d: x.d, m: x.m })) : null,
+      counts: { countersubjects: csItems.length, episodes: epItems.length },
+      entries: placed.map((q) => ({ voice: q.voice, onset: q.onset, end: q.end, inv: q.inv, localKey: q.localKey })),
+      notes, length: total, chords: [], learned: true, subjectLearned: !!heard,
     };
   }
 
@@ -1080,7 +1249,7 @@
     return new Uint8Array(bytes);
   }
 
-  const API = { interpret, generate, toMidi, composeSubject, homeKey, choosePlan, realise, fill, keyName, mulberry, hash };
+  const API = { interpret, generate, generateLearned, useLearned, subjectSampling, toMidi, composeSubject, homeKey, choosePlan, realise, fill, keyName, mulberry, hash };
   if (typeof module !== "undefined" && module.exports) module.exports = API;
   else root.FugueEngine = API;
 })(typeof self !== "undefined" ? self : this);
