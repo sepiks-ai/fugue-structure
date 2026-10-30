@@ -12,14 +12,18 @@ import lameenc
 
 SR = 44100
 SETS = {   # output name: (globs in order of preference, seconds kept)
-    # English (Zuckermann kit) harpsichord: 105 dB signal-to-noise; the Flemish set was 53-73 dB
-    "harpsichord": (["Chordophones/Zithers/Harpsichord, English/Sustains/Normal/*_rr1.wav"], 3.2),
+    # 'Harpsichord, Unk': every semitone F#1-C#6 recorded (no pitch-shifting), 104 dB signal-to-noise and the most
+    # even tone across the range (no neighbouring samples differ by more than 0.6 octave in brightness; the English
+    # set's bass below C3 was much darker and longer-ringing, the French and Italian sets jumped by 1.3-1.8 octaves)
+    "harpsichord": (["Chordophones/Zithers/Harpsichord, Unk/Sustains/*_rr1.wav"], 3.0),
     "harpsichord_lute": (["Chordophones/Zithers/Harpsichord, English/Sustains/Lute/*_rr1.wav"], 2.6),
     # open diapason (principal): 60 dB; the 'Quiet' stop was 44 dB with audible wind noise
     "organ": (["Aerophones/Edge-blown Aerophones/Pipe Organ/Loud/*.wav"], 4.5),
     "organ_soft": (["Aerophones/Edge-blown Aerophones/Renaissance Organ/8'/*_rr1.wav"], 4.5),
     "piano": (["Chordophones/Zithers/Grand Piano, Steinway B/Sus/*_vl3_rr1.wav"], 4.5),
 }
+# release samples (the jack falling back and the damper landing), kept at their recorded level relative to the note
+RELEASES = {"harpsichord": ("Chordophones/Zithers/Harpsichord, Unk/Releases/*_rr1.wav", 0.8)}
 NOTE = {"C": 0, "D": 2, "E": 4, "F": 5, "G": 7, "A": 9, "B": 11}
 
 def named(path):
@@ -73,10 +77,12 @@ def octave_offset(files):
         votes.append(12 * round((pitch(x[on:], sr) - named(f)) / 12))
     return max(set(votes), key=votes.count)
 
-def main(src, out):
+def main(src, out, only=None):
     out = Path(out)
-    manifest = {}
+    mp = out / "manifest.json"
+    manifest = json.loads(mp.read_text()) if mp.exists() else {}
     for inst, (pats, keep) in SETS.items():
+        if only and inst not in only: continue
         files = [f for p in pats for f in sorted(glob.glob(str(Path(src) / p)))]
         off = octave_offset(files)
         got = {}
@@ -113,8 +119,22 @@ def main(src, out):
             (d / f"{m}.mp3").write_bytes(enc.encode((y * 32767).astype(np.int16).tobytes()) + enc.flush())
         manifest[inst] = sorted(got)
         print(f"{inst}: {len(got)} samples, MIDI {min(got)}-{max(got)}, octave offset {off:+d}")
+        if inst in RELEASES:
+            pat, rkeep = RELEASES[inst]; rd = out / (inst + "_release"); rd.mkdir(parents=True, exist_ok=True); rel = []
+            for f in sorted(glob.glob(str(Path(src) / pat))):
+                m = named(f) + off
+                if m not in got: continue
+                x, sr = read(f)
+                x = highpass(x[: int(rkeep * sr)].astype(np.float64), sr)
+                fade = min(int(0.15 * sr), len(x) // 3); x[-fade:] *= np.linspace(1, 0, fade) ** 2
+                g = min(2.0, target / max(lv[m], 1e-6))           # the same gain as its note
+                y = np.clip(x * g, -0.95, 0.95)
+                enc = lameenc.Encoder(); enc.set_bit_rate(96); enc.set_in_sample_rate(SR); enc.set_channels(1); enc.set_quality(2)
+                (rd / f"{m}.mp3").write_bytes(enc.encode((y * 32767).astype(np.int16).tobytes()) + enc.flush()); rel.append(m)
+            manifest[inst + "_release"] = sorted(rel)
+            print(f"  {inst} releases: {len(rel)}")
     manifest["_licence"] = "Versilian Community Sample Library (VCSL), CC0 1.0. https://versilian-studios.com/vcsl/"
     (out / "manifest.json").write_text(json.dumps(manifest))
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2])
+    main(sys.argv[1], sys.argv[2], sys.argv[3].split(",") if len(sys.argv) > 3 else None)

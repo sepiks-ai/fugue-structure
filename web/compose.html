@@ -214,24 +214,67 @@ const INSTRUMENTS = [["harpsichord", "Harpsichord"], ["harpsichord_lute", "Harps
 const SAMPLE_OFFSET = 0.024;                                       // MP3 encoder delay, measured
 const lib = {};                                                    // inst -> {list, buffers} | "failed"
 let manifest = null;
+async function fetchDecode(url, dec) {
+  const ab = await (await fetch(url)).arrayBuffer();
+  return new Promise((ok, no) => dec.decodeAudioData(ab, ok, no));
+}
 async function loadInstrument(inst) {
+  loadRoom(inst);                                                  // the room loads alongside, never blocking the notes
   if (!SAMPLED[inst]) return null;
   if (lib[inst]) return lib[inst] === "failed" ? null : lib[inst];
   try {
     manifest = manifest || await (await fetch("samples/manifest.json")).json();
     const dec = new (window.OfflineAudioContext || window.webkitOfflineAudioContext)(1, 1, 44100);
-    const list = manifest[inst], buffers = new Map();
-    await Promise.all(list.map(async (m) => {
-      const ab = await (await fetch(`samples/${inst}/${m}.mp3`)).arrayBuffer();
-      buffers.set(m, await new Promise((ok, no) => dec.decodeAudioData(ab, ok, no)));
+    const list = manifest[inst], buffers = new Map(), releases = new Map();
+    await Promise.all(list.map(async (m) => buffers.set(m, await fetchDecode(`samples/${inst}/${m}.mp3`, dec))));
+    // the sound of the jack falling back onto the string, recorded separately for each key
+    const rl = manifest[inst + "_release"] || [];
+    await Promise.all(rl.map(async (m) => {
+      try { releases.set(m, await fetchDecode(`samples/${inst}_release/${m}.mp3`, dec)); } catch (e) {}
     }));
     // match levels across instruments: scale so the note nearest middle C peaks at a common value
     let ref = list[0]; for (const m of list) if (Math.abs(m - 60) < Math.abs(ref - 60)) ref = m;
     const d = buffers.get(ref).getChannelData(0); let pk = 1e-6; for (let i = 0; i < d.length; i++) pk = Math.max(pk, Math.abs(d[i]));
     SAMPLED[inst] = 0.32 / pk;
-    lib[inst] = { list, buffers };
+    lib[inst] = { list, buffers, releases };
     return lib[inst];
   } catch (e) { lib[inst] = "failed"; return null; }
+}
+
+// ---- rooms: impulse responses recorded in real buildings (OpenAIR, CC BY-SA 3.0; see rooms/LICENCE.md)
+const ROOM_OF = { organ: "lady-chapel-st-albans", organ_soft: "lady-chapel-st-albans" };   // everything else: St Andrew's
+const rooms = {};                                                  // name -> {sr, data:[L,R], energy} | "failed" | Promise
+function roomName(timbre) { return ROOM_OF[timbre] || "st-andrews-church"; }
+function loadRoom(timbre) {
+  const name = roomName(timbre);
+  if (!rooms[name]) rooms[name] = (async () => {
+    try {
+      const dec = new (window.OfflineAudioContext || window.webkitOfflineAudioContext)(2, 1, 44100);
+      const b = await fetchDecode(`rooms/${name}.wav`, dec);
+      const data = [0, 1].map((c) => b.getChannelData(Math.min(c, b.numberOfChannels - 1)).slice());
+      let e = 0; for (const c of data) for (let i = 0; i < c.length; i++) e += c[i] * c[i];
+      return (rooms[name] = { sr: b.sampleRate, data, energy: e });
+    } catch (e) { return (rooms[name] = "failed"); }
+  })();
+  return rooms[name];
+}
+function energyOf(buf) {
+  let e = 0; for (let c = 0; c < buf.numberOfChannels; c++) { const d = buf.getChannelData(c); for (let i = 0; i < d.length; i++) e += d[i] * d[i]; }
+  return e;
+}
+// the recorded room, at this context's sample rate (a convolver insists they match) and at the same loudness as the
+// synthetic room it replaces, so the balance of dry and wet stays as tuned
+function recordedRoom(ctx, timbre, secs) {
+  const R = rooms[roomName(timbre)];
+  if (!R || R === "failed" || R instanceof Promise) return null;
+  const ratio = ctx.sampleRate / R.sr, n = Math.floor(R.data[0].length * ratio), buf = ctx.createBuffer(2, n, ctx.sampleRate);
+  for (let c = 0; c < 2; c++) {
+    const src = R.data[c], out = buf.getChannelData(c);
+    for (let i = 0; i < n; i++) { const x = i / ratio, j = Math.floor(x), f = x - j; out[i] = (src[j] || 0) * (1 - f) + (src[j + 1] || 0) * f; }
+  }
+  const g = Math.sqrt(energyOf(impulse(ctx, secs, 7)) / Math.max(1e-9, energyOf(buf)));
+  for (let c = 0; c < 2; c++) { const d = buf.getChannelData(c); for (let i = 0; i < n; i++) d[i] *= g; }
+  return buf;
 }
 
 function impulse(ctx, secs, seed) {
@@ -256,7 +299,7 @@ function makeChain(ctx, dest, p) {
     piano: [2.0, 0.42], strings: [2.4, 0.55] }[p.timbre] || [2, 0.5];
   const bus = ctx.createGain(), comp = ctx.createDynamicsCompressor(), makeup = ctx.createGain();
   const conv = ctx.createConvolver(), wet = ctx.createGain();
-  conv.buffer = impulse(ctx, room[0], 7); wet.gain.value = room[1] * 0.35;
+  conv.buffer = recordedRoom(ctx, p.timbre, room[0]) || impulse(ctx, room[0], 7); wet.gain.value = room[1] * 0.35;
   bus.gain.value = (SAMPLED[p.timbre] && lib[p.timbre] && lib[p.timbre] !== "failed" ? 0.5 :
     { harpsichord: 0.55, organ: 0.17, piano: 0.4, strings: 0.22 }[p.timbre] || 0.4) * (4 / Math.max(3, p.voices));
   // a gentle limiter that only catches peaks; it no longer lifts quiet tails and noise
@@ -282,12 +325,8 @@ function makeChain(ctx, dest, p) {
 
 function sampledNote(ctx, chain, p, n, t, d, vel) {
   const L = lib[p.timbre];
-  // the library's harpsichord notes below C3 are recorded darker and longer-ringing than the rest (they sound
-  // like another instrument), so low notes are played from the C3 sample, pitched down
-  const floor = { harpsichord: 48 }[p.timbre] || 0;
-  const usable = floor ? L.list.filter((m) => m >= floor) : L.list;
-  let s = usable[0];
-  for (const m of usable) if (Math.abs(m - n.m) < Math.abs(s - n.m)) s = m;
+  let s = L.list[0];
+  for (const m of L.list) if (Math.abs(m - n.m) < Math.abs(s - n.m)) s = m;
   const src = ctx.createBufferSource(), g = ctx.createGain();
   src.buffer = L.buffers.get(s);
   src.playbackRate.value = Math.pow(2, (n.m - s) / 12);
@@ -298,7 +337,14 @@ function sampledNote(ctx, chain, p, n, t, d, vel) {
   src.connect(g).connect(chain.pans[n.v] || chain.bus);
   src.start(t, SAMPLE_OFFSET);
   src.stop(t + d + rel * 8);
-  return [src];
+  const rb = L.releases && L.releases.get(s);
+  if (!rb) return [src];
+  // key let go: the jack drops and its damper touches the string; recorded at the sustain's level, so played at it
+  const r = ctx.createBufferSource(), rg = ctx.createGain();
+  r.buffer = rb; r.playbackRate.value = src.playbackRate.value; rg.gain.value = lvl * 0.8;
+  r.connect(rg).connect(chain.pans[n.v] || chain.bus);
+  r.start(t + d, SAMPLE_OFFSET); r.stop(t + d + rb.duration);
+  return [src, r];
 }
 
 function synthNote(ctx, chain, p, n, t, d, vel) {
@@ -395,6 +441,7 @@ async function playFrom(fromQ) {
     await loadInstrument(piece.timbre);
     $("play").disabled = false;
   }
+  await Promise.race([loadRoom(piece.timbre), new Promise((ok) => setTimeout(ok, 1500))]);
   const spq = 60 / perf.tempo, t0 = ctx.currentTime + 0.12;
   const notes = piece.notes.filter((n) => n.on >= fromQ - 1e-9);
   const L = { t0, spq, fromQ, i: 0, nodes: [], chain: makeChain(ctx, ctx.destination, piece) };
@@ -431,7 +478,7 @@ function save(blob, name) {
   document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
 }
 async function renderWav() {
-  await loadInstrument(piece.timbre);
+  await loadInstrument(piece.timbre); await loadRoom(piece.timbre);
   const sr = 44100, secs = clock(piece.length, 60 / perf.tempo) + 3.5;
   const off = new OfflineAudioContext(2, Math.ceil(sr * secs), sr);
   scheduleAll(off, off.destination, piece, 0.05);
