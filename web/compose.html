@@ -74,6 +74,8 @@ h2 { margin: 0; font-size: 24px; font-weight: normal; }
 .legend span::before { content: ""; display: inline-block; width: 12px; height: 8px; border-radius: 2px; margin-right: 6px; background: var(--c); }
 svg#roll { width: 100%; height: auto; display: block; background: var(--lane); border-radius: 6px; }
 .err { color: var(--accent2); }
+.source { font-size: 13px; color: var(--muted); }
+.source.bad { color: var(--accent2); }
 .how { color: var(--muted); font-size: 14.5px; max-width: 46em; margin: 0 0 40px; }
 .how a, .meta a { color: var(--accent); }
 .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--ink); color: var(--bg);
@@ -125,7 +127,7 @@ svg#roll { width: 100%; height: auto; display: block; background: var(--lane); b
   <div class="perf">
     <label for="tempo">Tempo <output id="tempoOut">♩ = 72</output></label>
     <input id="tempo" type="range" min="30" max="160" step="1" value="72">
-    <select id="inst" aria-label="Instrument"></select>
+    <select id="inst" aria-label="Instrument"></select> <span id="source" class="source" aria-live="polite"></span>
     <span class="touch" role="group" aria-label="Touch">
       <button type="button" data-a="legato">Legato</button><button type="button" data-a="articulated">Articulated</button><button type="button" data-a="detached">Detached</button>
     </span>
@@ -236,27 +238,60 @@ async function fetchDecode(url, dec) {
   const ab = await (await fetch(url)).arrayBuffer();
   return new Promise((ok, no) => dec.decodeAudioData(ab, ok, no));
 }
+// a few files at a time, each tried twice: a page that asks for 120 recordings at once can have some refused
+async function inBatches(items, n, fn) {
+  let i = 0;
+  await Promise.all([...Array(Math.min(n, items.length))].map(async () => { while (i < items.length) { const x = items[i++]; await fn(x); } }));
+}
+async function fetchTwice(url, dec) {
+  try { return await fetchDecode(url, dec); } catch (e) { return fetchDecode(url, dec); }
+}
+const libError = {};                                               // inst -> why its recordings did not load
 async function loadInstrument(inst) {
   loadRoom(inst);                                                  // the room loads alongside, never blocking the notes
-  if (!SAMPLED[inst]) return null;
-  if (lib[inst]) return lib[inst] === "failed" ? null : lib[inst];
+  if (!SAMPLED[inst]) { showSource(inst); return null; }
+  if (lib[inst] && lib[inst] !== "failed") { showSource(inst); return lib[inst]; }
+  if (lib[inst] === "failed" && libError[inst + "_at"] > Date.now() - 20000) return null;   // retry after a pause
+  showSource(inst, "loading");
   try {
-    manifest = manifest || await (await fetch("samples/manifest.json")).json();
+    if (!manifest) {
+      const r = await fetch("samples/manifest.json");
+      if (!r.ok) throw new Error("manifest: HTTP " + r.status);
+      manifest = await r.json();
+    }
     const dec = new (window.OfflineAudioContext || window.webkitOfflineAudioContext)(1, 1, 44100);
-    const list = manifest[inst], buffers = new Map(), releases = new Map();
-    await Promise.all(list.map(async (m) => buffers.set(m, await fetchDecode(`samples/${inst}/${m}.mp3`, dec))));
+    const buffers = new Map(), releases = new Map(), errs = [];
+    await inBatches(manifest[inst], 6, async (m) => {
+      try { buffers.set(m, await fetchTwice(`samples/${inst}/${m}.mp3`, dec)); } catch (e) { errs.push(m + ": " + (e && e.message || e)); }
+    });
+    // keys that would not load are played from their neighbours, pitched; only a mostly missing instrument fails
+    const list = manifest[inst].filter((m) => buffers.has(m));
+    if (list.length < Math.max(3, manifest[inst].length / 2)) throw new Error(`${errs.length} of ${manifest[inst].length} recordings failed (${errs[0]})`);
     // the sound of the jack falling back onto the string, recorded separately for each key
-    const rl = manifest[inst + "_release"] || [];
-    await Promise.all(rl.map(async (m) => {
-      try { releases.set(m, await fetchDecode(`samples/${inst}_release/${m}.mp3`, dec)); } catch (e) {}
-    }));
+    await inBatches(manifest[inst + "_release"] || [], 6, async (m) => {
+      try { releases.set(m, await fetchTwice(`samples/${inst}_release/${m}.mp3`, dec)); } catch (e) {}
+    });
     // match levels across instruments: scale so the note nearest middle C peaks at a common value
     let ref = list[0]; for (const m of list) if (Math.abs(m - 60) < Math.abs(ref - 60)) ref = m;
     const d = buffers.get(ref).getChannelData(0); let pk = 1e-6; for (let i = 0; i < d.length; i++) pk = Math.max(pk, Math.abs(d[i]));
     SAMPLED[inst] = 0.32 / pk;
     lib[inst] = { list, buffers, releases };
+    delete libError[inst];
+    showSource(inst);
     return lib[inst];
-  } catch (e) { lib[inst] = "failed"; return null; }
+  } catch (e) {
+    lib[inst] = "failed"; libError[inst] = (e && e.message) || String(e); libError[inst + "_at"] = Date.now();
+    showSource(inst);
+    return null;
+  }
+}
+// say plainly which sound is playing: the recordings, or the synthesiser that stands in when they fail
+function showSource(inst, state) {
+  const el = $("source"); if (!el || (piece && piece.timbre !== inst)) return;
+  const rec = lib[inst] && lib[inst] !== "failed";
+  el.className = "source" + (!SAMPLED[inst] || rec || state === "loading" ? "" : " bad");
+  el.textContent = !SAMPLED[inst] ? "synthesised" : state === "loading" ? "loading recordings…" : rec ? "recorded" + (lib[inst].list.length < manifest[inst].length ? ` (${lib[inst].list.length} of ${manifest[inst].length} keys)` : "")
+    : "recordings did not load, so a stand-in synthesiser is playing: " + (libError[inst] || "unknown error");
 }
 
 // ---- rooms: impulse responses recorded in real buildings (OpenAIR, CC BY-SA 3.0; see rooms/LICENCE.md)
@@ -454,7 +489,7 @@ async function playFrom(fromQ) {
   ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
   if (ctx.state === "suspended") ctx.resume();
   stop();
-  if (SAMPLED[piece.timbre] && !lib[piece.timbre]) {
+  if (SAMPLED[piece.timbre] && (!lib[piece.timbre] || lib[piece.timbre] === "failed")) {
     $("play").textContent = "Loading instrument…"; $("play").disabled = true;
     await loadInstrument(piece.timbre);
     $("play").disabled = false;
@@ -618,7 +653,7 @@ $("again").addEventListener("click", () => compose(piece.request, seed + 1));
 $("play").addEventListener("click", () => (live ? stop() : play()));
 $("inst").innerHTML = INSTRUMENTS.map(([v, l]) => `<option value="${v}">${l}</option>`).join("");
 $("inst").addEventListener("change", async () => {
-  piece.timbre = $("inst").value; updateHash();
+  piece.timbre = $("inst").value; updateHash(); showSource(piece.timbre);
   const q = live ? position() : null;
   if (SAMPLED[piece.timbre]) await loadInstrument(piece.timbre);
   if (q !== null) playFrom(q);
