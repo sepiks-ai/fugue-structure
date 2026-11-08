@@ -154,10 +154,12 @@ scaffold: one transformer writes a whole piece as a single sequence of tokens, s
 
 **Tokens** (`src/fugue/tx/tokens.py`, 434 of them). A header (form, key, meter, number of voices), then bar
 lines, positions within the bar (12 per crotchet, so triplets fit), and notes as voice, interval, length.
-A note's pitch is the interval from the previous note in its voice (a voice's first note is absolute), so a
-subject restated at another pitch is the same run of tokens; each note's absolute pitch is also fed to the
-model alongside its token, so the harmony stays in view. (Absolute pitch tokens, used in the first two runs,
-gave pieces with no recurring material: bar-to-bar recurrence 0.002 against Bach's 0.02 to 0.05.)
+Pitches are absolute, except inside a marked subject statement, where each note after the first is the
+interval from the one before: a subject restated at another pitch is then the same run of tokens, and stating
+it again is copying. Each note's absolute pitch is also fed to the model alongside its token. (Run 2,
+absolute pitches throughout: convincing local writing but no recurrence, 0.002 against Bach's 0.025 to 0.056.
+Run 3, intervals throughout: recurrence 0.013, but from a repeated-note figure looping in 32 bars, two of
+three voices, and mostly quavers.)
 Fugue entries are tokens too: `ENTRY ROLE_x1 SHIFT_7 VOICE_2` says the subject begins here in voice 2, a fifth
 up. The notes after it are written like any others, so stating the subject correctly is the model's job.
 Notes struck together are written lowest voice first.

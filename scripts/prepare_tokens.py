@@ -85,7 +85,7 @@ def main():
         meters = [[0, num, den]]
         # plans number voices in order of entry; the data numbers them top first
         order = sorted(range(len(f["voices"])), key=lambda i: f["voices"][i][0][0])
-        entries = [{"voice": order[e["voice"]], "onset": e["onset"], "role": role(e["transform"]), "shift": e["midi_shift"]}
+        entries = [{"voice": order[e["voice"]], "onset": e["onset"], "end": e["end"], "role": role(e["transform"]), "shift": e["midi_shift"]}
                    for e in plans[f["piece"]]["entries"]] if f["piece"] in plans else []
         pieces.append({"id": f["piece"], "source": "rother-wtc", "licence": "CC BY 4.0", "form": "FUGUE", "split": "val" if f["piece"] in HELD else "train",
                        "key": [f["tonic_pc"], f["mode"]], "meters": meters, "bar_offset": bar_offset(f["voices"], meters),
@@ -104,7 +104,7 @@ def main():
             entries = []
             if form in ("FUGUE", "INVENTION"):                # the same subject finder as the WTC plans
                 ents, _ = find_entries(v, key[0], key[1])
-                entries = [{"voice": e["voice"], "onset": e["onset"], "role": role(e["transform"]), "shift": e["midi_shift"]} for e in ents]
+                entries = [{"voice": e["voice"], "onset": e["onset"], "end": e["end"], "role": role(e["transform"]), "shift": e["midi_shift"]} for e in ents]
             # a fugue whose subject the finder could not locate carries no entry markers; calling it a fugue would
             # teach the model that fugues may come without them, so it is filed with everything else
             if form in ("FUGUE", "INVENTION") and not entries: form = "OTHER"

@@ -46,7 +46,7 @@ class Grammar:
             else:
                 m0 = s.last[s.voice]
                 ok |= {T.ID[f"INT_{k}"] for k in range(-T.MAX_INT, T.MAX_INT + 1) if T.LO <= m0 + k <= T.HI}
-                ok |= {T.ID[f"PITCH_{m}"] for m in range(T.LO, T.HI + 1) if abs(m - m0) > T.MAX_INT}
+                ok |= set(GROUP["PITCH"])
         elif p in ("PITCH", "INT"): ok |= set(GROUP["DUR"])
         return sorted(ok)
     def step(s, i):

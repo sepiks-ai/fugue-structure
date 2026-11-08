@@ -5,10 +5,11 @@ A piece is written as
     BAR POS_p [ENTRY ROLE_* SHIFT_s] VOICE_v PITCH_m DUR_d VOICE_v PITCH_m DUR_d ... POS_p ... BAR ...
     EOS
 Time runs on a grid of 12 per crotchet (semiquavers and triplets both land on it). Notes struck together
-share one POS token and are written lowest voice first. Within a voice a note's pitch is written as the
-interval from that voice's previous note (INT_k), so a subject restated at another pitch is the same run of
-tokens; a voice's first note, and any leap beyond two octaves, is written as an absolute PITCH. The absolute
-pitch of every note is also given to the model alongside the tokens (aux_of), so harmony stays visible. ENTRY marks where a fugue's subject (or answer, or
+share one POS token and are written lowest voice first. Pitches are absolute (PITCH_m), except inside a
+marked subject statement: there each note after the first is the interval from the one before (INT_k), so a
+subject restated at another pitch is the same run of tokens and stating it again is copying. (Intervals
+everywhere, tried in the third run, made the model fall into loops of a repeated figure.) The absolute pitch
+of every note is also given to the model alongside the tokens (aux_of). ENTRY marks where a fugue's subject (or answer, or
 inversion) begins, in which voice and at what transposition from the first statement; the notes that follow
 are written like any others, so stating the subject is something the model has to do, not something placed."""
 import bisect
@@ -60,7 +61,7 @@ def bars(meters, end):
         while t < b: out.append((t, meter_name(num, den) if t == a else None)); t += L
     return out
 
-def encode(piece, shift=0, relative=True):
+def encode(piece, shift=0, relative="entries"):
     """piece: {"form", "key": [tonic_pc, "major"|"minor"], "meters", "bar_offset" (steps), "voices": [[[on, d, m], ...]]
     top first, "entries": [{"voice", "onset", "role", "shift"}]}. Returns token ids, transposed by `shift`
     semitones (None if that takes a note out of range)."""
@@ -72,16 +73,20 @@ def encode(piece, shift=0, relative=True):
     # a pickup is written as the end of a full first bar, so every bar is whole and bar lines need no lengths
     L0 = max(1, round(num * 4 / den * TPB)); lead = (L0 - piece.get("bar_offset", 0)) % L0
     events = {}                                         # step -> [(kind, voice, ...)], kind 0 = entry, 1 = note
+    spans = {}
+    for e in piece.get("entries", []):
+        if "end" in e: spans.setdefault(e["voice"], []).append((e["onset"] - 1e-6, e["end"] - 1e-6))
     for v, notes in enumerate(voices):
         for on, d, m in notes:
             m += shift
             if m < LO or m > HI: return None
-            t = round(on * TPB) + lead; events.setdefault(t, []).append((1, v, m, max(1, round(d * TPB))))
+            inside = any(a <= on < b for a, b in spans.get(v, []))
+            t = round(on * TPB) + lead; events.setdefault(t, []).append((1, v, m, max(1, round(d * TPB)), inside))
     for e in piece.get("entries", []):
         if e["voice"] < nv: events.setdefault(round(e["onset"] * TPB) + lead, []).append((0, e["voice"], e["role"], e["shift"]))
     end = max(events) + 1
     meters = [[0, num, den]] + [[round(o * TPB) + lead, n_, d_] for o, n_, d_ in piece["meters"][1:]]
-    bl = bars(meters, end); bi = 0; cur = 0
+    bl = bars(meters, end); bi = 0; cur = 0; flags = []
     for t in sorted(events):
         while bi < len(bl) and bl[bi][0] <= t:
             cur = bl[bi][0]; out.append(ID["BAR"])
@@ -94,20 +99,25 @@ def encode(piece, shift=0, relative=True):
                 out += [ID["ENTRY"], ID[f"ROLE_{ev[2] if ev[2] in ROLES else 'other'}"], ID[f"SHIFT_{ev[3] % 12}"], ID[f"VOICE_{ev[1]}"]]
             else:
                 out += [ID[f"VOICE_{ev[1]}"], ID[f"PITCH_{ev[2]}"], dur_token(ev[3])]
+                flags.append(ev[4])
     out.append(ID["EOS"])
-    return to_relative(out) if relative else out
+    if relative == "all": return to_relative(out)
+    if relative == "entries": return to_relative(out, flags)
+    return out
 
-def to_relative(ids):
-    """Absolute PITCH tokens to intervals within each voice (first note of a voice, and leaps beyond MAX_INT,
-    stay absolute)."""
-    last, out, i = {}, [], 0
+def to_relative(ids, flags=None):
+    """PITCH tokens to intervals from the voice's previous note: all of them (flags None), or those whose flag
+    is set (notes inside a subject statement, in order of appearance), except the first note of each statement
+    and leaps beyond MAX_INT."""
+    last, prev_in, out, i, k = {}, {}, [], 0, 0
     while i < len(ids):
         t = VOCAB[ids[i]]
         if t.startswith("VOICE_") and i + 1 < len(ids) and VOCAB[ids[i + 1]].startswith("PITCH_"):
             v, m = int(t[6:]), int(VOCAB[ids[i + 1]][6:])
-            out.append(ids[i])
-            out.append(ID[f"INT_{m - last[v]}"] if v in last and abs(m - last[v]) <= MAX_INT else ids[i + 1])
-            last[v] = m; i += 2; continue
+            inside = True if flags is None else flags[k]
+            rel = inside and v in last and abs(m - last[v]) <= MAX_INT and (flags is None or prev_in.get(v, False))
+            out += [ids[i], ID[f"INT_{m - last[v]}"] if rel else ids[i + 1]]
+            last[v] = m; prev_in[v] = inside; i += 2; k += 1; continue
         out.append(ids[i]); i += 1
     return out
 
