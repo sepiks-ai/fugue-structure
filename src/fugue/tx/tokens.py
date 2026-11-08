@@ -31,6 +31,7 @@ def _build():
     v += [f"VOICE_{i}" for i in range(MAX_VOICES)]
     v += [f"PITCH_{m}" for m in range(LO, HI + 1)]
     v += [f"DUR_{d}" for d in DURS]
+    v += ["CONT"]          # training only: this window begins partway through the piece (see data.py)
     return v
 
 VOCAB = _build()
