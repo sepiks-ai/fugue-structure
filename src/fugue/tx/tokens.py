@@ -5,7 +5,10 @@ A piece is written as
     BAR POS_p [ENTRY ROLE_* SHIFT_s] VOICE_v PITCH_m DUR_d VOICE_v PITCH_m DUR_d ... POS_p ... BAR ...
     EOS
 Time runs on a grid of 12 per crotchet (semiquavers and triplets both land on it). Notes struck together
-share one POS token and are written lowest voice first. ENTRY marks where a fugue's subject (or answer, or
+share one POS token and are written lowest voice first. Within a voice a note's pitch is written as the
+interval from that voice's previous note (INT_k), so a subject restated at another pitch is the same run of
+tokens; a voice's first note, and any leap beyond two octaves, is written as an absolute PITCH. The absolute
+pitch of every note is also given to the model alongside the tokens (aux_of), so harmony stays visible. ENTRY marks where a fugue's subject (or answer, or
 inversion) begins, in which voice and at what transposition from the first statement; the notes that follow
 are written like any others, so stating the subject is something the model has to do, not something placed."""
 import bisect
@@ -17,6 +20,7 @@ DURS = [1, 2, 3, 4, 6, 8, 9, 12, 16, 18, 24, 30, 36, 42, 48, 60, 72, 84, 96, 120
 FORMS = ["FUGUE", "INVENTION", "CHORALE", "OTHER"]
 METERS = ["2/2", "3/2", "4/2", "2/4", "3/4", "4/4", "5/4", "6/4", "3/8", "6/8", "9/8", "12/8", "6/16", "12/16", "24/16", "OTHER"]
 ROLES = ["x1", "inv", "aug", "dim", "other"]
+MAX_INT = 24                                              # intervals within a voice, up to two octaves
 MAX_POS = 8 * TPB * 2                                     # positions in a bar, up to 16 crotchets
 
 def _build():
@@ -32,6 +36,7 @@ def _build():
     v += [f"PITCH_{m}" for m in range(LO, HI + 1)]
     v += [f"DUR_{d}" for d in DURS]
     v += ["CONT"]          # training only: this window begins partway through the piece (see data.py)
+    v += [f"INT_{i}" for i in range(-MAX_INT, MAX_INT + 1)]
     return v
 
 VOCAB = _build()
@@ -55,7 +60,7 @@ def bars(meters, end):
         while t < b: out.append((t, meter_name(num, den) if t == a else None)); t += L
     return out
 
-def encode(piece, shift=0):
+def encode(piece, shift=0, relative=True):
     """piece: {"form", "key": [tonic_pc, "major"|"minor"], "meters", "bar_offset" (steps), "voices": [[[on, d, m], ...]]
     top first, "entries": [{"voice", "onset", "role", "shift"}]}. Returns token ids, transposed by `shift`
     semitones (None if that takes a note out of range)."""
@@ -90,12 +95,40 @@ def encode(piece, shift=0):
             else:
                 out += [ID[f"VOICE_{ev[1]}"], ID[f"PITCH_{ev[2]}"], dur_token(ev[3])]
     out.append(ID["EOS"])
+    return to_relative(out) if relative else out
+
+def to_relative(ids):
+    """Absolute PITCH tokens to intervals within each voice (first note of a voice, and leaps beyond MAX_INT,
+    stay absolute)."""
+    last, out, i = {}, [], 0
+    while i < len(ids):
+        t = VOCAB[ids[i]]
+        if t.startswith("VOICE_") and i + 1 < len(ids) and VOCAB[ids[i + 1]].startswith("PITCH_"):
+            v, m = int(t[6:]), int(VOCAB[ids[i + 1]][6:])
+            out.append(ids[i])
+            out.append(ID[f"INT_{m - last[v]}"] if v in last and abs(m - last[v]) <= MAX_INT else ids[i + 1])
+            last[v] = m; i += 2; continue
+        out.append(ids[i]); i += 1
     return out
+
+def aux_of(ids):
+    """For each token, the absolute pitch it puts down (PITCH or INT tokens), else 0: side information that
+    lets the model see the harmony while it writes intervals."""
+    last, cur, aux = {}, None, []
+    for i in ids:
+        t = VOCAB[i]
+        if t.startswith("VOICE_"): cur = int(t[6:]); aux.append(0)
+        elif t.startswith("PITCH_"): last[cur] = int(t[6:]); aux.append(last[cur])
+        elif t.startswith("INT_"):
+            last[cur] = min(HI, max(LO, last.get(cur, 60) + int(t[4:]))); aux.append(last[cur])
+        else: aux.append(0)
+    return aux
 
 def decode(ids):
     """Token ids back to {"header": {...}, "notes": [{v, on, d, m}], "entries": [{v, on, role, shift}]}; times in crotchets."""
     toks = [VOCAB[i] for i in ids]; head = {}; notes = []; entries = []
     L, start, t, first, i = 4 * TPB, 0, 0, True, 0
+    last_pitch = {}
     def length(name):
         if name == "OTHER": return 4 * TPB
         n, d = name.split("/"); return round(int(n) * 4 / int(d) * TPB)
@@ -114,8 +147,11 @@ def decode(ids):
             entries.append({"v": int(toks[i + 3][6:]) if toks[i + 3].startswith("VOICE_") else 0, "on": t / TPB,
                             "role": toks[i + 1][5:], "shift": int(toks[i + 2][6:]) if toks[i + 2].startswith("SHIFT_") else 0})
             i += 3
-        elif k.startswith("VOICE_") and i + 2 < len(toks) and toks[i + 1].startswith("PITCH_") and toks[i + 2].startswith("DUR_"):
-            notes.append({"v": int(k[6:]), "on": t / TPB, "d": int(toks[i + 2][4:]) / TPB, "m": int(toks[i + 1][6:])}); i += 2
+        elif k.startswith("VOICE_") and i + 2 < len(toks) and toks[i + 1].startswith(("PITCH_", "INT_")) and toks[i + 2].startswith("DUR_"):
+            v = int(k[6:]); p = toks[i + 1]
+            m = int(p[6:]) if p.startswith("PITCH_") else min(HI, max(LO, last_pitch.get(v, 60) + int(p[4:])))
+            last_pitch[v] = m
+            notes.append({"v": v, "on": t / TPB, "d": int(toks[i + 2][4:]) / TPB, "m": m}); i += 2
         elif k == "EOS": break
         i += 1
     return {"header": head, "notes": notes, "entries": entries}

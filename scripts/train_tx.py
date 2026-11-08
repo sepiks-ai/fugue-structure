@@ -29,7 +29,7 @@ def main():
     dev = "cuda" if torch.cuda.is_available() and "cpu" not in flags else "cpu"
     ngpu = torch.cuda.device_count() if dev == "cuda" else 0
     print(f"device {dev}, GPUs {ngpu}: {[torch.cuda.get_device_name(i) for i in range(ngpu)]}", flush=True)
-    model = Composer(len(T.VOCAB), a["d"], a["layers"], a["heads"], a["drop"]).to(dev)
+    model = Composer(len(T.VOCAB), a["d"], a["layers"], a["heads"], a["drop"], aux=True).to(dev)
     print(f"{sum(p.numel() for p in model.parameters()) / 1e6:.1f}M parameters", flush=True)
     opt = torch.optim.AdamW(model.parameters(), lr=a["lr"], betas=(0.9, 0.95), weight_decay=0.1)
     step, best = 0, 1e9
@@ -45,8 +45,8 @@ def main():
     while step < a["steps"]:
         model.train()
         for g in opt.param_groups: g["lr"] = lr_at(step)
-        x, y = train.batch(a["batch"]); x, y = x.to(dev), y.to(dev)
-        logits = run(x)
+        x, ax, y = train.batch(a["batch"]); x, ax, y = x.to(dev), ax.to(dev), y.to(dev)
+        logits = run(x, ax)
         loss = torch.nn.functional.cross_entropy(logits.reshape(-1, logits.size(-1)), y.reshape(-1), ignore_index=0)
         opt.zero_grad(set_to_none=True); loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0); opt.step()
@@ -56,8 +56,8 @@ def main():
         if step % a["eval"] == 0 or step == a["steps"]:
             model.eval(); vl, n = 0.0, 0
             with torch.no_grad():
-                for x, y in vb:
-                    lg = run(x.to(dev)); y = y.to(dev)
+                for x, ax, y in vb:
+                    lg = run(x.to(dev), ax.to(dev)); y = y.to(dev)
                     l = torch.nn.functional.cross_entropy(lg.reshape(-1, lg.size(-1)), y.reshape(-1), ignore_index=0, reduction="sum")
                     vl += l.item(); n += int((y != 0).sum())
             vl /= n

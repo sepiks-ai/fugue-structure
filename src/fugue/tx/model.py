@@ -20,22 +20,27 @@ class Block(nn.Module):
         return x + F.dropout(s.ff(s.n2(x)), s.drop, s.training)
 
 class Composer(nn.Module):
-    def __init__(s, vocab, d=384, layers=8, heads=6, drop=0.1):
+    def __init__(s, vocab, d=384, layers=8, heads=6, drop=0.1, aux=False):
         super().__init__()
-        s.cfg = dict(vocab=vocab, d=d, layers=layers, heads=heads, drop=drop)
-        s.emb = nn.Embedding(vocab, d); s.blocks = nn.ModuleList(Block(d, heads, drop) for _ in range(layers))
+        s.cfg = dict(vocab=vocab, d=d, layers=layers, heads=heads, drop=drop, aux=aux)
+        s.emb = nn.Embedding(vocab, d)
+        # absolute pitch of the note a token puts down (0 for other tokens), added to its embedding; see tokens.aux_of
+        s.pitch_emb = nn.Embedding(128, d) if aux else None
+        s.blocks = nn.ModuleList(Block(d, heads, drop) for _ in range(layers))
         s.norm = nn.LayerNorm(d); s.hd = d // heads
         s.apply(s._init)
     @staticmethod
     def _init(m):
         if isinstance(m, (nn.Linear, nn.Embedding)): nn.init.normal_(m.weight, 0, 0.02)
         if isinstance(m, nn.Linear) and m.bias is not None: nn.init.zeros_(m.bias)
-    def forward(s, idx, targets=None):
+    def forward(s, idx, aux=None, targets=None):
         B, T = idx.shape
         pos = torch.arange(T, device=idx.device, dtype=torch.float32)
         inv = 1.0 / (10000 ** (torch.arange(0, s.hd, 2, device=idx.device, dtype=torch.float32) / s.hd))
         ang = pos[:, None] * inv[None]; cos, sin = ang.cos(), ang.sin()
-        x = F.dropout(s.emb(idx), s.cfg["drop"], s.training)
+        x = s.emb(idx)
+        if s.pitch_emb is not None and aux is not None: x = x + s.pitch_emb(aux)
+        x = F.dropout(x, s.cfg["drop"], s.training)
         for b in s.blocks: x = b(x, cos, sin)
         logits = s.norm(x) @ s.emb.weight.T
         if targets is None: return logits

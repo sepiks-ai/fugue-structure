@@ -19,21 +19,29 @@ class Windows:
         s.w = [FORM_WEIGHT[p["form"]] * sum(len(v) for v in p["voices"]) ** 0.5 for p in s.pieces]
     def encoded(s, i, shift):
         k = (i, shift)
-        if k not in s.cache: s.cache[k] = T.encode(s.pieces[i], shift)
+        if k not in s.cache:
+            ids = T.encode(s.pieces[i], shift)
+            s.cache[k] = (ids, T.aux_of(ids)) if ids else None
         return s.cache[k]
     def sample(s):
         while True:
             i = s.rng.choices(range(len(s.pieces)), s.w)[0]
-            ids = s.encoded(i, s.rng.randint(-6, 5))
-            if ids: break
-        if len(ids) <= s.ctx + 1: seq = ids
+            e = s.encoded(i, s.rng.randint(-6, 5))
+            if e: break
+        ids, aux = e
+        if len(ids) <= s.ctx + 1: seq, sa = ids, aux
         else:
             bars = [j for j in range(HEADER, len(ids) - s.ctx) if ids[j] == T.ID["BAR"]]
             j = s.rng.choice(bars) if bars and s.rng.random() > 0.25 else HEADER
-            seq = ids[:HEADER] + ids[j:j + s.ctx + 1 - HEADER] if j == HEADER else ids[:HEADER] + [T.ID["CONT"]] + ids[j:j + s.ctx - HEADER]
-        return seq + [0] * (s.ctx + 1 - len(seq))
+            if j == HEADER: seq, sa = ids[:s.ctx + 1], aux[:s.ctx + 1]
+            else:
+                seq = ids[:HEADER] + [T.ID["CONT"]] + ids[j:j + s.ctx - HEADER]
+                sa = aux[:HEADER] + [0] + aux[j:j + s.ctx - HEADER]
+        pad = s.ctx + 1 - len(seq)
+        return seq + [0] * pad, sa + [0] * pad
     def batch(s, n):
-        x = torch.tensor([s.sample() for _ in range(n)])
-        return x[:, :-1], x[:, 1:]
+        b = [s.sample() for _ in range(n)]
+        x = torch.tensor([q for q, _ in b]); a = torch.tensor([r for _, r in b])
+        return x[:, :-1], a[:, :-1], x[:, 1:]
     def tokens(s):
         return sum(len(T.encode(p) or []) for p in s.pieces)

@@ -152,8 +152,12 @@ gave 3–8% dissonance in all.
 The learned composer above writes notes inside a structure built by hand. The token composer has no
 scaffold: one transformer writes a whole piece as a single sequence of tokens, structure included.
 
-**Tokens** (`src/fugue/tx/tokens.py`, 384 of them). A header (form, key, meter, number of voices), then bar
-lines, positions within the bar (12 per crotchet, so triplets fit), and notes as voice, pitch, length.
+**Tokens** (`src/fugue/tx/tokens.py`, 434 of them). A header (form, key, meter, number of voices), then bar
+lines, positions within the bar (12 per crotchet, so triplets fit), and notes as voice, interval, length.
+A note's pitch is the interval from the previous note in its voice (a voice's first note is absolute), so a
+subject restated at another pitch is the same run of tokens; each note's absolute pitch is also fed to the
+model alongside its token, so the harmony stays in view. (Absolute pitch tokens, used in the first two runs,
+gave pieces with no recurring material: bar-to-bar recurrence 0.002 against Bach's 0.02 to 0.05.)
 Fugue entries are tokens too: `ENTRY ROLE_x1 SHIFT_7 VOICE_2` says the subject begins here in voice 2, a fifth
 up. The notes after it are written like any others, so stating the subject correctly is the model's job.
 Notes struck together are written lowest voice first.
