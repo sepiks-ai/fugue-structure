@@ -1,7 +1,10 @@
 """Train the token composer.
 
-    py scripts/train_tx.py [--ctx=2048] [--batch=8] [--steps=20000] [--d=384] [--layers=8] [--heads=6] [--lr=3e-4]
-                           [--out=results/tx] [--resume] [--cpu]
+    py scripts/train_tx.py [--ctx=2048] [--batch=8] [--steps=20000] [--d=256] [--layers=6] [--heads=4] [--drop=0.25]
+                           [--lr=3e-4] [--patience=6] [--out=results/tx] [--resume] [--cpu]
+
+Stops early once held-out loss has not improved for --patience evaluations (the first run, 14M parameters
+with dropout 0.1, began memorising after about 4000 steps; the defaults are now ~5M parameters, dropout 0.25).
 
 Uses every GPU it finds (two 1080 Ti: batch split across both with DataParallel, which works on Windows).
 Pascal cards are slow at half precision, so it trains in float32. Every --eval steps it reports held-out loss
@@ -14,7 +17,7 @@ from fugue.tx.model import Composer
 from fugue.tx.data import Windows
 
 def args():
-    a = dict(ctx=2048, batch=8, steps=20000, d=384, layers=8, heads=6, lr=3e-4, out="results/tx", eval=500, warm=500, drop=0.1, data="data/tx_pieces.json")
+    a = dict(ctx=2048, batch=8, steps=20000, d=256, layers=6, heads=4, lr=3e-4, out="results/tx", eval=500, warm=500, drop=0.25, patience=6, data="data/tx_pieces.json")
     flags = set()
     for x in sys.argv[1:]:
         if "=" in x: k, v = x[2:].split("=", 1); a[k] = type(a[k])(v) if k in a else v
@@ -38,7 +41,7 @@ def main():
     train, val = Windows(a["data"], "train", a["ctx"], seed=step), Windows(a["data"], "val", a["ctx"], seed=1)
     vb = [val.batch(a["batch"]) for _ in range(8)]
     lr_at = lambda s: a["lr"] * min(1, (s + 1) / a["warm"]) * (0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * min(1, s / a["steps"]))))
-    t0, tok = time.time(), 0
+    t0, tok, since = time.time(), 0, 0
     while step < a["steps"]:
         model.train()
         for g in opt.param_groups: g["lr"] = lr_at(step)
@@ -62,7 +65,10 @@ def main():
             torch.save(ck, os.path.join(a["out"], "last.pt"))
             if vl < best:
                 best = vl; torch.save({"model": model.state_dict(), "cfg": model.cfg, "step": step, "val": vl}, os.path.join(a["out"], "best.pt"))
+                since = 0
+            else: since += 1
             print(f"== step {step} held-out loss {vl:.3f} (best {best:.3f})", flush=True)
+            if since >= a["patience"]: print(f"no improvement for {since} evaluations: stopping; best weights in {a['out']}/best.pt", flush=True); break
 
 if __name__ == "__main__":
     main()

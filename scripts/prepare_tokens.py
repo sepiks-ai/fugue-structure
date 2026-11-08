@@ -105,6 +105,9 @@ def main():
             if form in ("FUGUE", "INVENTION"):                # the same subject finder as the WTC plans
                 ents, _ = find_entries(v, key[0], key[1])
                 entries = [{"voice": e["voice"], "onset": e["onset"], "role": role(e["transform"]), "shift": e["midi_shift"]} for e in ents]
+            # a fugue whose subject the finder could not locate carries no entry markers; calling it a fugue would
+            # teach the model that fugues may come without them, so it is filed with everything else
+            if form in ("FUGUE", "INVENTION") and not entries: form = "OTHER"
             pieces.append({"id": p["id"], "source": "mutopia", "licence": p["licence"], "form": form,
                            "split": "val" if zlib.crc32(p["bwv"].encode()) % 33 == 0 else "train",
                            "key": key, "meters": meters, "bar_offset": bar_offset(v, meters), "voices": v, "entries": entries})
