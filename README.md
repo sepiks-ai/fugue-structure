@@ -202,6 +202,25 @@ py scripts\sample_tx.py --form=FUGUE --key=2_minor --meter=4/4 --voices=3 --seed
 
 writes `results\tx\sample.mid` and `.json`.
 
+
+### Three layers (`scripts/compose_hier.py`)
+
+The token model on its own writes good local counterpoint but does not restate a subject: given real Bach up
+to a later entry, it predicts the subject's intervals no better than at the first entry (43% against 46%,
+held-out fugues). So the piece is composed in three learned layers, each constraining the one below:
+
+1. **Plan**: the learned plan model (above): exposition order, then each entry's voice, degree, form and
+   distance, in subject lengths, and the end.
+2. **Subject**: the token model writes a fugue opening, one voice alone, eight times; the one kept scores best
+   on the model's own confidence plus likeness to Bach's 48 subjects (`scripts/learn_subjects.py`).
+3. **Notes**: the token model writes the piece; at each planned entry the subject, transposed and placed in an
+   octave that suits the voice, is written into its voice as tokens, and the model writes the other voices
+   around it. It may not run past an entry or write in a voice while that voice states the subject.
+
+```
+py scripts\compose_hier.py --ckpt=results\tx4\best.pt --key=2_minor --voices=3 --seed=1
+```
+
 ## Reproduce
 
 ```bash
