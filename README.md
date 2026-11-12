@@ -147,6 +147,80 @@ Before these settings: suspensions 7.5%, untreated 2.2%, quick notes about 65%. 
 gave 3–8% dissonance in all.
 `node tests/test_learned.js` checks that the browser computes exactly what the trained Python model does.
 
+## The token composer (tokens all the way down)
+
+The learned composer above writes notes inside a structure built by hand. The token composer has no
+scaffold: one transformer writes a whole piece as a single sequence of tokens, structure included.
+
+**Tokens** (`src/fugue/tx/tokens.py`, 434 of them). A header (form, key, meter, number of voices), then bar
+lines, positions within the bar (12 per crotchet, so triplets fit), and notes as voice, interval, length.
+Pitches are absolute, except inside a marked subject statement, where each note after the first is the
+interval from the one before: a subject restated at another pitch is then the same run of tokens, and stating
+it again is copying. Each note's absolute pitch is also fed to the model alongside its token. (Run 2,
+absolute pitches throughout: convincing local writing but no recurrence, 0.002 against Bach's 0.025 to 0.056.
+Run 3, intervals throughout: recurrence 0.013, but from a repeated-note figure looping in 32 bars, two of
+three voices, and mostly quavers.)
+Fugue entries are tokens too: `ENTRY ROLE_x1 SHIFT_7 VOICE_2` says the subject begins here in voice 2, a fifth
+up. The notes after it are written like any others, so stating the subject correctly is the model's job.
+Notes struck together are written lowest voice first.
+
+**Data** (`scripts/mutopia_bach.py`, `scripts/prepare_tokens.py`, `data/OPEN_BACH.md`): Rother's 48 fugues plus
+every Bach piece in the Mutopia Project with a Public Domain, CC BY or CC BY-SA licence (WTC copies left out),
+rendered by LilyPond with a MIDI track per voice; fragments of voices are joined, orchestral scores (more than
+12 tracks) and duplicates dropped. 590 pieces, 1.7 million tokens, of which 80 fugues (the 48, *The Art of
+Fugue*, organ and keyboard fugues). Entries are marked in 75 of the fugues and 6 inventions by the same
+subject finder as the plans (`src/fugue/subject_find.py`). Keys of Mutopia pieces are estimated (the
+estimator gets 42 of the 48 WTC keys right). Every piece is transposed into random keys during training.
+
+**Model** (`src/fugue/tx/model.py`): decoder-only transformer, 8 layers, width 384, 6 heads, rotary positions,
+about 14 million parameters, context 2048 tokens (about half a WTC fugue). Training windows start at bar
+lines with the header kept in front; fugues are drawn four times as often as their size would suggest.
+
+**Generation** (`scripts/sample_tx.py`): given only the header, the model writes bars, entries, notes and the
+end. A grammar keeps the tokens well formed (a voice is followed by a pitch, a pitch by a length; positions
+move forward within a bar; no more voices than asked for). Nothing else is imposed.
+
+### Training on Windows with two GTX 1080 Ti
+
+PyTorch 2.14 is the last release whose CUDA 12.6 wheels include Pascal cards [6].
+
+```
+git clone https://github.com/sepiks-ai/fugue-structure
+cd fugue-structure
+py -m pip install torch==2.14.0 --index-url https://download.pytorch.org/whl/cu126
+py -m pip install mido
+py scripts\train_tx.py
+```
+
+It uses both cards (DataParallel), trains in float32 (Pascal is slow at half precision), prints progress
+every 50 steps and held-out loss every 500, and keeps `results\tx\best.pt` and `results\tx\last.pt`
+(`--resume` continues). Then:
+
+```
+py scripts\sample_tx.py --form=FUGUE --key=2_minor --meter=4/4 --voices=3 --seed=1
+```
+
+writes `results\tx\sample.mid` and `.json`.
+
+
+### Three layers (`scripts/compose_hier.py`, and in the browser `web/tx.js`)
+
+The token model on its own writes good local counterpoint but does not restate a subject: given real Bach up
+to a later entry, it predicts the subject's intervals no better than at the first entry (43% against 46%,
+held-out fugues). So the piece is composed in three learned layers, each constraining the one below:
+
+1. **Plan**: the learned plan model (above): exposition order, then each entry's voice, degree, form and
+   distance, in subject lengths, and the end.
+2. **Subject**: the token model writes a fugue opening, one voice alone, eight times; the one kept scores best
+   on the model's own confidence plus likeness to Bach's 48 subjects (`scripts/learn_subjects.py`).
+3. **Notes**: the token model writes the piece; at each planned entry the subject, transposed and placed in an
+   octave that suits the voice, is written into its voice as tokens, and the model writes the other voices
+   around it. It may not run past an entry or write in a voice while that voice states the subject.
+
+```
+py scripts\compose_hier.py --ckpt=results\tx4\best.pt --key=2_minor --voices=3 --seed=1
+```
+
 ## Reproduce
 
 ```bash
@@ -176,6 +250,8 @@ node tests/test_learned.js
 3. Giraud, M., Groult, R., Leguy, E. & Levé, F. (2015). Computational Fugue Analysis. *Computer Music Journal*, 39(2), 77–96.
 4. Wang, Z., Min, L. & Xia, G. (2024). Whole-Song Hierarchical Generation of Symbolic Music Using Cascaded Diffusion Models. *ICLR 2024*. arXiv:2405.09901.
 5. Rother, K. (2015). An "open source" open score edition of Bach's Well-tempered Clavier (48 fugues). OpenUCT, University of Cape Town. CC BY 4.0. https://open.uct.ac.za/items/d2a6887b-7196-4fbe-8b56-a469bf557f93
+6. PyTorch (2026). Notice: CUDA 12.6 wheels will no longer be published from PyTorch 2.15 (drops Maxwell / Pascal / Volta). dev-discuss.pytorch.org/t/3432
+7. The Mutopia Project. Bach, J. S., engraved sources. https://www.mutopiaproject.org/ ; github.com/MutopiaProject/MutopiaProject
 
 ## Sound
 

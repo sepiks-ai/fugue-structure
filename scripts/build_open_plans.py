@@ -7,30 +7,9 @@ import json, sys
 sys.path.insert(0, "src")
 from fugue.coverage import N, analyse_voices, matches
 
-MAJ = [0, 2, 4, 5, 7, 9, 11]; MIN = [0, 2, 3, 5, 7, 8, 10]
 NAMES = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"]
 
-def dia(m, tonic, sc):
-    rel = m - tonic; o, pc = rel // 12, rel % 12
-    return max(i for i in range(7) if sc[i] <= pc) + 7 * o + 35
-
-def tolerant(v, pat, need=0.85):
-    """Statements of pat in voice v allowing a few altered intervals (tonal answers, cadential changes).
-    Yields (start, transform). Rhythm must agree for most notes (the last note may differ);
-    transforms: x1, INV, AUG (x2), DIM (x0.5)."""
-    L = len(pat); pi = [pat[j + 1].dia - pat[j].dia for j in range(L - 1)]; pd = [n.dur for n in pat]
-    for i in range(len(v) - L + 1):
-        w = v[i:i + L]
-        if any(abs((w[j + 1].on - w[j].on) - w[j].dur) > 1e-6 for j in range(L - 1)) and False: pass
-        vi = [w[j + 1].dia - w[j].dia for j in range(L - 1)]
-        for sc, tag in ((1, "x1"), (2, "AUG"), (0.5, "DIM")):
-            rh = sum(abs(w[j].dur - pd[j] * sc) < 1e-6 for j in range(L - 1)) / max(1, L - 1)
-            if rh < need: continue
-            for inv in (False, True):
-                ok = sum((vi[j] == (-pi[j] if inv else pi[j])) or (j == 0 and abs(vi[j] - (-pi[j] if inv else pi[j])) <= 1) for j in range(L - 1)) / max(1, L - 1)
-                if ok >= need: yield i, ("INV+" if inv else "") + tag; break
-            else: continue
-            break
+from fugue.subject_find import dia, tolerant, MAJ, MIN
 
 fugues = json.load(open("data/open_wtc.json"))["fugues"]
 plans = []

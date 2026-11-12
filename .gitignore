@@ -1,8 +1,13 @@
 data/*
 !data/.gitkeep
 !data/open_wtc.json
+!data/open_bach.json
+!data/tx_pieces.json
+!data/OPEN_BACH.md
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
 .venv/
 results/*.pt
+
+results/tx/
