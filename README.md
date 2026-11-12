@@ -203,7 +203,7 @@ py scripts\sample_tx.py --form=FUGUE --key=2_minor --meter=4/4 --voices=3 --seed
 writes `results\tx\sample.mid` and `.json`.
 
 
-### Three layers (`scripts/compose_hier.py`)
+### Three layers (`scripts/compose_hier.py`, and in the browser `web/tx.js`)
 
 The token model on its own writes good local counterpoint but does not restate a subject: given real Bach up
 to a later entry, it predicts the subject's intervals no better than at the first entry (43% against 46%,

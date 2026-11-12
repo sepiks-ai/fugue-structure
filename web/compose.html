@@ -74,6 +74,17 @@ h2 { margin: 0; font-size: 24px; font-weight: normal; }
 .legend span::before { content: ""; display: inline-block; width: 12px; height: 8px; border-radius: 2px; margin-right: 6px; background: var(--c); }
 svg#roll { width: 100%; height: auto; display: block; background: var(--lane); border-radius: 6px; }
 .err { color: var(--accent2); }
+[hidden] { display: none !important; }
+select#composer { font: inherit; font-size: 14px; padding: 4px 6px; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); color: var(--ink); margin-left: 6px; max-width: 100%; }
+#layers { margin: 0 0 14px; }
+.stage { font-size: 14px; color: var(--ink); margin: 0 0 8px; min-height: 1.4em; }
+.stage b { font-weight: 600; }
+.stage .done { color: var(--muted); }
+svg#planbar { width: 100%; height: auto; display: block; background: var(--lane); border-radius: 6px; margin: 0 0 8px; }
+.ticker { display: flex; flex-wrap: nowrap; gap: 4px; overflow: hidden; font: 12px/1 ui-monospace, Menlo, Consolas, monospace; min-height: 22px; mask-image: linear-gradient(90deg, transparent, #000 12%); }
+.ticker span { flex: none; border: 1px solid var(--rule); border-radius: 5px; padding: 4px 6px; color: var(--ink); background: var(--panel); }
+.ticker span.t { color: var(--muted); border-color: transparent; background: var(--chip); }
+.ticker span.e { background: var(--ink); color: var(--panel); border-color: var(--ink); }
 .how { color: var(--muted); font-size: 14.5px; max-width: 46em; margin: 0 0 40px; }
 .how a, .meta a { color: var(--accent); }
 .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--ink); color: var(--bg);
@@ -86,15 +97,18 @@ svg#roll { width: 100%; height: auto; display: block; background: var(--lane); b
 <div class="wrap">
 <header>
   <h1>Write a Fugue</h1>
-  <p class="sub">Describe the fugue you would like: a key, a mood, how many voices, how fast. It is composed here in your browser, on an entry plan taken from one of Bach's fugues in the <i>Well-Tempered Clavier</i>.</p>
+  <p class="sub">Describe the fugue you would like: a key, a mood, how many voices, how fast. It is composed here in your browser by models that learned from Bach: one plans where the theme enters, the same network writes the theme, then every note around it. You can watch each layer being written.</p>
 </header>
 
 <form id="f" autocomplete="off">
   <label for="q" class="visually-hidden" style="position:absolute;left:-9999px">Describe your fugue</label>
   <input id="q" name="q" placeholder="A sombre fugue in D minor for three voices" maxlength="300">
   <button class="primary" id="go" type="submit">Compose</button>
-  <label class="care"><input type="checkbox" id="care"> Take more care <span>(slower: keeps twice as many drafts going)</span></label>
-  <label class="care"><input type="checkbox" id="rules"> Use the old hand-written rules instead of the learned composer <span>(to hear the difference)</span></label>
+  <label class="care">Composer <select id="composer" aria-label="Composer">
+    <option value="layers">Three learned layers (new; under a minute)</option>
+    <option value="scaffold">Learned notes on a hand-built scaffold (a few seconds)</option>
+    <option value="rules">Hand-written rules (the first version)</option></select></label>
+  <label class="care" id="careLabel" hidden><input type="checkbox" id="care"> Take more care <span>(slower: keeps twice as many drafts going)</span></label>
 </form>
 <div class="examples">Try:
   <button type="button">A sombre fugue in D minor for three voices</button>
@@ -130,11 +144,17 @@ svg#roll { width: 100%; height: auto; display: block; background: var(--lane); b
       <button type="button" data-a="legato">Legato</button><button type="button" data-a="articulated">Articulated</button><button type="button" data-a="detached">Detached</button>
     </span>
   </div>
-  <div class="legend"><span style="--c:var(--accent)">Subject</span><span style="--c:var(--accent2)">Subject inverted</span><span style="--c:var(--cs)">Countersubject</span><span style="--c:var(--ep)">Episode (subject fragments in sequence)</span><span style="--c:var(--free)">Free counterpoint</span></div>
+  <div id="layers" hidden>
+    <div class="stage" id="stage"></div>
+    <svg id="planbar" role="img" aria-label="The plan: where the subject enters in each voice"></svg>
+    <div class="ticker" id="ticker" aria-hidden="true"></div>
+  </div>
+  <div class="legend" id="legend"><span style="--c:var(--accent)">Subject</span><span style="--c:var(--accent2)">Subject inverted</span><span style="--c:var(--cs)">Countersubject</span><span style="--c:var(--ep)">Episode (subject fragments in sequence)</span><span style="--c:var(--free)">Free counterpoint</span></div>
   <svg id="roll" role="img" aria-label="Piano roll of the fugue"></svg>
 </section>
 
-<p class="how">How it works: your words set the key, mode, number of voices, speed and the character of the subject. The theme (the subject) is written by the model too: it plays the opening of a fugue alone, as Bach's first voice does, a few dozen times over, and the line kept is the one most like Bach's 48 subjects in shape, nudged by your words (lively asks for more notes, angular for more leaps). A plan model, learned from the 48 fugues of the <i>Well-Tempered Clavier</i>, decides when each voice states the subject, in which key, whether in stretto and whether upside down. A small neural network trained on the same 48 fugues then writes the music around those entries, semiquaver by semiquaver: each voice hears what the others have just played and what the subject is about to do. The line it writes against the first answer becomes the countersubject and returns later; between groups of entries, fragments of the subject move through sequences. Harmony, rhythm and the treatment of dissonance are learned from Bach. Three settings were tuned by measuring the results against his: pitch choices are sharpened a little, the music is nudged to move on between beats (the model on its own moves less often than Bach), and a voice may not leap into a clash on the beat. Training data: Kyle Rother's open edition of the fugues (CC BY 4.0). Harpsichord, organ and piano recordings from the Versilian Community Sample Library (CC0); the rooms are St Andrew's Church and the Lady Chapel of St Albans Cathedral, from the OpenAIR library (CC BY-SA 3.0). More in <a href="https://paulharrald.substack.com/">the article</a>, on the <a href="index.html">Fugue Map</a>, and in the <a href="https://github.com/sepiks-ai/fugue-structure">code</a>.</p>
+<p class="how">How the three learned layers work: your words set the key, the number of voices and the speed, and nudge the choices below. <b>1 Plan:</b> a model learned from the 48 fugues of the <i>Well-Tempered Clavier</i> decides when each voice states the theme, on which degree of the scale, and whether upside down. <b>2 Subject:</b> a transformer network (4.8 million parameters, trained on about 590 openly licensed pieces of Bach) writes six fugue openings, one voice alone; the one kept is the one it was most sure of and most like Bach's own subjects. <b>3 Notes:</b> the same network writes the whole piece, token by token (a token is a bar line, a position in the bar, or one note's voice, pitch and length). At each entry the plan names, the subject is written into its voice for it; every other note is the network's own choice. Nothing else is imposed. All of it runs in this page, on your machine. Training data: Kyle Rother's edition of the 48 (CC BY 4.0) and Bach from the Mutopia Project (public domain, CC BY, CC BY-SA). The two earlier composers remain in the menu for comparison.</p>
+<p class="how">How the earlier composer works: your words set the key, mode, number of voices, speed and the character of the subject. The theme (the subject) is written by the model too: it plays the opening of a fugue alone, as Bach's first voice does, a few dozen times over, and the line kept is the one most like Bach's 48 subjects in shape, nudged by your words (lively asks for more notes, angular for more leaps). A plan model, learned from the 48 fugues of the <i>Well-Tempered Clavier</i>, decides when each voice states the subject, in which key, whether in stretto and whether upside down. A small neural network trained on the same 48 fugues then writes the music around those entries, semiquaver by semiquaver: each voice hears what the others have just played and what the subject is about to do. The line it writes against the first answer becomes the countersubject and returns later; between groups of entries, fragments of the subject move through sequences. Harmony, rhythm and the treatment of dissonance are learned from Bach. Three settings were tuned by measuring the results against his: pitch choices are sharpened a little, the music is nudged to move on between beats (the model on its own moves less often than Bach), and a voice may not leap into a clash on the beat. Training data: Kyle Rother's open edition of the fugues (CC BY 4.0). Harpsichord, organ and piano recordings from the Versilian Community Sample Library (CC0); the rooms are St Andrew's Church and the Lady Chapel of St Albans Cathedral, from the OpenAIR library (CC BY-SA 3.0). More in <a href="https://paulharrald.substack.com/">the article</a>, on the <a href="index.html">Fugue Map</a>, and in the <a href="https://github.com/sepiks-ai/fugue-structure">code</a>.</p>
 </div>
 <div class="toast" id="toast"></div>
 
@@ -157,6 +177,8 @@ function compose(text, s) {
   moodFromText();
   stop();
   seed = s;
+  if ($("composer").value === "layers") return composeLayers(text, s);
+  $("layers").hidden = true; setLegend(false);
   $("go").disabled = true; $("again").disabled = true;
   setProgress(0.02);
   const id = ++jobId;
@@ -177,16 +199,105 @@ function compose(text, s) {
       else done(d.piece);
     };
     worker.onerror = () => { worker = null; setTimeout(() => done(FugueEngine.generate(text, plans, s, null, { beam: $("care").checked ? 100 : 30 })), 10); };
-    worker.postMessage({ text, plans, seed: s, id, beam: $("care").checked ? 100 : 30, rules: $("rules").checked });
+    worker.postMessage({ text, plans, seed: s, id, beam: $("care").checked ? 100 : 30, rules: $("composer").value === "rules" });
   } catch (e) {                              // no workers (e.g. opened as a file): compose on the page
     setTimeout(() => { try { done(FugueEngine.generate(text, plans, s, null, { beam: $("care").checked ? 100 : 30 })); } catch (err) { fail(String(err)); } }, 20);
   }
+}
+
+// ---------------------------------------------------------------- three learned layers, drawn as they are written
+let txWorker = null;
+const ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII"];
+function setLegend(layers) {
+  $("legend").innerHTML = layers
+    ? '<span style="--c:var(--accent)">Subject, placed by the plan</span><span style="--c:var(--accent2)">Subject inverted</span><span style="--c:var(--free)">Written by the model around it</span>'
+    : '<span style="--c:var(--accent)">Subject</span><span style="--c:var(--accent2)">Subject inverted</span><span style="--c:var(--cs)">Countersubject</span><span style="--c:var(--ep)">Episode (subject fragments in sequence)</span><span style="--c:var(--free)">Free counterpoint</span>';
+}
+function stage(n, text, done) {
+  const names = ["", "Plan", "Subject", "Notes"];
+  $("stage").innerHTML = [1, 2, 3].map((k) => k < n ? `<span class="done">${k} ${names[k]} ✓</span>` : k === n ? `<b>${k} ${names[k]}</b>: ${text}` : `<span class="done">${k} ${names[k]}</span>`).join(" · ") + (done ? "" : "");
+}
+function drawPlan(entries, nv, length) {
+  const W = 1000, lane = 22, H = nv * lane + 8, x = (t) => 8 + (t / length) * (W - 16);
+  let out = "";
+  for (let v = 0; v < nv; v++) out += `<text x="4" y="${4 + v * lane + 15}" font-size="11" fill="var(--muted)">${v === 0 ? "top" : v === nv - 1 ? "bass" : ""}</text>`;
+  for (const e of entries) {
+    const y = 4 + e.voice * lane + 2, w = Math.max(4, x(e.end) - x(e.onset) - 2), c = e.inv ? "var(--accent2)" : "var(--accent)";
+    out += `<rect x="${x(e.onset).toFixed(1)}" y="${y}" width="${w.toFixed(1)}" height="${lane - 5}" rx="4" fill="${e.inv ? "none" : c}" stroke="${c}" stroke-width="1.5"/>`;
+    if (w > 22) out += `<text x="${(x(e.onset) + w / 2).toFixed(1)}" y="${y + 13}" font-size="11" text-anchor="middle" font-weight="600" fill="${e.inv ? c : "var(--panel)"}">${ROMAN[e.degree || 0]}${e.inv ? " inv" : ""}</text>`;
+  }
+  const svg = $("planbar"); svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.innerHTML = out;
+}
+function showTicker(names) {
+  const label = (t) => t.replace("VOICE_", "V").replace("PITCH_", "P").replace("INT_", "Δ").replace("DUR_", "len").replace("POS_", "@").replace("ROLE_x1", "subject").replace("SHIFT_", "shift ");
+  $("ticker").innerHTML = names.map((t) => `<span class="${/^(BAR|POS_)/.test(t) ? "t" : /^(ENTRY|ROLE_|SHIFT_)/.test(t) ? "e" : ""}">${label(t)}</span>`).join("");
+}
+function composeLayers(text, s) {
+  $("go").disabled = true; $("again").disabled = true; $("play").disabled = true;
+  const id = ++jobId;
+  try { history.replaceState(null, "", "#q=" + encodeURIComponent(text) + "&s=" + s + "&c=layers"); } catch (e) {}
+  const p0 = FugueEngine.interpret(text, s);
+  $("card").hidden = false; $("layers").hidden = false; setLegend(true);
+  $("title").textContent = `Fugue in ${p0.keyName}, ${Math.max(2, Math.min(5, p0.voices))} voices`;
+  $("meta").textContent = "Three learned layers · composing in your browser";
+  $("heard").innerHTML = p0.heard.map((h) => `<span>${h.replace(/[<>&]/g, "")}</span>`).join("");
+  $("subject").textContent = ""; $("roll").innerHTML = ""; $("planbar").innerHTML = ""; $("ticker").innerHTML = "";
+  stage(1, "loading the model (5 MB, once)…"); setProgress(0.02);
+  let plan = null, live = null, total = 1, nv = 3, entries = null;
+  const draft = (notes) => {                      // the piece so far, drawn on the roll
+    for (const n of notes) { n.entry = entries ? entries.findIndex((e) => n.v === e.voice && n.on >= e.onset - 1e-6 && n.on < e.end - 1e-6) : -1; n.kind = n.entry >= 0 ? "subject" : "free"; }
+    piece = { notes, length: total, entries: entries || [], voices: nv, key: p0.keyName };
+    drawRoll();
+  };
+  try {
+    txWorker = txWorker || new Worker("tx-worker.js");
+    txWorker.onmessage = (ev) => {
+      const d = ev.data; if (d.id !== jobId) return;
+      if (d.error) { $("go").disabled = false; $("title").innerHTML = `<span class="err">Something went wrong: ${d.error.replace(/[<>&]/g, "")}</span>`; setProgress(null); return; }
+      if (d.piece) {
+        const p = d.piece; piece = p;
+        perf.tempo = pendingPerf.t || p.tempo; perf.artic = pendingPerf.a || "articulated";
+        if (pendingPerf.i) p.timbre = pendingPerf.i;
+        pendingPerf = {}; stage(4, ""); $("stage").innerHTML = `<span class="done">1 Plan ✓ · 2 Subject ✓ · 3 Notes ✓</span> · ${p.tokens} tokens, every note above written by the model or placed by its plan`;
+        showTicker(p.ticker); render(); setPerfUI(); updateHash(); loadInstrument(p.timbre);
+        $("go").disabled = false; $("again").disabled = false; $("play").disabled = false; setProgress(null); return;
+      }
+      const e = d.ev;
+      if (e.stage === "loading") return;
+      if (e.stage === "plan") {
+        plan = e; nv = e.voices;
+        const ents = e.plan.map((q) => ({ voice: q.rank, onset: q.onset * e.span, end: q.onset * e.span + e.span, inv: q.form === "inv", degree: q.degree }));
+        total = Math.max(...ents.map((q) => q.end)) + 8; drawPlan(ents, nv, total);
+        stage(2, `plan sampled: ${ents.length} entries over ${Math.round(total / 4)} bars, subject ${e.span} crotchets. Writing candidate subjects…`); setProgress(0.06);
+      } else if (e.stage === "candidate") {
+        stage(2, `candidate ${e.k + 1} of 6: ${e.notes.map((n) => noteName(n.m)).slice(0, 10).join(" ")}${e.notes.length > 10 ? " …" : ""}${e.kept ? " (best so far)" : ""}`);
+        setProgress(0.06 + 0.12 * (e.k + 1) / 6);
+      } else if (e.stage === "subject") {
+        $("subject").textContent = "Subject: " + e.notes.map((n) => noteName(n.m)).join(" ");
+      } else if (e.stage === "entries") {
+        entries = e.entries; total = e.length; drawPlan(entries, nv, total);
+        stage(3, "writing the voices around the planned entries…");
+      } else if (e.stage === "notes") {
+        draft(e.notes); const bars = Math.round(total / 4);
+        stage(3, `bar ${Math.min(bars, e.bar + 1)} of ${bars}`); setProgress(0.18 + 0.82 * Math.min(1, (e.bar * 4) / total));
+      }
+    };
+    txWorker.onerror = (err) => { $("go").disabled = false; $("title").innerHTML = `<span class="err">This browser could not run the model (${String(err.message || err).replace(/[<>&]/g, "")}).</span>`; setProgress(null); txWorker = null; };
+    txWorker.postMessage({ text, seed: s, id });
+  } catch (e) { $("go").disabled = false; $("title").innerHTML = '<span class="err">This page needs to be served over the web to run the model.</span>'; }
 }
 
 function render() {
   const p = piece;
   $("card").hidden = false;
   $("title").textContent = `Fugue in ${p.key}, ${p.voices} voices`;
+  if (p.layers) {
+    $("title").textContent = `Fugue in ${p.key}, ${p.voices} voices`;
+    $("meta").innerHTML = `Three learned layers · plan learned from Bach's 48 fugues · subject written by the model, kept from six · notes by a 4.8-million-parameter network trained on open Bach · ${p.entries.length} entries, ${p.entries.filter((e) => e.inv).length} inverted · ${Math.round(p.length * 60 / p.tempo)} seconds · version ${seed + 1}`;
+    $("heard").innerHTML = p.params.heard.map((h) => `<span>${h.replace(/[<>&]/g, "")}</span>`).join("");
+    $("subject").textContent = "Subject: " + p.subject.map((x) => noteName(x.m)).join(" ");
+    drawPlan(p.entries, p.voices, p.length); drawRoll(); return;
+  }
   const planText = p.plan.learned ? "Learned composer · " + (p.subjectLearned ? "subject written by the model · " : "") + "a new plan, sampled from what was learned from Bach's 48 fugues" : `Hand-written rules · plan from Bach's No. ${p.plan.number} (${p.plan.key.replace("b ", "♭ ").replace("# ", "♯ ")})`;
   $("meta").innerHTML = `${planText} · ${p.entries.length} entries, ${p.entries.filter((e) => e.inv).length} inverted${p.counts ? `, countersubject ${p.counts.countersubjects} times, ${p.counts.episodes} episode lines` : ""} · ${Math.round(p.length * 60 / p.tempo)} seconds · version ${seed + 1}`;
   $("heard").innerHTML = p.params.heard.map((h) => `<span>${h.replace(/[<>&]/g, "")}</span>`).join("");
@@ -197,6 +308,7 @@ function render() {
 let xOf = null;
 function drawRoll() {
   const p = piece, W = 1000, H = 300, L = 8, R = 8, T = 10, B = 10;
+  if (!p.notes.length) { $("roll").innerHTML = ""; return; }
   const ms = p.notes.map((n) => n.m), lo = Math.min(...ms) - 1, hi = Math.max(...ms) + 1;
   const x = (t) => L + (t / p.length) * (W - L - R), y = (m) => T + (hi - m) / (hi - lo) * (H - T - B);
   const rowH = Math.max(2, (H - T - B) / (hi - lo) - 0.6);
@@ -615,6 +727,7 @@ $("q").addEventListener("input", moodFromText);
 $("f").addEventListener("submit", (ev) => { ev.preventDefault(); const t = $("q").value.trim() || $("q").placeholder; $("q").value = t; compose(t, 0); });
 document.querySelectorAll(".examples button").forEach((b) => b.addEventListener("click", () => { $("q").value = b.textContent; compose(b.textContent, 0); }));
 $("again").addEventListener("click", () => compose(piece.request, seed + 1));
+$("composer").addEventListener("change", () => { $("careLabel").hidden = $("composer").value !== "scaffold"; });
 $("play").addEventListener("click", () => (live ? stop() : play()));
 $("inst").innerHTML = INSTRUMENTS.map(([v, l]) => `<option value="${v}">${l}</option>`).join("");
 $("inst").addEventListener("change", async () => {
@@ -630,7 +743,7 @@ function setPerfUI() {
 }
 function updateHash() {
   if (!piece) return;
-  try { history.replaceState(null, "", "#q=" + encodeURIComponent(piece.request) + "&s=" + seed + "&t=" + perf.tempo + "&a=" + perf.artic + "&i=" + piece.timbre); } catch (e) {}
+  try { history.replaceState(null, "", "#q=" + encodeURIComponent(piece.request) + "&s=" + seed + "&t=" + perf.tempo + "&a=" + perf.artic + "&i=" + piece.timbre + "&c=" + $("composer").value); } catch (e) {}
   const secs = Math.round(piece.length * 60 / perf.tempo);
   $("meta").innerHTML = $("meta").innerHTML.replace(/\d+ seconds/, secs + " seconds");
 }
@@ -664,6 +777,9 @@ $("share").addEventListener("click", async () => {
     const i = h.get("i");
     pendingPerf = { t: t >= 30 && t <= 160 ? t : null, a: ["legato", "articulated", "detached"].includes(a) ? a : null,
       i: INSTRUMENTS.some(([v]) => v === i) ? i : null };
+    if (["layers", "scaffold", "rules"].includes(h.get("c"))) $("composer").value = h.get("c");
+    else if (h.get("c") === null) $("composer").value = "scaffold";          // links made before the new composer
+    $("careLabel").hidden = $("composer").value !== "scaffold";
     $("q").value = h.get("q"); compose(h.get("q"), parseInt(h.get("s") || "0", 10) || 0);
   }
 })();
